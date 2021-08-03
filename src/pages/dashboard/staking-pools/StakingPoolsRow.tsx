@@ -63,46 +63,46 @@ const StakingPoolsRow: React.FC<
 
   const { balances } = stakingBalancesData;
 
-  const safetyPoolStakingBalances = balances[StakingPool.Safety];
-  const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
+  // const safetyPoolStakingBalances = balances[StakingPool.Safety];
+  // const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
 
-  let safetyPoolSize: React.ReactNode;
+  // let safetyPoolSize: React.ReactNode;
 
-  if (safetyPoolData.poolSize) {
-    const { num, suffix } = abbreviateNumber({
-      num: MustBigNumber(safetyPoolData.poolSize).toString(),
-      decimals: DecimalPlaces.None,
-    });
+  // if (safetyPoolData.poolSize) {
+  //   const { num, suffix } = abbreviateNumber({
+  //     num: MustBigNumber(safetyPoolData.poolSize).toString(),
+  //     decimals: DecimalPlaces.None,
+  //   });
 
-    safetyPoolSize = (
-      <ValueWithIcon>
-        <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-      </ValueWithIcon>
-    );
-  } else {
-    safetyPoolSize = defaultLoadingBar;
-  }
+  //   safetyPoolSize = (
+  //     <ValueWithIcon>
+  //       <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+  //       <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //     </ValueWithIcon>
+  //   );
+  // } else {
+  //   safetyPoolSize = defaultLoadingBar;
+  // }
 
-  let safetyPoolUserBalance: React.ReactNode = '-';
+  // let safetyPoolUserBalance: React.ReactNode = '-';
 
-  if (walletAddress) {
-    if (safetyPoolStakingBalances.userBalance) {
-      const { num, suffix } = abbreviateNumber({
-        num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
-        decimals: DecimalPlaces.Abbreviated,
-      });
+  // if (walletAddress) {
+  //   if (safetyPoolStakingBalances.userBalance) {
+  //     const { num, suffix } = abbreviateNumber({
+  //       num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
+  //       decimals: DecimalPlaces.Abbreviated,
+  //     });
 
-      safetyPoolUserBalance = (
-        <ValueWithIcon>
-          <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-        </ValueWithIcon>
-      );
-    } else {
-      safetyPoolUserBalance = defaultLoadingBar;
-    }
-  }
+  //     safetyPoolUserBalance = (
+  //       <ValueWithIcon>
+  //         <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //       </ValueWithIcon>
+  //     );
+  //   } else {
+  //     safetyPoolUserBalance = defaultLoadingBar;
+  //   }
+  // }
 
   const safetyPoolCard = (
     <InfoModuleCard
@@ -213,26 +213,26 @@ const StakingPoolsRow: React.FC<
     />
   );
 
-  let safetyPoolEarnings: React.ReactNode;
-  if (walletAddress) {
-    if (safetyPoolStakingBalances.unclaimedRewards) {
-      safetyPoolEarnings = (
-        <ValueWithIcon>
-          <NumberFormat
-            thousandSeparator
-            displayType="text"
-            value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
-              DecimalPlaces.ShortToken,
-              BigNumber.ROUND_UP
-            )}
-          />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-        </ValueWithIcon>
-      );
-    } else {
-      safetyPoolEarnings = defaultLoadingBar;
-    }
-  }
+  // let safetyPoolEarnings: React.ReactNode;
+  // if (walletAddress) {
+  //   if (safetyPoolStakingBalances.unclaimedRewards) {
+  //     safetyPoolEarnings = (
+  //       <ValueWithIcon>
+  //         <NumberFormat
+  //           thousandSeparator
+  //           displayType="text"
+  //           value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
+  //             DecimalPlaces.ShortToken,
+  //             BigNumber.ROUND_UP
+  //           )}
+  //         />
+  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //       </ValueWithIcon>
+  //     );
+  //   } else {
+  //     safetyPoolEarnings = defaultLoadingBar;
+  //   }
+  // }
 
   let liquidityPoolEarnings: React.ReactNode;
   if (walletAddress) {
