@@ -1,0 +1,476 @@
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import NumberFormat from 'react-number-format';
+import BigNumber from 'bignumber.js';
+import styled from 'styled-components/macro';
+
+import {
+  AssetSymbol,
+  DecimalPlaces,
+  DocumentationSublinks,
+  ExternalLink,
+  ModalType,
+  NotificationType,
+  StakingPool,
+} from 'enums';
+
+import { AppDispatch, RootState } from 'store';
+import { LocalizationProps } from 'types';
+
+import {
+  useGetCountdownDiff,
+  usePollLiquidityPoolEpochData,
+  usePollStakingBalances,
+  usePollStakingPoolsData,
+  usePollWithdrawBalances,
+} from 'hooks';
+
+import { withLocalization } from 'hoc';
+import { breakpoints } from 'styles';
+
+import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
+import Button, { ButtonColor, ButtonContainer } from 'components/Button';
+import GeoBlockBanner from 'components/GeoBlockBanner';
+import SectionHeader from 'components/SectionHeader';
+import { SingleStatCard, CardColor } from 'components/Cards';
+
+import CollapsibleSection from 'components/CollapsibleSection';
+import DetailPageHeader from 'components/DetailPageHeader';
+import SectionWrapper from 'components/SectionWrapper';
+
+import { openModal as openModalAction } from 'actions/modals';
+import { addNotification as addNotificationAction } from 'actions/notifications';
+
+import { getStakingBalancesData, getWithdrawBalancesData } from 'selectors/balances';
+
+import { getStakingPoolsData } from 'selectors/staking-pools';
+import { getWalletAddress } from 'selectors/wallets';
+import { getIsUserGeoBlocked } from 'selectors/geo';
+
+import { STRING_KEYS } from 'constants/localization';
+
+import contractClient from 'lib/contract-client';
+import { MustBigNumber } from 'lib/numbers';
+
+import {
+  calculateEstimatedLiquidityPoolYieldPerDay,
+  calculateUserStakingBalance,
+} from 'lib/staking-pools';
+
+import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
+
+type LiquidityPoolDetailProps = {} & LocalizationProps;
+
+const LiquidityPoolDetail: React.FC<
+  LiquidityPoolDetailProps &
+    ReturnType<typeof mapStateToProps> &
+    ReturnType<typeof mapDispatchToProps>
+> = ({
+  addNotification,
+  isUserGeoBlocked,
+  openModal,
+  stakingBalancesData,
+  stakingPoolsData,
+  stringGetter,
+  walletAddress,
+  withdrawBalancesData,
+}) => {
+  const [isLoadingWithdrawAvailable, setIsLoadingWithdrawAvailable] = useState<boolean>(false);
+
+  usePollStakingPoolsData();
+  usePollStakingBalances();
+  usePollLiquidityPoolEpochData();
+
+  usePollWithdrawBalances({ stakingPool: StakingPool.Liquidity });
+
+  const { userBalance, unclaimedRewards } = stakingBalancesData.balances[StakingPool.Liquidity];
+  const { nextEpochDate, poolSize, rewardsPerSecond } = stakingPoolsData.data[
+    StakingPool.Liquidity
+  ];
+
+  const formattedDiffUntilEpoch = useGetCountdownDiff({
+    futureDateISO: nextEpochDate,
+    stringGetter,
+  });
+
+  const { availableWithdrawBalance, pendingWithdrawBalance } = withdrawBalancesData[
+    StakingPool.Liquidity
+  ];
+
+  const userStakingBalance = calculateUserStakingBalance({
+    stakingBalancesData,
+    stakingPool: StakingPool.Liquidity,
+    withdrawBalancesData,
+  });
+
+  const userHasStakingBalance = walletAddress && userStakingBalance?.gt(0);
+
+  const handleOnClickWithdrawAvailable = async () => {
+    try {
+      setIsLoadingWithdrawAvailable(true);
+
+      const txHash = await contractClient.stakingPoolClient.withdrawAvailableLiquidityPoolBalance({
+        amount: availableWithdrawBalance,
+        walletAddress: walletAddress as string,
+      });
+
+      addNotification({
+        notificationType: NotificationType.Withdraw,
+        notificationData: { txHash },
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoadingWithdrawAvailable(false);
+    }
+  };
+
+  let formattedUserBalance: React.ReactNode = '-';
+
+  if (walletAddress && userStakingBalance) {
+    formattedUserBalance = (
+      <ValueWithIcon>
+        <NumberFormat
+          thousandSeparator
+          displayType="text"
+          value={userStakingBalance.toFixed(DecimalPlaces.ShortToken)}
+        />
+        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
+      </ValueWithIcon>
+    );
+  }
+
+  let formattedEarnings: React.ReactNode = '-';
+
+  if (walletAddress) {
+    if (unclaimedRewards) {
+      formattedEarnings = (
+        <ValueWithIcon>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            value={MustBigNumber(unclaimedRewards).toFixed(
+              DecimalPlaces.ShortToken,
+              BigNumber.ROUND_UP
+            )}
+          />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+        </ValueWithIcon>
+      );
+    }
+  }
+
+  let formattedAvailableWithdrawBalance: React.ReactNode = '-';
+
+  if (walletAddress) {
+    if (availableWithdrawBalance) {
+      formattedAvailableWithdrawBalance = (
+        <ValueWithIcon>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            value={MustBigNumber(availableWithdrawBalance).toFixed(DecimalPlaces.ShortToken)}
+          />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
+        </ValueWithIcon>
+      );
+    }
+  }
+
+  let formattedPendingWithdrawBalance: React.ReactNode = '-';
+
+  if (walletAddress) {
+    if (pendingWithdrawBalance) {
+      formattedPendingWithdrawBalance = (
+        <ValueWithIcon>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            value={MustBigNumber(pendingWithdrawBalance).toFixed(DecimalPlaces.ShortToken)}
+          />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
+        </ValueWithIcon>
+      );
+    }
+  }
+
+  return (
+    <SectionWrapper column>
+      <DetailPageHeader
+        ctaConfig={{
+          label: stringGetter({ key: STRING_KEYS.STAKE }),
+          onClick: () => openModal({ type: ModalType.Stake }),
+          disabled: !walletAddress || isUserGeoBlocked,
+        }}
+        label={stringGetter({ key: STRING_KEYS.POOL })}
+        title={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL })}
+        subtitle={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_DESCRIPTION })}
+      />
+      {isUserGeoBlocked && (
+        <BannerContainer>
+          <GeoBlockBanner />
+        </BannerContainer>
+      )}
+      <DetailPageLayoutContainer>
+        <StyledContentLeft>
+          <CardRow>
+            <SingleStatCard
+              color={CardColor.Dark}
+              title={stringGetter({ key: STRING_KEYS.POOL_SIZE })}
+              value={
+                <ValueWithIcon>
+                  <NumberFormat
+                    thousandSeparator
+                    displayType="text"
+                    value={MustBigNumber(poolSize).toFixed(DecimalPlaces.None)}
+                  />
+                  <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
+                </ValueWithIcon>
+              }
+              label={stringGetter({ key: STRING_KEYS.CURRENTLY_BEING_STAKED })}
+              isLoading={!poolSize}
+            />
+            <SingleStatCard
+              color={CardColor.Dark}
+              title={stringGetter({ key: STRING_KEYS.YIELD_PER_THOUSAND })}
+              value={
+                <ValueWithIcon>
+                  <NumberFormat
+                    thousandSeparator
+                    displayType="text"
+                    value={calculateEstimatedLiquidityPoolYieldPerDay({
+                      poolSize,
+                      rewardsPerSecond,
+                    }).toFixed(DecimalPlaces.ShortToken)}
+                  />
+                  <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+                </ValueWithIcon>
+              }
+              label={stringGetter({ key: STRING_KEYS.ESTIMATED_YIELD_PER_DAY })}
+              isLoading={!rewardsPerSecond || !poolSize}
+            />
+          </CardRow>
+          <CardRow>
+            <SingleStatCard
+              color={walletAddress ? CardColor.Light : CardColor.Dark}
+              title={stringGetter({ key: STRING_KEYS.STAKED })}
+              value={formattedUserBalance}
+              label={
+                userHasStakingBalance
+                  ? stringGetter({
+                      key: STRING_KEYS.YOUR_STAKE,
+                    })
+                  : stringGetter({
+                      key: STRING_KEYS.THIS_POOL_ACCEPTS_SYMBOL,
+                      params: { SYMBOL: AssetSymbol.USDC },
+                    })
+              }
+              isLoading={!!walletAddress && (!userBalance || !availableWithdrawBalance)}
+            />
+            {!isUserGeoBlocked && (
+              <SingleStatCard
+                color={walletAddress ? CardColor.Light : CardColor.Dark}
+                title={stringGetter({ key: STRING_KEYS.EARNED })}
+                value={formattedEarnings}
+                label={stringGetter({
+                  key: userHasStakingBalance
+                    ? STRING_KEYS.UNCLAIMED_REWARDS
+                    : STRING_KEYS.STAKE_TO_EARN_REWARDS,
+                })}
+                ctaConfig={
+                  MustBigNumber(unclaimedRewards).gt(0)
+                    ? {
+                        disabled: !walletAddress,
+                        label: stringGetter({ key: STRING_KEYS.CLAIM }),
+                        onClick: () => openModal({ type: ModalType.Claim }),
+                      }
+                    : undefined
+                }
+                isLoading={!!walletAddress && !unclaimedRewards}
+              />
+            )}
+          </CardRow>
+          {walletAddress && (
+            <WithdrawSection>
+              <SectionHeader
+                title={stringGetter({ key: STRING_KEYS.WITHDRAWS })}
+                subtitle={stringGetter({ key: STRING_KEYS.WITHDRAWS_DESCRIPTION })}
+              />
+              <WithdrawCardRow>
+                <CardRow>
+                  <SingleStatCard
+                    color={CardColor.Light}
+                    title={stringGetter({ key: STRING_KEYS.PENDING })}
+                    value={formattedPendingWithdrawBalance}
+                    label={stringGetter({ key: STRING_KEYS.IN_REQUESTED_WITHDRAWS })}
+                    ctaConfig={
+                      userHasStakingBalance
+                        ? {
+                            color: ButtonColor.Lighter,
+                            label: stringGetter({ key: STRING_KEYS.REQUEST }),
+                            onClick: () => openModal({ type: ModalType.RequestWithdraw }),
+                          }
+                        : undefined
+                    }
+                    isLoading={!!walletAddress && !pendingWithdrawBalance}
+                  />
+                  <SingleStatCard
+                    color={CardColor.Light}
+                    title={stringGetter({ key: STRING_KEYS.AVAILABLE })}
+                    value={formattedAvailableWithdrawBalance}
+                    label={stringGetter({ key: STRING_KEYS.READY_TO_WITHDRAW })}
+                    ctaConfig={
+                      MustBigNumber(availableWithdrawBalance).gt(0)
+                        ? {
+                            color: ButtonColor.Lighter,
+                            label: stringGetter({ key: STRING_KEYS.WITHDRAW }),
+                            onClick: handleOnClickWithdrawAvailable,
+                            isLoading: isLoadingWithdrawAvailable,
+                          }
+                        : undefined
+                    }
+                    isLoading={!!walletAddress && !availableWithdrawBalance}
+                  />
+                </CardRow>
+                <CardRow>
+                  <SingleStatCard
+                    color={CardColor.Dark}
+                    title={stringGetter({ key: STRING_KEYS.COUNTDOWN })}
+                    value={formattedDiffUntilEpoch}
+                    label={stringGetter({ key: STRING_KEYS.UNTIL_NEXT_EPOCH })}
+                    isLoading={!formattedDiffUntilEpoch}
+                  />
+                </CardRow>
+              </WithdrawCardRow>
+            </WithdrawSection>
+          )}
+        </StyledContentLeft>
+        <StyledContentRight>
+          <CollapsibleSection
+            label={stringGetter({ key: STRING_KEYS.ABOUT })}
+            content={
+              <>
+                {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_ABOUT })}
+                <ButtonContainer>
+                  <Button
+                    color={ButtonColor.Lighter}
+                    onClick={() => {
+                      window.open(
+                        `${ExternalLink.Documentation}${DocumentationSublinks.LiquidityPool}`,
+                        '_blank'
+                      );
+                    }}
+                  >
+                    {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
+                  </Button>
+                </ButtonContainer>
+              </>
+            }
+          />
+          <CollapsibleSection
+            label={stringGetter({ key: STRING_KEYS.RISKS })}
+            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_RISKS })}
+          />
+          <CollapsibleSection
+            label={stringGetter({ key: STRING_KEYS.REWARDS })}
+            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_REWARDS })}
+          />
+          <CollapsibleSection
+            label={stringGetter({ key: STRING_KEYS.DISCUSS })}
+            content={
+              <>
+                {stringGetter({ key: STRING_KEYS.POOL_DISCUSS_DESCRIPTION })}
+                <ButtonContainer>
+                  <Button
+                    color={ButtonColor.Lighter}
+                    linkOutIcon
+                    onClick={() => {
+                      window.open(ExternalLink.Forums, '_blank');
+                    }}
+                  >
+                    {stringGetter({ key: STRING_KEYS.FORUMS })}
+                  </Button>
+                  <Button
+                    color={ButtonColor.Light}
+                    linkOutIcon
+                    onClick={() => {
+                      window.open(ExternalLink.Discord, '_blank');
+                    }}
+                  >
+                    Discord
+                  </Button>
+                </ButtonContainer>
+              </>
+            }
+          />
+        </StyledContentRight>
+      </DetailPageLayoutContainer>
+    </SectionWrapper>
+  );
+};
+
+const BannerContainer = styled.div`
+  margin-top: 1.5rem;
+
+  @media ${breakpoints.tablet} {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+  }
+`;
+
+const StyledContentLeft = styled(ContentLeft)`
+  flex: 0 0 34rem;
+`;
+
+const StyledContentRight = styled(ContentRight)`
+  flex: 0 0 calc(100% - 36rem);
+  margin-top: -0.5rem;
+
+  @media ${breakpoints.tablet} {
+    margin-top: 1rem;
+  }
+`;
+
+const ValueWithIcon = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-top: 0.125rem;
+    margin-left: 0.375rem;
+  }
+`;
+
+const WithdrawSection = styled.div`
+  margin-top: 1rem;
+
+  @media ${breakpoints.tablet} {
+    margin-top: 2rem;
+  }
+`;
+
+const WithdrawCardRow = styled.div`
+  margin-top: 1.75rem;
+`;
+
+const mapStateToProps = (state: RootState) => ({
+  isUserGeoBlocked: getIsUserGeoBlocked(state),
+  stakingBalancesData: getStakingBalancesData(state),
+  stakingPoolsData: getStakingPoolsData(state),
+  walletAddress: getWalletAddress(state),
+  withdrawBalancesData: getWithdrawBalancesData(state),
+});
+
+const mapDispatchToProps = (dispatch: AppDispatch) =>
+  bindActionCreators(
+    {
+      addNotification: addNotificationAction,
+      openModal: openModalAction,
+    },
+    dispatch
+  );
+
+export default withLocalization<LiquidityPoolDetailProps>(
+  connect(mapStateToProps, mapDispatchToProps)(LiquidityPoolDetail)
+);

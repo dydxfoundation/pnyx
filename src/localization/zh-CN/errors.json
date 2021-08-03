@@ -1,0 +1,16 @@
+{
+  "GENERAL": {
+    "WRONG_NETWORK": "您的钱包网络不正确。请确保设置为“Ropsten测试网络”"
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "请输入一个不是您自己的以太坊地址。",
+    "INVALID_ETHEREUM_ADDRESS": "请输入有效的以太坊地址。"
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "您的质押不能超过钱包可用余额。"
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "您请求的提现不能超过您当前的权益质押余额。",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "每个纪元的最后14天都是锁定窗口期，在此期间，不能从流动性池中请求提现。下一个纪元于{EPOCH_DATE}开始。"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "GENERAL": {
+    "TRANSFER_LOCK_WARNING": "DYDX划转和奖励申领将于2021年6月24日启用。"
+  },
+  "DELEGATION": {
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "将会请您批准两笔交易——为每个选定的代币批准一笔。"
+  }
+}

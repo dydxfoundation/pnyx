@@ -1,0 +1,8 @@
+{
+  "GENERAL": {
+    "TRANSFER_LOCK_WARNING": "DYDX 전송 및 보상 청구는 2021년 6월 24일에 활성화됩니다."
+  },
+  "DELEGATION": {
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "선택한 각 토큰에 대해 하나씩 두 개의 트랜잭션을 승인하라는 메시지가 표시됩니다."
+  }
+}

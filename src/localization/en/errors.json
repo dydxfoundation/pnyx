@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Something went wrong: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Unknown error",
+    "WRONG_NETWORK": "Your wallet network is incorrect. Please make sure it is set to 'Ropsten Testnet'"
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Please enter an Ethereum address that is not your own.",
+    "INVALID_ETHEREUM_ADDRESS": "Please enter a valid Ethereum address."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "You cannot stake more than your available wallet balance."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "You cannot request to withdraw more than your current staking balance.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "The last 14 days of each epoch are a black out window in which no withdraws can be requested from the liquidity pool. The next epoch begins at {EPOCH_DATE}."
+  }
+}

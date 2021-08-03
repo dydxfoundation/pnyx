@@ -1,0 +1,16 @@
+{
+  "GENERAL": {
+    "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「Ropsten Testnet」に設定されていることを確認してください"
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "お客様自身のものではないイーサリアムアドレスを入力してください。",
+    "INVALID_ETHEREUM_ADDRESS": "有効なイーサリアムアドレスを入力してください。"
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "ウォレットの利用可能残高を超えてステークすることはできません。"
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "現在のステーキング残高を超える出金のリクエストはできません。",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "各エポックの最後の14日間は、流動性プールからの出金をリクエストすることはできません。次のエポックは、{EPOCH_DATE}から始まります。"
+  }
+}

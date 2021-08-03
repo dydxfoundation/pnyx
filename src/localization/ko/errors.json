@@ -1,0 +1,16 @@
+{
+  "GENERAL": {
+    "WRONG_NETWORK": "지갑 네트워크가 잘못되었습니다. 'Ropsten Testnet'으로 설정되어 있는지 확인하십시오."
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "본인 소유가 아닌 이더리움 주소를 입력하십시오.",
+    "INVALID_ETHEREUM_ADDRESS": "유효한 이더리움 주소를 입력하십시오."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "사용 가능한 지갑 잔액 이상을 스테이킹할 수 없습니다."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "현재 스테이킹 잔액보다 더 많은 인출을 요청할 수 없습니다.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "각 에폭의 마지막 14일은 유동성 풀에서 인출을 요청할 수 없는 정지 기간입니다. 다음 에폭은 {EPOCH_DATE}에 시작합니다."
+  }
+}
