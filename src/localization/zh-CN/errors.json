@@ -1,6 +1,6 @@
 {
   "GENERAL": {
-    "WRONG_NETWORK": "您的钱包网络不正确。请确保设置为“Ropsten测试网络”"
+    "WRONG_NETWORK": "您的钱包网络不正确。请确保设置为“Ethereum Mainnet网络”"
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "请输入一个不是您自己的以太坊地址。",

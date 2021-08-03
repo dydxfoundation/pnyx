@@ -1,6 +1,6 @@
 {
   "GENERAL": {
-    "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「Ropsten Testnet」に設定されていることを確認してください"
+    "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「Ethereum Mainnet」に設定されていることを確認してください"
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "お客様自身のものではないイーサリアムアドレスを入力してください。",

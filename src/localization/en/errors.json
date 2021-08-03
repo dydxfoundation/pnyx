@@ -2,7 +2,7 @@
   "GENERAL": {
     "SOMETHING_WENT_WRONG": "Something went wrong: {ERROR_MESSAGE}",
     "UNKNOWN_ERROR": "Unknown error",
-    "WRONG_NETWORK": "Your wallet network is incorrect. Please make sure it is set to 'Ropsten Testnet'"
+    "WRONG_NETWORK": "Your wallet network is incorrect. Please make sure it is set to 'Ethereum Mainnet'"
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "Please enter an Ethereum address that is not your own.",
