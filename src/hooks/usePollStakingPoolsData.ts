@@ -30,9 +30,11 @@ const usePollStakingPoolsData = () => {
 
     const poolDataPromises = [];
 
-    for (const stakingPool of Object.values(StakingPool)) {
-      poolDataPromises.push(contractClient.stakingPoolClient?.getPoolData({ stakingPool }));
-    }
+    // for (const stakingPool of Object.values(StakingPool)) {
+    poolDataPromises.push(
+      contractClient.stakingPoolClient?.getPoolData({ stakingPool: StakingPool.Liquidity })
+    );
+    // }
 
     const poolsDataResponses = await Promise.all(poolDataPromises);
     const newStakingPoolsData: StakingPoolsData = {} as StakingPoolsData;

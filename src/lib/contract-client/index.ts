@@ -79,13 +79,16 @@ class ContractClient {
     return balance;
   };
 
-  getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
-    const unclaimedRewards = await this.txBuilder.claimsProxyService.getUserUnclaimedRewards(
-      walletAddress
-    );
+  // getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
+  //   const unclaimedRewards = await this.txBuilder.claimsProxyService.getUserUnclaimedRewards(
+  //     walletAddress
+  //   );
 
-    return unclaimedRewards;
-  };
+  //   return unclaimedRewards;
+  // };
+
+  getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> =>
+    '0';
 
   claimRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
     const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.claimsProxyService.claimRewards(

@@ -118,12 +118,12 @@ const StakingPoolsRow: React.FC<
       infoModulesConfig={[
         {
           label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
-          value: safetyPoolSize,
+          value: '0',
         },
         { label: stringGetter({ key: STRING_KEYS.CURRENT_APR }), value: '0.00%' },
         {
           label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }),
-          value: safetyPoolUserBalance,
+          value: '0',
         },
       ]}
     />
@@ -286,7 +286,7 @@ const StakingPoolsRow: React.FC<
           <WithDetailFooter
             isDisabled
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
-            value={safetyPoolEarnings}
+            value="0.00"
             ctaConfigs={{
               primary: {
                 label: stringGetter({ key: STRING_KEYS.STAKE }),
