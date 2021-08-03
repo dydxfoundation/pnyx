@@ -4,9 +4,6 @@ import { DateTime } from 'luxon';
 import { StringGetterFunction } from 'types';
 import { STRING_KEYS } from 'constants/localization';
 
-let countdownStarted: boolean = false;
-let timeoutFunction: ReturnType<typeof setTimeout> | null;
-
 const useGetCountdownDiff = ({
   futureDateISO,
   stringGetter,
@@ -14,7 +11,20 @@ const useGetCountdownDiff = ({
   futureDateISO: string | undefined;
   stringGetter: StringGetterFunction;
 }): string | undefined => {
+  const [countdownStarted, setCountdownStarted] = useState<boolean>(false);
+  const [timeoutFunction, setTimeoutFunction] = useState<ReturnType<typeof setTimeout> | null>(
+    null
+  );
   const [diffString, setDiffString] = useState<string | undefined>();
+
+  const stopCountdown = () => {
+    setCountdownStarted(false);
+
+    if (timeoutFunction) {
+      clearTimeout(timeoutFunction);
+      setTimeoutFunction(null);
+    }
+  };
 
   const updateDiffString = () => {
     const { days, hours, minutes } = DateTime.fromISO(futureDateISO as string).diffNow([
@@ -33,23 +43,21 @@ const useGetCountdownDiff = ({
       })}`
     );
 
-    timeoutFunction = setTimeout(updateDiffString, Number(process.env.REACT_APP_COUNTDOWN_POLL_MS));
+    setTimeoutFunction(
+      setTimeout(updateDiffString, Number(process.env.REACT_APP_COUNTDOWN_POLL_MS))
+    );
   };
 
   useEffect(() => {
     if (!countdownStarted && futureDateISO) {
-      countdownStarted = true;
+      setCountdownStarted(true);
       updateDiffString();
     }
 
-    return () => {
-      countdownStarted = false;
-
-      if (timeoutFunction) {
-        clearTimeout(timeoutFunction);
-      }
-    };
+    return () => stopCountdown();
   }, [futureDateISO]);
+
+  useEffect(() => stopCountdown(), []);
 
   return diffString;
 };
