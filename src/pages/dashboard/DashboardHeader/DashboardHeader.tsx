@@ -9,14 +9,15 @@ import { AppDispatch, RootState } from 'store';
 import { LocalizationProps } from 'types';
 import { AssetSymbol, DecimalPlaces, ModalType } from 'enums';
 
-import { withLocalization } from 'hoc';
 import {
   useGetCirculatingSupply,
   useGetCountdownDiff,
   usePollGovernancePowersData,
   usePollWalletBalances,
 } from 'hooks';
-import { breakpoints } from 'styles';
+
+import { withLocalization } from 'hoc';
+import { breakpoints, NotTabletOnly, TabletOnly } from 'styles';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import LoadingBar from 'components/LoadingBar';
@@ -125,7 +126,14 @@ const DashboardHeader: React.FC<
                 bottomLeft: circulatingSupply ? (
                   `${circulatingSupplyPercent.times(100).toFixed(DecimalPlaces.Percent)}%`
                 ) : (
-                  <LoadingBar height={1.125} width={3} />
+                  <>
+                    <NotTabletOnly>
+                      <LoadingBar height={1.125} width={3} />
+                    </NotTabletOnly>
+                    <TabletOnly>
+                      <LoadingBar height={1.25} width={3} />
+                    </TabletOnly>
+                  </>
                 ),
               }}
               size={CardSize.Small}

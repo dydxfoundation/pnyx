@@ -19,7 +19,7 @@ import {
 } from 'enums';
 
 import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes } from 'styles';
+import { breakpoints, fontSizes, NotMobileOnly } from 'styles';
 import { usePollStakingBalances, usePollStakingPoolsData } from 'hooks';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
@@ -303,24 +303,26 @@ const StakingPoolsRow: React.FC<
         ) : (
           safetyPoolCard
         )}
-        <InfoCtaCard
-          label={stringGetter({ key: STRING_KEYS.PROPOSE_IDEA })}
-          title={stringGetter({ key: STRING_KEYS.SUGGEST_NEW_POOL })}
-          ctaConfigs={{
-            primary: {
-              label: stringGetter({ key: STRING_KEYS.FORUMS }),
-              onClick: () => {
-                window.open(ExternalLink.Forums, '_blank');
+        <NotMobileOnly>
+          <InfoCtaCard
+            label={stringGetter({ key: STRING_KEYS.PROPOSE_IDEA })}
+            title={stringGetter({ key: STRING_KEYS.SUGGEST_NEW_POOL })}
+            ctaConfigs={{
+              primary: {
+                label: stringGetter({ key: STRING_KEYS.FORUMS }),
+                onClick: () => {
+                  window.open(ExternalLink.Forums, '_blank');
+                },
+                linkOutIcon: true,
               },
-              linkOutIcon: true,
-            },
-            secondary: {
-              label: 'Discord',
-              onClick: () => window.open(ExternalLink.Discord, '_blank'),
-              linkOutIcon: true,
-            },
-          }}
-        />
+              secondary: {
+                label: 'Discord',
+                onClick: () => window.open(ExternalLink.Discord, '_blank'),
+                linkOutIcon: true,
+              },
+            }}
+          />
+        </NotMobileOnly>
       </CardContainer>
     </SectionWrapper>
   );
