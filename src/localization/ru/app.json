@@ -61,8 +61,10 @@
     "TRADING_REWARDS_DESCRIPTION_2": "Размер награды зависит от общей суммы уплаченных комиссий и открытых позиций на бирже dYdX.",
     "TRADING_REWARDS_DESCRIPTION": "Получайте награды за торговлю на бирже dYdX.",
     "TRADING_REWARDS": "Награды за торговлю",
+    "TRANSFER_LOCK_COOLDOWN": "Восстановление возможности блокировки перевода",
     "UNTIL_NEXT_EPOCH_ON_DATE": "до следующей эпохи, которая начнется {NEXT_EPOCH_DATE}.",
     "UNTIL_NEXT_EPOCH": "до следующей эпохи.",
+    "UNTIL_TRANSFER_LOCK_IS_RELEASED": "до снятия блокировки перевода.",
     "VIEW_ON_ETHERSCAN": "Посмотреть на Etherscan",
     "WALLET_ADDRESS": "Адрес кошелька",
     "WALLET": "Кошелек",
@@ -146,6 +148,7 @@
     "THERE_ARE_RISKS": "Стейкинг {SYMBOL} сопряжен с определенными рисками.",
     "THIS_POOL_ACCEPTS_SYMBOL": "Этот пул принимает {SYMBOL}",
     "UNCLAIMED_REWARDS": "Неполученные награды",
+    "WITHDRAWS_DESCRIPTION": "Просматривайте и контролируйте ожидающие вывода и доступные для этого средства.",
     "YIELD_PER_THOUSAND": "Доходность в тысячах USD",
     "YOUR_STAKE": "Ваш стейк"
   },
