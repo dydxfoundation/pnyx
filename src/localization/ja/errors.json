@@ -1,6 +1,8 @@
 {
   "GENERAL": {
-    "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「Ethereum Mainnet」に設定されていることを確認してください"
+    "SOMETHING_WENT_WRONG": "問題が発生しました：{ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "不明なエラー",
+    "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「イーサリアム・メインネット」に設定されていることを確認してください"
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "お客様自身のものではないイーサリアムアドレスを入力してください。",
