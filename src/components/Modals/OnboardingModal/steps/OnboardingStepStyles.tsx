@@ -5,7 +5,7 @@ export const OnboardingStepFooterLinks = styled.div`
   ${fontSizes.size15}
   display: flex;
   justify-content: space-between;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 1rem;
   padding: 0 0.25rem;
 
@@ -18,7 +18,7 @@ export const OnboardingStepFooterLinks = styled.div`
     user-select: none;
 
     &:hover {
-      color: ${(props) => props.theme.textbase};
+      color: ${({ theme }) => theme.textbase};
     }
 
     &:only-child {

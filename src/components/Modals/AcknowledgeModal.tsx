@@ -126,16 +126,16 @@ const Header = styled.span`
   }
 
   > a {
-    color: ${(props) => props.theme.colorpurple};
+    color: ${({ theme }) => theme.colorpurple};
     text-decoration: none;
     cursor: pointer;
 
     &:visited {
-      color: ${(props) => props.theme.colorpurple};
+      color: ${({ theme }) => theme.colorpurple};
     }
 
     &:hover {
-      color: ${(props) => props.theme.colorpurple};
+      color: ${({ theme }) => theme.colorpurple};
       text-decoration: underline;
     }
   }
@@ -145,7 +145,7 @@ const BulletedMessages = styled.div`
   margin: 1.125rem 0 1.25rem;
   padding: 1.125rem 1rem 1rem;
   border-radius: 0.5rem;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
 `;
 
 const BulletMessage = styled.div<{ uppercase?: boolean }>`

@@ -68,26 +68,26 @@ const OptionWithIcon = styled(MenuOption)`
     ${iconStyles};
 
     path {
-      stroke: ${(props) => props.theme.textbase};
+      stroke: ${({ theme }) => theme.textbase};
     }
   }
 
   &:hover {
     > svg path {
-      stroke: ${(props) => props.theme.textlight};
+      stroke: ${({ theme }) => theme.textlight};
     }
   }
 `;
 
 const DisconnectOption = styled(MenuOption)`
-  color: ${(props) => props.theme.colorred};
+  color: ${({ theme }) => theme.colorred};
 
   > svg {
     ${iconStyles};
   }
 
   &:hover {
-    color: ${(props) => props.theme.colorred};
+    color: ${({ theme }) => theme.colorred};
   }
 `;
 

@@ -3,7 +3,7 @@ import { breakpoints, fontSizes } from 'styles';
 
 export const NotificationTitle = styled.div`
   ${fontSizes.size16}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size18}
@@ -12,7 +12,7 @@ export const NotificationTitle = styled.div`
 
 export const NotificationBody = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   margin-top: 0.375rem;
 
   @media ${breakpoints.tablet} {
@@ -23,7 +23,7 @@ export const NotificationBody = styled.div`
 export const NotificationLink = styled.div`
   ${fontSizes.size14}
   margin-top: 0.5rem;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size16}
@@ -32,15 +32,15 @@ export const NotificationLink = styled.div`
 
 export const NotificationContainer = styled.div`
   padding: 1rem;
-  background-color: ${(props) => props.theme.layermediumlight};
+  background-color: ${({ theme }) => theme.layermediumlight};
   border-radius: 0.625rem;
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => props.theme.layerlighter};
+    background-color: ${({ theme }) => theme.layerlighter};
 
     ${NotificationLink} {
-      color: ${(props) => props.theme.textlight};
+      color: ${({ theme }) => theme.textlight};
     }
   }
 `;

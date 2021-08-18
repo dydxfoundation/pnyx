@@ -70,7 +70,7 @@ const Title = styled.div`
 
 const Subtitle = styled.div`
   ${fontSizes.size14};
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.5rem;
 
   @media ${breakpoints.tablet} {
@@ -90,10 +90,10 @@ const CloseButton = styled.div`
   margin: -0.5rem 0 -0.5rem 0.75rem;
 
   &:hover {
-    background-color: ${(props) => props.theme.layerlighter};
+    background-color: ${({ theme }) => theme.layerlighter};
 
     > svg path {
-      stroke: ${(props) => props.theme.textlight};
+      stroke: ${({ theme }) => theme.textlight};
     }
   }
 `;

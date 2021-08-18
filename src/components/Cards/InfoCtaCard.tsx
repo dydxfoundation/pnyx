@@ -86,9 +86,9 @@ const StyledInfoCtaCard = styled.div`
   background-color: transparent;
   border-radius: 0.75rem;
 
-  background-image: ${(props) =>
+  background-image: ${({ theme }) =>
     `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='0.75rem' ry='0.75rem' stroke='%23${_.replace(
-      props.theme.layerlighter,
+      theme.layerlighter,
       '#',
       ''
     )}' stroke-width='0.125rem' stroke-dasharray='0.375rem 0.5rem' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`};
@@ -96,7 +96,7 @@ const StyledInfoCtaCard = styled.div`
 
 const Label = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size16}
@@ -105,13 +105,13 @@ const Label = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size20}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-top: 0.25rem;
 `;
 
 const Body = styled.div`
   ${fontSizes.size16}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   margin-top: 0.25rem;
 
   @media ${breakpoints.tablet} {

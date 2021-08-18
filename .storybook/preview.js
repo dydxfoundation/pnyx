@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import store, { history } from '../src/store';
 import { LocalizationWrapper } from '../src/hoc';
-import { theme, GlobalStyles } from '../src/App';
+import { globalTheme, GlobalStyles } from '../src/App';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -20,7 +20,7 @@ export const decorators = [
   (Story) => (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={globalTheme}>
           <GlobalStyles />
           <LocalizationWrapper>
             <Story />

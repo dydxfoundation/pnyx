@@ -65,10 +65,10 @@ const StyledInfoModuleCard = styled.div<ElementProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: ${(props) => props.theme.layerlight};
+  background-color: ${({ theme }) => theme.layerlight};
 
-  ${(props) =>
-    props.onClick
+  ${({ onClick }) =>
+    onClick
       ? `
         cursor: pointer;
         
@@ -78,8 +78,8 @@ const StyledInfoModuleCard = styled.div<ElementProps>`
       `
       : ''}
 
-  ${(props) =>
-    props.isDisabled
+  ${({ isDisabled }) =>
+    isDisabled
       ? `
         cursor: not-allowed;
         opacity: 0.5;
@@ -97,12 +97,12 @@ const TitleContainer = styled.div``;
 
 const Title = styled.div`
   ${fontSizes.size20}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 `;
 
 const Subtitle = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.25rem;
 `;
 
@@ -129,7 +129,7 @@ const InfoModule = styled.div`
   }
 
   &:not(:last-child) {
-    border-right: solid 0.0625rem ${(props) => props.theme.bordergrey};
+    border-right: solid 0.0625rem ${({ theme }) => theme.bordergrey};
   }
 `;
 
@@ -137,12 +137,12 @@ const InfoModuleContent = styled.div`
   ${fontSizes.size20}
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 `;
 
 const InfoModuleLabel = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.25rem;
 
   @media ${breakpoints.tablet} {

@@ -28,25 +28,26 @@ const StyledTag = styled.div<ElementProps>`
   justify-content: center;
   align-items: center;
   letter-spacing: 0.08em;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   border-radius: 0.25rem;
   padding: 0.1875rem 0.25rem 0.1875rem 0.3125rem;
   margin-top: 0.0625rem;
-  background-color: ${(props) => {
-    switch (props.color) {
+
+  background-color: ${({ color, theme }) => {
+    switch (color) {
       case TagColor.Light: {
-        return props.theme.layerlight;
+        return theme.layerlight;
       }
       case TagColor.Lighter: {
-        return props.theme.layerlighter;
+        return theme.layerlighter;
       }
     }
 
-    return props.theme.layerlight;
+    return theme.layerlight;
   }};
 
-  ${(props) => (props.marginLeft ? 'margin-left: 0.375rem;' : '')}
-  ${(props) => (props.compact ? 'padding: 0.125rem 0.1875rem 0.125rem 0.25rem;' : '')}
+  ${({ marginLeft }) => (marginLeft ? 'margin-left: 0.375rem;' : '')}
+  ${({ compact }) => (compact ? 'padding: 0.125rem 0.1875rem 0.125rem 0.25rem;' : '')}
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size12}

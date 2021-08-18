@@ -68,7 +68,7 @@ const WalletOptionsContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   padding: 1rem 1rem 0;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.875rem;
 
   @media ${breakpoints.mobile} {

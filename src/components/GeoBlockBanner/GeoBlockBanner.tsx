@@ -48,7 +48,7 @@ const GeoBlockBanner: React.FC<GeoBlockBannerProps> = ({ stringGetter }) => (
 const StyledGeoBlockBanner = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 1rem;
   padding: 1.5rem 2rem;
   width: 100%;
@@ -89,7 +89,7 @@ const TabletIcon = styled.div`
 const Title = styled.div`
   ${fontSizes.size22}
   display: flex;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.mobile} {
     flex-direction: column;
@@ -99,19 +99,19 @@ const Title = styled.div`
 const Subtitle = styled.div`
   ${fontSizes.size16}
   margin-top: 0.5rem;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   > a {
-    color: ${(props) => props.theme.colorpurple};
+    color: ${({ theme }) => theme.colorpurple};
     text-decoration: none;
     cursor: pointer;
 
     &:visited {
-      color: ${(props) => props.theme.colorpurple};
+      color: ${({ theme }) => theme.colorpurple};
     }
 
     &:hover {
-      color: ${(props) => props.theme.colorpurple};
+      color: ${({ theme }) => theme.colorpurple};
       text-decoration: underline;
     }
   }

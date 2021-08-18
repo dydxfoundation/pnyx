@@ -17,13 +17,13 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => (
 
 const StyledSectionHeader = styled.div`
   ${fontSizes.size24}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   padding: 0 1rem;
 `;
 
 const Subtitle = styled.div`
   ${fontSizes.size16}
-    color: ${(props) => props.theme.textdark};
+    color: ${({ theme }) => theme.textdark};
     margin-top: 0.125rem;
   }
 `;

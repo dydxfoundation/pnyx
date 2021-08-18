@@ -20,13 +20,13 @@ import store, { history } from './store';
 import 'styles/normalize.css';
 import 'styles/font-faces.css';
 
-export const theme: Theme = {
+export const globalTheme: Theme = {
   ...colors,
 };
 
 const DashboardPage = lazy(() => import('./pages/dashboard/Dashboard'));
-
 const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
+
 const LiquidityPoolDetailPage = lazy(
   () => import('./pages/dashboard/staking-pools/LiquidityPoolDetail')
 );
@@ -41,8 +41,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
 
   body {
     ${fonts.medium}
-    background-color: ${(props) => props.theme.layerbase};
-    color: ${(props) => props.theme.textbase};
+    background-color: ${({ theme }) => theme.layerbase};
+    color: ${({ theme }) => theme.textbase};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
@@ -106,8 +106,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
     ${fonts.medium}
     padding: 0;
     border-radius: 0.375rem;
-    background: ${(props) => props.theme.layerlight};
-    background-color: ${(props) => props.theme.layerlight};
+    background: ${({ theme }) => theme.layerlight};
+    background-color: ${({ theme }) => theme.layerlight};
     overflow: initial;
     margin-bottom: 1rem;
   }
@@ -134,7 +134,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
 const App: React.FC = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={globalTheme}>
         <GlobalStyles />
         <InitializePage />
         <LocalizationWrapper>

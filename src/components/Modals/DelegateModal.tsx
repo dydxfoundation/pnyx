@@ -505,7 +505,7 @@ const PowerSelector = styled.div`
   ${fontSizes.size14}
   display: flex;
   border-radius: 0.5rem;
-  background-color: ${(props) => props.theme.layermediumlight};
+  background-color: ${({ theme }) => theme.layermediumlight};
   height: 2.5rem;
   margin-bottom: 1rem;
   user-select: none;
@@ -540,7 +540,7 @@ const ClearAddressIcon = styled.div`
   align-items: center;
 
   > svg path {
-    stroke: ${(props) => props.theme.colorred};
+    stroke: ${({ theme }) => theme.colorred};
   }
 `;
 

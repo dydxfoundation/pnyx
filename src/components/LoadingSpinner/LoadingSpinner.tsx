@@ -91,11 +91,11 @@ const StyledSpinner = styled.svg<LoadingSpinnerProps & React.HTMLAttributes<HTML
 `;
 
 const BackgroundCircle = styled.circle`
-  stroke: ${(props) => props.theme.bordergrey};
+  stroke: ${({ theme }) => theme.bordergrey};
 `;
 
 const GradientStop = styled.stop`
-  stop-color: ${(props) => props.theme.colorpurple};
+  stop-color: ${({ theme }) => theme.colorpurple};
 `;
 
 export default LoadingSpinner;

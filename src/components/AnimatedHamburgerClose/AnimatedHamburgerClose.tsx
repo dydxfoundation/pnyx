@@ -36,7 +36,7 @@ const HamburgerInner = styled.span<ElementProps>`
   &::after {
     width: ${hamburgerLayerWidth};
     height: ${hamburgerLayerHeight};
-    background-color: ${(props) => props.theme.textdark};
+    background-color: ${({ theme }) => theme.textdark};
     border-radius: 0.0625rem;
     position: absolute;
   }

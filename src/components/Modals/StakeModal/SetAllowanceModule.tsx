@@ -74,7 +74,7 @@ const SetAllowanceModule: React.FC<SetAllowanceModuleProps> = ({
 };
 
 const StyledSetAllowanceModule = styled.div`
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.5rem;
   padding: 0.75rem;
   margin: 0.75rem 0;
@@ -86,7 +86,7 @@ const StyledSetAllowanceModule = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size16}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size18}

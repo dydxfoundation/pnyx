@@ -188,7 +188,7 @@ const VoteSideSelector = styled.div`
   ${fontSizes.size16}
   display: flex;
   border-radius: 0.5rem;
-  background-color: ${(props) => props.theme.layermediumlight};
+  background-color: ${({ theme }) => theme.layermediumlight};
   height: 2.5rem;
   margin-bottom: 1rem;
   user-select: none;
@@ -228,13 +228,13 @@ const VotingPowerContainer = styled.div`
   width: 100%;
   height: 4rem;
   padding: 0 1rem;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   border-radius: 0.5rem;
 `;
 
 const VotingPowerLabel = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size16}
@@ -245,7 +245,7 @@ const VotingPowerAmount = styled.div`
   ${fontSizes.size24}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   svg {
     margin-left: 0.375rem;

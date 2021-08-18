@@ -81,11 +81,11 @@ export type AddNotificationPayload = NotificationTypes.AddNotificationPayload;
 export type Notification = NotificationTypes.Notification;
 
 // Staking Pools Types
+export type LiquidityPoolEpochData = StakingPoolsTypes.LiquidityPoolEpochData;
 export type StakingPoolsData = StakingPoolsTypes.StakingPoolsData;
 export type StakingPoolsDataState = StakingPoolsTypes.StakingPoolsDataState;
 export type SetStakingPoolsDataPayload = StakingPoolsTypes.SetStakingPoolsDataPayload;
 export type UpdateStakingPoolsDataPayload = StakingPoolsTypes.UpdateStakingPoolsDataPayload;
-export type LiquidityPoolEpochData = StakingPoolsTypes.LiquidityPoolEpochData;
 
 // Page Types
 export type PageViewport = PageTypes.PageViewport;

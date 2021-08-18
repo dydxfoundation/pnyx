@@ -64,7 +64,7 @@ const StyledWithDetailFooter = styled.div`
   flex-direction: column;
   border-radius: 0.75rem;
   overflow: hidden;
-  background-color: ${(props) => props.theme.layerdarker};
+  background-color: ${({ theme }) => theme.layerdarker};
 `;
 
 const Children = styled.div`
@@ -89,12 +89,12 @@ const LabelValue = styled.div`
   ${fontSizes.size20}
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 `;
 
 const Label = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.25rem;
 
   @media ${breakpoints.tablet} {
@@ -116,7 +116,7 @@ const DisabledOverlay = styled.div`
   top: 0;
   height: 100%;
   width: 100%;
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   background: rgba(18, 18, 29, 0.8);
   user-select: none;
   cursor: not-allowed;

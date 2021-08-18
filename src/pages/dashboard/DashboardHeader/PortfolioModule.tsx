@@ -146,7 +146,7 @@ const StyledPortfolioModule = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   width: 100%;
   margin-right: 1.25rem;
   margin-top: 1.25rem;
@@ -179,7 +179,7 @@ const Top = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size20};
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-right: 1.5rem;
   margin-bottom: 1rem;
 
@@ -190,7 +190,7 @@ const Title = styled.div`
 
 const Subtitle = styled.div`
   ${fontSizes.size15};
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.125rem;
 
   @media ${breakpoints.tablet} {
@@ -216,7 +216,7 @@ const Module = styled.div`
 const Label = styled.div`
   ${fontSizes.size14}
   display: flex;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size15}
@@ -233,7 +233,7 @@ const StyledWalletIcon = styled.div`
 
 const Value = styled.div`
   ${fontSizes.size24}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-top: 0.125rem;
 
   @media ${breakpoints.tablet} {

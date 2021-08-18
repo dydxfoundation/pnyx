@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 import { AppDispatch, RootState } from 'store';
 import { LocalizationProps } from 'types';
-import { AppRoute, ModalType, SupportedLocale } from 'enums';
+import { AppRoute, ExternalLink, ModalType, SupportedLocale } from 'enums';
 
 import { breakpoints, fontSizes } from 'styles';
 import { GlobeIcon, LinkOutIcon } from 'icons';
@@ -87,7 +87,11 @@ const MobileNavigation: React.FC<
             >
               {stringGetter({ key: STRING_KEYS.DASHBOARD })}
             </Link>
-            <Link role="button" tabIndex={0} onClick={() => {}}>
+            <Link
+              role="button"
+              tabIndex={0}
+              onClick={() => window.open(ExternalLink.Forums, '_blank')}
+            >
               {stringGetter({ key: STRING_KEYS.FORUMS })}
               <LinkOutIcon />
             </Link>
@@ -129,7 +133,7 @@ const MobileNavMenu = styled.div`
   left: 0;
   height: calc(100% - 4rem);
   width: 100%;
-  background-color: ${(props) => props.theme.layerbase};
+  background-color: ${({ theme }) => theme.layerbase};
   z-index: 1;
   padding: 1.5rem;
 
@@ -177,7 +181,7 @@ const IconButton = styled.div`
   justify-content: center;
   height: 3rem;
   width: 3rem;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   border-radius: 50%;
   cursor: pointer;
   margin-top: 1rem;

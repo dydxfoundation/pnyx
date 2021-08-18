@@ -98,7 +98,7 @@ const BackArrow = styled.div`
   width: 2rem;
   min-width: 2rem;
   border-radius: 50%;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   cursor: pointer;
   margin-top: 0.5rem;
 
@@ -122,7 +122,7 @@ const Label = styled.div`
   ${fontSizes.size12}
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size13}
@@ -131,7 +131,7 @@ const Label = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size24};
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-top: 0.125rem;
   hyphens: auto;
 
@@ -143,7 +143,7 @@ const Title = styled.div`
 
 const Subtitle = styled.div`
   ${fontSizes.size16};
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.125rem;
 
   @media ${breakpoints.tablet} {
@@ -200,13 +200,13 @@ const InfoModule = styled.div`
 const InfoModuleLabel = styled.div`
   ${fontSizes.size13}
   text-transform: uppercase;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   letter-spacing: 0.08rem;
 `;
 
 const InfoModuleValue = styled.div`
   ${fontSizes.size18}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   margin-top: 0.375rem;
 `;
 

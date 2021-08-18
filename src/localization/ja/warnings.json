@@ -1,6 +1,6 @@
 {
   "GENERAL": {
-    "TRANSFER_LOCK_WARNING": "DYDXの振替および報酬の請求は、2021年6月24日に可能になります。"
+    "TRANSFER_LOCK_WARNING": "DYDXの振替および報酬の請求は、2021年9月8日に可能になります。"
   },
   "DELEGATION": {
     "TWO_TOKEN_DELEGATION_TRANSACTION": "選択したトークンごとに1つ、合計2つのトランザクションを承認するよう求められます。"

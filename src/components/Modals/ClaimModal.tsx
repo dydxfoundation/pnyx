@@ -202,13 +202,13 @@ const ClaimableRewardsContainer = styled.div`
   width: 100%;
   height: 4rem;
   padding: 0 1rem;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   border-radius: 0.5rem;
 `;
 
 const ClaimableLabel = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size16}
@@ -219,7 +219,7 @@ const ClaimableAmount = styled.div`
   ${fontSizes.size24}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   svg {
     margin-left: 0.375rem;

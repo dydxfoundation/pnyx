@@ -54,12 +54,12 @@ const ContentContainer = styled.div`
 
 const Label = styled.div`
   ${fontSizes.size15};
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 `;
 
 const Title = styled.div`
   ${fontSizes.size26};
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-top: 0.375rem;
 `;
 

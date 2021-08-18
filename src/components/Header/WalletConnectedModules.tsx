@@ -155,7 +155,7 @@ const WalletButton = styled(MenuButton)`
     margin-left: 0.5rem;
 
     path {
-      fill: ${(props) => props.theme.textdark};
+      fill: ${({ theme }) => theme.textdark};
     }
 
     ${(props) =>

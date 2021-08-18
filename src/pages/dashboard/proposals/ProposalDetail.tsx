@@ -330,7 +330,7 @@ const VoteSection = styled.div`
 
 const VoteContainer = styled.div`
   padding: 1.25rem 1.5rem 2rem;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.75rem;
 `;
 
@@ -343,13 +343,13 @@ const VoteHeader = styled.div`
 
 const VoteLabel = styled.div`
   ${fontSizes.size18};
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 `;
 
 const VoteAmount = styled.div`
   ${fontSizes.size24};
   display: flex;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   > div {
     margin-left: 0.625rem;
@@ -393,7 +393,7 @@ const ValueWithIcon = styled.div`
 
 const DescriptionLabel = styled.div`
   ${fontSizes.size12}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
@@ -404,11 +404,11 @@ const DescriptionLabel = styled.div`
 `;
 
 const GreenSpan = styled.span`
-  color: ${(props) => props.theme.colorgreen};
+  color: ${({ theme }) => theme.colorgreen};
 `;
 
 const RedSpan = styled.span`
-  color: ${(props) => props.theme.colorred};
+  color: ${({ theme }) => theme.colorred};
 `;
 
 const StyledIcon = styled.div`
@@ -422,7 +422,7 @@ const StyledCheckMark = styled(StyledIcon)`
   > svg {
     height: 0.75rem;
     width: 0.75rem;
-    stroke: ${(props) => props.theme.colorgreen};
+    stroke: ${({ theme }) => theme.colorgreen};
   }
 `;
 
@@ -432,7 +432,7 @@ const StyledX = styled(StyledIcon)`
     width: 1rem;
 
     path {
-      stroke: ${(props) => props.theme.colorred};
+      stroke: ${({ theme }) => theme.colorred};
     }
   }
 `;

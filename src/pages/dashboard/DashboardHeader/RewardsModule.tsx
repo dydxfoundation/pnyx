@@ -97,7 +97,7 @@ const RewardsSection = styled.div`
   height: 4.25rem;
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
-  background-color: ${(props) => props.theme.layerlight};
+  background-color: ${({ theme }) => theme.layerlight};
   margin-top: -0.25rem;
   margin-right: -0.75rem;
 
@@ -142,7 +142,7 @@ const RewardsLabel = styled.div`
   ${fontSizes.size13}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size15}
@@ -151,7 +151,7 @@ const RewardsLabel = styled.div`
 
 const GreenPlus = styled.div`
   ${fontSizes.size18}
-  color: ${(props) => props.theme.colorgreen};
+  color: ${({ theme }) => theme.colorgreen};
   margin-right: 0.25rem;
 
   @media ${breakpoints.tablet} {
@@ -163,7 +163,7 @@ const RewardsValue = styled.div`
   ${fontSizes.size20}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size22}
