@@ -61,8 +61,10 @@
     "TRADING_REWARDS_DESCRIPTION_2": "報酬は、支払い済の合計手数料とdYdX取引所の建玉に基づいています。",
     "TRADING_REWARDS_DESCRIPTION": "dYdX取引所での取引で報酬を獲得できます。",
     "TRADING_REWARDS": "トレード報酬",
+    "TRANSFER_LOCK_COOLDOWN": "トランスファーロック・クールダウン",
     "UNTIL_NEXT_EPOCH_ON_DATE": "{NEXT_EPOCH_DATE}の次のエポックまで。",
     "UNTIL_NEXT_EPOCH": "次のエポックまで。",
+    "UNTIL_TRANSFER_LOCK_IS_RELEASED": "トランスファーロックが解除されるまで。",
     "VIEW_ON_ETHERSCAN": "Etherscanにて表示",
     "WALLET_ADDRESS": "ウォレットアドレス",
     "WALLET": "ウォレット",
@@ -146,6 +148,7 @@
     "THERE_ARE_RISKS": "お客様の{SYMBOL}のステーキングにはリスクが伴います。",
     "THIS_POOL_ACCEPTS_SYMBOL": "このプールは{SYMBOL}を受け入れます",
     "UNCLAIMED_REWARDS": "請求されていない報酬",
+    "WITHDRAWS_DESCRIPTION": "保留中および出金可能な金額を表示、管理します。",
     "YIELD_PER_THOUSAND": "利回り/1,000USD",
     "YOUR_STAKE": "お客様のステーキング"
   },
