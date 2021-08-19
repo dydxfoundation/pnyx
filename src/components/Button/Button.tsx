@@ -110,7 +110,7 @@ const activeStyles = css<ElementProps>`
   ${({ link, theme }) =>
     link
       ? `${StyledLinkIcon} > svg path {
-        stroke: ${theme.textlight};
+        stroke: currentColor;
       }`
       : ''}
 `;
@@ -168,7 +168,7 @@ const StyledButton = styled.button<ElementProps>`
     ${({ link, theme }) => {
       const iconStyles = `
         ${StyledLinkIcon} > svg path {
-            stroke: ${theme.textlight};
+            stroke: currentColor;
           }
       `;
 
@@ -275,21 +275,7 @@ const StyledLinkIcon = styled.div<ElementProps>`
     height: 1rem;
 
     path {
-      stroke: ${({ color, link, theme }) => {
-        if (link) {
-          return theme.textdark;
-        }
-
-        if (color === ButtonColor.Light) {
-          return theme.textbase;
-        }
-
-        if (color === ButtonColor.Lighter) {
-          return theme.textdark;
-        }
-
-        return theme.textlight;
-      }};
+      stroke: currentColor;
     }
   }
 `;
