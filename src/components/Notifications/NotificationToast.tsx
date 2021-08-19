@@ -88,10 +88,10 @@ const CloseButton = styled.div`
 
   @media ${breakpoints.notTablet} {
     &:hover {
-      background-color: ${(props) => props.theme.layerlighter};
+      background-color: ${({ theme }) => theme.layerlighter};
 
       > svg path {
-        stroke: ${(props) => props.theme.textlight};
+        stroke: ${({ theme }) => theme.textlight};
       }
     }
   }
@@ -110,7 +110,7 @@ const CloseButton = styled.div`
   }
 
   > svg path {
-    stroke: ${(props) => props.theme.textbase};
+    stroke: ${({ theme }) => theme.textbase};
   }
 `;
 

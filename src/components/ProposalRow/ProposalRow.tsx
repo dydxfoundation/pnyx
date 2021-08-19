@@ -171,7 +171,7 @@ const StatusLabel = styled.div`
   ${fontSizes.size16};
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 
   @media ${breakpoints.tablet} {
     display: none;
@@ -189,7 +189,7 @@ const StyledCheckMark = styled(StyledIcon)`
   > svg {
     height: 0.75rem;
     width: 0.75rem;
-    stroke: ${(props) => props.theme.colorgreen};
+    stroke: ${({ theme }) => theme.colorgreen};
   }
 `;
 
@@ -199,7 +199,7 @@ const StyledX = styled(StyledIcon)`
     width: 1rem;
 
     path {
-      stroke: ${(props) => props.theme.colorred};
+      stroke: ${({ theme }) => theme.colorred};
     }
   }
 `;

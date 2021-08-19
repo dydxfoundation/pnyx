@@ -33,7 +33,7 @@ const CustomCheckbox = styled.span`
   left: 0;
   height: 1.25rem;
   width: 1.25rem;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.25rem;
   z-index: 0;
   cursor: pointer;
@@ -45,7 +45,7 @@ const CustomCheckbox = styled.span`
     left: 0.4375rem;
     width: 0.3125rem;
     height: 0.5rem;
-    border: solid ${(props) => props.theme.textlight};
+    border: solid ${({ theme }) => theme.textlight};
     border-width: 0 0.125rem 0.125rem 0;
     border-radius: 0.0625rem;
     opacity: 0;

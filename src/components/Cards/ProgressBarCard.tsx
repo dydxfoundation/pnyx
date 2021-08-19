@@ -70,8 +70,8 @@ const StyledProgressBarCard = styled.div<ElementProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: ${(props) =>
-    props.backgroundLight ? props.theme.layerlight : props.theme.layerdark};
+  background-color: ${({ backgroundLight, theme }) =>
+    backgroundLight ? theme.layerlight : theme.layerdark};
 `;
 
 const TopContainer = styled.div`
@@ -87,7 +87,7 @@ const TitleContainer = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size20}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 `;
 
 const LabelContainer = styled.div`
@@ -110,11 +110,11 @@ const BottomLabels = styled(LabelContainer)`
 `;
 
 const LeftLabel = styled.div`
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 `;
 
 const RightLabel = styled.div`
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-left: auto;
 `;
 
@@ -122,14 +122,14 @@ const ProgressBarBackground = styled.div<ElementProps>`
   display: flex;
   width: 100%;
   height: 0.375rem;
-  background-color: ${(props) =>
-    props.backgroundLight ? props.theme.layerdark : props.theme.layerlight};
+  background-color: ${({ backgroundLight, theme }) =>
+    backgroundLight ? theme.layerdark : theme.layerlight};
   border-radius: 0.1875rem;
 `;
 
 const ProgressBarProgress = styled.div`
   height: 100%;
-  background-color: ${(props) => props.theme.colorpurple};
+  background-color: ${({ theme }) => theme.colorpurple};
   border-radius: 0.1875rem;
 `;
 

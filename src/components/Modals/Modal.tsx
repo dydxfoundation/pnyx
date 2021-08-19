@@ -20,7 +20,7 @@ export const Modal: React.FC<ModalProps> = ({ children, size = ModalSize.Medium 
 const StyledModal = styled.div<ModalProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.theme.layerlight};
+  background-color: ${({ theme }) => theme.layerlight};
   border-radius: 1rem;
   max-height: calc(100% - 1.5rem);
   overflow: hidden;

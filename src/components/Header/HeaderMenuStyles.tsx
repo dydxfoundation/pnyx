@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components/macro';
 import { breakpoints, fontSizes } from 'styles';
 
 const menuButtonActiveStyles = css`
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
 
   > svg path {
-    fill: ${(props) => props.theme.textlight};
+    fill: ${({ theme }) => theme.textlight};
   }
 `;
 
@@ -28,7 +28,7 @@ export const MenuButton = styled.div<React.HTMLAttributes<HTMLDivElement> & { me
         props.menuOpen ? props.theme.layerdark : props.theme.layerlight};
 
       > svg path {
-        fill: ${(props) => props.theme.textlight};
+        fill: ${({ theme }) => theme.textlight};
       }
     }
   }
@@ -53,7 +53,7 @@ export const HeaderMenu = styled.div`
   position: absolute;
   top: 2.75rem;
   right: 0;
-  background-color: ${(props) => props.theme.layerlight};
+  background-color: ${({ theme }) => theme.layerlight};
   padding: 0.625rem;
   border-radius: 0.75rem;
   box-shadow: 0px 0px 24px 8px rgba(26, 26, 39, 0.5);
@@ -67,7 +67,7 @@ export const MenuOption = styled.div<React.HTMLAttributes<HTMLDivElement> & { ac
   padding: 0 0.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 
   ${(props) =>
     props.active

@@ -39,20 +39,20 @@ const WithReceipt: React.FC<WithReceiptProps> = ({ children, receiptConfig, rece
 
 const StyledWithReceipt = styled.div<ElementProps>`
   border-radius: 0.5rem;
-  background: ${(props) => props.theme.layerdark};
+  background: ${({ theme }) => theme.layerdark};
   margin-top: ${(props) => (props.receiptOnTop ? '0.75rem' : '0')};
 `;
 
 const ReceiptContainer = styled.div`
   padding: 0.5rem 0.75rem;
   width: 100%;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
 `;
 
 const ReceiptRow = styled.div`
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   min-height: 1.75rem;
   padding: 0.25rem 0;
 `;
@@ -76,7 +76,7 @@ const ReceiptValue = styled.span<ReceiptConfigElementProps>`
   justify-content: flex-end;
   flex: 1 1 auto;
   flex-wrap: wrap;
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   margin-left: auto;
   padding-left: 1rem;
   overflow: hidden;

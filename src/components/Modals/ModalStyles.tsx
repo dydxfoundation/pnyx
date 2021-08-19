@@ -33,7 +33,7 @@ export const ModalContentContainer = styled.div`
 
 export const ModalInfoFooter = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin: 0.75rem 0.25rem 0;
 
   @media ${breakpoints.tablet} {

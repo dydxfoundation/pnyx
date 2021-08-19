@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { DateTime } from 'luxon';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
 import styled from 'styled-components/macro';
@@ -60,6 +61,8 @@ import {
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
 
+const FIFTEEN_MINUTES_SECONDS = 15 * 60;
+
 type LiquidityPoolDetailProps = {} & LocalizationProps;
 
 const LiquidityPoolDetail: React.FC<
@@ -85,12 +88,30 @@ const LiquidityPoolDetail: React.FC<
   usePollWithdrawBalances({ stakingPool: StakingPool.Liquidity });
 
   const { userBalance, unclaimedRewards } = stakingBalancesData.balances[StakingPool.Liquidity];
-  const { nextEpochDate, poolSize, rewardsPerSecond } = stakingPoolsData.data[
-    StakingPool.Liquidity
-  ];
+
+  const {
+    nextEpochDate,
+    lengthOfBlackoutWindow,
+    poolSize,
+    rewardsPerSecond,
+  } = stakingPoolsData.data[StakingPool.Liquidity];
 
   const formattedDiffUntilEpoch = useGetCountdownDiff({
     futureDateISO: nextEpochDate,
+    stringGetter,
+  });
+
+  const blackoutWindowStartTime = DateTime.fromISO(nextEpochDate ?? '').minus({
+    seconds: Number(lengthOfBlackoutWindow ?? 0),
+  });
+
+  const { seconds: secondsUntilBlackoutWindow } = blackoutWindowStartTime.diff(
+    DateTime.local(),
+    'seconds'
+  );
+
+  const formattedDiffUntilBlackoutWindow = useGetCountdownDiff({
+    futureDateISO: blackoutWindowStartTime.toISO(),
     stringGetter,
   });
 
@@ -336,7 +357,25 @@ const LiquidityPoolDetail: React.FC<
                 <CardRow>
                   <SingleStatCard
                     color={CardColor.Dark}
-                    title={stringGetter({ key: STRING_KEYS.COUNTDOWN })}
+                    title={stringGetter({ key: STRING_KEYS.BLACKOUT_WINDOW })}
+                    value={
+                      secondsUntilBlackoutWindow <= FIFTEEN_MINUTES_SECONDS ? (
+                        <RedText>{formattedDiffUntilBlackoutWindow}</RedText>
+                      ) : (
+                        formattedDiffUntilBlackoutWindow
+                      )
+                    }
+                    label={stringGetter({
+                      key:
+                        secondsUntilBlackoutWindow <= 0
+                          ? STRING_KEYS.CURRENTLY_IN_BLACKOUT_WINDOW
+                          : STRING_KEYS.UNTIL_NEXT_BLACKOUT_WINDOW,
+                    })}
+                    isLoading={!formattedDiffUntilBlackoutWindow}
+                  />
+                  <SingleStatCard
+                    color={CardColor.Dark}
+                    title={stringGetter({ key: STRING_KEYS.NEXT_EPOCH })}
                     value={formattedDiffUntilEpoch}
                     label={stringGetter({ key: STRING_KEYS.UNTIL_NEXT_EPOCH })}
                     isLoading={!formattedDiffUntilEpoch}
@@ -429,6 +468,7 @@ const StyledContentRight = styled(ContentRight)`
 
   @media ${breakpoints.tablet} {
     margin-top: 1rem;
+    flex: 1 1 auto;
   }
 `;
 
@@ -452,6 +492,10 @@ const WithdrawSection = styled.div`
 
 const WithdrawCardRow = styled.div`
   margin-top: 1.75rem;
+`;
+
+const RedText = styled.span`
+  color: ${({ theme }) => theme.colorred};
 `;
 
 const mapStateToProps = (state: RootState) => ({

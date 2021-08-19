@@ -88,17 +88,17 @@ const StyledSpinner = styled.div`
 `;
 
 const TryAgainLink = styled.div`
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
 
   > svg {
     margin-right: 0.25rem;
   }
 
   &:hover {
-    color: ${(props) => props.theme.textlight};
+    color: ${({ theme }) => theme.textlight};
 
     > svg path {
-      fill: ${(props) => props.theme.textlight};
+      fill: ${({ theme }) => theme.textlight};
     }
   }
 `;

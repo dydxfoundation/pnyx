@@ -55,7 +55,7 @@ const Dot = styled.span`
 
   > i {
     border-radius: 50%;
-    background-color: ${(props) => props.theme.textlight};
+    background-color: ${({ theme }) => theme.textlight};
     margin: 0 0.125rem;
     display: inline-block;
     animation: ${loadingAnimation} 1.4s infinite both;

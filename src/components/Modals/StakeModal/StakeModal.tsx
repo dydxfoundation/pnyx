@@ -356,7 +356,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
 
 const SpanWithLightEmbed = styled.span`
   > span {
-    color: ${(props) => props.theme.textlight};
+    color: ${({ theme }) => theme.textlight};
   }
 `;
 
@@ -366,10 +366,10 @@ const AssetContainer = styled.div`
   align-items: center;
   height: 2.5rem;
   width: 100%;
-  background-color: ${(props) => props.theme.layermediumlight};
+  background-color: ${({ theme }) => theme.layermediumlight};
   border-radius: 0.5rem;
   padding: 0 0.75rem;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size18}

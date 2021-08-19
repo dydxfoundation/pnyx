@@ -69,11 +69,11 @@ const StyledSingleStatCard = styled.div<ElementProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: ${(props) =>
-    props.color === CardColor.Light ? props.theme.layerlight : props.theme.layerdark};
+  background-color: ${({ color, theme }) =>
+    color === CardColor.Light ? theme.layerlight : theme.layerdark};
 
-  ${(props) =>
-    props.onClick
+  ${({ onClick, theme }) =>
+    onClick
       ? `
         cursor: pointer; 
 
@@ -81,7 +81,7 @@ const StyledSingleStatCard = styled.div<ElementProps>`
           filter: brightness(1.1);
 
           ${Label} {
-            color: ${props.theme.textbase};
+            color: ${theme.textbase};
           }
         }
       `
@@ -101,13 +101,13 @@ const TitleContainer = styled.div`
 
 const Title = styled.div`
   ${fontSizes.size20}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   hyphens: auto;
 `;
 
 const ValueContainer = styled.div`
   ${fontSizes.size26}
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
   margin-top: 0.75rem;
 `;
 
@@ -118,7 +118,7 @@ const ButtonContainer = styled.div`
 
 const Label = styled.div`
   ${fontSizes.size15}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   margin-top: 0.125rem;
 
   @media ${breakpoints.tablet} {

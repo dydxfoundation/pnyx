@@ -122,12 +122,12 @@ const Header = styled.div`
 
   > button {
     margin-top: -0.125rem;
-    color: ${(props) => props.theme.colorred};
+    color: ${({ theme }) => theme.colorred};
 
     &:active,
     &:hover,
     &:active:hover {
-      color: ${(props) => props.theme.colorred};
+      color: ${({ theme }) => theme.colorred};
     }
   }
 `;
@@ -138,7 +138,7 @@ const NoticationsContainer = styled.div`
 
 const NotificationsEmptyState = styled.div`
   ${fontSizes.size15}
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   padding: 0 0.5rem 0.75rem;
 
   @media ${breakpoints.tablet} {

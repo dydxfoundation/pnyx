@@ -40,6 +40,7 @@
     "LEAVING_WEBSITE": "Leaving website",
     "MAX": "Max",
     "MIXED_ADDRESSES": "Mixed addresses",
+    "NEXT_EPOCH": "Next Epoch",
     "NOTIFICATIONS_EMPTY_STATE": "You have no notifications.",
     "NOTIFICATIONS": "Notifications",
     "OTHER": "Other",
@@ -121,8 +122,10 @@
     "CLAIMABLE": "Claimable"
   },
   "STAKING_POOLS": {
+    "BLACKOUT_WINDOW": "Blackout Window",
     "CURRENT_APR": "Current APR",
     "CURRENTLY_BEING_STAKED": "currently being staked",
+    "CURRENTLY_IN_BLACKOUT_WINDOW": "Currently in blackout window",
     "ESTIMATED_RATE": "Estimated rate",
     "ESTIMATED_YIELD_PER_DAY": "Estimated yield / day",
     "LIQUIDITY_POOL_ABOUT": "Liquidity, especially when used properly, is a core component of any successful exchange. To further liquidity network effects and incentivize professional market makers, DYDX will be distributed to users who stake USDC to the liquidity staking pool. Known and approved market makers will use the staked USDC to make markets on the Protocol, furthering liquidity available across the markets. The market makers will not be able to withdraw the USDC from the Protocol, requiring them to use it only in the Protocol.",
@@ -148,6 +151,7 @@
     "THERE_ARE_RISKS": "There are risks involved with staking your {SYMBOL}.",
     "THIS_POOL_ACCEPTS_SYMBOL": "This pool accepts {SYMBOL}",
     "UNCLAIMED_REWARDS": "Unclaimed rewards",
+    "UNTIL_NEXT_BLACKOUT_WINDOW": "until next blackout window.",
     "WITHDRAWS_DESCRIPTION": "View and manage your pending and available withdraws.",
     "YIELD_PER_THOUSAND": "Yield / $1K",
     "YOUR_STAKE": "Your stake"

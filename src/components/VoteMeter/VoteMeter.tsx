@@ -32,7 +32,7 @@ const StyledVoteMeter = styled.div<ElementProps & React.HTMLAttributes<HTMLEleme
   position: relative;
   width: 100%;
   height: 0.3125rem;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   border-radius: 0.1875rem;
 
   ${(props) =>
@@ -62,13 +62,13 @@ const StyledVoteMeter = styled.div<ElementProps & React.HTMLAttributes<HTMLEleme
 
 const VotesFor = styled.div`
   height: 100%;
-  background-color: ${(props) => props.theme.colorgreen};
+  background-color: ${({ theme }) => theme.colorgreen};
   border-radius: 0.1875rem;
 `;
 
 const VotesAgainst = styled.div`
   height: 100%;
-  background-color: ${(props) => props.theme.colorred};
+  background-color: ${({ theme }) => theme.colorred};
   border-radius: 0.1875rem;
   margin-left: auto;
 `;

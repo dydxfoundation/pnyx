@@ -33,7 +33,7 @@ const StyledTruncateHash = styled.div`
   display: flex;
   align-items: center;
   letter-spacing: 0.0875rem;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 `;
 
 export default TruncateHash;

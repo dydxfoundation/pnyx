@@ -89,27 +89,28 @@ const Button = React.forwardRef<
 export default Button;
 
 const activeStyles = css<ElementProps>`
-  color: ${(props) => props.theme.textlight};
-  background-color: ${(props) => {
-    if (props.link) {
-      return props.theme.layerdark;
+  color: ${({ theme }) => theme.textlight};
+
+  background-color: ${({ color, link, theme }) => {
+    if (link) {
+      return theme.layerdark;
     }
 
-    if (props.color === ButtonColor.Light) {
-      return props.theme.layerlightfaded;
+    if (color === ButtonColor.Light) {
+      return theme.layerlightfaded;
     }
 
-    if (props.color === ButtonColor.Lighter) {
-      return props.theme.layerlighterfaded;
+    if (color === ButtonColor.Lighter) {
+      return theme.layerlighterfaded;
     }
 
-    return props.theme.colorpurplefaded;
+    return theme.colorpurplefaded;
   }};
 
-  ${(props) =>
-    props.link
+  ${({ link, theme }) =>
+    link
       ? `${StyledLinkIcon} > svg path {
-        stroke: ${props.theme.textlight};
+        stroke: currentColor;
       }`
       : ''}
 `;
@@ -124,57 +125,57 @@ const activeStylesWithHoverOverride = css<ElementProps>`
 
 const StyledButton = styled.button<ElementProps>`
   ${fonts.medium}
-  ${(props) => (props.size === ButtonSize.Pill ? fontSizes.size15 : fontSizes.size17)}
+  ${({ size }) => (size === ButtonSize.Pill ? fontSizes.size15 : fontSizes.size17)}
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: ${(props) => {
-    if (props.link) {
-      return props.theme.textdark;
+  color: ${({ color, link, theme }) => {
+    if (link) {
+      return theme.textdark;
     }
 
-    if (props.color === ButtonColor.Light) {
-      return props.theme.textbase;
+    if (color === ButtonColor.Light) {
+      return theme.textbase;
     }
 
-    return props.theme.textlight;
+    return theme.textlight;
   }};
 
-  border-radius: ${(props) => (props.size === ButtonSize.Pill ? '1rem' : '0.5rem')};
+  border-radius: ${({ size }) => (size === ButtonSize.Pill ? '1rem' : '0.5rem')};
   cursor: pointer;
-  padding: ${(props) => (props.size === ButtonSize.Pill ? '0 0.75rem' : '0 1rem')};
+  padding: ${({ size }) => (size === ButtonSize.Pill ? '0 0.75rem' : '0 1rem')};
   border: none;
   user-select: none;
 
-  background-color: ${(props) => {
-    if (props.link) {
+  background-color: ${({ color, link, theme }) => {
+    if (link) {
       return 'transparent';
     }
 
-    if (props.color === ButtonColor.Light) {
-      return props.theme.layerlight;
+    if (color === ButtonColor.Light) {
+      return theme.layerlight;
     }
 
-    if (props.color === ButtonColor.Lighter) {
-      return props.theme.layerlighter;
+    if (color === ButtonColor.Lighter) {
+      return theme.layerlighter;
     }
 
-    return props.theme.colorpurple;
+    return theme.colorpurple;
   }};
 
   &:hover {
-    ${(props) => {
+    ${({ link, theme }) => {
       const iconStyles = `
         ${StyledLinkIcon} > svg path {
-            stroke: ${props.theme.textlight};
+            stroke: currentColor;
           }
       `;
 
-      if (props.link) {
+      if (link) {
         return `
-          color: ${props.theme.textlight};
-          background-color: ${props.theme.layerlight};
+          color: ${theme.textlight};
+          background-color: ${theme.layerlight};
           ${iconStyles}
         `;
       }
@@ -191,20 +192,20 @@ const StyledButton = styled.button<ElementProps>`
     ${activeStyles}
   }
 
-  ${(props) => (props.active ? activeStylesWithHoverOverride : '')}
+  ${({ active }) => (active ? activeStylesWithHoverOverride : '')}
 
-  ${(props) =>
-    props.fullWidth
+  ${({ fullWidth }) =>
+    fullWidth
       ? css`
           width: 100%;
         `
       : ''}
 
-  ${(props) => {
+  ${({ isLoading, size }) => {
     let height = 2.5;
     let minHeight = 2.5;
 
-    switch (props.size) {
+    switch (size) {
       case ButtonSize.Medium: {
         height = 2.5;
         minHeight = 2.5;
@@ -223,17 +224,17 @@ const StyledButton = styled.button<ElementProps>`
     return `
       height: ${height}rem;
       min-height: ${minHeight}rem;
-      min-width: ${props.isLoading ? '5rem' : 'auto'};
+      min-width: ${isLoading ? '5rem' : 'auto'};
     `;
   }}
 
-  ${(props) => {
-    if (props.useLargeStylesOnTablet) {
+  ${({ isLoading, size, useLargeStylesOnTablet }) => {
+    if (useLargeStylesOnTablet) {
       let fontSize = fontSizes.size18;
       let height = 3;
       let minHeight = 3;
 
-      switch (props.size) {
+      switch (size) {
         case ButtonSize.Medium: {
           height = 3;
           minHeight = 3;
@@ -255,7 +256,7 @@ const StyledButton = styled.button<ElementProps>`
           ${fontSize}
           height: ${height}rem;
           min-height: ${minHeight}rem;
-          min-width: ${props.isLoading ? '5rem' : 'auto'};
+          min-width: ${isLoading ? '5rem' : 'auto'};
         }
       `;
     }
@@ -274,30 +275,16 @@ const StyledLinkIcon = styled.div<ElementProps>`
     height: 1rem;
 
     path {
-      stroke: ${(props) => {
-        if (props.link) {
-          return props.theme.textdark;
-        }
-
-        if (props.color === ButtonColor.Light) {
-          return props.theme.textbase;
-        }
-
-        if (props.color === ButtonColor.Lighter) {
-          return props.theme.textdark;
-        }
-
-        return props.theme.textlight;
-      }};
+      stroke: currentColor;
     }
   }
 `;
 
 const DisabledButton = styled(StyledButton)`
   cursor: not-allowed;
-  background-color: ${(props) => props.theme.layerlighter} !important;
-  background: ${(props) => props.theme.layerlighter} !important;
-  color: ${(props) => props.theme.textdark} !important;
+  background-color: ${({ theme }) => theme.layerlighter} !important;
+  background: ${({ theme }) => theme.layerlighter} !important;
+  color: ${({ theme }) => theme.textdark} !important;
 
   &:hover {
     filter: none;

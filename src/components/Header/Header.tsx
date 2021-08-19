@@ -104,7 +104,7 @@ const StyledHeader = styled.div`
   left: 0;
   width: 100%;
   padding: 1.5rem 3rem;
-  background-color: ${(props) => props.theme.layerbase};
+  background-color: ${({ theme }) => theme.layerbase};
   z-index: 1;
   box-shadow: 0px 0px 24px 8px rgba(26, 26, 39, 0.5);
 
@@ -186,14 +186,14 @@ const HelpButton = styled(MenuButton)`
 
   &:active {
     > svg rect {
-      stroke: ${(props) => props.theme.textlight};
+      stroke: ${({ theme }) => theme.textlight};
     }
   }
 
   @media ${breakpoints.notTablet} {
     &:hover {
       > svg rect {
-        stroke: ${(props) => props.theme.textlight};
+        stroke: ${({ theme }) => theme.textlight};
       }
     }
   }

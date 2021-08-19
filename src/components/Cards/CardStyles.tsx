@@ -147,7 +147,7 @@ export const TooltipIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.layerlighter};
+  background-color: ${({ theme }) => theme.layerlighter};
   border-radius: 50%;
   height: 1.25rem;
   width: 1.25rem;

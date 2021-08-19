@@ -72,10 +72,10 @@ const LanguageSelectorWrapper = styled.div`
 `;
 
 const activeStyles = css`
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
 
   > svg path {
-    fill: ${(props) => props.theme.textlight};
+    fill: ${({ theme }) => theme.textlight};
   }
 `;
 
@@ -88,8 +88,8 @@ const StyledLanguageSelector = styled.div<
   align-items: center;
   height: 2.25rem;
   padding: 0 0.75rem;
-  color: ${(props) => props.theme.textlight};
-  background-color: ${(props) => props.theme.layerlight};
+  color: ${({ theme }) => theme.textlight};
+  background-color: ${({ theme }) => theme.layerlight};
   border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
@@ -102,7 +102,7 @@ const StyledLanguageSelector = styled.div<
     margin-left: 0.5rem;
 
     path {
-      fill: ${(props) => props.theme.textdark};
+      fill: ${({ theme }) => theme.textdark};
     }
 
     ${(props) =>

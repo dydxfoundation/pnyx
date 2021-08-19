@@ -31,7 +31,7 @@ const InfoBox: React.FC<InfoBoxProps> = ({ title, body, icon, learnMoreLink }) =
 
 const StyledInfoBox = styled.div`
   width: 100%;
-  background-color: ${(props) => props.theme.layerdark};
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   margin-top: 0.75rem;
@@ -41,7 +41,7 @@ const Title = styled.div`
   ${fontSizes.size15}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textlight};
+  color: ${({ theme }) => theme.textlight};
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size16}
@@ -56,7 +56,7 @@ const Title = styled.div`
 
 const Body = styled.div`
   ${fontSizes.size14}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   margin-top: 0.375rem;
 
   @media ${breakpoints.tablet} {

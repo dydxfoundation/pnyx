@@ -127,7 +127,7 @@ const Dashboard: React.FC<
 
 const SpanWithBaseEmbed = styled.span`
   > span {
-    color: ${(props) => props.theme.textbase};
+    color: ${({ theme }) => theme.textbase};
   }
 `;
 

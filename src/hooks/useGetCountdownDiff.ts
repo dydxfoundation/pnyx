@@ -12,10 +12,11 @@ const useGetCountdownDiff = ({
   stringGetter: StringGetterFunction;
 }): string | undefined => {
   const [countdownStarted, setCountdownStarted] = useState<boolean>(false);
+  const [diffString, setDiffString] = useState<string | undefined>();
+
   const [timeoutFunction, setTimeoutFunction] = useState<ReturnType<typeof setTimeout> | null>(
     null
   );
-  const [diffString, setDiffString] = useState<string | undefined>();
 
   const stopCountdown = () => {
     setCountdownStarted(false);

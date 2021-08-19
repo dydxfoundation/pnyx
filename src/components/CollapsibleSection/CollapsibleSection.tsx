@@ -43,7 +43,7 @@ const CollapsibleSectionContainer = styled.div<{ showText: boolean }>`
   width: 100%;
 
   &:not(:last-child) {
-    border-bottom: solid 0.0625rem ${(props) => props.theme.bordergrey};
+    border-bottom: solid 0.0625rem ${({ theme }) => theme.bordergrey};
   }
 `;
 
@@ -53,7 +53,7 @@ const Header = styled.div<ElementProps>`
   align-items: center;
   justify-content: space-between;
   height: 2.75rem;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   text-transform: uppercase;
   letter-spacing: 0.08em;
   cursor: ${(props) => (props.collapsible ? 'pointer' : 'default')};
@@ -75,7 +75,7 @@ const PlusMinusIcon = styled.div<{ showText: boolean }>`
     display: block;
     width: 0.75rem;
     height: 0;
-    border-bottom: solid 0.125rem ${(props) => props.theme.textdark};
+    border-bottom: solid 0.125rem ${({ theme }) => theme.textdark};
     position: absolute;
     bottom: 0.3125rem;
     transform: rotate(90deg);
@@ -87,7 +87,7 @@ const PlusMinusIcon = styled.div<{ showText: boolean }>`
     display: block;
     width: 0.75rem;
     height: 0;
-    border-bottom: solid 0.125rem ${(props) => props.theme.textdark};
+    border-bottom: solid 0.125rem ${({ theme }) => theme.textdark};
     position: absolute;
     bottom: 0.3125rem;
   }
@@ -114,7 +114,7 @@ const PlusMinusIcon = styled.div<{ showText: boolean }>`
 const Content = styled.div`
   ${fonts.regular}
   ${fontSizes.size16}
-  color: ${(props) => props.theme.textbase};
+  color: ${({ theme }) => theme.textbase};
   padding-bottom: 1rem;
   letter-spacing: -0.01rem;
 `;

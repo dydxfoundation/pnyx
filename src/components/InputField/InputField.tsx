@@ -141,7 +141,7 @@ const InputContainer = styled.div<{ fontRegular?: boolean }>`
   width: 100%;
   height: 2.5rem;
   overflow: hidden;
-  background-color: ${(props) => props.theme.layermediumlight};
+  background-color: ${({ theme }) => theme.layermediumlight};
 
   @media ${breakpoints.tablet} {
     height: 3rem;
@@ -152,8 +152,8 @@ const InputContainer = styled.div<{ fontRegular?: boolean }>`
     ${(props) => (props.fontRegular ? '' : fonts.monoRegular)}
     width: 100%;
     border: 0;
-    background-color: ${(props) => props.theme.layermediumlight};
-    color: ${(props) => props.theme.textlight};
+    background-color: ${({ theme }) => theme.layermediumlight};
+    color: ${({ theme }) => theme.textlight};
     padding: 0;
 
     @media ${breakpoints.tablet} {
@@ -165,7 +165,7 @@ const InputContainer = styled.div<{ fontRegular?: boolean }>`
     }
 
     &::placeholder {
-      color: ${(props) => props.theme.textdark};
+      color: ${({ theme }) => theme.textdark};
       user-select: none;
     }
 
@@ -181,7 +181,7 @@ const InputButton = styled.div`
   ${fontSizes.size12}
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.textdark};
+  color: ${({ theme }) => theme.textdark};
   padding: 0 0.75rem;
   margin-right: -0.75rem;
   text-transform: uppercase;
@@ -191,7 +191,7 @@ const InputButton = styled.div`
   height: 100%;
 
   &:hover {
-    color: ${(props) => props.theme.textbase};
+    color: ${({ theme }) => theme.textbase};
   }
 
   @media ${breakpoints.tablet} {
