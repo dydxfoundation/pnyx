@@ -5,26 +5,20 @@ import colors from './colors';
 import { fonts, fontSizes } from './fonts';
 
 export const NotMobileOnly = styled.div`
-  display: none;
-
-  @media ${breakpoints.notMobile} {
-    display: initial;
+  @media ${breakpoints.mobile} {
+    display: none;
   }
 `;
 
 export const NotTabletOnly = styled.div`
-  display: none;
-
-  @media ${breakpoints.notTablet} {
-    display: initial;
+  @media ${breakpoints.tablet} {
+    display: none;
   }
 `;
 
 export const TabletOnly = styled.div`
-  display: none;
-
-  @media ${breakpoints.tablet} {
-    display: initial;
+  @media ${breakpoints.notTablet} {
+    display: none;
   }
 `;
 

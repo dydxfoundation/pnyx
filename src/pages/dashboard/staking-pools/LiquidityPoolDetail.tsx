@@ -468,6 +468,7 @@ const StyledContentRight = styled(ContentRight)`
 
   @media ${breakpoints.tablet} {
     margin-top: 1rem;
+    flex: 1 1 auto;
   }
 `;
 

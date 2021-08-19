@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, RouteComponentProps, matchPath } from 'react-router-dom';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import _ from 'lodash';
 
 import { AppDispatch, RootState } from 'store';
@@ -78,32 +78,28 @@ const MobileNavigation: React.FC<
               </IconButton>
             </IconButtonWrapper>
           </IconButtons>
-          <Links>
-            <Link
+          <NavItems>
+            <NavItem
               role="button"
               tabIndex={0}
               active={!!matchPath(location.pathname, { path: AppRoute.Dashboard })}
               onClick={() => history.push(AppRoute.Dashboard)}
             >
               {stringGetter({ key: STRING_KEYS.DASHBOARD })}
-            </Link>
-            <Link
-              role="button"
-              tabIndex={0}
-              onClick={() => window.open(ExternalLink.Forums, '_blank')}
-            >
+            </NavItem>
+            <NavLinkItem href={ExternalLink.Forums} target="_blank" rel="noopener noreferrer">
               {stringGetter({ key: STRING_KEYS.FORUMS })}
               <LinkOutIcon />
-            </Link>
-            <Link
+            </NavLinkItem>
+            <NavItem
               role="button"
               tabIndex={0}
               onClick={() => openModal({ type: ModalType.TradeLink })}
             >
               {stringGetter({ key: STRING_KEYS.TRADE })}
               <LinkOutIcon />
-            </Link>
-          </Links>
+            </NavItem>
+          </NavItems>
         </MobileNavMenu>
       )}
     </>
@@ -142,24 +138,39 @@ const MobileNavMenu = styled.div`
   }
 `;
 
-const Links = styled.div`
+const NavItems = styled.div`
   ${fontSizes.size26};
   padding-right: 1.25rem;
 `;
 
-const Link = styled.div<{ active?: boolean }>`
+const navItemStyles = css`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding: 0.75rem 0;
   cursor: pointer;
-  color: ${(props) => (props.active ? props.theme.textlight : props.theme.textdark)};
 
   > svg {
     height: 1.25rem;
     width: 1.25rem;
     margin-top: 0.125rem;
     margin-left: 0.375rem;
+  }
+`;
+
+const NavItem = styled.div<{ active?: boolean }>`
+  ${navItemStyles}
+  color: ${({ active, theme }) => (active ? theme.textlight : theme.textdark)};
+`;
+
+const NavLinkItem = styled.a`
+  ${navItemStyles}
+  color: ${({ theme }) => theme.textdark};
+  text-decoration: none;
+
+  &:active,
+  &:visited {
+    ${navItemStyles}
   }
 `;
 
