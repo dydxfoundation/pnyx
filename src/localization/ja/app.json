@@ -40,6 +40,7 @@
     "LEAVING_WEBSITE": "ウェブサイトを離れる",
     "MAX": "Max",
     "MIXED_ADDRESSES": "混合アドレス",
+    "NEXT_EPOCH": "次のエポック",
     "NOTIFICATIONS_EMPTY_STATE": "通知がありません。",
     "NOTIFICATIONS": "通知",
     "OTHER": "その他",
@@ -121,8 +122,10 @@
     "CLAIMABLE": "請求可能"
   },
   "STAKING_POOLS": {
+    "BLACKOUT_WINDOW": "ブラックアウト・ウィンドウ",
     "CURRENT_APR": "現在のAPR（年換算利回り）",
     "CURRENTLY_BEING_STAKED": "現在ステーク中です",
+    "CURRENTLY_IN_BLACKOUT_WINDOW": "現在ブラックアウト・ウィンドウ中",
     "ESTIMATED_RATE": "推定レート",
     "ESTIMATED_YIELD_PER_DAY": "推定利回り/日",
     "LIQUIDITY_POOL_ABOUT": "流動性は、特に適切に使用されることで、交換を成功させる主要なコンポーネントとなります。流動性ネットワーク効果をさらに高め、プロのマーケットメーカーにインセンティブを与えられるように、DYDXは流動性ステーキングプールへUSDCをステークするユーザーに対して提供されます。既知で承認済みのマーケットメーカーは、ステークされたUSDCを使用することでプロトコルにマーケットを構築するとともに、マーケット全体で流動性を利用できるようにします。マーケットメーカーは、USDCをプロトコルから出金することはできず、プロトコルの中でのみ使用する必要があります。",
@@ -148,6 +151,7 @@
     "THERE_ARE_RISKS": "お客様の{SYMBOL}のステーキングにはリスクが伴います。",
     "THIS_POOL_ACCEPTS_SYMBOL": "このプールは{SYMBOL}を受け入れます",
     "UNCLAIMED_REWARDS": "請求されていない報酬",
+    "UNTIL_NEXT_BLACKOUT_WINDOW": "次のブラックアウト・ウィンドウまで。",
     "WITHDRAWS_DESCRIPTION": "保留中および出金可能な金額を表示、管理します。",
     "YIELD_PER_THOUSAND": "利回り/1,000USD",
     "YOUR_STAKE": "お客様のステーキング"
