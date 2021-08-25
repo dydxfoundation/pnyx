@@ -62,10 +62,16 @@ export const UnconnectedHeader: React.FC<ConnectedHeaderProps> = ({
         >
           {stringGetter({ key: STRING_KEYS.DASHBOARD })}
         </Button>
-        {/* <Button link onClick={() => {}}>
+        <Button
+          link
+          active={!!matchPath(location.pathname, { path: AppRoute.History })}
+          onClick={() => {
+            history.push(AppRoute.History);
+          }}
+        >
           {stringGetter({ key: STRING_KEYS.HISTORY })}
-        </Button> */}
-        <Button link linkOutIcon onClick={() => window.open(ExternalLink.Forums, '_blank')}>
+        </Button>
+        <Button link linkOutIcon href={ExternalLink.Forums}>
           {stringGetter({ key: STRING_KEYS.FORUMS })}
         </Button>
         <Button link linkOutIcon onClick={() => openModal({ type: ModalType.TradeLink })}>

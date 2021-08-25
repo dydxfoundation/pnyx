@@ -30,14 +30,7 @@ export const UnconnectedTradeLinkModal: React.FC<ConnectedTradeLinkModalProps> =
     />
     <ModalContentContainer>
       <Message>{stringGetter({ key: STRING_KEYS.LEAVING_DYDX_FOUNDATION_WEBSITE })}</Message>
-      <Button
-        fullWidth
-        linkOutIcon
-        onClick={() => {
-          window.open(ExternalLink.TradeApp, '_blank');
-          closeModal();
-        }}
-      >
+      <Button linkOutIcon href={ExternalLink.TradeApp} onClick={() => closeModal()}>
         {stringGetter({ key: STRING_KEYS.TRADE })}
       </Button>
     </ModalContentContainer>

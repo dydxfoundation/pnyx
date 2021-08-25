@@ -15,7 +15,7 @@ import { breakpoints } from 'styles';
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button, { ButtonColor, ButtonContainer } from 'components/Button';
 import GeoBlockBanner from 'components/GeoBlockBanner';
-import { SingleStatCard, CardColor } from 'components/Cards';
+import { SingleStatCard, CardColor, ValueWithIcon } from 'components/Cards';
 
 import CollapsibleSection from 'components/CollapsibleSection';
 import DetailPageHeader from 'components/DetailPageHeader';
@@ -220,16 +220,6 @@ const BannerContainer = styled.div`
   @media ${breakpoints.tablet} {
     margin-top: 0;
     margin-bottom: 1.25rem;
-  }
-`;
-
-const ValueWithIcon = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-top: 0.125rem;
-    margin-left: 0.375rem;
   }
 `;
 

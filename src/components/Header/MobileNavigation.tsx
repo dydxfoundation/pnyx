@@ -83,9 +83,23 @@ const MobileNavigation: React.FC<
               role="button"
               tabIndex={0}
               active={!!matchPath(location.pathname, { path: AppRoute.Dashboard })}
-              onClick={() => history.push(AppRoute.Dashboard)}
+              onClick={() => {
+                history.push(AppRoute.Dashboard);
+                setShowMenu(false);
+              }}
             >
               {stringGetter({ key: STRING_KEYS.DASHBOARD })}
+            </NavItem>
+            <NavItem
+              role="button"
+              tabIndex={0}
+              active={!!matchPath(location.pathname, { path: AppRoute.History })}
+              onClick={() => {
+                history.push(AppRoute.History);
+                setShowMenu(false);
+              }}
+            >
+              {stringGetter({ key: STRING_KEYS.HISTORY })}
             </NavItem>
             <NavLinkItem href={ExternalLink.Forums} target="_blank" rel="noopener noreferrer">
               {stringGetter({ key: STRING_KEYS.FORUMS })}

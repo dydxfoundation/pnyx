@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { UnclaimedRewardsData, SetUnclaimedRewardsPayload } from 'types';
+import { setUnclaimedRewards } from 'actions/balances';
+
+import { getWalletAddress } from 'selectors/wallets';
+import { getUnclaimedRewardsData } from 'selectors/balances';
 
 import contractClient from 'lib/contract-client';
 
@@ -16,17 +20,14 @@ const stopPollingUnclaimedRewards = () => {
   }
 };
 
-const usePollUnclaimedRewards = ({
-  unclaimedRewardsData,
-  setUnclaimedRewards,
-  walletAddress,
-}: {
-  unclaimedRewardsData: UnclaimedRewardsData;
-  setUnclaimedRewards: (payload: SetUnclaimedRewardsPayload) => void;
-  walletAddress: string;
-}) => {
+const usePollUnclaimedRewards = () => {
   const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
   const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
+
+  const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
+  const walletAddress = useSelector(getWalletAddress);
 
   const pollUnclaimedRewards = async () => {
     stopPollingUnclaimedRewards();
@@ -34,7 +35,7 @@ const usePollUnclaimedRewards = ({
     if (walletAddress) {
       try {
         const unclaimedRewards = await contractClient.getUnclaimedRewards({ walletAddress });
-        setUnclaimedRewards({ unclaimedRewards });
+        dispatch(setUnclaimedRewards({ unclaimedRewards }));
       } catch (error) {
         console.error(error);
       }

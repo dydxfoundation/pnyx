@@ -19,7 +19,7 @@ export { ReactComponent as XIcon } from './x.svg';
 
 // Currencies
 export { ReactComponent as DydxDarkIcon } from './currencies/dydx-dark.svg';
-export { ReactComponent as DydxIcon } from './currencies/dydx.svg';
+export { default as DydxIcon } from './currencies/DydxIcon';
 export { ReactComponent as UsdcIcon } from './currencies/usdc.svg';
 
 // Statuses

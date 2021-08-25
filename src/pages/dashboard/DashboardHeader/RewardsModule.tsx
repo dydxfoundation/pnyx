@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
 
-import { AppDispatch, RootState } from 'store';
 import { LocalizationProps } from 'types';
 import { AssetSymbol, DecimalPlaces, ModalType } from 'enums';
 
@@ -17,10 +15,7 @@ import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button from 'components/Button';
 import LoadingBar from 'components/LoadingBar';
 
-import { openModal as openModalAction } from 'actions/modals';
-import { setUnclaimedRewards as setUnclaimedRewardsAction } from 'actions/balances';
-
-import { getWalletAddress } from 'selectors/wallets';
+import { openModal } from 'actions/modals';
 import { getUnclaimedRewardsData } from 'selectors/balances';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -28,23 +23,11 @@ import { MustBigNumber } from 'lib/numbers';
 
 export type RewardsModuleProps = { isMobile: boolean } & LocalizationProps;
 
-export type ConnectedRewardsModule = RewardsModuleProps &
-  ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatchToProps>;
+const RewardsModule: React.FC<RewardsModuleProps> = ({ isMobile, stringGetter }) => {
+  const dispatch = useDispatch();
+  const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
 
-const RewardsModule: React.FC<ConnectedRewardsModule> = ({
-  isMobile,
-  openModal,
-  setUnclaimedRewards,
-  stringGetter,
-  unclaimedRewardsData,
-  walletAddress,
-}) => {
-  usePollUnclaimedRewards({
-    unclaimedRewardsData,
-    setUnclaimedRewards,
-    walletAddress: walletAddress as string,
-  });
+  usePollUnclaimedRewards();
 
   const { unclaimedRewards } = unclaimedRewardsData;
 
@@ -81,7 +64,7 @@ const RewardsModule: React.FC<ConnectedRewardsModule> = ({
       <ClaimButton>
         <Button
           disabled={!unclaimedRewards || MustBigNumber(unclaimedRewards).isZero()}
-          onClick={() => openModal({ type: ModalType.Claim })}
+          onClick={() => dispatch(openModal({ type: ModalType.Claim }))}
         >
           {stringGetter({ key: STRING_KEYS.CLAIM })}
         </Button>
@@ -208,20 +191,4 @@ const ClaimButton = styled.div`
   }
 `;
 
-const mapStateToProps = (state: RootState) => ({
-  unclaimedRewardsData: getUnclaimedRewardsData(state),
-  walletAddress: getWalletAddress(state),
-});
-
-const mapDispatchToProps = (dispatch: AppDispatch) =>
-  bindActionCreators(
-    {
-      openModal: openModalAction,
-      setUnclaimedRewards: setUnclaimedRewardsAction,
-    },
-    dispatch
-  );
-
-export default withLocalization<RewardsModuleProps>(
-  connect(mapStateToProps, mapDispatchToProps)(RewardsModule)
-);
+export default withLocalization<RewardsModuleProps>(RewardsModule);

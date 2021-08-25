@@ -19,18 +19,19 @@ type ElementProps = {
 
 export type AssetIconProps = {
   dark?: boolean;
+  id?: string;
   symbol: AssetSymbol;
 } & ElementProps;
 
-const AssetIcon: React.FC<AssetIconProps> = ({ dark, size, symbol }) => {
+const AssetIcon: React.FC<AssetIconProps> = ({ dark, id, size, symbol }) => {
   let icon;
   switch (symbol) {
     case AssetSymbol.DYDX: {
-      icon = dark ? <DydxDarkIcon /> : <DydxIcon />;
+      icon = dark ? <DydxDarkIcon id={id} /> : <DydxIcon id={id} />;
       break;
     }
     case AssetSymbol.USDC: {
-      icon = <UsdcIcon />;
+      icon = <UsdcIcon id={id} />;
       break;
     }
   }
