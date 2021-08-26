@@ -61,8 +61,10 @@
     "TRADING_REWARDS_DESCRIPTION_2": "보상은 지불한 총 수수료와 dYdX 거래소의 미결제 약정을 기반으로 결정됩니다.",
     "TRADING_REWARDS_DESCRIPTION": "dYdX 거래소에서 거래하고 보상을 받으세요.",
     "TRADING_REWARDS": "거래 보상",
+    "TRANSFER_LOCK_COOLDOWN": "전송 잠금 대기 시간",
     "UNTIL_NEXT_EPOCH_ON_DATE": "다음 에폭일 {NEXT_EPOCH_DATE}까지",
     "UNTIL_NEXT_EPOCH": "다음 에폭까지",
+    "UNTIL_TRANSFER_LOCK_IS_RELEASED": "다음 전송 잠금 해제까지",
     "VIEW_ON_ETHERSCAN": "Etherscan에서 보기",
     "WALLET_ADDRESS": "지갑 주소",
     "WALLET": "지갑",
@@ -146,6 +148,7 @@
     "THERE_ARE_RISKS": "{SYMBOL}의 스테이킹에는 위험이 수반됩니다.",
     "THIS_POOL_ACCEPTS_SYMBOL": "이 풀은 {SYMBOL}을(를) 허용합니다.",
     "UNCLAIMED_REWARDS": "미청구 보상",
+    "WITHDRAWS_DESCRIPTION": "계류 중이거나 이용 가능한 인출 내역을 확인하고 관리합니다.",
     "YIELD_PER_THOUSAND": "수익률/$1K",
     "YOUR_STAKE": "내 지분"
   },
