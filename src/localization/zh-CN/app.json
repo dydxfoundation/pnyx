@@ -40,6 +40,7 @@
     "LEAVING_WEBSITE": "即将离开网站",
     "MAX": "最大值",
     "MIXED_ADDRESSES": "混合地址",
+    "NEXT_EPOCH": "下一时段",
     "NOTIFICATIONS_EMPTY_STATE": "您没有通知。",
     "NOTIFICATIONS": "通知",
     "OTHER": "其他",
@@ -121,8 +122,10 @@
     "CLAIMABLE": "可申领"
   },
   "STAKING_POOLS": {
+    "BLACKOUT_WINDOW": "停市窗口",
     "CURRENT_APR": "当前年利率",
     "CURRENTLY_BEING_STAKED": "目前质押中",
+    "CURRENTLY_IN_BLACKOUT_WINDOW": "目前处于停市窗口",
     "ESTIMATED_RATE": "预估利率",
     "ESTIMATED_YIELD_PER_DAY": "预估收益/天",
     "LIQUIDITY_POOL_ABOUT": "流动性，尤其在正确使用时，是任何成功交易所的核心成分。为进一步提高流动性网络效应，激励专业做市商，DYDX将被分配给向流动性权益质押池质押USDC的用户。公认的和获批准的做市商将使用质押的USDC基于协议进行做市，从而进一步提高市场的可用流动性。做市商将无法从协议中提现USDC，要求他们只能在协议中使用。",
@@ -148,6 +151,7 @@
     "THERE_ARE_RISKS": "质押您的{SYMBOL}可能会有风险。",
     "THIS_POOL_ACCEPTS_SYMBOL": "此资金池接受{SYMBOL}",
     "UNCLAIMED_REWARDS": "未申领的奖励",
+    "UNTIL_NEXT_BLACKOUT_WINDOW": "直到下一轮停市窗口。",
     "WITHDRAWS_DESCRIPTION": "查看和管理您的未完成提现和可用提现。",
     "YIELD_PER_THOUSAND": "收益/$1K",
     "YOUR_STAKE": "您的质押"
