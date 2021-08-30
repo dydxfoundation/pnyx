@@ -1,0 +1,10 @@
+<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#arrow_down_clip)">
+    <path d="M5.03529 1.125L5.03527 9.65395M5.03527 9.65395L2.27707 6.79775M5.03527 9.65395L7.81251 6.79774" stroke="#f7f7f7" stroke-width="1.25" stroke-linecap="round"/>
+  </g>
+  <defs>
+    <clipPath id="arrow_down_clip">
+      <rect width="10" height="10" fill="white" transform="translate(0 0.5)"/>
+    </clipPath>
+  </defs>
+</svg>

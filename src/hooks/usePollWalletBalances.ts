@@ -12,8 +12,13 @@ import { getWalletBalancesData } from 'selectors/balances';
 import contractClient from 'lib/contract-client';
 
 /**
- * Since polling can happen for multiple assets, store a mapping of polling functions.
+ * Since polling can happen for multiple assets, store a mapping of polling functions
+ * and isPolling flags.
  */
+const isPollingFlags: {
+  [key in AssetSymbol]?: boolean;
+} = {};
+
 const pollingFunctions: {
   [key in AssetSymbol]?: ReturnType<typeof setTimeout> | null;
 } = {};
@@ -30,14 +35,18 @@ const usePollWalletBalances = ({ assetSymbol }: { assetSymbol: AssetSymbol }) =>
   const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
 
   const stopPollingWalletBalances = () => {
-    if (pollingFunctions[assetSymbol]) {
+    if (isPollingFlags[assetSymbol] || pollingFunctions[assetSymbol]) {
       clearTimeout(pollingFunctions[assetSymbol] as ReturnType<typeof setTimeout>);
+
+      isPollingFlags[assetSymbol] = false;
       pollingFunctions[assetSymbol] = null;
     }
   };
 
   const pollWalletBalances = async () => {
     stopPollingWalletBalances();
+
+    isPollingFlags[assetSymbol] = true;
 
     if (walletAddress) {
       try {
@@ -63,7 +72,7 @@ const usePollWalletBalances = ({ assetSymbol }: { assetSymbol: AssetSymbol }) =>
      * immediately if last pull was later than the polling interval, otherwise wait for the interval
      * before polling again.
      */
-    if (!pollingFunctions[assetSymbol]) {
+    if (!isPollingFlags[assetSymbol]) {
       if (
         !lastPulledAt ||
         DateTime.local().diff(DateTime.fromISO(lastPulledAt)).milliseconds >=

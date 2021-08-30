@@ -11,6 +11,7 @@ import SectionWrapper from 'components/SectionWrapper';
 import { STRING_KEYS } from 'constants/localization';
 
 import HistoryClaimRewardsModule from './HistoryClaimRewardsModule';
+import TradingRewardsHistoryTable from './TradingRewardsHistoryTable';
 
 export type HistoryProps = {} & LocalizationProps;
 
@@ -21,6 +22,7 @@ const History: React.FC<HistoryProps> = ({ stringGetter }) => (
     </SectionWrapper>
     <SectionWrapper column>
       <SectionHeader title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
+      <TradingRewardsHistoryTable />
     </SectionWrapper>
   </StyledHistory>
 );

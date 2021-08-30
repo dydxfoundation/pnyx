@@ -9,13 +9,16 @@ import { getUnclaimedRewardsData } from 'selectors/balances';
 
 import contractClient from 'lib/contract-client';
 
+let isPolling: boolean = false;
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 
 const unclaimedRewardsInterval = Number(process.env.REACT_APP_DATA_POLL_MS);
 
 const stopPollingUnclaimedRewards = () => {
-  if (pollingFunction) {
-    clearTimeout(pollingFunction);
+  if (isPolling || pollingFunction) {
+    clearTimeout(pollingFunction as ReturnType<typeof setTimeout>);
+
+    isPolling = false;
     pollingFunction = null;
   }
 };
@@ -31,6 +34,8 @@ const usePollUnclaimedRewards = () => {
 
   const pollUnclaimedRewards = async () => {
     stopPollingUnclaimedRewards();
+
+    isPolling = true;
 
     if (walletAddress) {
       try {
@@ -52,7 +57,7 @@ const usePollUnclaimedRewards = () => {
      * poll immediately if last pull was later than the polling interval, otherwise wait for
      * the interval before polling again.
      */
-    if (!pollingFunction) {
+    if (!isPolling && !pollingFunction) {
       if (
         !lastPulledAt ||
         DateTime.local().diff(DateTime.fromISO(lastPulledAt)).milliseconds >=

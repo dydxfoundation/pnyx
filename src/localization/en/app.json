@@ -197,5 +197,11 @@
     "VOTING_POWER": "Voting Power",
     "VOTING": "Voting",
     "YOUR_VOTE": "Your vote"
+  },
+  "HISTORY": {
+    "EPOCH_NUMBER": "Epoch {NUMBER}",
+    "EVENT": "Event",
+    "FOR_TRADING_IN_EPOCH": "For trading in {EPOCH_NUMBER}",
+    "REWARDED": "Rewarded"
   }
 }

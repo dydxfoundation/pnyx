@@ -134,6 +134,7 @@ const activeStylesWithHoverOverride = css<ElementProps>`
 const buttonStyles = css`
   ${fonts.medium}
   ${({ size }) => (size === ButtonSize.Pill ? fontSizes.size15 : fontSizes.size17)}
+  
   display: flex;
   justify-content: center;
   align-items: center;

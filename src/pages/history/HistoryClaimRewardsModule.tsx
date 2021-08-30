@@ -25,7 +25,6 @@ export type HistoryClaimRewardsModuleProps = {} & LocalizationProps;
 
 const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ stringGetter }) => {
   const dispatch = useDispatch();
-
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
 
   usePollUnclaimedRewards();
@@ -57,30 +56,30 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
         />
       </MobileOnly>
       <Styled.HistoryClaimRewardsModule>
-        <StyledCopySection>
-          <StyledTitle>{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</StyledTitle>
-          <StyledBody>
+        <Styled.CopySection>
+          <Styled.Title>{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</Styled.Title>
+          <Styled.Body>
             {stringGetter({ key: STRING_KEYS.CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION })}
-          </StyledBody>
-        </StyledCopySection>
-        <StyledRewardsButtonContainer>
-          <StyledClaimableRewards>
-            <StyledClaimableLabel>
+          </Styled.Body>
+        </Styled.CopySection>
+        <Styled.RewardsButtonContainer>
+          <Styled.ClaimableRewards>
+            <Styled.ClaimableLabel>
               {stringGetter({ key: STRING_KEYS.CLAIMABLE })}
-              <StyledClaimableSublabel>
+              <Styled.ClaimableSublabel>
                 {stringGetter({ key: STRING_KEYS.STAKING_TRADING_REWARDS })}
-              </StyledClaimableSublabel>
-            </StyledClaimableLabel>
-            <StyledformattedClaimableAmount>
+              </Styled.ClaimableSublabel>
+            </Styled.ClaimableLabel>
+            <Styled.ClaimableAmount>
               <NumberFormat thousandSeparator displayType="text" value={formattedClaimableAmount} />
               <AssetIcon
                 id="history-rewards-module"
                 size={AssetIconSize.Medium}
                 symbol={AssetSymbol.DYDX}
               />
-            </StyledformattedClaimableAmount>
-          </StyledClaimableRewards>
-          <StyledButtonSection>
+            </Styled.ClaimableAmount>
+          </Styled.ClaimableRewards>
+          <Styled.ButtonSection>
             <Button
               onClick={() => {
                 dispatch(openModal({ type: ModalType.Claim }));
@@ -94,45 +93,47 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
             >
               {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
             </Button>
-          </StyledButtonSection>
-        </StyledRewardsButtonContainer>
+          </Styled.ButtonSection>
+        </Styled.RewardsButtonContainer>
       </Styled.HistoryClaimRewardsModule>
     </Styled.ModuleContainer>
   );
 };
 
-const Styled = {
-  ModuleContainer: styled.div`
-    display: grid;
-    grid-gap: 1rem;
+// eslint-disable-next-line
+const Styled: any = {};
 
-    @media ${breakpoints.tablet} {
-      margin-top: -3rem;
-    }
-  `,
-  HistoryClaimRewardsModule: styled.div`
-    display: flex;
-    background-color: ${({ theme }) => theme.layerlight};
-    width: 100%;
-    padding: 1.25rem 1.5rem;
-    border-radius: 1rem;
+Styled.ModuleContainer = styled.div`
+  display: grid;
+  grid-gap: 1rem;
 
-    @media ${breakpoints.tablet} {
-      flex-direction: column;
-    }
-  `,
-};
+  @media ${breakpoints.tablet} {
+    margin-top: -3rem;
+  }
+`;
 
-const StyledCopySection = styled.div`
+Styled.HistoryClaimRewardsModule = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.layerlight};
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+
+  @media ${breakpoints.tablet} {
+    flex-direction: column;
+  }
+`;
+
+Styled.CopySection = styled.div`
   flex: 1 1 auto;
 `;
 
-const StyledTitle = styled.div`
+Styled.Title = styled.div`
   ${fontSizes.size20};
   color: ${({ theme }) => theme.textlight};
 `;
 
-const StyledBody = styled.div`
+Styled.Body = styled.div`
   ${fontSizes.size15};
   color: ${({ theme }) => theme.textdark};
   margin-top: 0.5rem;
@@ -142,7 +143,7 @@ const StyledBody = styled.div`
   }
 `;
 
-const StyledRewardsButtonContainer = styled.div`
+Styled.RewardsButtonContainer = styled.div`
   display: flex;
   margin-left: 1.5rem;
 
@@ -157,7 +158,7 @@ const StyledRewardsButtonContainer = styled.div`
   }
 `;
 
-const StyledClaimableRewards = styled.div`
+Styled.ClaimableRewards = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -173,7 +174,7 @@ const StyledClaimableRewards = styled.div`
   }
 `;
 
-const StyledClaimableLabel = styled.div`
+Styled.ClaimableLabel = styled.div`
   ${fontSizes.size15};
   color: ${({ theme }) => theme.textbase};
   min-width: 8rem;
@@ -183,12 +184,12 @@ const StyledClaimableLabel = styled.div`
   }
 `;
 
-const StyledClaimableSublabel = styled.div`
+Styled.ClaimableSublabel = styled.div`
   ${fontSizes.size14};
   color: ${({ theme }) => theme.textdark};
 `;
 
-const StyledformattedClaimableAmount = styled.div`
+Styled.ClaimableAmount = styled.div`
   ${fontSizes.size24}
   display: flex;
   align-items: center;
@@ -208,7 +209,7 @@ const StyledformattedClaimableAmount = styled.div`
   }
 `;
 
-const StyledButtonSection = styled.div`
+Styled.ButtonSection = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 0.5rem;

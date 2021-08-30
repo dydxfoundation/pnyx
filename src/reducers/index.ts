@@ -12,6 +12,7 @@ import modals from './modals';
 import notifications from './notifications';
 import page from './page';
 import stakingPools from './staking-pools';
+import tradingRewards from './trading-rewards';
 import wallets from './wallets';
 
 export default (history: History) =>
@@ -27,5 +28,6 @@ export default (history: History) =>
     page,
     router: connectRouter(history),
     stakingPools,
+    tradingRewards,
     wallets,
   });

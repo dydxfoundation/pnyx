@@ -9,6 +9,7 @@ import {
   // @ts-ignore-next-line
 } from '@dydxprotocol/governance';
 
+import { TradingRewardsData } from 'types';
 import { AssetSymbol } from 'enums';
 
 import GovernanceClient from './governance-client';
@@ -89,16 +90,25 @@ class ContractClient {
     return balance;
   };
 
-  // getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
-  //   const unclaimedRewards = await this.txBuilder.claimsProxyService.getUserUnclaimedRewards(
-  //     walletAddress
-  //   );
+  getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
+    const unclaimedRewards = await this.txBuilder.claimsProxyService.getUserUnclaimedRewards(
+      walletAddress
+    );
 
-  //   return unclaimedRewards;
-  // };
+    return unclaimedRewards;
+  };
 
-  getUnclaimedRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> =>
-    '0';
+  getTradingRewardsData = async ({
+    walletAddress,
+  }: {
+    walletAddress: string;
+  }): Promise<TradingRewardsData> => {
+    const tradingRewardsData = await this.txBuilder.merkleDistributorService.getUserRewardsData(
+      walletAddress
+    );
+
+    return tradingRewardsData;
+  };
 
   claimRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
     const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.claimsProxyService.claimRewards(

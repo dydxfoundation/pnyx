@@ -1,4 +1,5 @@
 // General
+export { ReactComponent as ArrowDownIcon } from './arrow-down.svg';
 export { ReactComponent as ArrowLeftIcon } from './arrow-left.svg';
 export { default as BellIcon } from './bell';
 export { default as BellAlertIcon } from './bell-alert';
@@ -23,13 +24,13 @@ export { default as DydxIcon } from './currencies/DydxIcon';
 export { ReactComponent as UsdcIcon } from './currencies/usdc.svg';
 
 // Statuses
-export { ReactComponent as StatusActive } from './statuses/status-active.svg';
-export { ReactComponent as StatusCanceled } from './statuses/status-canceled.svg';
-export { ReactComponent as StatusExecuted } from './statuses/status-executed.svg';
-export { ReactComponent as StatusFailed } from './statuses/status-failed.svg';
-export { ReactComponent as StatusPending } from './statuses/status-pending.svg';
-export { ReactComponent as StatusQueued } from './statuses/status-queued.svg';
-export { ReactComponent as StatusSuccess } from './statuses/status-success.svg';
+export { ReactComponent as StatusActiveIcon } from './statuses/status-active.svg';
+export { ReactComponent as StatusCanceledIcon } from './statuses/status-canceled.svg';
+export { ReactComponent as StatusExecutedIcon } from './statuses/status-executed.svg';
+export { ReactComponent as StatusFailedIcon } from './statuses/status-failed.svg';
+export { ReactComponent as StatusPendingIcon } from './statuses/status-pending.svg';
+export { ReactComponent as StatusQueuedIcon } from './statuses/status-queued.svg';
+export { ReactComponent as StatusSuccessIcon } from './statuses/status-success.svg';
 
 // Wallets
 export { ReactComponent as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
