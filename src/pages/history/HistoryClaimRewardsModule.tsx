@@ -70,9 +70,6 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
           <Styled.ClaimableRewards>
             <Styled.ClaimableLabel>
               {stringGetter({ key: STRING_KEYS.CLAIMABLE })}
-              <Styled.ClaimableSublabel>
-                {stringGetter({ key: STRING_KEYS.STAKING_TRADING_REWARDS })}
-              </Styled.ClaimableSublabel>
             </Styled.ClaimableLabel>
             <Styled.ClaimableAmount>
               <NumberFormat thousandSeparator displayType="text" value={formattedClaimableAmount} />
@@ -125,16 +122,20 @@ Styled.HistoryClaimRewardsModule = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.layerlight};
   width: 100%;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.25rem 2rem;
   border-radius: 1rem;
 
   @media ${breakpoints.tablet} {
     flex-direction: column;
+    padding: 1.25rem 1.5rem;
   }
 `;
 
 Styled.CopySection = styled.div`
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 Styled.Title = styled.div`
@@ -154,7 +155,7 @@ Styled.Body = styled.div`
 
 Styled.RewardsButtonContainer = styled.div`
   display: flex;
-  margin-left: 1.5rem;
+  margin-left: 2rem;
 
   @media ${breakpoints.tablet} {
     margin-left: 0;
@@ -169,13 +170,13 @@ Styled.RewardsButtonContainer = styled.div`
 
 Styled.ClaimableRewards = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   background-color: ${({ theme }) => theme.layerdark};
   padding: 1.25rem;
   margin-right: 1rem;
   border-radius: 0.75rem;
-  min-width: max-content;
+  min-width: 16rem;
   flex: 1 1 auto;
 
   @media ${breakpoints.mobile} {
@@ -193,19 +194,13 @@ Styled.ClaimableLabel = styled.div`
   }
 `;
 
-Styled.ClaimableSublabel = styled.div`
-  ${fontSizes.size14};
-  color: ${({ theme }) => theme.textdark};
-`;
-
 Styled.ClaimableAmount = styled.div`
   ${fontSizes.size24}
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   color: ${({ theme }) => theme.textlight};
-  padding-left: 1.5rem;
   min-width: 8rem;
+  margin-top: 0.5rem;
 
   @media ${breakpoints.mobile} {
     min-width: auto;
