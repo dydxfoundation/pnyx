@@ -13,19 +13,22 @@ export type SectionHeaderProps = {
 } & ElementProps;
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, noPadding }) => (
-  <StyledSectionHeader noPadding={noPadding}>
+  <Styled.StyledSectionHeader noPadding={noPadding}>
     {title}
-    {subtitle && <Subtitle>{subtitle}</Subtitle>}
-  </StyledSectionHeader>
+    {subtitle && <Styled.Subtitle>{subtitle}</Styled.Subtitle>}
+  </Styled.StyledSectionHeader>
 );
 
-const StyledSectionHeader = styled.div<ElementProps>`
+// eslint-disable-next-line
+const Styled: any = {};
+
+Styled.StyledSectionHeader = styled.div<ElementProps>`
   ${fontSizes.size24}
   color: ${({ theme }) => theme.textlight};
   padding: ${({ noPadding }) => !noPadding && `0 1rem`};
 `;
 
-const Subtitle = styled.div`
+Styled.Subtitle = styled.div`
   ${fontSizes.size16}
   color: ${({ theme }) => theme.textdark};
   margin-top: 0.125rem;

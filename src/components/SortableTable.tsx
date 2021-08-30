@@ -32,6 +32,15 @@ type RowData = {
   [key: string]: any;
 };
 
+type BasicCellProps = {
+  align?: CellAlign;
+  fillWidth?: boolean;
+  isSortable?: boolean;
+  key: string;
+  label: React.ReactNode;
+  sortDirection?: SortDirection;
+};
+
 type RenderHeaderCellProps = {
   isSorted: boolean;
   onClick?: () => void;
@@ -46,26 +55,17 @@ type RenderCellProps = {
 type RenderCellFunction = (props: RenderCellProps) => React.ReactNode;
 type RenderHeaderCellFunction = (props: RenderHeaderCellProps) => React.ReactNode;
 
-type BasicCellProps = {
-  align?: CellAlign;
-  fillWidth?: boolean;
-  isSortable?: boolean;
-  key: string;
-  label: React.ReactNode;
-  sortDirection?: SortDirection;
-};
-
 type ColumnConfig = {
   renderCell: RenderCellFunction;
   renderHeaderCell?: RenderHeaderCellFunction;
-  sort?: () => number;
+  sort?: (row1: RowData, row2: RowData) => number;
   sortType?: SortType;
 } & BasicCellProps;
 
 type SortableTableProps = {
   columns: ColumnConfig[];
   data: RowData[];
-  defaultSortByColumn?: ColumnConfig;
+  defaultSortByColumn?: SortByColumnConfig;
   emptyState?: React.ReactNode;
   // eslint-disable-next-line
   getRowKey: (args: { rowData: any }) => string;

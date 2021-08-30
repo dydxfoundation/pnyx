@@ -417,10 +417,10 @@ const LiquidityPoolDetail: React.FC<
               <>
                 {stringGetter({ key: STRING_KEYS.POOL_DISCUSS_DESCRIPTION })}
                 <ButtonContainer>
-                  <Button color={ButtonColor.Lighter} linkOutIcon href={ExternalLink.Forums}>
+                  <Button linkOutIcon color={ButtonColor.Lighter} href={ExternalLink.Forums}>
                     {stringGetter({ key: STRING_KEYS.FORUMS })}
                   </Button>
-                  <Button color={ButtonColor.Light} linkOutIcon href={ExternalLink.Discord}>
+                  <Button linkOutIcon color={ButtonColor.Light} href={ExternalLink.Discord}>
                     Discord
                   </Button>
                 </ButtonContainer>

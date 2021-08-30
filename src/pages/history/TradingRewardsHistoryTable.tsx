@@ -255,7 +255,6 @@ Styled.StatusCellDate = styled.div`
 
   > div:last-child {
     ${fontSizes.size16}
-
     white-space: nowrap;
     color: ${({ theme }) => theme.textdark};
   }
@@ -275,7 +274,6 @@ Styled.EventCell = styled(TableCell)`
 
   > div:not(:first-child) {
     ${fontSizes.size16}
-
     white-space: nowrap;
     color: ${({ theme }) => theme.textdark};
   }

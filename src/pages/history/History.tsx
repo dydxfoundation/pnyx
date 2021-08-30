@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 
 import { LocalizationProps } from 'types';
 
@@ -16,7 +15,7 @@ import TradingRewardsHistoryTable from './TradingRewardsHistoryTable';
 export type HistoryProps = {} & LocalizationProps;
 
 const History: React.FC<HistoryProps> = ({ stringGetter }) => (
-  <StyledHistory>
+  <div>
     <SectionWrapper>
       <HistoryClaimRewardsModule />
     </SectionWrapper>
@@ -24,9 +23,7 @@ const History: React.FC<HistoryProps> = ({ stringGetter }) => (
       <SectionHeader noPadding title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
       <TradingRewardsHistoryTable />
     </SectionWrapper>
-  </StyledHistory>
+  </div>
 );
-
-const StyledHistory = styled.div``;
 
 export default withLocalization(History);
