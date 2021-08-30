@@ -200,12 +200,11 @@ Styled.ClaimableAmount = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.textlight};
   min-width: 8rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 
   @media ${breakpoints.mobile} {
     min-width: auto;
     padding-left: 0;
-    margin-top: 0.5rem;
   }
 
   svg {
