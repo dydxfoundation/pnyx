@@ -16,7 +16,9 @@ import Button, { ButtonColor } from 'components/Button';
 import { SingleStatCard, CardSize, ValueWithIcon } from 'components/Cards';
 
 import { openModal } from 'actions/modals';
+
 import { getUnclaimedRewardsData } from 'selectors/balances';
+import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
 import { MustBigNumber } from 'lib/numbers';
@@ -25,7 +27,9 @@ export type HistoryClaimRewardsModuleProps = {} & LocalizationProps;
 
 const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ stringGetter }) => {
   const dispatch = useDispatch();
+
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
+  const walletAddress = useSelector(getWalletAddress);
 
   usePollUnclaimedRewards();
 
@@ -82,12 +86,17 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
           <Styled.ButtonSection>
             <Button
               onClick={() => {
-                dispatch(openModal({ type: ModalType.Claim }));
+                dispatch(
+                  openModal({ type: walletAddress ? ModalType.Claim : ModalType.Onboarding })
+                );
               }}
             >
-              {stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}
+              {stringGetter({
+                key: walletAddress ? STRING_KEYS.CLAIM_REWARDS : STRING_KEYS.CONNECT_WALLET,
+              })}
             </Button>
             <Button
+              linkOutIcon
               color={ButtonColor.Lighter}
               href={`${ExternalLink.Documentation}${DocumentationSublinks.ClaimRewards}`}
             >

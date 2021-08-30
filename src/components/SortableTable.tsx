@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components/macro';
 
 import { ArrowDownIcon } from 'icons';
-import { breakpoints, fontSizes } from 'styles';
+import { breakpoints, fonts, fontSizes } from 'styles';
 
-import LoadingSpinner from 'components/LoadingSpinner';
+import LoadingBar from 'components/LoadingBar';
 
 export enum SortType {
   String = 'String',
@@ -35,7 +35,6 @@ type RowData = {
 type RenderHeaderCellProps = {
   isSorted: boolean;
   onClick?: () => void;
-  renderHeaderContent?: RenderHeaderContentFunction;
 } & BasicCellProps;
 
 type RenderCellProps = {
@@ -46,7 +45,6 @@ type RenderCellProps = {
 
 type RenderCellFunction = (props: RenderCellProps) => React.ReactNode;
 type RenderHeaderCellFunction = (props: RenderHeaderCellProps) => React.ReactNode;
-type RenderHeaderContentFunction = () => React.ReactNode;
 
 type BasicCellProps = {
   align?: CellAlign;
@@ -60,7 +58,6 @@ type BasicCellProps = {
 type ColumnConfig = {
   renderCell: RenderCellFunction;
   renderHeaderCell?: RenderHeaderCellFunction;
-  renderHeaderContent?: RenderHeaderContentFunction;
   sort?: () => number;
   sortType?: SortType;
 } & BasicCellProps;
@@ -69,8 +66,10 @@ type SortableTableProps = {
   columns: ColumnConfig[];
   data: RowData[];
   defaultSortByColumn?: ColumnConfig;
+  emptyState?: React.ReactNode;
   // eslint-disable-next-line
   getRowKey: (args: { rowData: any }) => string;
+  isLoading: boolean;
 };
 
 const renderDefaultHeaderCell: React.FC<RenderHeaderCellProps> = ({
@@ -80,29 +79,36 @@ const renderDefaultHeaderCell: React.FC<RenderHeaderCellProps> = ({
   key,
   label,
   onClick,
-  renderHeaderContent = () => label ?? key,
   sortDirection,
-}) =>
-  isSortable ? (
+}) => {
+  const commonProps = {
+    align,
+    key,
+  };
+
+  return isSortable ? (
     <Styled.TableCellWithSortToggle
       role="button"
       tabIndex="0"
-      align={align}
       isSorted={isSorted}
       onClick={onClick}
+      {...commonProps}
     >
-      <span>{renderHeaderContent()}</span>
+      <span>{label}</span>
       <Styled.SortDirectionArrow sortDirection={sortDirection} />
     </Styled.TableCellWithSortToggle>
   ) : (
-    <Styled.TableCell align={align}>{renderHeaderContent()}</Styled.TableCell>
+    <Styled.TableCell {...commonProps}>{label}</Styled.TableCell>
   );
+};
 
 export const SortableTable: React.FC<SortableTableProps> = ({
   columns = [],
   data = [],
-  getRowKey,
   defaultSortByColumn,
+  emptyState,
+  getRowKey,
+  isLoading,
 }) => {
   const initialSortByColumn: SortByColumnConfig = {
     key: defaultSortByColumn?.key ?? columns[0].key,
@@ -145,6 +151,8 @@ export const SortableTable: React.FC<SortableTableProps> = ({
     return sort(row1, row2) === (sortDirection === SortDirection.Increasing) ? -1 : 1;
   };
 
+  const hasData = data?.length > 0;
+
   return (
     <Styled.TableWrapper>
       <Styled.Table>
@@ -152,13 +160,12 @@ export const SortableTable: React.FC<SortableTableProps> = ({
           <Styled.Tr>
             {columns.map(
               ({
-                key,
-                label,
-                isSortable = false,
                 align,
                 fillWidth = false,
+                isSortable = false,
+                key,
+                label,
                 renderHeaderCell = renderDefaultHeaderCell,
-                renderHeaderContent,
               }) => (
                 <Styled.Th key={key} align={align} fillWidth={fillWidth}>
                   {renderHeaderCell({
@@ -168,7 +175,6 @@ export const SortableTable: React.FC<SortableTableProps> = ({
                     key,
                     label,
                     onClick: isSortable ? () => onToggleSortByColumn(key) : undefined,
-                    renderHeaderContent,
                     sortDirection:
                       sortByColumn.key === key ? sortByColumn.sortDirection : undefined,
                   })}
@@ -177,7 +183,7 @@ export const SortableTable: React.FC<SortableTableProps> = ({
             )}
           </Styled.Tr>
         </Styled.Thead>
-        {data?.length > 0 && (
+        {!isLoading && hasData && (
           <tbody>
             {data.sort(sortFunction).map((rowData, rowIndex) => (
               <Styled.Tr key={getRowKey({ rowData })}>
@@ -195,7 +201,14 @@ export const SortableTable: React.FC<SortableTableProps> = ({
           </tbody>
         )}
       </Styled.Table>
-      {!data?.length && <LoadingSpinner id="sortable-table" />}
+      {isLoading && (
+        <Styled.LoadingBarContainer>
+          <LoadingBar fullWidth height={4} />
+          <LoadingBar fullWidth height={4} />
+          <LoadingBar fullWidth height={4} />
+        </Styled.LoadingBarContainer>
+      )}
+      {!isLoading && !hasData && emptyState}
     </Styled.TableWrapper>
   );
 };
@@ -270,7 +283,8 @@ export const TableCell = styled.div<{ align?: CellAlign }>`
     ])};
 
   ${Styled.Th} & {
-    padding: 2rem 0;
+    ${fonts.medium}
+    padding: 1.5rem 0 1.25rem;
   }
 
   ${Styled.Td} & {
@@ -308,8 +322,8 @@ Styled.TableCellWithSortToggle = styled(Styled.TableCell)`
 `;
 
 Styled.SortDirectionArrow = styled(ArrowDownIcon)<{ sortDirection: SortDirection }>`
-  transform: perspective(10px) scale(0.00001);
-  width: 10px;
+  transform: perspective(0.625rem) scale(0.00001);
+  width: 0.625rem;
 
   transition: transform 0.25s cubic-bezier(0.33, 1.55, 0.25, 1), font-size 0.12s ease-out,
     opacity 0.15s;
@@ -317,10 +331,16 @@ Styled.SortDirectionArrow = styled(ArrowDownIcon)<{ sortDirection: SortDirection
   ${({ sortDirection }) =>
     ({
       [SortDirection.Increasing]: css`
-        transform: perspective(10px) rotateX(180deg);
+        transform: perspective(0.625rem) rotateX(180deg);
       `,
       [SortDirection.Decreasing]: css`
-        transform: perspective(10px) rotateX(0);
+        transform: perspective(0.625rem) rotateX(0);
       `,
     }[sortDirection])}
+`;
+
+Styled.LoadingBarContainer = styled.div`
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
 `;

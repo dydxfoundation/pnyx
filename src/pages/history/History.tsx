@@ -21,7 +21,7 @@ const History: React.FC<HistoryProps> = ({ stringGetter }) => (
       <HistoryClaimRewardsModule />
     </SectionWrapper>
     <SectionWrapper column>
-      <SectionHeader title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
+      <SectionHeader noPadding title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
       <TradingRewardsHistoryTable />
     </SectionWrapper>
   </StyledHistory>

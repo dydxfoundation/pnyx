@@ -90,6 +90,7 @@
     "TERMS_OF_USE": "Terms of Use"
   },
   "ONBOARDING": {
+    "CONNECT_WALLET": "Connect wallet",
     "CONNECT_YOUR_WALLET": "Connect your wallet",
     "CONNECTING": "Connecting",
     "SKIP_FOR_NOW": "Skip for now",
@@ -202,6 +203,8 @@
     "EPOCH_NUMBER": "Epoch {NUMBER}",
     "EVENT": "Event",
     "FOR_TRADING_IN_EPOCH": "For trading in {EPOCH_NUMBER}",
-    "REWARDED": "Rewarded"
+    "PENDING_REWARDS": "Pending rewards",
+    "REWARDED": "Rewarded",
+    "TRADING_REWARDS_HISTORY_EMPTY_STATE": "You have no trading rewards history."
   }
 }

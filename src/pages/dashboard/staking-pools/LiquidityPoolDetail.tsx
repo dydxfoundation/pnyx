@@ -393,6 +393,7 @@ const LiquidityPoolDetail: React.FC<
                 {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_ABOUT })}
                 <ButtonContainer>
                   <Button
+                    linkOutIcon
                     color={ButtonColor.Lighter}
                     href={`${ExternalLink.Documentation}${DocumentationSublinks.LiquidityPool}`}
                   >

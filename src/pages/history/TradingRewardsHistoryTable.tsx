@@ -1,20 +1,37 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import NumberFormat from 'react-number-format';
 import styled from 'styled-components/macro';
 
-import { TradingRewardStatus } from 'enums';
+import {
+  AssetSymbol,
+  DecimalPlaces,
+  DocumentationSublinks,
+  ExternalLink,
+  ModalType,
+  TradingRewardStatus,
+} from 'enums';
+
 import { LocalizationProps, TradingRewardsData } from 'types';
 
 import { withLocalization } from 'hoc';
 import { useGetTradingRewardsData } from 'hooks';
-import { StatusExecutedIcon, StatusPendingIcon } from 'icons';
+import { StatusActiveIcon, StatusExecutedIcon } from 'icons';
+import { breakpoints, fontSizes, MobileOnly, NotMobileOnly } from 'styles';
 
+import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
+import Button, { ButtonColor, ButtonContainer } from 'components/Button';
 import { CellAlign, SortableTable, TableCell } from 'components/SortableTable';
 
+import { openModal } from 'actions/modals';
+
 import { getSelectedLocale } from 'selectors/localization';
+import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
+
+import { MustBigNumber } from 'lib/numbers';
 
 export type TradingRewardsHistoryTableProps = {} & LocalizationProps;
 
@@ -64,19 +81,23 @@ const getFormattedTableData = ({
 const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
   stringGetter,
 }) => {
+  const dispatch = useDispatch();
+
   const selectedLocale = useSelector(getSelectedLocale, shallowEqual);
+  const walletAddress = useSelector(getWalletAddress);
 
   const tradingRewardsData = useGetTradingRewardsData();
   const formattedData = getFormattedTableData({ tradingRewardsData });
 
-  console.log('tradingRewardsData', tradingRewardsData);
   return (
     <SortableTable
-      data={formattedData}
       columns={[
         {
           key: 'epochEnd',
           label: stringGetter({ key: STRING_KEYS.STATUS }),
+          renderHeaderCell: ({ key, label }) => (
+            <Styled.StatusHeaderCell key={key}>{label}</Styled.StatusHeaderCell>
+          ),
           renderCell: ({ rowData: { status, epochEnd } }) => {
             const epochEndDate = new Date(epochEnd * 1000);
 
@@ -88,18 +109,19 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
             const TimeFormat = new Intl.DateTimeFormat(selectedLocale, {
               hour: '2-digit',
               minute: '2-digit',
-              second: '2-digit',
             });
 
             return (
               <Styled.StatusCell>
                 {status === TradingRewardStatus.Pending ? (
-                  <StatusPendingIcon />
+                  <StatusActiveIcon />
                 ) : (
                   <StatusExecutedIcon />
                 )}
-                {DateFormat.format(epochEndDate)}
-                {TimeFormat.format(epochEndDate)}
+                <Styled.StatusCellDate>
+                  <div>{DateFormat.format(epochEndDate)}</div>
+                  <div>{TimeFormat.format(epochEndDate)}</div>
+                </Styled.StatusCellDate>
               </Styled.StatusCell>
             );
           },
@@ -108,28 +130,43 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
           key: 'event',
           fillWidth: true,
           label: stringGetter({ key: STRING_KEYS.EVENT }),
-          renderCell: ({ rowData: { epochNumber } }) => (
-            <Styled.StatusCell>
-              {stringGetter({ key: STRING_KEYS.REWARDED })}
-              <Styled.WithBaseSpan
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: stringGetter({
-                    key: STRING_KEYS.FOR_TRADING_IN_EPOCH,
-                    params: {
-                      EPOCH_NUMBER: ReactDOMServer.renderToString(
-                        <span>
-                          {stringGetter({
-                            key: STRING_KEYS.EPOCH_NUMBER,
-                            params: { NUMBER: epochNumber },
-                          })}
-                        </span>
-                      ),
-                    },
-                  }),
-                }}
-              />
-            </Styled.StatusCell>
+          renderCell: ({ rowData: { epochNumber, status } }) => (
+            <Styled.EventCell>
+              <div>
+                {stringGetter({
+                  key:
+                    status === TradingRewardStatus.Pending
+                      ? STRING_KEYS.PENDING_REWARDS
+                      : STRING_KEYS.REWARDED,
+                })}
+              </div>
+              <MobileOnly>
+                {stringGetter({
+                  key: STRING_KEYS.EPOCH_NUMBER,
+                  params: { NUMBER: epochNumber },
+                })}
+              </MobileOnly>
+              <NotMobileOnly>
+                <Styled.WithBaseSpan
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: stringGetter({
+                      key: STRING_KEYS.FOR_TRADING_IN_EPOCH,
+                      params: {
+                        EPOCH_NUMBER: ReactDOMServer.renderToString(
+                          <span>
+                            {stringGetter({
+                              key: STRING_KEYS.EPOCH_NUMBER,
+                              params: { NUMBER: epochNumber },
+                            })}
+                          </span>
+                        ),
+                      },
+                    }),
+                  }}
+                />
+              </NotMobileOnly>
+            </Styled.EventCell>
           ),
         },
         {
@@ -137,11 +174,42 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
           align: CellAlign.End,
           label: stringGetter({ key: STRING_KEYS.EARNED }),
           renderCell: ({ rowData: { amount } }) => (
-            <Styled.StatusCell align={CellAlign.End}>{amount}</Styled.StatusCell>
+            <Styled.EarnedCell align={CellAlign.End}>
+              <NumberFormat
+                thousandSeparator
+                displayType="text"
+                value={MustBigNumber(amount).toFixed(DecimalPlaces.ShortToken)}
+              />
+              <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+            </Styled.EarnedCell>
           ),
         },
       ]}
+      data={formattedData}
+      emptyState={
+        <Styled.EmptyState>
+          {stringGetter({ key: STRING_KEYS.TRADING_REWARDS_HISTORY_EMPTY_STATE })}
+          {walletAddress && (
+            <ButtonContainer>
+              <Button
+                linkOutIcon
+                onClick={() => dispatch(openModal({ type: ModalType.TradeLink }))}
+              >
+                {stringGetter({ key: STRING_KEYS.TRADE })}
+              </Button>
+              <Button
+                linkOutIcon
+                color={ButtonColor.Lighter}
+                href={`${ExternalLink.Documentation}${DocumentationSublinks.TradingRewards}`}
+              >
+                {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
+              </Button>
+            </ButtonContainer>
+          )}
+        </Styled.EmptyState>
+      }
       getRowKey={({ rowData }) => rowData.epochEnd}
+      isLoading={!!walletAddress && !tradingRewardsData}
     />
   );
 };
@@ -149,7 +217,77 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
 // eslint-disable-next-line
 const Styled: any = {};
 
-Styled.StatusCell = styled(TableCell)``;
+Styled.EmptyState = styled.div`
+  ${fontSizes.size17}
+  width: 100%;
+  border-top: solid 0.0625rem ${({ theme }) => theme.bordergrey};
+  padding: 1.5rem 0;
+`;
+
+Styled.StatusHeaderCell = styled(TableCell)`
+  min-width: 8.875rem;
+
+  @media ${breakpoints.mobile} {
+    min-width: 6rem;
+  }
+`;
+
+Styled.StatusCell = styled(TableCell)`
+  > svg {
+    margin-right: 1.5rem;
+
+    @media ${breakpoints.mobile} {
+      margin-right: 0.75rem;
+    }
+  }
+`;
+
+Styled.StatusCellDate = styled.div`
+  ${fontSizes.size17}
+  display: grid;
+  gap: 0.25rem;
+  color: ${({ theme }) => theme.textbase};
+  padding-right: 2rem;
+
+  @media ${breakpoints.mobile} {
+    padding-right: 1rem;
+  }
+
+  > div:last-child {
+    ${fontSizes.size16}
+
+    white-space: nowrap;
+    color: ${({ theme }) => theme.textdark};
+  }
+`;
+
+Styled.EventCell = styled(TableCell)`
+  ${fontSizes.size17}
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.25rem;
+  color: ${({ theme }) => theme.textlight};
+  padding-right: 1.5rem;
+
+  @media ${breakpoints.mobile} {
+    padding-right: 1rem;
+  }
+
+  > div:not(:first-child) {
+    ${fontSizes.size16}
+
+    white-space: nowrap;
+    color: ${({ theme }) => theme.textdark};
+  }
+`;
+
+Styled.EarnedCell = styled(TableCell)`
+  ${fontSizes.size18}
+
+  > div {
+    margin-left: 0.375rem;
+  }
+`;
 
 Styled.WithBaseSpan = styled.div`
   > span {
