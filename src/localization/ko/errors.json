@@ -1,6 +1,8 @@
 {
   "GENERAL": {
-    "WRONG_NETWORK": "지갑 네트워크가 잘못되었습니다. 'Ethereum Mainnet'으로 설정되어 있는지 확인하십시오."
+    "SOMETHING_WENT_WRONG": "오류 발생: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "알 수 없는 오류",
+    "WRONG_NETWORK": "지갑 네트워크가 잘못되었습니다. '이더리움 메인넷'으로 설정되었는지 확인하십시오."
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "본인 소유가 아닌 이더리움 주소를 입력하십시오.",
