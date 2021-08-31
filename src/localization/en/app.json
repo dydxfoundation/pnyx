@@ -90,6 +90,7 @@
     "TERMS_OF_USE": "Terms of Use"
   },
   "ONBOARDING": {
+    "CONNECT_WALLET": "Connect wallet",
     "CONNECT_YOUR_WALLET": "Connect your wallet",
     "CONNECTING": "Connecting",
     "SKIP_FOR_NOW": "Skip for now",
@@ -118,8 +119,10 @@
     "CLAIM_REWARDS_NOTIFICATION": "Your claimed rewards will appear in your wallet once your transaction confirms.",
     "CLAIM_REWARDS": "Claim rewards",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "Withdraw all your claimable staking and trading rewards.",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "Total claimable rewards includes both your staking and trading rewards. Claiming will withdraw all available rewards to your wallet.",
     "CLAIM_YOUR_REWARDS": "Claim your rewards",
-    "CLAIMABLE": "Claimable"
+    "CLAIMABLE": "Claimable",
+    "STAKING_TRADING_REWARDS": "staking & trading rewards"
   },
   "STAKING_POOLS": {
     "BLACKOUT_WINDOW": "Blackout Window",
@@ -153,6 +156,7 @@
     "UNCLAIMED_REWARDS": "Unclaimed rewards",
     "UNTIL_NEXT_BLACKOUT_WINDOW": "until next blackout window.",
     "WITHDRAWS_DESCRIPTION": "View and manage your pending and available withdraws.",
+    "YIELD_PER_THOUSAND_PER_DAY": "Yield / $1K / day",
     "YIELD_PER_THOUSAND": "Yield / $1K",
     "YOUR_STAKE": "Your stake"
   },
@@ -194,5 +198,13 @@
     "VOTING_POWER": "Voting Power",
     "VOTING": "Voting",
     "YOUR_VOTE": "Your vote"
+  },
+  "HISTORY": {
+    "EPOCH_NUMBER": "Epoch {NUMBER}",
+    "EVENT": "Event",
+    "FOR_TRADING_IN_EPOCH": "For trading in {EPOCH_NUMBER}",
+    "PENDING_REWARDS": "Pending rewards",
+    "REWARDED": "Rewarded",
+    "TRADING_REWARDS_HISTORY_EMPTY_STATE": "You have no trading rewards history."
   }
 }

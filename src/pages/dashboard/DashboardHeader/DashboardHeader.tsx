@@ -29,6 +29,7 @@ import {
   CardContainer,
   CardSize,
   CardColor,
+  ValueWithIcon,
 } from 'components/Cards';
 
 import { openModal as openModalAction } from 'actions/modals';
@@ -45,8 +46,6 @@ import { findVotingPowerDelegatee, findProposingPowerDelegatee } from 'lib/gover
 
 import DashboardHero from './DashboardHero';
 import PortfolioModule from './PortfolioModule';
-
-import { ValueWithIcon } from '../DashboardStyles';
 
 export type DashboardHeaderProps = {} & LocalizationProps;
 

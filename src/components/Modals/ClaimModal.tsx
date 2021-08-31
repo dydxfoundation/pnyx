@@ -24,7 +24,6 @@ import LoadingSpace from 'components/LoadingSpace';
 import Tag, { TagColor } from 'components/Tag';
 import { Modal, ModalHeader, ModalSize, ModalContentContainer } from 'components/Modals';
 
-import { setUnclaimedRewards as setUnclaimedRewardsAction } from 'actions/balances';
 import { addNotification as addNotificationAction } from 'actions/notifications';
 
 import { getWalletAddress, getIsWalletIncorrectNetwork } from 'selectors/wallets';
@@ -48,7 +47,6 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
   addNotification,
   closeModal,
   isWalletIncorrectNetwork,
-  setUnclaimedRewards,
   stringGetter,
   unclaimedRewardsData,
   walletAddress,
@@ -58,12 +56,7 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [walletErrorMessage, setWalletErrorMessage] = useState<string | undefined>();
 
-  usePollUnclaimedRewards({
-    unclaimedRewardsData,
-    setUnclaimedRewards,
-    walletAddress: walletAddress as string,
-  });
-
+  usePollUnclaimedRewards();
   usePollWalletBalances({ assetSymbol: AssetSymbol.DYDX });
 
   const { unclaimedRewards } = unclaimedRewardsData;
@@ -237,7 +230,6 @@ const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
       addNotification: addNotificationAction,
-      setUnclaimedRewards: setUnclaimedRewardsAction,
     },
     dispatch
   );

@@ -10,7 +10,6 @@ import _ from 'lodash';
 // @ts-ignore-next-line
 import { Proposals } from '@dydxprotocol/governance';
 
-import { AppDispatch, RootState } from 'store';
 import {
   AppRoute,
   AssetSymbol,
@@ -19,7 +18,9 @@ import {
   ModalType,
   ProposalStatus,
 } from 'enums';
+
 import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from 'store';
 
 import { breakpoints, fontSizes } from 'styles';
 import { withLocalization } from 'hoc';
@@ -34,7 +35,7 @@ import {
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button, { ButtonColor, ButtonContainer } from 'components/Button';
 import VoteMeter from 'components/VoteMeter';
-import { SingleStatCard, CardColor } from 'components/Cards';
+import { SingleStatCard, CardColor, ValueWithIcon } from 'components/Cards';
 
 import CollapsibleSection from 'components/CollapsibleSection';
 import DetailPageHeader from 'components/DetailPageHeader';
@@ -379,16 +380,6 @@ const ProposalCollapsibleSections = styled.div`
 const StyledProposalStatus = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const ValueWithIcon = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-top: 0.125rem;
-    margin-left: 0.375rem;
-  }
 `;
 
 const DescriptionLabel = styled.div`

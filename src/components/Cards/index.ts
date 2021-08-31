@@ -10,7 +10,7 @@ export type ProgressBarCardProps = ProgressBarCardPropsImport;
 export type SingleStatCardProps = SingleStatCardPropsImport;
 export type WithDetailFooterProps = WithDetailFooterPropsImport;
 
-export { CardColor, CardContainer, CardSize } from './CardStyles';
+export { CardColor, CardContainer, CardSize, ValueWithIcon } from './CardStyles';
 
 export { default as InfoCtaCard } from './InfoCtaCard';
 export { default as InfoModuleCard } from './InfoModuleCard';

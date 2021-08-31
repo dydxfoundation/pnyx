@@ -10,4 +10,5 @@ export { Breakpoint, BreakpointRem } from './page';
 export { StakingPool } from './pools';
 export { ProposalStatus } from './proposals';
 export { AppRoute, StakingPoolRoute } from './routes';
+export { TradingRewardStatus } from './trading-rewards';
 export { WalletType } from './wallets';

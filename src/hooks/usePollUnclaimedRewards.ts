@@ -1,40 +1,46 @@
 import { useState, useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { UnclaimedRewardsData, SetUnclaimedRewardsPayload } from 'types';
+import { setUnclaimedRewards } from 'actions/balances';
+
+import { getWalletAddress } from 'selectors/wallets';
+import { getUnclaimedRewardsData } from 'selectors/balances';
 
 import contractClient from 'lib/contract-client';
 
+let isPolling: boolean = false;
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 
 const unclaimedRewardsInterval = Number(process.env.REACT_APP_DATA_POLL_MS);
 
 const stopPollingUnclaimedRewards = () => {
-  if (pollingFunction) {
-    clearTimeout(pollingFunction);
+  if (isPolling || pollingFunction) {
+    clearTimeout(pollingFunction as ReturnType<typeof setTimeout>);
+
+    isPolling = false;
     pollingFunction = null;
   }
 };
 
-const usePollUnclaimedRewards = ({
-  unclaimedRewardsData,
-  setUnclaimedRewards,
-  walletAddress,
-}: {
-  unclaimedRewardsData: UnclaimedRewardsData;
-  setUnclaimedRewards: (payload: SetUnclaimedRewardsPayload) => void;
-  walletAddress: string;
-}) => {
+const usePollUnclaimedRewards = () => {
   const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
   const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
+
+  const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
+  const walletAddress = useSelector(getWalletAddress);
 
   const pollUnclaimedRewards = async () => {
     stopPollingUnclaimedRewards();
 
+    isPolling = true;
+
     if (walletAddress) {
       try {
         const unclaimedRewards = await contractClient.getUnclaimedRewards({ walletAddress });
-        setUnclaimedRewards({ unclaimedRewards });
+        dispatch(setUnclaimedRewards({ unclaimedRewards }));
       } catch (error) {
         console.error(error);
       }
@@ -51,7 +57,7 @@ const usePollUnclaimedRewards = ({
      * poll immediately if last pull was later than the polling interval, otherwise wait for
      * the interval before polling again.
      */
-    if (!pollingFunction) {
+    if (!isPolling && !pollingFunction) {
       if (
         !lastPulledAt ||
         DateTime.local().diff(DateTime.fromISO(lastPulledAt)).milliseconds >=

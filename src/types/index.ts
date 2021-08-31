@@ -12,6 +12,7 @@ import * as NotificationTypes from './notifications';
 import * as PageTypes from './page';
 import * as StakingPoolsTypes from './staking-pools';
 import * as StylesTypes from './styles';
+import * as TradingRewardsTypes from './trading-rewards';
 import * as WalletsTypes from './wallets';
 
 export type NoOpFunction = () => void;
@@ -93,6 +94,10 @@ export type PageSizeChangedPayload = PageTypes.PageSizeChangedPayload;
 
 // Styles Types
 export type Theme = StylesTypes.Theme;
+
+// Trading Rewards Types
+export type SetTradingRewardsDataPayload = TradingRewardsTypes.SetTradingRewardsDataPayload;
+export type TradingRewardsData = TradingRewardsTypes.TradingRewardsData;
 
 // Wallets Types
 export type ConnectWalletOptions = WalletsTypes.ConnectWalletOptions;

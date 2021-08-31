@@ -1,5 +1,6 @@
 export enum AppRoute {
   Dashboard = '/dashboard',
+  History = '/history',
   ProposalDetail = '/dashboard/proposal',
 }
 

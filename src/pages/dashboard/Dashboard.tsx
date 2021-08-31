@@ -16,7 +16,14 @@ import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import GeoBlockBanner from 'components/GeoBlockBanner';
 import SectionHeader from 'components/SectionHeader';
 import SectionWrapper from 'components/SectionWrapper';
-import { SingleStatCard, InfoCtaCard, CardContainer, CardSize } from 'components/Cards';
+
+import {
+  SingleStatCard,
+  InfoCtaCard,
+  CardContainer,
+  CardSize,
+  ValueWithIcon,
+} from 'components/Cards';
 
 import { openModal as openModalAction } from 'actions/modals';
 
@@ -24,8 +31,6 @@ import { getStakingPoolsData } from 'selectors/staking-pools';
 import { getIsUserGeoBlocked } from 'selectors/geo';
 
 import { STRING_KEYS } from 'constants/localization';
-
-import { ValueWithIcon } from './DashboardStyles';
 
 import DashboardHeader from './DashboardHeader/DashboardHeader';
 import ProposalsSection from './proposals/ProposalsSection';

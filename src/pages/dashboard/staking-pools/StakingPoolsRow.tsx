@@ -205,7 +205,7 @@ const StakingPoolsRow: React.FC<
           value: formattedLiquidityPoolSize,
         },
         {
-          label: stringGetter({ key: STRING_KEYS.YIELD_PER_THOUSAND }),
+          label: stringGetter({ key: STRING_KEYS.YIELD_PER_THOUSAND_PER_DAY }),
           value: liquidityPoolYieldPerThousand,
         },
         { label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }), value: liquidityPoolUserBalance },

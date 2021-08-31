@@ -63,6 +63,11 @@ export const CardWrapper = styled.div<{
         }
       `
       : ''}
+
+  @media ${breakpoints.mobile} {
+    width: auto;
+    flex: 1 1 auto;
+  }
 `;
 
 export const CardContainer = styled.div<{
@@ -158,5 +163,15 @@ export const TooltipIcon = styled.div`
   > svg {
     height: 0.75rem;
     width: 0.5rem;
+  }
+`;
+
+export const ValueWithIcon = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-top: 0.125rem;
+    margin-left: 0.375rem;
   }
 `;

@@ -22,6 +22,7 @@ type ElementProps = {
   active?: boolean;
   color?: ButtonColor;
   fullWidth?: boolean;
+  href?: string;
   isLoading?: boolean;
   link?: boolean;
   size?: ButtonSize;
@@ -32,7 +33,7 @@ export type ButtonProps = {
   children: React.ReactNode;
   disabled?: boolean;
   linkOutIcon?: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 } & ElementProps;
 
 const Button = React.forwardRef<
@@ -42,6 +43,7 @@ const Button = React.forwardRef<
   (
     {
       children,
+      href,
       isLoading,
       linkOutIcon,
       size = ButtonSize.Medium,
@@ -53,9 +55,12 @@ const Button = React.forwardRef<
   ) => {
     const { disabled } = otherProps;
 
-    let Component;
+    // eslint-disable-next-line
+    let Component: any;
     if (disabled) {
       Component = DisabledButton;
+    } else if (href) {
+      Component = StyledButtonLink;
     } else {
       Component = StyledButton;
     }
@@ -64,7 +69,10 @@ const Button = React.forwardRef<
       <Component
         ref={ref}
         size={size}
-        onClick={disabled || isLoading ? _.noop : onClick}
+        href={href}
+        target={href ? '_blank' : undefined}
+        rel={href ? 'noopener noreferrer' : undefined}
+        onClick={disabled || isLoading || !onClick ? _.noop : onClick}
         isLoading={isLoading}
         useLargeStylesOnTablet={useLargeStylesOnTablet}
         {...otherProps}
@@ -107,7 +115,7 @@ const activeStyles = css<ElementProps>`
     return theme.colorpurplefaded;
   }};
 
-  ${({ link, theme }) =>
+  ${({ link }) =>
     link
       ? `${StyledLinkIcon} > svg path {
         stroke: currentColor;
@@ -123,9 +131,10 @@ const activeStylesWithHoverOverride = css<ElementProps>`
   }
 `;
 
-const StyledButton = styled.button<ElementProps>`
+const buttonStyles = css`
   ${fonts.medium}
   ${({ size }) => (size === ButtonSize.Pill ? fontSizes.size15 : fontSizes.size17)}
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,6 +274,15 @@ const StyledButton = styled.button<ElementProps>`
   }}
 `;
 
+const StyledButton = styled.button<ElementProps>`
+  ${buttonStyles}
+`;
+
+const StyledButtonLink = styled.a<ElementProps>`
+  ${buttonStyles}
+  text-decoration: none;
+`;
+
 const StyledLinkIcon = styled.div<ElementProps>`
   display: flex;
   align-items: center;
@@ -295,7 +313,8 @@ export const ButtonContainer = styled.div`
   display: flex;
   margin-top: 1rem;
 
-  > button:not(:last-child) {
+  > button:not(:last-child),
+  > a:not(:last-child) {
     margin-right: 0.75rem;
   }
 `;

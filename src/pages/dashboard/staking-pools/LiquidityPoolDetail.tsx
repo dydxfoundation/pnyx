@@ -34,7 +34,7 @@ import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button, { ButtonColor, ButtonContainer } from 'components/Button';
 import GeoBlockBanner from 'components/GeoBlockBanner';
 import SectionHeader from 'components/SectionHeader';
-import { SingleStatCard, CardColor } from 'components/Cards';
+import { SingleStatCard, CardColor, ValueWithIcon } from 'components/Cards';
 
 import CollapsibleSection from 'components/CollapsibleSection';
 import DetailPageHeader from 'components/DetailPageHeader';
@@ -393,13 +393,9 @@ const LiquidityPoolDetail: React.FC<
                 {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_ABOUT })}
                 <ButtonContainer>
                   <Button
+                    linkOutIcon
                     color={ButtonColor.Lighter}
-                    onClick={() => {
-                      window.open(
-                        `${ExternalLink.Documentation}${DocumentationSublinks.LiquidityPool}`,
-                        '_blank'
-                      );
-                    }}
+                    href={`${ExternalLink.Documentation}${DocumentationSublinks.LiquidityPool}`}
                   >
                     {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
                   </Button>
@@ -421,22 +417,10 @@ const LiquidityPoolDetail: React.FC<
               <>
                 {stringGetter({ key: STRING_KEYS.POOL_DISCUSS_DESCRIPTION })}
                 <ButtonContainer>
-                  <Button
-                    color={ButtonColor.Lighter}
-                    linkOutIcon
-                    onClick={() => {
-                      window.open(ExternalLink.Forums, '_blank');
-                    }}
-                  >
+                  <Button linkOutIcon color={ButtonColor.Lighter} href={ExternalLink.Forums}>
                     {stringGetter({ key: STRING_KEYS.FORUMS })}
                   </Button>
-                  <Button
-                    color={ButtonColor.Light}
-                    linkOutIcon
-                    onClick={() => {
-                      window.open(ExternalLink.Discord, '_blank');
-                    }}
-                  >
+                  <Button linkOutIcon color={ButtonColor.Light} href={ExternalLink.Discord}>
                     Discord
                   </Button>
                 </ButtonContainer>
@@ -469,16 +453,6 @@ const StyledContentRight = styled(ContentRight)`
   @media ${breakpoints.tablet} {
     margin-top: 1rem;
     flex: 1 1 auto;
-  }
-`;
-
-const ValueWithIcon = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-top: 0.125rem;
-    margin-left: 0.375rem;
   }
 `;
 

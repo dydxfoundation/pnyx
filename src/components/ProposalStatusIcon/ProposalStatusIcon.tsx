@@ -4,13 +4,13 @@ import styled from 'styled-components/macro';
 import { ProposalStatus } from 'enums';
 
 import {
-  StatusActive,
-  StatusCanceled,
-  StatusExecuted,
-  StatusFailed,
-  StatusPending,
-  StatusQueued,
-  StatusSuccess,
+  StatusActiveIcon,
+  StatusCanceledIcon,
+  StatusExecutedIcon,
+  StatusFailedIcon,
+  StatusPendingIcon,
+  StatusQueuedIcon,
+  StatusSuccessIcon,
 } from 'icons';
 
 export enum ProposalStatusSize {
@@ -35,31 +35,31 @@ const ProposalStatusIcon: React.FC<ProposalStatusIconProps> = ({
   let icon;
   switch (status) {
     case ProposalStatus.Active: {
-      icon = <StatusActive />;
+      icon = <StatusActiveIcon />;
       break;
     }
     case ProposalStatus.Canceled: {
-      icon = <StatusCanceled />;
+      icon = <StatusCanceledIcon />;
       break;
     }
     case ProposalStatus.Executed: {
-      icon = <StatusExecuted />;
+      icon = <StatusExecutedIcon />;
       break;
     }
     case ProposalStatus.Failed: {
-      icon = <StatusFailed />;
+      icon = <StatusFailedIcon />;
       break;
     }
     case ProposalStatus.Pending: {
-      icon = <StatusPending />;
+      icon = <StatusPendingIcon />;
       break;
     }
     case ProposalStatus.Queued: {
-      icon = <StatusQueued />;
+      icon = <StatusQueuedIcon />;
       break;
     }
     case ProposalStatus.Succeeded: {
-      icon = <StatusSuccess />;
+      icon = <StatusSuccessIcon />;
       break;
     }
   }
