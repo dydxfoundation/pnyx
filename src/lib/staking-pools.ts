@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js';
 import { StakingPool } from 'enums';
 import { StakingBalancesData, WithdrawBalancesData } from 'types';
 
-import { MustBigNumber, BIG_NUMBERS } from 'lib/numbers';
+import { MustBigNumber } from 'lib/numbers';
 
 /**
  * Normalize to $1K based on pool size and rewards per sec, then multiply by 60 * 60 * 24 to get rewards per day.
@@ -33,7 +33,7 @@ export const calculateEstimatedSafetyPoolAPR = ({
   rewardsPerSecond?: string;
 }): BigNumber =>
   MustBigNumber(rewardsPerSecond)
-    .div(BigNumber.min(poolSize, 1))
+    .div(BigNumber.max(poolSize, 1))
     .times(60)
     .times(60)
     .times(24)

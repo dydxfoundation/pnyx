@@ -1,18 +1,20 @@
-import { SetCirculatingSupplyPayload } from 'types';
+import { SetCirculatingSupplyPayload, SetDistributedTodayPayload } from 'types';
 
-import { setCirculatingSupply } from 'actions/distribution';
+import { setCirculatingSupply, setDistributedToday } from 'actions/distribution';
 
 type State = {
   circulatingSupply: string | null;
+  distributedToday: string | null;
 };
 
 type Action = {
   type: string;
-  payload: SetCirculatingSupplyPayload;
+  payload: SetCirculatingSupplyPayload & SetDistributedTodayPayload;
 };
 
 const initialState: State = {
   circulatingSupply: null,
+  distributedToday: null,
 };
 
 export default function distributionReducer(state = initialState, { type, payload }: Action) {
@@ -21,6 +23,12 @@ export default function distributionReducer(state = initialState, { type, payloa
       return {
         ...state,
         circulatingSupply: payload?.circulatingSupply,
+      };
+    }
+    case setDistributedToday().type: {
+      return {
+        ...state,
+        distributedToday: payload?.distributedToday,
       };
     }
     default: {

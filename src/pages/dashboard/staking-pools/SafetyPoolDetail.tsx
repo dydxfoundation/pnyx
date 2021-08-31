@@ -250,7 +250,7 @@ const SafetyPoolDetail: React.FC<
             />
             <SingleStatCard
               color={CardColor.Dark}
-              title={stringGetter({ key: STRING_KEYS.YIELD_PER_THOUSAND })}
+              title={stringGetter({ key: STRING_KEYS.CURRENT_APR })}
               value={
                 <ValueWithIcon>
                   <NumberFormat
@@ -265,7 +265,7 @@ const SafetyPoolDetail: React.FC<
                   <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
                 </ValueWithIcon>
               }
-              label={stringGetter({ key: STRING_KEYS.ESTIMATED_YIELD_PER_DAY })}
+              label={stringGetter({ key: STRING_KEYS.ESTIMATED_APR_IN_DYDX })}
               isLoading={!rewardsPerSecond || !poolSize}
             />
           </CardRow>

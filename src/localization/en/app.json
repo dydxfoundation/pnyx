@@ -129,6 +129,7 @@
     "CURRENT_APR": "Current APR",
     "CURRENTLY_BEING_STAKED": "currently being staked",
     "CURRENTLY_IN_BLACKOUT_WINDOW": "Currently in blackout window",
+    "ESTIMATED_APR_IN_DYDX": "Estimated APR in DYDX",
     "ESTIMATED_RATE": "Estimated rate",
     "ESTIMATED_YIELD_PER_DAY": "Estimated yield / day",
     "LIQUIDITY_POOL_ABOUT": "Liquidity, especially when used properly, is a core component of any successful exchange. To further liquidity network effects and incentivize professional market makers, DYDX will be distributed to users who stake USDC to the liquidity staking pool. Known and approved market makers will use the staked USDC to make markets on the Protocol, furthering liquidity available across the markets. The market makers will not be able to withdraw the USDC from the Protocol, requiring them to use it only in the Protocol.",

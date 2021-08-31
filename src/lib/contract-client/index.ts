@@ -75,6 +75,11 @@ class ContractClient {
     return circulatingSupply;
   };
 
+  getDistributedToday = async (): Promise<string> => {
+    const distributedToday = await this.txBuilder.dydxTokenService.distributedToday();
+    return distributedToday;
+  };
+
   getWalletBalance = async ({
     assetSymbol,
     walletAddress,

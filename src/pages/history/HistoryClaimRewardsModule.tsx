@@ -22,6 +22,7 @@ import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
 import { MustBigNumber } from 'lib/numbers';
+import LoadingBar from 'components/LoadingBar';
 
 export type HistoryClaimRewardsModuleProps = {} & LocalizationProps;
 
@@ -72,12 +73,22 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
               {stringGetter({ key: STRING_KEYS.CLAIMABLE })}
             </Styled.ClaimableLabel>
             <Styled.ClaimableAmount>
-              <NumberFormat thousandSeparator displayType="text" value={formattedClaimableAmount} />
-              <AssetIcon
-                id="history-rewards-module"
-                size={AssetIconSize.Medium}
-                symbol={AssetSymbol.DYDX}
-              />
+              {unclaimedRewards ? (
+                <>
+                  <NumberFormat
+                    thousandSeparator
+                    displayType="text"
+                    value={formattedClaimableAmount}
+                  />
+                  <AssetIcon
+                    id="history-rewards-module"
+                    size={AssetIconSize.Medium}
+                    symbol={AssetSymbol.DYDX}
+                  />
+                </>
+              ) : (
+                <LoadingBar height={2} width={6} />
+              )}
             </Styled.ClaimableAmount>
           </Styled.ClaimableRewards>
           <Styled.ButtonSection>
