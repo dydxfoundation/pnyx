@@ -53,11 +53,7 @@ import { STRING_KEYS } from 'constants/localization';
 
 import contractClient from 'lib/contract-client';
 import { MustBigNumber } from 'lib/numbers';
-
-import {
-  calculateEstimatedLiquidityPoolYieldPerDay,
-  calculateUserStakingBalance,
-} from 'lib/staking-pools';
+import { calculateEstimatedSafetyPoolAPR, calculateUserStakingBalance } from 'lib/staking-pools';
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
 
@@ -260,10 +256,11 @@ const SafetyPoolDetail: React.FC<
                   <NumberFormat
                     thousandSeparator
                     displayType="text"
-                    value={calculateEstimatedLiquidityPoolYieldPerDay({
+                    suffix="%"
+                    value={calculateEstimatedSafetyPoolAPR({
                       poolSize,
                       rewardsPerSecond,
-                    }).toFixed(DecimalPlaces.ShortToken)}
+                    }).toFixed(DecimalPlaces.Percent)}
                   />
                   <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
                 </ValueWithIcon>

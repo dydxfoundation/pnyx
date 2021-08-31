@@ -23,7 +23,7 @@ export const calculateEstimatedLiquidityPoolYieldPerDay = ({
 
 /**
  * Normalize based on pool size and rewards / sec and multiply by 60 * 60 * 24 * 365 to
- * get rewards per year per DYDX. Finally, divide 1 / normalizedRewards to get APR.
+ * get rewards per year per DYDX, then multiple by 100 to get the APR.
  */
 export const calculateEstimatedSafetyPoolAPR = ({
   poolSize = '0',
@@ -31,16 +31,14 @@ export const calculateEstimatedSafetyPoolAPR = ({
 }: {
   poolSize?: string;
   rewardsPerSecond?: string;
-}): BigNumber => {
-  const normalizedRewards = MustBigNumber(rewardsPerSecond)
+}): BigNumber =>
+  MustBigNumber(rewardsPerSecond)
     .div(BigNumber.min(poolSize, 1))
     .times(60)
     .times(60)
     .times(24)
-    .times(365);
-
-  return BIG_NUMBERS.ONE.div(normalizedRewards);
-};
+    .times(365)
+    .times(100);
 
 export const calculateUserStakingBalance = ({
   stakingBalancesData,

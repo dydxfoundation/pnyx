@@ -38,7 +38,11 @@ import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
 import { abbreviateNumber, MustBigNumber } from 'lib/numbers';
-import { calculateEstimatedLiquidityPoolYieldPerDay } from 'lib/staking-pools';
+
+import {
+  calculateEstimatedLiquidityPoolYieldPerDay,
+  calculateEstimatedSafetyPoolAPR,
+} from 'lib/staking-pools';
 
 const defaultLoadingBar = <LoadingBar height={1.625} width={4} />;
 
@@ -66,22 +70,45 @@ const StakingPoolsRow: React.FC<
   const safetyPoolStakingBalances = balances[StakingPool.Safety];
   const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
 
-  let safetyPoolSize: React.ReactNode;
+  let formattedSafetyPoolSize: React.ReactNode;
+
+  const {
+    poolSize: safetyPoolSize,
+    rewardsPerSecond: safetyRewardsPerSecond,
+  } = stakingPoolsData.data[StakingPool.Safety];
 
   if (safetyPoolData.poolSize) {
     const { num, suffix } = abbreviateNumber({
-      num: MustBigNumber(safetyPoolData.poolSize).toString(),
+      num: MustBigNumber(safetyPoolSize).toString(),
       decimals: DecimalPlaces.None,
     });
 
-    safetyPoolSize = (
+    formattedSafetyPoolSize = (
       <ValueWithIcon>
         <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
       </ValueWithIcon>
     );
   } else {
-    safetyPoolSize = defaultLoadingBar;
+    formattedSafetyPoolSize = defaultLoadingBar;
+  }
+
+  let safetyPoolAPR: React.ReactNode;
+
+  if (safetyPoolSize && safetyRewardsPerSecond) {
+    safetyPoolAPR = (
+      <NumberFormat
+        thousandSeparator
+        displayType="text"
+        suffix="%"
+        value={calculateEstimatedSafetyPoolAPR({
+          poolSize: safetyPoolSize,
+          rewardsPerSecond: safetyRewardsPerSecond,
+        }).toFixed(DecimalPlaces.Percent)}
+      />
+    );
+  } else {
+    safetyPoolAPR = defaultLoadingBar;
   }
 
   let safetyPoolUserBalance: React.ReactNode = '-';
@@ -112,9 +139,12 @@ const StakingPoolsRow: React.FC<
       infoModulesConfig={[
         {
           label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
-          value: safetyPoolSize,
+          value: formattedSafetyPoolSize,
         },
-        { label: stringGetter({ key: STRING_KEYS.CURRENT_APR }), value: '0.00%' },
+        {
+          label: stringGetter({ key: STRING_KEYS.CURRENT_APR }),
+          value: safetyPoolAPR,
+        },
         {
           label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }),
           value: safetyPoolUserBalance,
