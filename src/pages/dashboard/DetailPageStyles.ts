@@ -42,16 +42,12 @@ export const CardRow = styled.div`
   display: flex;
   justify-content: space-between;
 
-  &:not(:last-child) {
-    margin-bottom: 1.25rem;
+  &:not(:first-child) {
+    margin-top: 1.25rem;
   }
 
   @media ${breakpoints.mobile} {
     flex-direction: column;
-
-    &:not(:last-child) {
-      margin-bottom: 0;
-    }
   }
 
   > div {

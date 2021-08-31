@@ -9,7 +9,7 @@ export const ModalAlignedContentContainer = styled.div`
 
   // For Safari/Firefox compatibility
   &::after {
-    flex: 0 0 1.25rem;
+    flex: 0 0 1.5rem;
     content: '';
   }
 `;
@@ -21,7 +21,7 @@ export const ModalContentContainer = styled.div`
 
   // For Safari/Firefox compatibility
   &::after {
-    flex: 0 0 1.25rem;
+    flex: 0 0 1.5rem;
     content: '';
   }
 

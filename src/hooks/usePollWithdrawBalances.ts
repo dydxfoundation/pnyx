@@ -36,7 +36,8 @@ const usePollWithdrawBalances = ({ stakingPool }: { stakingPool: StakingPool }) 
     }
 
     try {
-      const newData = await contractClient.stakingPoolClient.getLiquidityPoolWithdrawBalances({
+      const newData = await contractClient.stakingPoolClient.getWithdrawBalances({
+        stakingPool,
         walletAddress,
       });
 

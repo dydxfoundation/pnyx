@@ -3,6 +3,10 @@ import _ from 'lodash';
 
 import { DecimalPlaces } from 'enums';
 
+export const BIG_NUMBERS = {
+  ONE: new BigNumber(1),
+};
+
 export const MustBigNumber = (amount?: string | number | null | undefined): BigNumber =>
   new BigNumber(amount || 0);
 

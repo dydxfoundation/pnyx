@@ -39,14 +39,14 @@ const usePollStakingBalances = () => {
     try {
       const balancePromises = [];
 
-      // for (const stakingPool of Object.values(StakingPool)) {
-      balancePromises.push(
-        contractClient.stakingPoolClient?.getUserBalancesAndUnclaimedRewards({
-          stakingPool: StakingPool.Liquidity,
-          walletAddress,
-        })
-      );
-      // }
+      for (const stakingPool of Object.values(StakingPool)) {
+        balancePromises.push(
+          contractClient.stakingPoolClient?.getUserBalancesAndUnclaimedRewards({
+            stakingPool,
+            walletAddress,
+          })
+        );
+      }
 
       const balancesData = await Promise.all(balancePromises);
       const balances: StakingBalances = {} as StakingBalances;

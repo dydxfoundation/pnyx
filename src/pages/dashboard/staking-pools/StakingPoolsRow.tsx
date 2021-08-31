@@ -19,7 +19,7 @@ import {
 } from 'enums';
 
 import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes, NotMobileOnly } from 'styles';
+import { NotMobileOnly } from 'styles';
 import { usePollStakingBalances, usePollStakingPoolsData } from 'hooks';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
@@ -63,67 +63,61 @@ const StakingPoolsRow: React.FC<
 
   const { balances } = stakingBalancesData;
 
-  // const safetyPoolStakingBalances = balances[StakingPool.Safety];
-  // const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
+  const safetyPoolStakingBalances = balances[StakingPool.Safety];
+  const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
 
-  // let safetyPoolSize: React.ReactNode;
+  let safetyPoolSize: React.ReactNode;
 
-  // if (safetyPoolData.poolSize) {
-  //   const { num, suffix } = abbreviateNumber({
-  //     num: MustBigNumber(safetyPoolData.poolSize).toString(),
-  //     decimals: DecimalPlaces.None,
-  //   });
+  if (safetyPoolData.poolSize) {
+    const { num, suffix } = abbreviateNumber({
+      num: MustBigNumber(safetyPoolData.poolSize).toString(),
+      decimals: DecimalPlaces.None,
+    });
 
-  //   safetyPoolSize = (
-  //     <ValueWithIcon>
-  //       <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-  //       <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-  //     </ValueWithIcon>
-  //   );
-  // } else {
-  //   safetyPoolSize = defaultLoadingBar;
-  // }
+    safetyPoolSize = (
+      <ValueWithIcon>
+        <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+      </ValueWithIcon>
+    );
+  } else {
+    safetyPoolSize = defaultLoadingBar;
+  }
 
-  // let safetyPoolUserBalance: React.ReactNode = '-';
+  let safetyPoolUserBalance: React.ReactNode = '-';
 
-  // if (walletAddress) {
-  //   if (safetyPoolStakingBalances.userBalance) {
-  //     const { num, suffix } = abbreviateNumber({
-  //       num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
-  //       decimals: DecimalPlaces.Abbreviated,
-  //     });
+  if (walletAddress) {
+    if (safetyPoolStakingBalances.userBalance) {
+      const { num, suffix } = abbreviateNumber({
+        num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
+        decimals: DecimalPlaces.Abbreviated,
+      });
 
-  //     safetyPoolUserBalance = (
-  //       <ValueWithIcon>
-  //         <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-  //       </ValueWithIcon>
-  //     );
-  //   } else {
-  //     safetyPoolUserBalance = defaultLoadingBar;
-  //   }
-  // }
+      safetyPoolUserBalance = (
+        <ValueWithIcon>
+          <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+        </ValueWithIcon>
+      );
+    } else {
+      safetyPoolUserBalance = defaultLoadingBar;
+    }
+  }
 
   const safetyPoolCard = (
     <InfoModuleCard
-      isDisabled
-      title={
-        <ComingSoonTitle>
-          {stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
-          <ComingSoon>{stringGetter({ key: STRING_KEYS.COMING_SOON })}</ComingSoon>
-        </ComingSoonTitle>
-      }
+      title={stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
       symbol={AssetSymbol.DYDX}
-      // onClick={() => history.push(StakingPoolRoute.SafetyPool)}
+      onClick={() => history.push(StakingPoolRoute.SafetyPool)}
       infoModulesConfig={[
         {
           label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
-          value: '0',
+          value: safetyPoolSize,
         },
         { label: stringGetter({ key: STRING_KEYS.CURRENT_APR }), value: '0.00%' },
         {
           label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }),
-          value: '0',
+          value: safetyPoolUserBalance,
         },
       ]}
     />
@@ -213,26 +207,26 @@ const StakingPoolsRow: React.FC<
     />
   );
 
-  // let safetyPoolEarnings: React.ReactNode;
-  // if (walletAddress) {
-  //   if (safetyPoolStakingBalances.unclaimedRewards) {
-  //     safetyPoolEarnings = (
-  //       <ValueWithIcon>
-  //         <NumberFormat
-  //           thousandSeparator
-  //           displayType="text"
-  //           value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
-  //             DecimalPlaces.ShortToken,
-  //             BigNumber.ROUND_UP
-  //           )}
-  //         />
-  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-  //       </ValueWithIcon>
-  //     );
-  //   } else {
-  //     safetyPoolEarnings = defaultLoadingBar;
-  //   }
-  // }
+  let safetyPoolEarnings: React.ReactNode;
+  if (walletAddress) {
+    if (safetyPoolStakingBalances.unclaimedRewards) {
+      safetyPoolEarnings = (
+        <ValueWithIcon>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
+              DecimalPlaces.ShortToken,
+              BigNumber.ROUND_UP
+            )}
+          />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+        </ValueWithIcon>
+      );
+    } else {
+      safetyPoolEarnings = defaultLoadingBar;
+    }
+  }
 
   let liquidityPoolEarnings: React.ReactNode;
   if (walletAddress) {
@@ -284,9 +278,8 @@ const StakingPoolsRow: React.FC<
         )}
         {!isUserGeoBlocked && walletAddress ? (
           <WithDetailFooter
-            isDisabled
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
-            value="0.00"
+            value={safetyPoolEarnings}
             ctaConfigs={{
               primary: {
                 label: stringGetter({ key: STRING_KEYS.STAKE }),
@@ -335,24 +328,6 @@ const ValueWithIcon = styled.div`
   svg {
     margin-top: 0.125rem;
     margin-left: 0.375rem;
-  }
-`;
-
-const ComingSoonTitle = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ComingSoon = styled.div`
-  ${fontSizes.size13}
-  letter-spacing: 0.0625rem;
-  text-transform: uppercase;
-  opacity: 0.8;
-  margin-top: 3px;
-  margin-left: 12px;
-
-  @include ${breakpoints.tablet} {
-    ${fontSizes.size14}
   }
 `;
 

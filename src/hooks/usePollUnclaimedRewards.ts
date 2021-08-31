@@ -82,9 +82,18 @@ const usePollUnclaimedRewards = () => {
   );
 
   useEffect(() => {
-    /** If the wallet address changes and current instance is polling, pull new rewards immediately. */
-    if (isInstancePolling && walletAddress && previousWalletAddress !== walletAddress) {
-      pollUnclaimedRewards();
+    /**
+     * If the wallet address changes and current instance is polling, pull new rewards immediately.
+     * If the user disconnects their wallet, stop polling.
+     * */
+    if (isInstancePolling) {
+      if (walletAddress && previousWalletAddress !== walletAddress) {
+        pollUnclaimedRewards();
+      }
+
+      if (!walletAddress) {
+        stopPollingUnclaimedRewards();
+      }
     }
 
     setPreviousWalletAddress(walletAddress);

@@ -21,7 +21,7 @@ import { LocalizationProps } from 'types';
 
 import {
   useGetCountdownDiff,
-  usePollLiquidityPoolEpochData,
+  usePollEpochData,
   usePollStakingBalances,
   usePollStakingPoolsData,
   usePollWithdrawBalances,
@@ -83,8 +83,8 @@ const LiquidityPoolDetail: React.FC<
 
   usePollStakingPoolsData();
   usePollStakingBalances();
-  usePollLiquidityPoolEpochData();
 
+  usePollEpochData({ stakingPool: StakingPool.Liquidity });
   usePollWithdrawBalances({ stakingPool: StakingPool.Liquidity });
 
   const { userBalance, unclaimedRewards } = stakingBalancesData.balances[StakingPool.Liquidity];
@@ -131,8 +131,9 @@ const LiquidityPoolDetail: React.FC<
     try {
       setIsLoadingWithdrawAvailable(true);
 
-      const txHash = await contractClient.stakingPoolClient.withdrawAvailableLiquidityPoolBalance({
+      const txHash = await contractClient.stakingPoolClient.withdrawAvailableBalance({
         amount: availableWithdrawBalance,
+        stakingPool: StakingPool.Liquidity,
         walletAddress: walletAddress as string,
       });
 
@@ -221,7 +222,8 @@ const LiquidityPoolDetail: React.FC<
       <DetailPageHeader
         ctaConfig={{
           label: stringGetter({ key: STRING_KEYS.STAKE }),
-          onClick: () => openModal({ type: ModalType.Stake }),
+          onClick: () =>
+            openModal({ type: ModalType.Stake, props: { stakingPool: StakingPool.Liquidity } }),
           disabled: !walletAddress || isUserGeoBlocked,
         }}
         label={stringGetter({ key: STRING_KEYS.POOL })}
@@ -330,7 +332,11 @@ const LiquidityPoolDetail: React.FC<
                         ? {
                             color: ButtonColor.Lighter,
                             label: stringGetter({ key: STRING_KEYS.REQUEST }),
-                            onClick: () => openModal({ type: ModalType.RequestWithdraw }),
+                            onClick: () =>
+                              openModal({
+                                type: ModalType.RequestWithdraw,
+                                props: { stakingPool: StakingPool.Liquidity },
+                              }),
                           }
                         : undefined
                     }
@@ -457,11 +463,7 @@ const StyledContentRight = styled(ContentRight)`
 `;
 
 const WithdrawSection = styled.div`
-  margin-top: 1rem;
-
-  @media ${breakpoints.tablet} {
-    margin-top: 2rem;
-  }
+  margin-top: 2.5rem;
 `;
 
 const WithdrawCardRow = styled.div`

@@ -64,7 +64,7 @@ export const CardWrapper = styled.div<{
       `
       : ''}
 
-  @media ${breakpoints.mobile} {
+  @media ${breakpoints.desktopSmall} {
     width: auto;
     flex: 1 1 auto;
   }

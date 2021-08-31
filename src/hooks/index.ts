@@ -6,7 +6,7 @@ export { default as useGetVotedOnDataForProposal } from './useGetVotedOnDataForP
 export { default as useOnClickOutside } from './useOnClickOutside';
 export { default as usePollAllowance } from './usePollAllowance';
 export { default as usePollGovernancePowersData } from './usePollGovernancePowersData';
-export { default as usePollLiquidityPoolEpochData } from './usePollLiquidityPoolEpochData';
+export { default as usePollEpochData } from './usePollEpochData';
 export { default as usePollStakingBalances } from './usePollStakingBalances';
 export { default as usePollStakingPoolsData } from './usePollStakingPoolsData';
 export { default as usePollUnclaimedRewards } from './usePollUnclaimedRewards';

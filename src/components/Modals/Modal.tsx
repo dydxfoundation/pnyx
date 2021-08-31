@@ -21,6 +21,7 @@ const StyledModal = styled.div<ModalProps>`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.layerlight};
+  box-shadow: 0 12px 12px ${({ theme }) => theme.layerbase};
   border-radius: 1rem;
   max-height: calc(100% - 1.5rem);
   overflow: hidden;

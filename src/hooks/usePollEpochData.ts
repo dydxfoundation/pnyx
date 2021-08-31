@@ -20,7 +20,7 @@ const stopPollingEpochData = () => {
   }
 };
 
-const usePollLiquidityPoolEpochData = () => {
+const usePollEpochData = ({ stakingPool }: { stakingPool: StakingPool }) => {
   const dispatch = useDispatch();
   const stakingPoolsData = useSelector(getStakingPoolsData, shallowEqual);
 
@@ -28,7 +28,7 @@ const usePollLiquidityPoolEpochData = () => {
     currentlyInBlackoutWindow,
     lengthOfBlackoutWindow,
     nextEpochDate,
-  } = stakingPoolsData.data[StakingPool.Liquidity];
+  } = stakingPoolsData.data[stakingPool];
 
   const pollCalculateData = () => {
     stopPollingEpochData();
@@ -47,7 +47,7 @@ const usePollLiquidityPoolEpochData = () => {
 
       dispatch(
         updateStakingPoolsData({
-          stakingPool: StakingPool.Liquidity,
+          stakingPool,
           data: {
             currentlyInBlackoutWindow: newCurrentlyInBlackoutWindow,
           },
@@ -64,7 +64,7 @@ const usePollLiquidityPoolEpochData = () => {
     const {
       timeRemainingInCurrentEpoch,
       lengthOfBlackoutWindow: newLengthOfBlackoutWindow,
-    } = await contractClient.stakingPoolClient.getLiquidityPoolEpochParams();
+    } = await contractClient.stakingPoolClient.getEpochParams({ stakingPool });
 
     const nextEpochISOString = DateTime.local()
       .plus({ seconds: Number(timeRemainingInCurrentEpoch) })
@@ -75,7 +75,7 @@ const usePollLiquidityPoolEpochData = () => {
 
     dispatch(
       updateStakingPoolsData({
-        stakingPool: StakingPool.Liquidity,
+        stakingPool,
         data: {
           currentlyInBlackoutWindow: newCurrentlyInBlackoutWindow,
           lengthOfBlackoutWindow: newLengthOfBlackoutWindow,
@@ -107,4 +107,4 @@ const usePollLiquidityPoolEpochData = () => {
   }, [currentlyInBlackoutWindow, lengthOfBlackoutWindow, nextEpochDate]);
 };
 
-export default usePollLiquidityPoolEpochData;
+export default usePollEpochData;

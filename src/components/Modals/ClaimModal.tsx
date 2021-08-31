@@ -98,6 +98,8 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
     );
   }
 
+  const unclaimedRewardsBN = MustBigNumber(unclaimedRewards);
+
   return (
     <Modal size={ModalSize.Medium}>
       {_.isNil(unclaimedRewards) || _.isNil(walletBalance) ? (
@@ -110,20 +112,19 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
             subtitle={stringGetter({ key: STRING_KEYS.CLAIM_YOUR_REWARDS_DESCRIPTION })}
           />
           <ModalContentContainer>
-            <ClaimableRewardsContainer>
-              <ClaimableLabel>{stringGetter({ key: STRING_KEYS.CLAIMABLE })}</ClaimableLabel>
-              <ClaimableAmount>
+            <Styled.ClaimableRewardsContainer>
+              <Styled.ClaimableLabel>
+                {stringGetter({ key: STRING_KEYS.CLAIMABLE })}
+              </Styled.ClaimableLabel>
+              <Styled.ClaimableAmount>
                 <NumberFormat
                   thousandSeparator
                   displayType="text"
-                  value={MustBigNumber(unclaimedRewards).toFixed(
-                    DecimalPlaces.ShortToken,
-                    BigNumber.ROUND_UP
-                  )}
+                  value={unclaimedRewardsBN.toFixed(DecimalPlaces.ShortToken, BigNumber.ROUND_UP)}
                 />
-                <AssetIcon dark size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-              </ClaimableAmount>
-            </ClaimableRewardsContainer>
+                <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+              </Styled.ClaimableAmount>
+            </Styled.ClaimableRewardsContainer>
             {(errorMessage || walletErrorMessage) && (
               <AlertMessage
                 type={AlertMessageType.Error}
@@ -137,10 +138,6 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
                 }
               />
             )}
-            <AlertMessage
-              type={AlertMessageType.Warning}
-              message={stringGetter({ key: STRING_KEYS.TRANSFER_LOCK_WARNING })}
-            />
             <WithReceipt
               receiptOnTop
               receiptConfig={[
@@ -173,7 +170,7 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
             >
               <Button
                 fullWidth
-                disabled
+                disabled={unclaimedRewardsBN.eq(0)}
                 useLargeStylesOnTablet
                 isLoading={isLoading}
                 onClick={onClickClaim}
@@ -188,18 +185,21 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
   );
 };
 
-const ClaimableRewardsContainer = styled.div`
+// eslint-disable-next-line
+const Styled: any = {};
+
+Styled.ClaimableRewardsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 4rem;
-  padding: 0 1rem;
-  background-color: ${({ theme }) => theme.layerlighter};
+  min-height: 4rem;
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.layerdark};
   border-radius: 0.5rem;
 `;
 
-const ClaimableLabel = styled.div`
+Styled.ClaimableLabel = styled.div`
   ${fontSizes.size14}
   color: ${({ theme }) => theme.textbase};
 
@@ -208,7 +208,7 @@ const ClaimableLabel = styled.div`
   }
 `;
 
-const ClaimableAmount = styled.div`
+Styled.ClaimableAmount = styled.div`
   ${fontSizes.size24}
   display: flex;
   align-items: center;

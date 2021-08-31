@@ -9,7 +9,7 @@ import { PoolWithdrawBalancesData } from 'types';
 
 const stakeGasLimitsByStakingPool = {
   [StakingPool.Liquidity]: '0x2BF20', // 180000
-  [StakingPool.Safety]: '0x7A120', // 500000
+  [StakingPool.Safety]: '0x7A120', // 600000
 };
 
 class StakingPoolsClient {
@@ -161,16 +161,20 @@ class StakingPoolsClient {
     return txHash;
   };
 
-  getLiquidityPoolWithdrawBalances = async ({
+  getWithdrawBalances = async ({
+    stakingPool,
     walletAddress,
   }: {
+    stakingPool: StakingPool;
     walletAddress: string;
   }): Promise<PoolWithdrawBalancesData> => {
-    const availableWithdrawBalance = await this.txBuilder.liquidityModuleService.getUserStakeAvailableToWithdraw(
-      walletAddress
-    );
+    const serviceKey = this.getServiceKey({ stakingPool });
 
-    const pendingWithdrawBalance = await this.txBuilder.liquidityModuleService.getUserStakePendingWithdraw(
+    const availableWithdrawBalance = await this.txBuilder[
+      serviceKey
+    ].getUserStakeAvailableToWithdraw(walletAddress);
+
+    const pendingWithdrawBalance = await this.txBuilder[serviceKey].getUserStakePendingWithdraw(
       walletAddress
     );
 
@@ -180,17 +184,20 @@ class StakingPoolsClient {
     };
   };
 
-  requestLiquidityPoolWithdraw = async ({
+  requestWithdraw = async ({
     amount,
+    stakingPool,
     walletAddress,
   }: {
     amount?: string;
+    stakingPool: StakingPool;
     walletAddress: string;
   }): Promise<string> => {
-    const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.liquidityModuleService.requestWithdrawal(
-      walletAddress,
-      amount
-    );
+    const serviceKey = this.getServiceKey({ stakingPool });
+
+    const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder[
+      serviceKey
+    ].requestWithdrawal(walletAddress, amount);
 
     const requestWithdrawTransaction = await _.first(transactions).tx();
 
@@ -206,18 +213,20 @@ class StakingPoolsClient {
     return txHash;
   };
 
-  withdrawAvailableLiquidityPoolBalance = async ({
+  withdrawAvailableBalance = async ({
     amount,
+    stakingPool,
     walletAddress,
   }: {
     amount?: string;
+    stakingPool: StakingPool;
     walletAddress: string;
   }): Promise<string> => {
-    const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.liquidityModuleService.withdrawStake(
-      walletAddress,
-      amount,
-      walletAddress
-    );
+    const serviceKey = this.getServiceKey({ stakingPool });
+
+    const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder[
+      serviceKey
+    ].withdrawStake(walletAddress, amount, walletAddress);
 
     const withdrawTransaction = await _.first(transactions).tx();
     withdrawTransaction.gas = withdrawTransaction.gasLimit;
@@ -234,13 +243,22 @@ class StakingPoolsClient {
     return txHash;
   };
 
-  getLiquidityPoolEpochParams = async (): Promise<{
+  getEpochParams = async ({
+    stakingPool,
+  }: {
+    stakingPool: StakingPool;
+  }): Promise<{
     timeRemainingInCurrentEpoch: string;
     lengthOfBlackoutWindow: string;
   }> => {
+    const serviceKey = this.getServiceKey({ stakingPool });
+
     /** Times are returned in seconds. */
-    const timeRemainingInCurrentEpoch = await this.txBuilder.liquidityModuleService.getTimeRemainingInCurrentEpoch();
-    const lengthOfBlackoutWindow = await this.txBuilder.liquidityModuleService.getLengthOfBlackoutWindow();
+    const timeRemainingInCurrentEpoch = await this.txBuilder[
+      serviceKey
+    ].getTimeRemainingInCurrentEpoch();
+
+    const lengthOfBlackoutWindow = await this.txBuilder[serviceKey].getLengthOfBlackoutWindow();
 
     return {
       timeRemainingInCurrentEpoch: timeRemainingInCurrentEpoch.toString(),

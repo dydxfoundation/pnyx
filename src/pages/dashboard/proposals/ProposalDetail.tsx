@@ -370,10 +370,10 @@ const ProposalDescription = styled.div`
 
 const ProposalCollapsibleSections = styled.div`
   padding: 0 0.5rem;
+  margin-top: 1rem;
 
   @media ${breakpoints.tablet} {
     padding: 0;
-    margin-top: 1.25rem;
   }
 `;
 

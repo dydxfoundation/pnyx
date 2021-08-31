@@ -3,10 +3,10 @@ import BigNumber from 'bignumber.js';
 import { StakingPool } from 'enums';
 import { StakingBalancesData, WithdrawBalancesData } from 'types';
 
-import { MustBigNumber } from 'lib/numbers';
+import { MustBigNumber, BIG_NUMBERS } from 'lib/numbers';
 
 /**
- * Normalize based on pool size and rewards / sec, then multiply by 60 * 60 * 24 to get rewards / day.
+ * Normalize to $1K based on pool size and rewards per sec, then multiply by 60 * 60 * 24 to get rewards per day.
  */
 export const calculateEstimatedLiquidityPoolYieldPerDay = ({
   poolSize = '0',
@@ -14,12 +14,33 @@ export const calculateEstimatedLiquidityPoolYieldPerDay = ({
 }: {
   poolSize?: string;
   rewardsPerSecond?: string;
-}) =>
+}): BigNumber =>
   BigNumber.min(new BigNumber(1000).div(poolSize), 1)
     .times(rewardsPerSecond)
     .times(60)
     .times(60)
     .times(24);
+
+/**
+ * Normalize based on pool size and rewards / sec and multiply by 60 * 60 * 24 * 365 to
+ * get rewards per year per DYDX. Finally, divide 1 / normalizedRewards to get APR.
+ */
+export const calculateEstimatedSafetyPoolAPR = ({
+  poolSize = '0',
+  rewardsPerSecond = '0',
+}: {
+  poolSize?: string;
+  rewardsPerSecond?: string;
+}): BigNumber => {
+  const normalizedRewards = MustBigNumber(rewardsPerSecond)
+    .div(BigNumber.min(poolSize, 1))
+    .times(60)
+    .times(60)
+    .times(24)
+    .times(365);
+
+  return BIG_NUMBERS.ONE.div(normalizedRewards);
+};
 
 export const calculateUserStakingBalance = ({
   stakingBalancesData,
