@@ -21,12 +21,16 @@ const useGetTradingRewardsData = (): TradingRewardsData | undefined => {
   >();
 
   const requestTradingRewardsData = async () => {
-    const fetchedTradingRewardsData = await contractClient.getTradingRewardsData({
-      walletAddress: walletAddress as string,
-    });
+    try {
+      const fetchedTradingRewardsData = await contractClient.getTradingRewardsData({
+        walletAddress: walletAddress as string,
+      });
 
-    dispatch(setTradingRewardsData({ tradingRewardsData: fetchedTradingRewardsData }));
-    setCurrentTradingRewardsData(fetchedTradingRewardsData);
+      dispatch(setTradingRewardsData({ tradingRewardsData: fetchedTradingRewardsData }));
+      setCurrentTradingRewardsData(fetchedTradingRewardsData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
