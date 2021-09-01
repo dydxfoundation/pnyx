@@ -1,4 +1,4 @@
-import { providers } from 'ethers';
+import { providers, utils } from 'ethers';
 import _ from 'lodash';
 
 import {
@@ -104,7 +104,7 @@ class ContractClient {
     walletAddress: string;
   }): Promise<TradingRewardsData> => {
     const tradingRewardsData = await this.txBuilder.merkleDistributorService.getUserRewardsData(
-      walletAddress
+      utils.getAddress(walletAddress)
     );
 
     return tradingRewardsData;
