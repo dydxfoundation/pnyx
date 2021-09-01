@@ -252,18 +252,15 @@ const SafetyPoolDetail: React.FC<
               color={CardColor.Dark}
               title={stringGetter({ key: STRING_KEYS.CURRENT_APR })}
               value={
-                <ValueWithIcon>
-                  <NumberFormat
-                    thousandSeparator
-                    displayType="text"
-                    suffix="%"
-                    value={calculateEstimatedSafetyPoolAPR({
-                      poolSize,
-                      rewardsPerSecond,
-                    }).toFixed(DecimalPlaces.Percent)}
-                  />
-                  <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-                </ValueWithIcon>
+                <NumberFormat
+                  thousandSeparator
+                  displayType="text"
+                  suffix="%"
+                  value={calculateEstimatedSafetyPoolAPR({
+                    poolSize,
+                    rewardsPerSecond,
+                  }).toFixed(DecimalPlaces.Percent)}
+                />
               }
               label={stringGetter({ key: STRING_KEYS.ESTIMATED_APR_IN_DYDX })}
               isLoading={!rewardsPerSecond || !poolSize}
