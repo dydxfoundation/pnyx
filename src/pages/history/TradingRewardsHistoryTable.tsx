@@ -57,7 +57,7 @@ const getFormattedTableData = ({
     if (parseFloat(newPendingRootRewards) > 0) {
       formattedData.push({
         amount: newPendingRootRewards,
-        epochEnd: endOfEpochTimestamp - waitingPeriodLength,
+        epochEnd: endOfEpochTimestamp - epochLength - waitingPeriodLength,
         epochNumber: currentEpoch - 1,
         status: TradingRewardStatus.Pending,
       });
