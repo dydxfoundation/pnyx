@@ -68,16 +68,15 @@ const StakingPoolsRow: React.FC<
   const { balances } = stakingBalancesData;
 
   const safetyPoolStakingBalances = balances[StakingPool.Safety];
-  const safetyPoolData = stakingPoolsData.data[StakingPool.Safety];
-
-  let formattedSafetyPoolSize: React.ReactNode;
 
   const {
     poolSize: safetyPoolSize,
     rewardsPerSecond: safetyRewardsPerSecond,
   } = stakingPoolsData.data[StakingPool.Safety];
 
-  if (safetyPoolData.poolSize) {
+  let formattedSafetyPoolSize: React.ReactNode;
+
+  if (safetyPoolSize) {
     const { num, suffix } = abbreviateNumber({
       num: MustBigNumber(safetyPoolSize).toString(),
       decimals: DecimalPlaces.None,

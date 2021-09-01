@@ -32,6 +32,7 @@ const useGetTradingRewardsData = (): TradingRewardsData | undefined => {
   useEffect(() => {
     if (walletAddress) {
       if (!tradingRewardsData) {
+        setCurrentTradingRewardsData(undefined);
         requestTradingRewardsData();
       } else {
         setCurrentTradingRewardsData(tradingRewardsData);

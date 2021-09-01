@@ -87,11 +87,11 @@ const usePollUnclaimedRewards = () => {
      * If the user disconnects their wallet, stop polling.
      * */
     if (isInstancePolling) {
-      if (walletAddress && previousWalletAddress !== walletAddress) {
-        pollUnclaimedRewards();
-      }
-
-      if (!walletAddress) {
+      if (walletAddress) {
+        if (previousWalletAddress !== walletAddress) {
+          pollUnclaimedRewards();
+        }
+      } else {
         stopPollingUnclaimedRewards();
       }
     }

@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { SetCirculatingSupplyPayload, SetDistributedTodayPayload } from 'types';
+import type { SetCirculatingSupplyPayload, SetDistributedTodayPayload } from 'types';
 
 export const setCirculatingSupply = createAction<SetCirculatingSupplyPayload | void>(
   'SET_CIRCULATING_SUPPLY'

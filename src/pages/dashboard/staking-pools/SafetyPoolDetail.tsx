@@ -143,23 +143,24 @@ const SafetyPoolDetail: React.FC<
   };
 
   let formattedUserBalance: React.ReactNode = '-';
-
-  if (walletAddress && userStakingBalance) {
-    formattedUserBalance = (
-      <ValueWithIcon>
-        <NumberFormat
-          thousandSeparator
-          displayType="text"
-          value={userStakingBalance.toFixed(DecimalPlaces.ShortToken)}
-        />
-        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-      </ValueWithIcon>
-    );
-  }
-
   let formattedEarnings: React.ReactNode = '-';
+  let formattedAvailableWithdrawBalance: React.ReactNode = '-';
+  let formattedPendingWithdrawBalance: React.ReactNode = '-';
 
   if (walletAddress) {
+    if (userStakingBalance) {
+      formattedUserBalance = (
+        <ValueWithIcon>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            value={userStakingBalance.toFixed(DecimalPlaces.ShortToken)}
+          />
+          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+        </ValueWithIcon>
+      );
+    }
+
     if (unclaimedRewards) {
       formattedEarnings = (
         <ValueWithIcon>
@@ -175,11 +176,7 @@ const SafetyPoolDetail: React.FC<
         </ValueWithIcon>
       );
     }
-  }
 
-  let formattedAvailableWithdrawBalance: React.ReactNode = '-';
-
-  if (walletAddress) {
     if (availableWithdrawBalance) {
       formattedAvailableWithdrawBalance = (
         <ValueWithIcon>
@@ -192,11 +189,7 @@ const SafetyPoolDetail: React.FC<
         </ValueWithIcon>
       );
     }
-  }
 
-  let formattedPendingWithdrawBalance: React.ReactNode = '-';
-
-  if (walletAddress) {
     if (pendingWithdrawBalance) {
       formattedPendingWithdrawBalance = (
         <ValueWithIcon>
