@@ -37,7 +37,9 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
 
   const { unclaimedRewards } = unclaimedRewardsData;
 
-  const formattedClaimableAmount = MustBigNumber(unclaimedRewards).toFixed(
+  const unclaimedRewardsBN = MustBigNumber(unclaimedRewards);
+
+  const formattedClaimableAmount = unclaimedRewardsBN.toFixed(
     DecimalPlaces.ShortToken,
     BigNumber.ROUND_UP
   );
@@ -84,7 +86,7 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
           </Styled.ClaimableRewards>
           <Styled.ButtonSection>
             <Button
-              disabled={!!walletAddress && isUserGeoBlocked}
+              disabled={!!walletAddress && (isUserGeoBlocked || unclaimedRewardsBN.eq(0))}
               onClick={() => {
                 dispatch(
                   openModal({ type: walletAddress ? ModalType.Claim : ModalType.Onboarding })
