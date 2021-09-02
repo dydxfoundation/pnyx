@@ -48,7 +48,7 @@ Styled.History = styled.div`
   margin-top: -1.75rem;
 
   @media ${breakpoints.tablet} {
-    margin-top: 0;
+    margin-top: -3rem;
   }
 `;
 

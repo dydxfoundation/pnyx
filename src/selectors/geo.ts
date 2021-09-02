@@ -9,3 +9,5 @@ export const getGeoData = (state: RootState): GeoData | null => state.geo.geoDat
 
 export const getIsUserGeoBlocked = (state: RootState): boolean =>
   _.includes(BLOCKED_COUNTRIES, state.geo.geoData?.country);
+
+// export const getIsUserGeoBlocked = (state: RootState): boolean => false;

@@ -7,6 +7,7 @@ import { RootState } from 'store';
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
+import { NotTabletOnly, TabletOnly } from 'styles';
 import { useGetLatestProposals } from 'hooks';
 
 import ProposalRow, { ProposalRowEmptyState } from 'components/ProposalRow';
@@ -32,22 +33,39 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
     if (_.isNil(latestProposals)) {
       return (
         <>
-          <LoadingBar fullWidth useDarkStyles height={4.625} />
-          <LoadingBar fullWidth useDarkStyles height={4.625} />
-          <LoadingBar fullWidth useDarkStyles height={4.625} />
+          <TabletOnly>
+            <ProposalContainer>
+              <LoadingBar fullWidth useDarkStyles height={6.625} />
+              <LoadingBar fullWidth useDarkStyles height={6.625} />
+              <LoadingBar fullWidth useDarkStyles height={6.625} />
+            </ProposalContainer>
+          </TabletOnly>
+          <NotTabletOnly>
+            <ProposalContainer>
+              <LoadingBar fullWidth useDarkStyles height={4.625} />
+              <LoadingBar fullWidth useDarkStyles height={4.625} />
+              <LoadingBar fullWidth useDarkStyles height={4.625} />
+            </ProposalContainer>
+          </NotTabletOnly>
         </>
       );
     }
 
     if (_.isEmpty(latestProposals)) {
       return (
-        <ProposalRowEmptyState title={stringGetter({ key: STRING_KEYS.PROPOSALS_EMPTY_STATE })} />
+        <ProposalContainer>
+          <ProposalRowEmptyState title={stringGetter({ key: STRING_KEYS.PROPOSALS_EMPTY_STATE })} />
+        </ProposalContainer>
       );
     }
 
-    return _.map(latestProposals, (proposal) => (
-      <ProposalRow key={proposal.id} proposal={proposal} />
-    ));
+    return (
+      <ProposalContainer>
+        {_.map(latestProposals, (proposal) => (
+          <ProposalRow key={proposal.id} proposal={proposal} />
+        ))}
+      </ProposalContainer>
+    );
   };
 
   return (
@@ -56,7 +74,7 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
         title={stringGetter({ key: STRING_KEYS.PROPOSALS })}
         subtitle={stringGetter({ key: STRING_KEYS.PROPOSALS_DESCRIPTION })}
       />
-      <ProposalContainer>{renderProposals()}</ProposalContainer>
+      {renderProposals()}
     </SectionWrapper>
   );
 };
