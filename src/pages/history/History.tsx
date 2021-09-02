@@ -25,13 +25,8 @@ const History: React.FC<HistoryProps> = ({ stringGetter }) => {
 
   return (
     <Styled.History>
-      {isUserGeoBlocked && (
-        <SectionWrapper>
-          <GeoBlockBanner />
-        </SectionWrapper>
-      )}
       <SectionWrapper>
-        <HistoryClaimRewardsModule />
+        {isUserGeoBlocked ? <GeoBlockBanner /> : <HistoryClaimRewardsModule />}
       </SectionWrapper>
       <SectionWrapper column>
         <SectionHeader noPadding title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />

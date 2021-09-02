@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
@@ -23,6 +23,8 @@ const stopPollingEpochData = () => {
 const usePollEpochData = ({ stakingPool }: { stakingPool: StakingPool }) => {
   const dispatch = useDispatch();
   const stakingPoolsData = useSelector(getStakingPoolsData, shallowEqual);
+
+  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
 
   const {
     currentlyInBlackoutWindow,
@@ -87,24 +89,32 @@ const usePollEpochData = ({ stakingPool }: { stakingPool: StakingPool }) => {
     pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
   };
 
+  useEffect(() => {
+    if (!pollingFunction) {
+      setIsInstancePolling(true);
+    }
+  }, []);
+
   useEffect(
     () => () => {
-      if (pollingFunction) {
-        clearTimeout(pollingFunction);
+      if (isInstancePolling) {
+        stopPollingEpochData();
       }
     },
-    []
+    [isInstancePolling]
   );
 
   useEffect(() => {
-    stopPollingEpochData();
+    if (isInstancePolling) {
+      stopPollingEpochData();
 
-    if (lengthOfBlackoutWindow && nextEpochDate) {
-      pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
-    } else {
-      getParamsAndCalculateData();
+      if (lengthOfBlackoutWindow && nextEpochDate) {
+        pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
+      } else {
+        getParamsAndCalculateData();
+      }
     }
-  }, [currentlyInBlackoutWindow, lengthOfBlackoutWindow, nextEpochDate]);
+  }, [currentlyInBlackoutWindow, lengthOfBlackoutWindow, nextEpochDate, isInstancePolling]);
 };
 
 export default usePollEpochData;

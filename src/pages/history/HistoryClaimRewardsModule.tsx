@@ -19,7 +19,6 @@ import { SingleStatCard, CardSize, ValueWithIcon } from 'components/Cards';
 import { openModal } from 'actions/modals';
 
 import { getUnclaimedRewardsData } from 'selectors/balances';
-import { getIsUserGeoBlocked } from 'selectors/geo';
 import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -30,7 +29,6 @@ export type HistoryClaimRewardsModuleProps = {} & LocalizationProps;
 const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ stringGetter }) => {
   const dispatch = useDispatch();
 
-  const isUserGeoBlocked = useSelector(getIsUserGeoBlocked);
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
   const walletAddress = useSelector(getWalletAddress);
 
@@ -91,7 +89,7 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
           </Styled.ClaimableRewards>
           <Styled.ButtonSection>
             <Button
-              disabled={!!walletAddress && (isUserGeoBlocked || unclaimedRewardsBN.eq(0))}
+              disabled={!!walletAddress && unclaimedRewardsBN.eq(0)}
               onClick={() => {
                 dispatch(
                   openModal({ type: walletAddress ? ModalType.Claim : ModalType.Onboarding })

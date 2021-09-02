@@ -24,13 +24,13 @@ const stopPollingUnclaimedRewards = () => {
 };
 
 const usePollUnclaimedRewards = () => {
-  const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
-  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
-
   const dispatch = useDispatch();
 
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
   const walletAddress = useSelector(getWalletAddress);
+
+  const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
+  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
 
   const pollUnclaimedRewards = async () => {
     stopPollingUnclaimedRewards();
