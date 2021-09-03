@@ -2,7 +2,7 @@
   "GENERAL": {
     "SOMETHING_WENT_WRONG": "Что-то пошло не так: {ERROR_MESSAGE}",
     "UNKNOWN_ERROR": "Неизвестная ошибка",
-    "WRONG_NETWORK": "Указана неверная сеть кошелька. Убедитесь, что выбрана сеть «Ethereum Mainnet»."
+    "WRONG_NETWORK": "Неправильная сеть кошелька. Убедитесь, что выбрана сеть Ethereum Mainnet"
   },
   "DELEGATE": {
     "ADDRESS_IS_OWN_ADDRESS": "Введите адрес Ethereum, который не принадлежит вам.",
