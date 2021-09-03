@@ -1,8 +1,8 @@
 {
   "GENERAL": {
-    "TRANSFER_LOCK_WARNING": "DYDXの振替および報酬の請求は、2021年9月8日午前8時（米国太平洋標準時）に可能になります。"
+    "TRANSFER_LOCK_WARNING": "DYDX の譲渡と特典のリクエストは、2021年9月8日午前8時 (太平洋標準時) に有効になります。"
   },
   "DELEGATION": {
-    "TWO_TOKEN_DELEGATION_TRANSACTION": "選択したトークンごとに1つ、合計2つのトランザクションを承認するよう求められます。"
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "選択したトークンごとに各1つ、合計2つのトランザクションを承認するように求められます。"
   }
 }
