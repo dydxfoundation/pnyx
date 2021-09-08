@@ -311,6 +311,7 @@ const StakingPoolsRow: React.FC<
             value={safetyPoolEarnings}
             ctaConfigs={{
               primary: {
+                disabled: true,
                 label: stringGetter({ key: STRING_KEYS.STAKE }),
                 onClick: () =>
                   openModal({
