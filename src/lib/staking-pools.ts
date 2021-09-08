@@ -50,7 +50,6 @@ export const calculateUserStakingBalance = ({
   withdrawBalancesData: WithdrawBalancesData;
 }): BigNumber | undefined => {
   const { userBalance } = stakingBalancesData.balances[stakingPool];
-
   const { availableWithdrawBalance } = withdrawBalancesData[stakingPool];
 
   if (userBalance && availableWithdrawBalance) {
