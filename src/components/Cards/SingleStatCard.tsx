@@ -108,12 +108,12 @@ const Title = styled.div`
 const ValueContainer = styled.div`
   ${fontSizes.size26}
   color: ${({ theme }) => theme.textlight};
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 `;
 
 const ButtonContainer = styled.div`
   padding-left: 1rem;
-  margin: -0.25rem -0.5rem -0.625rem auto;
+  margin: -0.25rem -0.5rem -1rem auto;
 `;
 
 const Label = styled.div`

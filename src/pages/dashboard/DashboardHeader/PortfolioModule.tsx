@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { connect } from 'react-redux';
 import NumberFormat from 'react-number-format';
-import _ from 'lodash';
 
 import { RootState } from 'store';
 import { LocalizationProps } from 'types';
@@ -45,22 +44,12 @@ const PortfolioModule: React.FC<ConnectedPortfolioModule> = ({
 }) => {
   usePollWalletBalances({ assetSymbol: AssetSymbol.DYDX });
   usePollWalletBalances({ assetSymbol: AssetSymbol.stDYDX });
-  usePollWithdrawBalances({ stakingPool: StakingPool.Liquidity });
+  usePollWithdrawBalances({ stakingPool: StakingPool.Safety });
 
   const dydxBalanceData = walletBalancesData[AssetSymbol.DYDX];
   const stDydxBalanceData = walletBalancesData[AssetSymbol.stDYDX];
 
-  const totalWithdrawAvailable = _.reduce(
-    withdrawBalancesData,
-    (acc, balanceData) => {
-      if (balanceData.availableWithdrawBalance) {
-        return acc.plus(balanceData.availableWithdrawBalance);
-      }
-
-      return acc;
-    },
-    MustBigNumber(0)
-  );
+  const totalWithdrawAvailable = withdrawBalancesData[StakingPool.Safety]?.availableWithdrawBalance;
 
   return (
     <>
@@ -121,14 +110,18 @@ const PortfolioModule: React.FC<ConnectedPortfolioModule> = ({
           <Module>
             <Label>{stringGetter({ key: STRING_KEYS.WITHDRAWABLE })}</Label>
             <Value>
-              <ValueWithIcon>
-                <NumberFormat
-                  thousandSeparator
-                  displayType="text"
-                  value={totalWithdrawAvailable.toFixed(DecimalPlaces.ShortToken)}
-                />
-                <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-              </ValueWithIcon>
+              {totalWithdrawAvailable ? (
+                <ValueWithIcon>
+                  <NumberFormat
+                    thousandSeparator
+                    displayType="text"
+                    value={MustBigNumber(totalWithdrawAvailable).toFixed(DecimalPlaces.ShortToken)}
+                  />
+                  <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+                </ValueWithIcon>
+              ) : (
+                defaultLoadingBar
+              )}
             </Value>
           </Module>
         </Modules>

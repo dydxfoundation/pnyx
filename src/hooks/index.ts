@@ -1,12 +1,12 @@
-export { default as useGetCirculatingSupply } from './useGetCirculatingSupply';
 export { default as useGetCountdownDiff } from './useGetCountdownDiff';
+export { default as useGetDistributionData } from './useGetDistributionData';
 export { default as useGetLatestProposals } from './useGetLatestProposals';
 export { default as useGetTradingRewardsData } from './useGetTradingRewardsData';
 export { default as useGetVotedOnDataForProposal } from './useGetVotedOnDataForProposal';
 export { default as useOnClickOutside } from './useOnClickOutside';
 export { default as usePollAllowance } from './usePollAllowance';
 export { default as usePollGovernancePowersData } from './usePollGovernancePowersData';
-export { default as usePollLiquidityPoolEpochData } from './usePollLiquidityPoolEpochData';
+export { default as usePollEpochData } from './usePollEpochData';
 export { default as usePollStakingBalances } from './usePollStakingBalances';
 export { default as usePollStakingPoolsData } from './usePollStakingPoolsData';
 export { default as usePollUnclaimedRewards } from './usePollUnclaimedRewards';

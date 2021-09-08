@@ -18,6 +18,7 @@ const useGetLatestProposals = (): Proposals[] => {
 
   const requestLatestProposals = async () => {
     const proposals = await contractClient.governanceClient.getLatestProposals();
+
     dispatch(setLatestProposals({ proposals }));
     setCurrentLatestProposals(proposals);
   };

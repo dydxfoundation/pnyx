@@ -25,14 +25,18 @@ const LearnMoreLink: React.FC<LearnMoreLinkProps> = ({
   color = LinkColor.Purple,
   stringGetter,
 }) => (
-  <StyledLearnMoreLink color={color} href={href} target="_blank" rel="noopener noreferrer">
+  <Styled.LearnMoreLink color={color} href={href} target="_blank" rel="noopener noreferrer">
     {stringGetter({ key: STRING_KEYS.LEARN_MORE })} →
-  </StyledLearnMoreLink>
+  </Styled.LearnMoreLink>
 );
 
-const StyledLearnMoreLink = styled.a<ElementProps>`
+// eslint-disable-next-line
+const Styled: any = {};
+
+Styled.LearnMoreLink = styled.a<ElementProps>`
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
 
   color: ${({ color, theme }) => {
     switch (color) {

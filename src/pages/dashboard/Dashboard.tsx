@@ -10,7 +10,7 @@ import { AssetSymbol, DocumentationSublinks, ExternalLink, ModalType, StakingPoo
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
-import { useGetCountdownDiff, usePollLiquidityPoolEpochData } from 'hooks';
+import { useGetCountdownDiff, usePollEpochData } from 'hooks';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import GeoBlockBanner from 'components/GeoBlockBanner';
@@ -41,7 +41,7 @@ export type DashboardProps = {} & LocalizationProps;
 const Dashboard: React.FC<
   DashboardProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 > = ({ isUserGeoBlocked, openModal, stakingPoolsData, stringGetter }) => {
-  usePollLiquidityPoolEpochData();
+  usePollEpochData({ stakingPool: StakingPool.Liquidity });
 
   const { nextEpochDate } = stakingPoolsData.data[StakingPool.Liquidity];
 

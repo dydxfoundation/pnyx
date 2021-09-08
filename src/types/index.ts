@@ -48,6 +48,7 @@ export type SetUnclaimedRewardsPayload = BalancesTypes.SetUnclaimedRewardsPayloa
 
 // Distribution Types
 export type SetCirculatingSupplyPayload = DistributionTypes.SetCirculatingSupplyPayload;
+export type SetDistributedTodayPayload = DistributionTypes.SetDistributedTodayPayload;
 
 // Geo Types
 export type GeoData = GeoTypes.GeoData;

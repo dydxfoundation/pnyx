@@ -25,13 +25,8 @@ const History: React.FC<HistoryProps> = ({ stringGetter }) => {
 
   return (
     <Styled.History>
-      {isUserGeoBlocked && (
-        <SectionWrapper>
-          <GeoBlockBanner />
-        </SectionWrapper>
-      )}
       <SectionWrapper>
-        <HistoryClaimRewardsModule />
+        {isUserGeoBlocked ? <GeoBlockBanner /> : <HistoryClaimRewardsModule />}
       </SectionWrapper>
       <SectionWrapper column>
         <SectionHeader noPadding title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
@@ -48,7 +43,7 @@ Styled.History = styled.div`
   margin-top: -1.75rem;
 
   @media ${breakpoints.tablet} {
-    margin-top: 0;
+    margin-top: -3rem;
   }
 `;
 

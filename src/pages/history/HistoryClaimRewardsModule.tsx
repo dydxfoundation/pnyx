@@ -13,12 +13,12 @@ import { breakpoints, fontSizes, MobileOnly } from 'styles';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button, { ButtonColor } from 'components/Button';
+import LoadingBar from 'components/LoadingBar';
 import { SingleStatCard, CardSize, ValueWithIcon } from 'components/Cards';
 
 import { openModal } from 'actions/modals';
 
 import { getUnclaimedRewardsData } from 'selectors/balances';
-import { getIsUserGeoBlocked } from 'selectors/geo';
 import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -29,7 +29,6 @@ export type HistoryClaimRewardsModuleProps = {} & LocalizationProps;
 const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ stringGetter }) => {
   const dispatch = useDispatch();
 
-  const isUserGeoBlocked = useSelector(getIsUserGeoBlocked);
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
   const walletAddress = useSelector(getWalletAddress);
 
@@ -39,10 +38,24 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
 
   const unclaimedRewardsBN = MustBigNumber(unclaimedRewards);
 
-  const formattedClaimableAmount = unclaimedRewardsBN.toFixed(
-    DecimalPlaces.ShortToken,
-    BigNumber.ROUND_UP
-  );
+  const getFormattedClaimableAmount = ({ isMobile }: { isMobile: boolean }) =>
+    unclaimedRewards ? (
+      <ValueWithIcon>
+        <NumberFormat
+          thousandSeparator
+          displayType="text"
+          value={unclaimedRewardsBN.toFixed(DecimalPlaces.ShortToken, BigNumber.ROUND_UP)}
+        />
+
+        <AssetIcon
+          id={isMobile ? 'history-rewards-module-mobile' : 'history-rewards-module'}
+          size={AssetIconSize.Medium}
+          symbol={AssetSymbol.DYDX}
+        />
+      </ValueWithIcon>
+    ) : (
+      '-'
+    );
 
   return (
     <Styled.ModuleContainer>
@@ -50,16 +63,7 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
         <SingleStatCard
           size={CardSize.Large}
           title={stringGetter({ key: STRING_KEYS.CLAIMABLE })}
-          value={
-            <ValueWithIcon>
-              {formattedClaimableAmount}
-              <AssetIcon
-                id="history-rewards-module-mobile"
-                size={AssetIconSize.Medium}
-                symbol={AssetSymbol.DYDX}
-              />
-            </ValueWithIcon>
-          }
+          value={getFormattedClaimableAmount({ isMobile: true })}
           label={stringGetter({ key: STRING_KEYS.STAKING_TRADING_REWARDS })}
         />
       </MobileOnly>
@@ -76,17 +80,16 @@ const HistoryClaimRewardsModule: React.FC<HistoryClaimRewardsModuleProps> = ({ s
               {stringGetter({ key: STRING_KEYS.CLAIMABLE })}
             </Styled.ClaimableLabel>
             <Styled.ClaimableAmount>
-              <NumberFormat thousandSeparator displayType="text" value={formattedClaimableAmount} />
-              <AssetIcon
-                id="history-rewards-module"
-                size={AssetIconSize.Medium}
-                symbol={AssetSymbol.DYDX}
-              />
+              {!walletAddress || unclaimedRewards ? (
+                getFormattedClaimableAmount({ isMobile: false })
+              ) : (
+                <LoadingBar height={2} width={6} />
+              )}
             </Styled.ClaimableAmount>
           </Styled.ClaimableRewards>
           <Styled.ButtonSection>
             <Button
-              disabled={!!walletAddress && (isUserGeoBlocked || unclaimedRewardsBN.eq(0))}
+              disabled={!!walletAddress && unclaimedRewardsBN.eq(0)}
               onClick={() => {
                 dispatch(
                   openModal({ type: walletAddress ? ModalType.Claim : ModalType.Onboarding })
@@ -117,10 +120,6 @@ const Styled: any = {};
 Styled.ModuleContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
-
-  @media ${breakpoints.tablet} {
-    margin-top: -3rem;
-  }
 `;
 
 Styled.HistoryClaimRewardsModule = styled.div`

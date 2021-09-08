@@ -9,13 +9,7 @@ import { AppDispatch, RootState } from 'store';
 import { LocalizationProps } from 'types';
 import { AssetSymbol, DecimalPlaces, ModalType } from 'enums';
 
-import {
-  useGetCirculatingSupply,
-  useGetCountdownDiff,
-  usePollGovernancePowersData,
-  usePollWalletBalances,
-} from 'hooks';
-
+import { useGetDistributionData, usePollGovernancePowersData, usePollWalletBalances } from 'hooks';
 import { withLocalization } from 'hoc';
 import { breakpoints, NotTabletOnly, TabletOnly } from 'styles';
 
@@ -64,12 +58,7 @@ const DashboardHeader: React.FC<
   usePollWalletBalances({ assetSymbol: AssetSymbol.DYDX });
   usePollWalletBalances({ assetSymbol: AssetSymbol.stDYDX });
 
-  const formattedDiffUntilTransferLock = useGetCountdownDiff({
-    futureDateISO: '2021-09-08T08:00:00-0700',
-    stringGetter,
-  });
-
-  const circulatingSupply = useGetCirculatingSupply();
+  const { circulatingSupply, distributedToday } = useGetDistributionData();
   const circulatingSupplyPercent = MustBigNumber(circulatingSupply).div('1000000000');
 
   const { hasDelegatees: proposingPowerHasDelegatees } = findProposingPowerDelegatee({
@@ -138,22 +127,20 @@ const DashboardHeader: React.FC<
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.CIRCULATING_SUPPLY })}
             />
-            {/* <SingleStatCard
+            <SingleStatCard
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.DISTRIBUTED_TODAY })}
+              isLoading={!distributedToday}
               value={
                 <ValueWithIcon>
-                  13,698.64
+                  <NumberFormat
+                    thousandSeparator
+                    displayType="text"
+                    value={MustBigNumber(distributedToday).toFixed(DecimalPlaces.ShortToken)}
+                  />
                   <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
                 </ValueWithIcon>
               }
-            /> */}
-            <SingleStatCard
-              size={CardSize.Small}
-              title={stringGetter({ key: STRING_KEYS.TRANSFER_LOCK_COOLDOWN })}
-              isLoading={!formattedDiffUntilTransferLock}
-              value={formattedDiffUntilTransferLock}
-              label={stringGetter({ key: STRING_KEYS.UNTIL_TRANSFER_LOCK_IS_RELEASED })}
             />
           </CardContainer>
           {walletAddress && (

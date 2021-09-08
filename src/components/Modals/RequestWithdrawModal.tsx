@@ -18,7 +18,7 @@ import {
 } from 'enums';
 
 import { breakpoints, fontSizes } from 'styles';
-import { usePollLiquidityPoolEpochData, usePollWalletBalances } from 'hooks';
+import { usePollEpochData, usePollWalletBalances } from 'hooks';
 import { withLocalization } from 'hoc';
 
 import Button from 'components/Button';
@@ -81,17 +81,18 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
   const assetSymbol = stakingPool === StakingPool.Liquidity ? AssetSymbol.USDC : AssetSymbol.DYDX;
 
   usePollWalletBalances({ assetSymbol });
-  usePollLiquidityPoolEpochData();
+  usePollEpochData({ stakingPool });
 
   const { currentlyInBlackoutWindow, nextEpochDate } = stakingPoolsData.data[stakingPool];
-  const { pendingWithdrawBalance } = withdrawBalancesData[StakingPool.Liquidity];
+  const { pendingWithdrawBalance } = withdrawBalancesData[stakingPool];
 
   const onClickRequestWithdraw = async () => {
     try {
       setIsCtaLoading(true);
 
-      const txHash = await contractClient.stakingPoolClient?.requestLiquidityPoolWithdraw({
+      const txHash = await contractClient.stakingPoolClient?.requestWithdraw({
         amount: requestWithdrawAmount,
+        stakingPool,
         walletAddress: walletAddress as string,
       });
 
@@ -120,7 +121,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
 
   const userStakingBalance = calculateUserStakingBalance({
     stakingBalancesData,
-    stakingPool: StakingPool.Liquidity,
+    stakingPool,
     withdrawBalancesData,
   });
 

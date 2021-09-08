@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
@@ -20,15 +20,17 @@ const stopPollingEpochData = () => {
   }
 };
 
-const usePollLiquidityPoolEpochData = () => {
+const usePollEpochData = ({ stakingPool }: { stakingPool: StakingPool }) => {
   const dispatch = useDispatch();
   const stakingPoolsData = useSelector(getStakingPoolsData, shallowEqual);
+
+  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
 
   const {
     currentlyInBlackoutWindow,
     lengthOfBlackoutWindow,
     nextEpochDate,
-  } = stakingPoolsData.data[StakingPool.Liquidity];
+  } = stakingPoolsData.data[stakingPool];
 
   const pollCalculateData = () => {
     stopPollingEpochData();
@@ -47,7 +49,7 @@ const usePollLiquidityPoolEpochData = () => {
 
       dispatch(
         updateStakingPoolsData({
-          stakingPool: StakingPool.Liquidity,
+          stakingPool,
           data: {
             currentlyInBlackoutWindow: newCurrentlyInBlackoutWindow,
           },
@@ -64,7 +66,7 @@ const usePollLiquidityPoolEpochData = () => {
     const {
       timeRemainingInCurrentEpoch,
       lengthOfBlackoutWindow: newLengthOfBlackoutWindow,
-    } = await contractClient.stakingPoolClient.getLiquidityPoolEpochParams();
+    } = await contractClient.stakingPoolClient.getEpochParams({ stakingPool });
 
     const nextEpochISOString = DateTime.local()
       .plus({ seconds: Number(timeRemainingInCurrentEpoch) })
@@ -75,7 +77,7 @@ const usePollLiquidityPoolEpochData = () => {
 
     dispatch(
       updateStakingPoolsData({
-        stakingPool: StakingPool.Liquidity,
+        stakingPool,
         data: {
           currentlyInBlackoutWindow: newCurrentlyInBlackoutWindow,
           lengthOfBlackoutWindow: newLengthOfBlackoutWindow,
@@ -87,24 +89,32 @@ const usePollLiquidityPoolEpochData = () => {
     pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
   };
 
+  useEffect(() => {
+    if (!pollingFunction) {
+      setIsInstancePolling(true);
+    }
+  }, []);
+
   useEffect(
     () => () => {
-      if (pollingFunction) {
-        clearTimeout(pollingFunction);
+      if (isInstancePolling) {
+        stopPollingEpochData();
       }
     },
-    []
+    [isInstancePolling]
   );
 
   useEffect(() => {
-    stopPollingEpochData();
+    if (isInstancePolling) {
+      stopPollingEpochData();
 
-    if (lengthOfBlackoutWindow && nextEpochDate) {
-      pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
-    } else {
-      getParamsAndCalculateData();
+      if (lengthOfBlackoutWindow && nextEpochDate) {
+        pollingFunction = setTimeout(pollCalculateData, epochDataPollingInterval);
+      } else {
+        getParamsAndCalculateData();
+      }
     }
-  }, [currentlyInBlackoutWindow, lengthOfBlackoutWindow, nextEpochDate]);
+  }, [currentlyInBlackoutWindow, lengthOfBlackoutWindow, nextEpochDate, isInstancePolling]);
 };
 
-export default usePollLiquidityPoolEpochData;
+export default usePollEpochData;

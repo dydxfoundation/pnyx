@@ -40,7 +40,7 @@ const StyledModalHeader = styled.div<ElementProps & { verticalPadding?: boolean 
   align-items: center;
   justify-content: space-between;
   min-height: 4rem;
-  padding: 1.25rem 1rem 1rem 1.75rem;
+  padding: 1.5rem 1rem 1rem 1.75rem;
   color: ${(props) => (props.dark ? props.theme.textdark : props.theme.textlight)};
   border-bottom: ${(props) => {
     if (props.noBorder) {

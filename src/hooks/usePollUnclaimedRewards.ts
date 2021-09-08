@@ -24,13 +24,13 @@ const stopPollingUnclaimedRewards = () => {
 };
 
 const usePollUnclaimedRewards = () => {
-  const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
-  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
-
   const dispatch = useDispatch();
 
   const unclaimedRewardsData = useSelector(getUnclaimedRewardsData, shallowEqual);
   const walletAddress = useSelector(getWalletAddress);
+
+  const [previousWalletAddress, setPreviousWalletAddress] = useState<string | undefined>();
+  const [isInstancePolling, setIsInstancePolling] = useState<boolean>(false);
 
   const pollUnclaimedRewards = async () => {
     stopPollingUnclaimedRewards();
@@ -82,9 +82,18 @@ const usePollUnclaimedRewards = () => {
   );
 
   useEffect(() => {
-    /** If the wallet address changes and current instance is polling, pull new rewards immediately. */
-    if (isInstancePolling && walletAddress && previousWalletAddress !== walletAddress) {
-      pollUnclaimedRewards();
+    /**
+     * If the wallet address changes and current instance is polling, pull new rewards immediately.
+     * If the user disconnects their wallet, stop polling.
+     * */
+    if (isInstancePolling) {
+      if (walletAddress) {
+        if (previousWalletAddress !== walletAddress) {
+          pollUnclaimedRewards();
+        }
+      } else {
+        stopPollingUnclaimedRewards();
+      }
     }
 
     setPreviousWalletAddress(walletAddress);
