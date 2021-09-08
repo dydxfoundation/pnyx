@@ -1,18 +1,18 @@
 {
   "GENERAL": {
-    "SOMETHING_WENT_WRONG": "問題が発生しました：{ERROR_MESSAGE}",
+    "SOMETHING_WENT_WRONG": "問題が発生しました: {ERROR_MESSAGE}",
     "UNKNOWN_ERROR": "不明なエラー",
     "WRONG_NETWORK": "ウォレットネットワークが正しくありません。「イーサリアム・メインネット」に設定されていることを確認してください"
   },
   "DELEGATE": {
-    "ADDRESS_IS_OWN_ADDRESS": "お客様自身のものではないイーサリアムアドレスを入力してください。",
-    "INVALID_ETHEREUM_ADDRESS": "有効なイーサリアムアドレスを入力してください。"
+    "ADDRESS_IS_OWN_ADDRESS": "自身のものではないイーサリアムのアドレスを入力してください。",
+    "INVALID_ETHEREUM_ADDRESS": "有効なイーサリアムのアドレスを入力してください。"
   },
   "STAKE": {
     "STAKE_MORE_THAN_BALANCE": "ウォレットの利用可能残高を超えてステークすることはできません。"
   },
   "WITHDRAW": {
-    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "現在のステーキング残高を超える出金のリクエストはできません。",
-    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "各エポックの最後の14日間は、流動性プールからの出金をリクエストすることはできません。次のエポックは、{EPOCH_DATE}から始まります。"
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "現在のステーキング残高を超えて出金をリクエストすることはできません。",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "各エポックの最後の 14 日間は、流動性プールからの出金をリクエストできません。次のエポックは、{EPOCH_DATE}から開始します。"
   }
 }
