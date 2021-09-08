@@ -173,7 +173,6 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
             >
               <Button
                 fullWidth
-                disabled
                 useLargeStylesOnTablet
                 isLoading={isLoading}
                 onClick={onClickClaim}
