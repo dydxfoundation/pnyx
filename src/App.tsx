@@ -27,7 +27,7 @@ export const globalTheme: Theme = {
 const DashboardPage = lazy(() => import('./pages/dashboard/Dashboard'));
 const HistoryPage = lazy(() => import('./pages/history/History'));
 
-const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
+// const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
 
 const LiquidityPoolDetailPage = lazy(
   () => import('./pages/dashboard/staking-pools/LiquidityPoolDetail')
@@ -156,7 +156,7 @@ const App: React.FC = () => (
             <GeoFence>
               <Suspense fallback={<LoadingSpace id="main-page-content" />}>
                 <Switch>
-                  <Route path={StakingPoolRoute.SafetyPool} component={SafetyPoolDetailPage} />
+                  {/* <Route path={StakingPoolRoute.SafetyPool} component={SafetyPoolDetailPage} /> */}
                   <Route
                     path={StakingPoolRoute.LiquidityPool}
                     component={LiquidityPoolDetailPage}

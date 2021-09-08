@@ -41,7 +41,7 @@ import { abbreviateNumber, MustBigNumber } from 'lib/numbers';
 
 import {
   calculateEstimatedLiquidityPoolYieldPerDay,
-  calculateEstimatedSafetyPoolAPR,
+  // calculateEstimatedSafetyPoolAPR,
 } from 'lib/staking-pools';
 
 const defaultLoadingBar = <LoadingBar height={1.625} width={4} />;
@@ -67,90 +67,90 @@ const StakingPoolsRow: React.FC<
 
   const { balances } = stakingBalancesData;
 
-  const safetyPoolStakingBalances = balances[StakingPool.Safety];
+  // const safetyPoolStakingBalances = balances[StakingPool.Safety];
 
-  const {
-    poolSize: safetyPoolSize,
-    rewardsPerSecond: safetyRewardsPerSecond,
-  } = stakingPoolsData.data[StakingPool.Safety];
+  // const {
+  //   poolSize: safetyPoolSize,
+  //   rewardsPerSecond: safetyRewardsPerSecond,
+  // } = stakingPoolsData.data[StakingPool.Safety];
 
-  let formattedSafetyPoolSize: React.ReactNode;
+  // let formattedSafetyPoolSize: React.ReactNode;
 
-  if (safetyPoolSize) {
-    const { num, suffix } = abbreviateNumber({
-      num: MustBigNumber(safetyPoolSize).toString(),
-      decimals: DecimalPlaces.None,
-    });
+  // if (safetyPoolSize) {
+  //   const { num, suffix } = abbreviateNumber({
+  //     num: MustBigNumber(safetyPoolSize).toString(),
+  //     decimals: DecimalPlaces.None,
+  //   });
 
-    formattedSafetyPoolSize = (
-      <ValueWithIcon>
-        <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-      </ValueWithIcon>
-    );
-  } else {
-    formattedSafetyPoolSize = defaultLoadingBar;
-  }
+  //   formattedSafetyPoolSize = (
+  //     <ValueWithIcon>
+  //       <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+  //       <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //     </ValueWithIcon>
+  //   );
+  // } else {
+  //   formattedSafetyPoolSize = defaultLoadingBar;
+  // }
 
-  let safetyPoolAPR: React.ReactNode;
+  // let safetyPoolAPR: React.ReactNode;
 
-  if (safetyPoolSize && safetyRewardsPerSecond) {
-    safetyPoolAPR = (
-      <NumberFormat
-        thousandSeparator
-        displayType="text"
-        suffix="%"
-        value={calculateEstimatedSafetyPoolAPR({
-          poolSize: safetyPoolSize,
-          rewardsPerSecond: safetyRewardsPerSecond,
-        }).toFixed(DecimalPlaces.Percent)}
-      />
-    );
-  } else {
-    safetyPoolAPR = defaultLoadingBar;
-  }
+  // if (safetyPoolSize && safetyRewardsPerSecond) {
+  //   safetyPoolAPR = (
+  //     <NumberFormat
+  //       thousandSeparator
+  //       displayType="text"
+  //       suffix="%"
+  //       value={calculateEstimatedSafetyPoolAPR({
+  //         poolSize: safetyPoolSize,
+  //         rewardsPerSecond: safetyRewardsPerSecond,
+  //       }).toFixed(DecimalPlaces.Percent)}
+  //     />
+  //   );
+  // } else {
+  //   safetyPoolAPR = defaultLoadingBar;
+  // }
 
-  let safetyPoolUserBalance: React.ReactNode = '-';
+  // let safetyPoolUserBalance: React.ReactNode = '-';
 
-  if (walletAddress) {
-    if (safetyPoolStakingBalances.userBalance) {
-      const { num, suffix } = abbreviateNumber({
-        num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
-        decimals: DecimalPlaces.Abbreviated,
-      });
+  // if (walletAddress) {
+  //   if (safetyPoolStakingBalances.userBalance) {
+  //     const { num, suffix } = abbreviateNumber({
+  //       num: MustBigNumber(safetyPoolStakingBalances.userBalance).toString(),
+  //       decimals: DecimalPlaces.Abbreviated,
+  //     });
 
-      safetyPoolUserBalance = (
-        <ValueWithIcon>
-          <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-        </ValueWithIcon>
-      );
-    } else {
-      safetyPoolUserBalance = defaultLoadingBar;
-    }
-  }
+  //     safetyPoolUserBalance = (
+  //       <ValueWithIcon>
+  //         <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
+  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //       </ValueWithIcon>
+  //     );
+  //   } else {
+  //     safetyPoolUserBalance = defaultLoadingBar;
+  //   }
+  // }
 
-  const safetyPoolCard = (
-    <InfoModuleCard
-      title={stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
-      symbol={AssetSymbol.DYDX}
-      onClick={() => history.push(StakingPoolRoute.SafetyPool)}
-      infoModulesConfig={[
-        {
-          label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
-          value: formattedSafetyPoolSize,
-        },
-        {
-          label: stringGetter({ key: STRING_KEYS.CURRENT_APR }),
-          value: safetyPoolAPR,
-        },
-        {
-          label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }),
-          value: safetyPoolUserBalance,
-        },
-      ]}
-    />
-  );
+  // const safetyPoolCard = (
+  //   <InfoModuleCard
+  //     title={stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
+  //     symbol={AssetSymbol.DYDX}
+  //     onClick={() => history.push(StakingPoolRoute.SafetyPool)}
+  //     infoModulesConfig={[
+  //       {
+  //         label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
+  //         value: formattedSafetyPoolSize,
+  //       },
+  //       {
+  //         label: stringGetter({ key: STRING_KEYS.CURRENT_APR }),
+  //         value: safetyPoolAPR,
+  //       },
+  //       {
+  //         label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }),
+  //         value: safetyPoolUserBalance,
+  //       },
+  //     ]}
+  //   />
+  // );
 
   const liquidityPoolStakingBalances = balances[StakingPool.Liquidity];
 
@@ -236,26 +236,26 @@ const StakingPoolsRow: React.FC<
     />
   );
 
-  let safetyPoolEarnings: React.ReactNode;
-  if (walletAddress) {
-    if (safetyPoolStakingBalances.unclaimedRewards) {
-      safetyPoolEarnings = (
-        <ValueWithIcon>
-          <NumberFormat
-            thousandSeparator
-            displayType="text"
-            value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
-              DecimalPlaces.ShortToken,
-              BigNumber.ROUND_UP
-            )}
-          />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-        </ValueWithIcon>
-      );
-    } else {
-      safetyPoolEarnings = defaultLoadingBar;
-    }
-  }
+  // let safetyPoolEarnings: React.ReactNode;
+  // if (walletAddress) {
+  //   if (safetyPoolStakingBalances.unclaimedRewards) {
+  //     safetyPoolEarnings = (
+  //       <ValueWithIcon>
+  //         <NumberFormat
+  //           thousandSeparator
+  //           displayType="text"
+  //           value={MustBigNumber(safetyPoolStakingBalances.unclaimedRewards).toFixed(
+  //             DecimalPlaces.ShortToken,
+  //             BigNumber.ROUND_UP
+  //           )}
+  //         />
+  //         <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
+  //       </ValueWithIcon>
+  //     );
+  //   } else {
+  //     safetyPoolEarnings = defaultLoadingBar;
+  //   }
+  // }
 
   let liquidityPoolEarnings: React.ReactNode;
   if (walletAddress) {
@@ -305,7 +305,7 @@ const StakingPoolsRow: React.FC<
         ) : (
           liquidityPoolCard
         )}
-        {!isUserGeoBlocked && walletAddress ? (
+        {/* {!isUserGeoBlocked && walletAddress ? (
           <WithDetailFooter
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
             value={safetyPoolEarnings}
@@ -325,7 +325,7 @@ const StakingPoolsRow: React.FC<
           </WithDetailFooter>
         ) : (
           safetyPoolCard
-        )}
+        )} */}
         <NotMobileOnly>
           <InfoCtaCard
             label={stringGetter({ key: STRING_KEYS.PROPOSE_IDEA })}
