@@ -115,7 +115,7 @@ class StakingPoolsClient {
     const allowanceTransaction = await transactions[0].tx();
 
     allowanceTransaction.gas = allowanceTransaction.gasLimit
-      ? allowanceTransaction.gasLimit.toString(16)
+      ? allowanceTransaction.gasLimit.toNumber()
       : undefined;
 
     await this.provider?.request?.({
@@ -145,7 +145,7 @@ class StakingPoolsClient {
     const depositTransaction = await _.last(transactions).tx();
 
     depositTransaction.gas = depositTransaction.gasLimit
-      ? depositTransaction.gasLimit.toString(16)
+      ? depositTransaction.gasLimit.toNumber()
       : undefined;
 
     if (hardcodeGas) {
@@ -202,7 +202,7 @@ class StakingPoolsClient {
     const requestWithdrawTransaction = await _.first(transactions).tx();
 
     requestWithdrawTransaction.gas = requestWithdrawTransaction.gasLimit
-      ? requestWithdrawTransaction.gasLimit.toString(16)
+      ? requestWithdrawTransaction.gasLimit.toNumber()
       : undefined;
 
     const txHash = await this.provider?.request?.({
@@ -229,10 +229,9 @@ class StakingPoolsClient {
     ].withdrawStake(walletAddress, amount, walletAddress);
 
     const withdrawTransaction = await _.first(transactions).tx();
-    withdrawTransaction.gas = withdrawTransaction.gasLimit;
 
     withdrawTransaction.gas = withdrawTransaction.gasLimit
-      ? withdrawTransaction.gasLimit.toString(16)
+      ? withdrawTransaction.gasLimit.toNumber()
       : undefined;
 
     const txHash = await this.provider?.request?.({
