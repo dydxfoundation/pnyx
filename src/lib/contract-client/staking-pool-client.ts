@@ -148,10 +148,12 @@ class StakingPoolsClient {
       ? depositTransaction.gasLimit
       : undefined;
 
-    if (hardcodeGas) {
-      depositTransaction.gas = stakeGasLimitsByStakingPool[stakingPool];
-      depositTransaction.gasLimit = stakeGasLimitsByStakingPool[stakingPool];
-    }
+    // if (hardcodeGas) {
+    //   depositTransaction.gas = stakeGasLimitsByStakingPool[stakingPool];
+    //   depositTransaction.gasLimit = stakeGasLimitsByStakingPool[stakingPool];
+    // }
+
+    console.log('depositTransaction', depositTransaction);
 
     const txHash = await this.provider?.request?.({
       method: 'eth_sendTransaction',
