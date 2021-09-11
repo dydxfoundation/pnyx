@@ -123,7 +123,7 @@ class ContractClient {
     const claimTransaction = await _.first(transactions).tx();
 
     claimTransaction.gas = claimTransaction.gasLimit
-      ? claimTransaction.gasLimit.toNumber()
+      ? claimTransaction.gasLimit
       : undefined;
 
     const txHash = await this.provider?.request?.({

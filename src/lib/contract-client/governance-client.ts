@@ -65,7 +65,7 @@ class GovernanceClient {
       const delegateTransaction = await _.last(transactions).tx();
 
       delegateTransaction.gas = delegateTransaction.gasLimit
-        ? delegateTransaction.gasLimit.toNumber()
+        ? delegateTransaction.gasLimit
         : undefined;
 
       delegateStakedTokenTxHash = await this.provider?.request?.({
@@ -78,7 +78,7 @@ class GovernanceClient {
       const delegateTransaction = await _.first(transactions).tx();
 
       delegateTransaction.gas = delegateTransaction.gasLimit
-        ? delegateTransaction.gasLimit.toNumber()
+        ? delegateTransaction.gasLimit
         : undefined;
 
       delegateTokenTxHash = await this.provider?.request?.({
@@ -193,7 +193,7 @@ class GovernanceClient {
     const voteTransaction = await _.first(transactions).tx();
 
     voteTransaction.gas = voteTransaction.gasLimit
-      ? voteTransaction.gasLimit.toNumber()
+      ? voteTransaction.gasLimit
       : undefined;
 
     const txHash = await this.provider?.request?.({
