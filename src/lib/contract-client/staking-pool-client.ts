@@ -118,6 +118,8 @@ class StakingPoolsClient {
       ? allowanceTransaction.gasLimit
       : undefined;
 
+    console.log('allowanceTransaction', allowanceTransaction);
+
     await this.provider?.request?.({
       method: 'eth_sendTransaction',
       params: [allowanceTransaction],
