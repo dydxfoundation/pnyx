@@ -154,7 +154,7 @@ const DashboardHeader: React.FC<
                     <NumberFormat
                       thousandSeparator
                       displayType="text"
-                      value={MustBigNumber(0).toFixed(DecimalPlaces.ShortToken)}
+                      value={MustBigNumber(proposalPower).toFixed(DecimalPlaces.ShortToken)}
                     />
                     <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
                   </ValueWithIcon>
@@ -184,7 +184,7 @@ const DashboardHeader: React.FC<
                     <NumberFormat
                       thousandSeparator
                       displayType="text"
-                      value={MustBigNumber(0).toFixed(DecimalPlaces.ShortToken)}
+                      value={MustBigNumber(votingPower).toFixed(DecimalPlaces.ShortToken)}
                     />
                     <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
                   </ValueWithIcon>
