@@ -26,7 +26,7 @@ const WithLabel: React.FC<WithLabelProps> = ({ children, color, label, noMargin 
 );
 
 const StyledWithLabel = styled.div<ElementProps>`
-  margin-bottom: ${(props) => (props.noMargin ? '0' : '0.75rem')};
+  margin-bottom: ${({ noMargin }) => (noMargin ? '0' : '0.75rem')};
 `;
 
 const Label = styled.div<ElementProps>`
@@ -34,17 +34,17 @@ const Label = styled.div<ElementProps>`
   margin-bottom: 0.625rem;
   margin-left: 0.25rem;
 
-  color: ${(props) => {
-    switch (props.color) {
+  color: ${({ color, theme }) => {
+    switch (color) {
       case WithLabelColor.Base: {
-        return props.theme.textbase;
+        return theme.textbase;
       }
       case WithLabelColor.Dark: {
-        return props.theme.textdark;
+        return theme.textdark;
       }
     }
 
-    return props.theme.textdark;
+    return theme.textdark;
   }};
 
   @media ${breakpoints.tablet} {
