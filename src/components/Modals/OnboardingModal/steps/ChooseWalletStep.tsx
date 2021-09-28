@@ -74,7 +74,7 @@ const WalletOptionsContainer = styled.div`
   @media ${breakpoints.mobile} {
     flex-direction: column;
     flex-wrap: nowrap;
-    max-height: 50vh;
+    max-height: 54vh;
     overflow: scroll;
   }
 
