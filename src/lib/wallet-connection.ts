@@ -119,7 +119,7 @@ export const getProviderByWalletType = ({
       walletConnectProvider = new WalletConnectProvider({
         ...walletConnectBaseOptions,
         qrcodeModalOptions: {
-          mobileLinks: ['rainbo'],
+          mobileLinks: ['rainbow'],
         },
       });
 
@@ -155,7 +155,7 @@ export const getProviderByWalletType = ({
       walletConnectProvider = new WalletConnectProvider({
         ...walletConnectBaseOptions,
         qrcodeModalOptions: {
-          mobileLinks: ['trustwallet'],
+          mobileLinks: ['trust'],
         },
       });
 
