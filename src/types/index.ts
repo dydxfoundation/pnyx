@@ -79,7 +79,7 @@ export type ModalConfig = ModalTypes.ModalConfig;
 export type OpenModalPayload = ModalTypes.OpenModalPayload;
 export type CloseModalPayload = ModalTypes.CloseModalPayload;
 
-// Netwokr Types
+// Network Types
 export type SetCurrentBlockNumberPayload = NetworkTypes.SetCurrentBlockNumberPayload;
 
 // Notifications Types

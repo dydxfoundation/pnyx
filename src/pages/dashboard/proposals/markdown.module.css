@@ -1,6 +1,6 @@
 .markdown a {
   color: #6966ff;
-  transition: all 200ms ease-in-out;
+  transition: 200ms ease-in-out;
   word-wrap: break-word;
 }
 
