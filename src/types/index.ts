@@ -8,6 +8,7 @@ import * as GovernanceTypes from './governance';
 import * as LocalizationTypes from './localization';
 import * as LocalStorageTypes from './local-storage';
 import * as ModalTypes from './modals';
+import * as NetworkTypes from './network';
 import * as NotificationTypes from './notifications';
 import * as PageTypes from './page';
 import * as StakingPoolsTypes from './staking-pools';
@@ -77,6 +78,9 @@ export type RemoveLocalStorageFunction = LocalStorageTypes.RemoveLocalStorageFun
 export type ModalConfig = ModalTypes.ModalConfig;
 export type OpenModalPayload = ModalTypes.OpenModalPayload;
 export type CloseModalPayload = ModalTypes.CloseModalPayload;
+
+// Netwokr Types
+export type SetCurrentBlockNumberPayload = NetworkTypes.SetCurrentBlockNumberPayload;
 
 // Notifications Types
 export type AddNotificationPayload = NotificationTypes.AddNotificationPayload;

@@ -9,6 +9,7 @@ import geo from './geo';
 import governance from './governance';
 import localization from './localization';
 import modals from './modals';
+import network from './network';
 import notifications from './notifications';
 import page from './page';
 import stakingPools from './staking-pools';
@@ -24,6 +25,7 @@ export default (history: History) =>
     governance,
     localization,
     modals,
+    network,
     notifications,
     page,
     router: connectRouter(history),

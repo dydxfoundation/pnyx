@@ -144,7 +144,7 @@ const Title = styled.div`
 const Subtitle = styled.div`
   ${fontSizes.size16};
   color: ${({ theme }) => theme.textdark};
-  margin-top: 0.125rem;
+  margin-top: 0.5rem;
 
   @media ${breakpoints.tablet} {
     ${fontSizes.size17}
@@ -202,12 +202,14 @@ const InfoModuleLabel = styled.div`
   text-transform: uppercase;
   color: ${({ theme }) => theme.textdark};
   letter-spacing: 0.08rem;
+  white-space: nowrap;
 `;
 
 const InfoModuleValue = styled.div`
   ${fontSizes.size18}
   color: ${({ theme }) => theme.textbase};
   margin-top: 0.375rem;
+  white-space: nowrap;
 `;
 
 const CtaContainer = styled.div`

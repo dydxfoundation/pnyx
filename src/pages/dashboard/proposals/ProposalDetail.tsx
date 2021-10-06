@@ -5,6 +5,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components/macro';
 import NumberFormat from 'react-number-format';
+import { DateTime } from 'luxon';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
@@ -27,6 +28,7 @@ import { withLocalization } from 'hoc';
 import { CheckMarkIcon, XIcon } from 'icons';
 
 import {
+  useGetCountdownDiff,
   useGetLatestProposals,
   useGetVotedOnDataForProposal,
   usePollGovernancePowersData,
@@ -49,10 +51,13 @@ import { getGovernancePowersData, getLatestProposals } from 'selectors/governanc
 
 import { STRING_KEYS } from 'constants/localization';
 
+import contractClient from 'lib/contract-client';
 import { MustBigNumber } from 'lib/numbers';
 import { getStatusLabelKey, getTotalRequiredVotes } from 'lib/proposals';
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
+
+import markdownStyles from './markdown.module.css';
 
 export type ProposalDetailProps = {} & LocalizationProps;
 
@@ -70,7 +75,8 @@ const ProposalDetail: React.FC<
   stringGetter,
   walletAddress,
 }) => {
-  const [currentProposal, setCurrentPropsal] = useState<Proposals | undefined>(undefined);
+  const [currentProposal, setCurrentProposal] = useState<Proposals | undefined>(undefined);
+  const [votingEndTimestamp, setVotingEndTimestamp] = useState<string | undefined>(undefined);
 
   const {
     params: { proposalId: proposalIdString },
@@ -95,12 +101,39 @@ const ProposalDetail: React.FC<
       );
 
       if (proposal) {
-        setCurrentPropsal(proposal);
+        setCurrentProposal(proposal);
       } else {
         history.replace(AppRoute.Dashboard);
       }
     }
   }, [history, latestProposals, proposalId, proposalIdString]);
+
+  useEffect(() => {
+    if (currentProposal && !votingEndTimestamp) {
+      const getVotingEndTimestamp = async () => {
+        const { endBlock } = currentProposal;
+        const currentBlockNumber = await contractClient.getCurrentBlockNumber();
+
+        if (currentBlockNumber && endBlock > currentBlockNumber) {
+          setVotingEndTimestamp(
+            DateTime.local()
+              .plus({
+                milliseconds:
+                  (endBlock - currentBlockNumber) * Number(process.env.REACT_APP_AVG_BLOCK_TIME),
+              })
+              .toISO()
+          );
+        }
+      };
+
+      getVotingEndTimestamp();
+    }
+  }, [currentProposal, votingEndTimestamp]);
+
+  const votingPeriodCountdownDiff = useGetCountdownDiff({
+    futureDateISO: votingEndTimestamp,
+    stringGetter,
+  });
 
   if (!currentProposal) {
     return <LoadingSpace id="proposal-detail" />;
@@ -187,6 +220,10 @@ const ProposalDetail: React.FC<
             label: stringGetter({ key: STRING_KEYS.YOUR_VOTE }),
             value: formattedYourVote,
           },
+          {
+            label: stringGetter({ key: STRING_KEYS.VOTING_ENDS }),
+            value: votingPeriodCountdownDiff ?? '-',
+          },
         ]}
         label={stringGetter({ key: STRING_KEYS.PROPOSAL })}
         title={title}
@@ -226,7 +263,9 @@ const ProposalDetail: React.FC<
         <ContentLeft>
           <ProposalDescription>
             <DescriptionLabel>{stringGetter({ key: STRING_KEYS.DESCRIPTION })}</DescriptionLabel>
-            <ReactMarkdown>{description}</ReactMarkdown>
+            <ReactMarkdown className={markdownStyles.markdown} linkTarget="_blank">
+              {description}
+            </ReactMarkdown>
           </ProposalDescription>
         </ContentLeft>
         <ContentRight>

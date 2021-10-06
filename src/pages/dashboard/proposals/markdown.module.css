@@ -1,0 +1,9 @@
+.markdown a {
+  color: #6966ff;
+  transition: all 200ms ease-in-out;
+  word-wrap: break-word;
+}
+
+.markdown a:hover {
+  filter: brightness(150%);
+}
