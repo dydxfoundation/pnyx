@@ -26,6 +26,11 @@ const assetSymbolAddresses = {
     '0x65f7BA4Ec257AF7c55fd5854E5f6356bBd0fb8EC',
 };
 
+const defaultProvider = new providers.JsonRpcProvider(
+  process.env.REACT_APP_ETHEREUM_NODE_URI,
+  Number(process.env.REACT_APP_NETWORK_ID)
+);
+
 class ContractClient {
   private txBuilder: TxBuilder;
 
@@ -38,10 +43,7 @@ class ContractClient {
   constructor() {
     const newTxBuilder = new TxBuilder({
       network: process.env.REACT_APP_NETWORK_KEY,
-      injectedProvider: new providers.JsonRpcProvider(
-        process.env.REACT_APP_ETHEREUM_NODE_URI,
-        Number(process.env.REACT_APP_NETWORK_ID)
-      ),
+      injectedProvider: defaultProvider,
     });
 
     this.txBuilder = newTxBuilder;
@@ -68,6 +70,11 @@ class ContractClient {
       networkId: undefined,
       accounts: [],
     };
+  };
+
+  getCurrentBlockNumber = async (): Promise<number | undefined> => {
+    const blockNumber = await defaultProvider.getBlockNumber();
+    return blockNumber;
   };
 
   getCirculatingSupply = async (): Promise<string> => {
