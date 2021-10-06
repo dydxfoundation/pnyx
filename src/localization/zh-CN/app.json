@@ -1,11 +1,11 @@
 {
   "GENERAL": {
     "TIME": {
-      "DAYS_SHORT": "日",
+      "DAYS_SHORT": "天",
       "HOURS_SHORT": "时",
-      "MINUTES_SHORT": "月"
+      "MINUTES_SHORT": "分"
     },
-    "ABOUT": "简介",
+    "ABOUT": "关于",
     "ACTIVE": "主动",
     "AMOUNT": "金额",
     "ASSET": "资产",
@@ -90,6 +90,7 @@
     "TERMS_OF_USE": "使用条款"
   },
   "ONBOARDING": {
+    "CONNECT_WALLET": "连接钱包",
     "CONNECT_YOUR_WALLET": "连接钱包",
     "CONNECTING": "正在连接",
     "SKIP_FOR_NOW": "现在跳过",
@@ -118,17 +119,20 @@
     "CLAIM_REWARDS_NOTIFICATION": "一旦交易确认，您申领的奖励将出现在您的钱包中。",
     "CLAIM_REWARDS": "申领奖励",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "提取您的全部可申领质押权益和交易奖励。",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "可申领的总奖励包括您的质押权益和交易奖励。申领会将所有可用的奖励提现到您的钱包中。",
     "CLAIM_YOUR_REWARDS": "申领奖励",
-    "CLAIMABLE": "可申领"
+    "CLAIMABLE": "可申领",
+    "STAKING_TRADING_REWARDS": "质押权益和交易奖励"
   },
   "STAKING_POOLS": {
     "BLACKOUT_WINDOW": "停市窗口",
     "CURRENT_APR": "当前年利率",
     "CURRENTLY_BEING_STAKED": "目前质押中",
     "CURRENTLY_IN_BLACKOUT_WINDOW": "目前处于停市窗口",
+    "ESTIMATED_APR_IN_DYDX": "DYDX的估计年利率",
     "ESTIMATED_RATE": "预估利率",
     "ESTIMATED_YIELD_PER_DAY": "预估收益/天",
-    "LIQUIDITY_POOL_ABOUT": "流动性，尤其在正确使用时，是任何成功交易所的核心成分。为进一步提高流动性网络效应，激励专业做市商，DYDX将被分配给向流动性权益质押池质押USDC的用户。公认的和获批准的做市商将使用质押的USDC基于协议进行做市，从而进一步提高市场的可用流动性。做市商将无法从协议中提现USDC，要求他们只能在协议中使用。",
+    "LIQUIDITY_POOL_ABOUT": "流动性，尤其在正确使用时，是任何成功交易所的核心成分。为进一步提高流动性网络效应，激励专业做市商，DYDX将被分配给向流动性质押池质押USDC的用户。公认的和获批准的做市商将使用质押的USDC基于协议进行做市，从而进一步提高市场的可用流动性。做市商将无法从协议中提现USDC，要求他们只能在协议中使用。",
     "LIQUIDITY_POOL_DESCRIPTION": "质押权益，为dYdX交易所提供流动性，从而赚取奖励。",
     "LIQUIDITY_POOL_REWARDS": "质押人将收到DYDX，其将根据每个质押者在池中总USDC中所占的份额进行连续分配。如果要在下一时段提现USDC，质押人必须在当前时段结束前至少14天请求解除质押USDC。如果质押人不请求提现，他们质押的USDC将被转入下一时段。",
     "LIQUIDITY_POOL_RISKS": "如果做市商即将（由于无盈利的交易）损失资金，并且无法或不愿补充流动性质押池，那么质押的一部分USDC可能会亏掉。",
@@ -136,10 +140,11 @@
     "POOL_DISCUSS_DESCRIPTION": "对此流动性池有想法？和他人进行讨论。",
     "POOL_SIZE": "流动性池规模",
     "POOL": "流动性池",
-    "SAFETY_POOL_ABOUT": "Placeholder",
+    "SAFETY_POOL_ABOUT": "自协议推出以来，用户安全和保护一直是重点关注的问题。为此，DYDX将分配给质押DYDX到保险资金池的用户，为协议的用户打造额外的安全网。",
     "SAFETY_POOL_DESCRIPTION": "质押权益，为dYdX交易所提供保险资金，从而赚取奖励。",
-    "SAFETY_POOL_REWARDS": "Placeholder",
-    "SAFETY_POOL_RISKS": "Placeholder",
+    "SAFETY_POOL_REWARDS": "质押人将持续收到DYDX，收到的数量按照其在质押池中占总DYDX的比例计算。",
+    "SAFETY_POOL_RISKS_1": "由于资金缺口事件，质押的DYDX可能会被削减。削减由DYDX治理自行决定，并需要治理投票才能颁布。",
+    "SAFETY_POOL_RISKS_2": "如同任何DeFi协议的参与方一样，如果基本的智能合约代码存在漏洞，保险模块的质押人将面临智能合约风险。所有DYDX和治理智能合约都已被审计并进行了严格的测试。",
     "SAFETY_POOL": "保险资金池",
     "STAKE_FUNDS": "权益质押资金",
     "STAKE_TO_EARN_REWARDS": "质押权益以赚取奖励",
@@ -153,6 +158,7 @@
     "UNCLAIMED_REWARDS": "未申领的奖励",
     "UNTIL_NEXT_BLACKOUT_WINDOW": "直到下一轮停市窗口。",
     "WITHDRAWS_DESCRIPTION": "查看和管理您的未完成提现和可用提现。",
+    "YIELD_PER_THOUSAND_PER_DAY": "收益/$1K/天",
     "YIELD_PER_THOUSAND": "收益/$1K",
     "YOUR_STAKE": "您的质押"
   },
@@ -194,5 +200,13 @@
     "VOTING_POWER": "投票权",
     "VOTING": "投票中",
     "YOUR_VOTE": "您的投票"
+  },
+  "HISTORY": {
+    "EPOCH_NUMBER": "时段{NUMBER}",
+    "EVENT": "事件",
+    "FOR_TRADING_IN_EPOCH": "对于{EPOCH_NUMBER}的交易",
+    "PENDING_REWARDS": "待处理奖励",
+    "REWARDED": "已获奖励",
+    "TRADING_REWARDS_HISTORY_EMPTY_STATE": "您没有交易奖励历史记录。"
   }
 }
