@@ -173,16 +173,28 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
           key: 'amount',
           align: CellAlign.End,
           label: stringGetter({ key: STRING_KEYS.EARNED }),
-          renderCell: ({ rowData: { amount } }) => (
-            <Styled.EarnedCell align={CellAlign.End}>
-              <NumberFormat
-                thousandSeparator
-                displayType="text"
-                value={MustBigNumber(amount).toFixed(DecimalPlaces.ShortToken)}
-              />
-              <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-            </Styled.EarnedCell>
-          ),
+          renderCell: ({ rowData: { amount, epochNumber } }) => {
+            let earnedAmount = MustBigNumber(amount);
+
+            if (epochNumber > 0) {
+              const lastEpochRewards = tradingRewardsData?.rewardsPerEpoch?.[epochNumber - 1];
+
+              if (lastEpochRewards) {
+                earnedAmount = earnedAmount.minus(lastEpochRewards);
+              }
+            }
+
+            return (
+              <Styled.EarnedCell align={CellAlign.End}>
+                <NumberFormat
+                  thousandSeparator
+                  displayType="text"
+                  value={earnedAmount.toFixed(DecimalPlaces.ShortToken)}
+                />
+                <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+              </Styled.EarnedCell>
+            );
+          },
         },
       ]}
       data={formattedData}
