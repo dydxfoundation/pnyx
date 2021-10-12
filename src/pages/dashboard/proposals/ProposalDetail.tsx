@@ -177,6 +177,43 @@ const ProposalDetail: React.FC<
     );
   }
 
+  const infoModuleConfigs = [
+    {
+      label: stringGetter({ key: STRING_KEYS.STATUS }),
+      value: statusLabelKey ? (
+        <StyledProposalStatus>
+          {_.includes(
+            [ProposalStatus.Succeeded, ProposalStatus.Queued, ProposalStatus.Executed],
+            status
+          ) && (
+            <StyledCheckMark>
+              <CheckMarkIcon />
+            </StyledCheckMark>
+          )}
+          {_.includes([ProposalStatus.Failed, ProposalStatus.Expired], status) && (
+            <StyledX>
+              <XIcon />
+            </StyledX>
+          )}
+          {stringGetter({ key: statusLabelKey })}
+        </StyledProposalStatus>
+      ) : (
+        '-'
+      ),
+    },
+    {
+      label: stringGetter({ key: STRING_KEYS.YOUR_VOTE }),
+      value: formattedYourVote,
+    },
+  ];
+
+  if (status === ProposalStatus.Active) {
+    infoModuleConfigs.push({
+      label: stringGetter({ key: STRING_KEYS.VOTING_ENDS }),
+      value: votingPeriodCountdownDiff ?? '-',
+    });
+  }
+
   return (
     <SectionWrapper column>
       <DetailPageHeader
@@ -192,39 +229,7 @@ const ProposalDetail: React.FC<
             MustBigNumber(votingPower).isZero(),
           isLoading: !!walletAddress && (!votedOnData || _.isNil(votingPower)),
         }}
-        infoModuleConfigs={[
-          {
-            label: stringGetter({ key: STRING_KEYS.STATUS }),
-            value: statusLabelKey ? (
-              <StyledProposalStatus>
-                {_.includes(
-                  [ProposalStatus.Succeeded, ProposalStatus.Queued, ProposalStatus.Executed],
-                  status
-                ) && (
-                  <StyledCheckMark>
-                    <CheckMarkIcon />
-                  </StyledCheckMark>
-                )}
-                {_.includes([ProposalStatus.Failed, ProposalStatus.Expired], status) && (
-                  <StyledX>
-                    <XIcon />
-                  </StyledX>
-                )}
-                {stringGetter({ key: statusLabelKey })}
-              </StyledProposalStatus>
-            ) : (
-              '-'
-            ),
-          },
-          {
-            label: stringGetter({ key: STRING_KEYS.YOUR_VOTE }),
-            value: formattedYourVote,
-          },
-          {
-            label: stringGetter({ key: STRING_KEYS.VOTING_ENDS }),
-            value: votingPeriodCountdownDiff ?? '-',
-          },
-        ]}
+        infoModuleConfigs={infoModuleConfigs}
         label={stringGetter({ key: STRING_KEYS.PROPOSAL })}
         title={title}
         subtitle={shortDescription}
