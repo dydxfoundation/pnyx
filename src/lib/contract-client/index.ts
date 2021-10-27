@@ -116,7 +116,7 @@ class ContractClient {
     walletAddress: string;
   }): Promise<TradingRewardsData> => {
     const tradingRewardsData = await this.txBuilder.merkleDistributorService.getUserRewardsData(
-      '0x29cbd90d67c170843dfbd0424514cb24dd324ef6'
+      walletAddress
     );
 
     return tradingRewardsData;
