@@ -29,12 +29,13 @@ const InfoCtaCard: React.FC<InfoCtaCardProps> = ({ label, title, body, ctaConfig
 
     const buttons = [];
     if (ctaConfigs.primary) {
-      const { color, label: primaryLabel, onClick, linkOutIcon } = ctaConfigs.primary;
+      const { color, label: primaryLabel, href, onClick, linkOutIcon } = ctaConfigs.primary;
 
       buttons.push(
         <Button
           key="primary"
           color={color ?? ButtonColor.Lighter}
+          href={href}
           size={ButtonSize.Medium}
           linkOutIcon={linkOutIcon}
           onClick={onClick}
@@ -45,16 +46,16 @@ const InfoCtaCard: React.FC<InfoCtaCardProps> = ({ label, title, body, ctaConfig
     }
 
     if (ctaConfigs.secondary) {
-      const { label: secondaryLabel, href, onClick, linkOutIcon } = ctaConfigs.secondary;
+      const { color, label: secondaryLabel, href, onClick, linkOutIcon } = ctaConfigs.secondary;
 
       buttons.push(
         <Button
           key="secondary"
-          color={ButtonColor.Light}
-          size={ButtonSize.Medium}
+          color={color ?? ButtonColor.Light}
           href={href}
           linkOutIcon={linkOutIcon}
           onClick={onClick}
+          size={ButtonSize.Medium}
         >
           {secondaryLabel}
         </Button>
