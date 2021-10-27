@@ -169,7 +169,7 @@ const InfoModule = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  height: 100%;
+  height: 4.25rem;
   padding: 0 1.25rem 0.25rem;
 
   background-image: ${(props) =>

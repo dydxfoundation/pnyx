@@ -16,7 +16,6 @@ import {
 import { LocalizationProps, TradingRewardsData } from 'types';
 
 import { withLocalization } from 'hoc';
-import { useGetTradingRewardsData } from 'hooks';
 import { StatusActiveIcon, StatusExecutedIcon } from 'icons';
 import { breakpoints, fontSizes, MobileOnly, NotMobileOnly } from 'styles';
 
@@ -32,8 +31,6 @@ import { getWalletAddress } from 'selectors/wallets';
 import { STRING_KEYS } from 'constants/localization';
 
 import { MustBigNumber } from 'lib/numbers';
-
-export type TradingRewardsHistoryTableProps = {} & LocalizationProps;
 
 const getFormattedTableData = ({
   tradingRewardsData,
@@ -66,8 +63,18 @@ const getFormattedTableData = ({
 
   for (let i = currentEpoch; i >= 0; i--) {
     if (rewardsPerEpoch[i]) {
+      let rewardAmount = MustBigNumber(rewardsPerEpoch[i]);
+
+      if (i > 0) {
+        const lastEpochRewards = tradingRewardsData?.rewardsPerEpoch?.[i - 1];
+
+        if (lastEpochRewards) {
+          rewardAmount = rewardAmount.minus(lastEpochRewards);
+        }
+      }
+
       formattedData.push({
-        amount: rewardsPerEpoch[i],
+        amount: rewardAmount,
         epochEnd: endOfEpochTimestamp - (currentEpoch - i) * epochLength,
         epochNumber: i,
         status: TradingRewardStatus.Granted,
@@ -78,15 +85,16 @@ const getFormattedTableData = ({
   return formattedData;
 };
 
-const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
-  stringGetter,
-}) => {
+const TradingRewardsHistoryTable: React.FC<
+  {
+    tradingRewardsData?: TradingRewardsData;
+  } & LocalizationProps
+> = ({ stringGetter, tradingRewardsData }) => {
   const dispatch = useDispatch();
 
   const selectedLocale = useSelector(getSelectedLocale, shallowEqual);
   const walletAddress = useSelector(getWalletAddress);
 
-  const tradingRewardsData = useGetTradingRewardsData();
   const formattedData = getFormattedTableData({ tradingRewardsData });
 
   return (
@@ -173,28 +181,16 @@ const TradingRewardsHistoryTable: React.FC<TradingRewardsHistoryTableProps> = ({
           key: 'amount',
           align: CellAlign.End,
           label: stringGetter({ key: STRING_KEYS.EARNED }),
-          renderCell: ({ rowData: { amount, epochNumber } }) => {
-            let earnedAmount = MustBigNumber(amount);
-
-            if (epochNumber > 0) {
-              const lastEpochRewards = tradingRewardsData?.rewardsPerEpoch?.[epochNumber - 1];
-
-              if (lastEpochRewards) {
-                earnedAmount = earnedAmount.minus(lastEpochRewards);
-              }
-            }
-
-            return (
-              <Styled.EarnedCell align={CellAlign.End}>
-                <NumberFormat
-                  thousandSeparator
-                  displayType="text"
-                  value={earnedAmount.toFixed(DecimalPlaces.ShortToken)}
-                />
-                <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-              </Styled.EarnedCell>
-            );
-          },
+          renderCell: ({ rowData: { amount, epochNumber } }) => (
+            <Styled.EarnedCell align={CellAlign.End}>
+              <NumberFormat
+                thousandSeparator
+                displayType="text"
+                value={MustBigNumber(amount).toFixed(DecimalPlaces.ShortToken)}
+              />
+              <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+            </Styled.EarnedCell>
+          ),
         },
       ]}
       data={formattedData}

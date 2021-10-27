@@ -21,10 +21,11 @@ export type NoOpFunction = () => void;
 export type CtaConfig = {
   color?: ButtonColor;
   disabled?: boolean;
+  href?: string;
   isLoading?: boolean;
   label: string;
   linkOutIcon?: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 // Allowances Types

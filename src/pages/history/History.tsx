@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
+import { useGetTradingRewardsData } from 'hooks';
 import { breakpoints } from 'styles';
 
 import GeoBlockBanner from 'components/GeoBlockBanner';
@@ -22,15 +23,20 @@ export type HistoryProps = {} & LocalizationProps;
 
 const History: React.FC<HistoryProps> = ({ stringGetter }) => {
   const isUserGeoBlocked = useSelector(getIsUserGeoBlocked);
+  const tradingRewardsData = useGetTradingRewardsData();
 
   return (
     <Styled.History>
       <SectionWrapper>
-        {isUserGeoBlocked ? <GeoBlockBanner /> : <HistoryClaimRewardsModule />}
+        {isUserGeoBlocked ? (
+          <GeoBlockBanner />
+        ) : (
+          <HistoryClaimRewardsModule tradingRewardsData={tradingRewardsData} />
+        )}
       </SectionWrapper>
       <SectionWrapper column>
         <SectionHeader noPadding title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
-        <TradingRewardsHistoryTable />
+        <TradingRewardsHistoryTable tradingRewardsData={tradingRewardsData} />
       </SectionWrapper>
     </Styled.History>
   );

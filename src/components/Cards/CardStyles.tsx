@@ -16,11 +16,13 @@ export const CardWrapper = styled.div<{
   size?: CardSize;
   smallViewportAutoHeight?: boolean;
 }>`
-  height: 10rem;
   min-height: 10rem;
-  max-height: 10rem;
   border-radius: 0.75rem;
   overflow: hidden;
+
+  > div {
+    min-height: 10rem;
+  }
 
   ${(props) => {
     switch (props.size) {
@@ -57,9 +59,7 @@ export const CardWrapper = styled.div<{
     props.smallViewportAutoHeight
       ? `
         @media ${breakpoints.desktopSmall} {
-          height: auto;
           min-height: auto;
-          max-height: min-content;
         }
       `
       : ''}
