@@ -29,12 +29,12 @@ const InfoCtaCard: React.FC<InfoCtaCardProps> = ({ label, title, body, ctaConfig
 
     const buttons = [];
     if (ctaConfigs.primary) {
-      const { label: primaryLabel, onClick, linkOutIcon } = ctaConfigs.primary;
+      const { color, label: primaryLabel, onClick, linkOutIcon } = ctaConfigs.primary;
 
       buttons.push(
         <Button
           key="primary"
-          color={ButtonColor.Lighter}
+          color={color ?? ButtonColor.Lighter}
           size={ButtonSize.Medium}
           linkOutIcon={linkOutIcon}
           onClick={onClick}
@@ -45,13 +45,14 @@ const InfoCtaCard: React.FC<InfoCtaCardProps> = ({ label, title, body, ctaConfig
     }
 
     if (ctaConfigs.secondary) {
-      const { label: secondaryLabel, onClick, linkOutIcon } = ctaConfigs.secondary;
+      const { label: secondaryLabel, href, onClick, linkOutIcon } = ctaConfigs.secondary;
 
       buttons.push(
         <Button
           key="secondary"
           color={ButtonColor.Light}
           size={ButtonSize.Medium}
+          href={href}
           linkOutIcon={linkOutIcon}
           onClick={onClick}
         >
@@ -121,13 +122,10 @@ const Body = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
+  margin-top: 1rem;
 
   > button:not(:last-child) {
     margin-right: 0.625rem;
-  }
-
-  @media ${breakpoints.desktopSmall} {
-    margin-top: 1rem;
   }
 `;
 

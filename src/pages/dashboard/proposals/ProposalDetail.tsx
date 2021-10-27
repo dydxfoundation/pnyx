@@ -77,6 +77,7 @@ const ProposalDetail: React.FC<
 }) => {
   const [currentProposal, setCurrentProposal] = useState<Proposals | undefined>(undefined);
   const [votingEndTimestamp, setVotingEndTimestamp] = useState<string | undefined>(undefined);
+  const [votingStartTimestamp, setVotingStartTimestamp] = useState<string | undefined>(undefined);
 
   const {
     params: { proposalId: proposalIdString },
@@ -109,26 +110,45 @@ const ProposalDetail: React.FC<
   }, [history, latestProposals, proposalId, proposalIdString]);
 
   useEffect(() => {
-    if (currentProposal && !votingEndTimestamp) {
-      const getVotingEndTimestamp = async () => {
-        const { endBlock } = currentProposal;
-        const currentBlockNumber = await contractClient.getCurrentBlockNumber();
+    if (currentProposal) {
+      if (!votingStartTimestamp || !votingEndTimestamp) {
+        const getVotingTimestamps = async () => {
+          const { endBlock, startBlock } = currentProposal;
+          const currentBlockNumber = await contractClient.getCurrentBlockNumber();
 
-        if (currentBlockNumber && endBlock > currentBlockNumber) {
-          setVotingEndTimestamp(
-            DateTime.local()
-              .plus({
-                milliseconds:
-                  (endBlock - currentBlockNumber) * Number(process.env.REACT_APP_AVG_BLOCK_TIME),
-              })
-              .toISO()
-          );
-        }
-      };
+          if (currentBlockNumber && startBlock > currentBlockNumber) {
+            setVotingStartTimestamp(
+              DateTime.local()
+                .plus({
+                  milliseconds:
+                    (startBlock - currentBlockNumber) *
+                    Number(process.env.REACT_APP_AVG_BLOCK_TIME),
+                })
+                .toISO()
+            );
+          }
 
-      getVotingEndTimestamp();
+          if (currentBlockNumber && endBlock > currentBlockNumber) {
+            setVotingEndTimestamp(
+              DateTime.local()
+                .plus({
+                  milliseconds:
+                    (endBlock - currentBlockNumber) * Number(process.env.REACT_APP_AVG_BLOCK_TIME),
+                })
+                .toISO()
+            );
+          }
+        };
+
+        getVotingTimestamps();
+      }
     }
-  }, [currentProposal, votingEndTimestamp]);
+  }, [currentProposal, votingEndTimestamp, votingStartTimestamp]);
+
+  const votingStartCountdownDiff = useGetCountdownDiff({
+    futureDateISO: votingStartTimestamp,
+    stringGetter,
+  });
 
   const votingPeriodCountdownDiff = useGetCountdownDiff({
     futureDateISO: votingEndTimestamp,
@@ -211,6 +231,11 @@ const ProposalDetail: React.FC<
     infoModuleConfigs.push({
       label: stringGetter({ key: STRING_KEYS.VOTING_ENDS }),
       value: votingPeriodCountdownDiff ?? '-',
+    });
+  } else if (status === ProposalStatus.Pending) {
+    infoModuleConfigs.push({
+      label: stringGetter({ key: STRING_KEYS.VOTING_BEGINS }),
+      value: votingStartCountdownDiff ?? '-',
     });
   }
 
