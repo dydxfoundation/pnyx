@@ -29,6 +29,7 @@ const ProposalRow: React.FC<ProposalRowProps & RouteComponentProps> = ({
 }) => {
   const {
     againstVotes: againstVotesString,
+    dipId,
     forVotes: forVotesString,
     id,
     state: status,
@@ -59,7 +60,7 @@ const ProposalRow: React.FC<ProposalRowProps & RouteComponentProps> = ({
     >
       <StatusIconTitle>
         <ProposalStatusIcon size={ProposalStatusSize.Medium} status={status} />
-        {title}
+        DIP {dipId} - {title}
       </StatusIconTitle>
       <VoteContainer>
         <StatusLabel>

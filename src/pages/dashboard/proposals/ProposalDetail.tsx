@@ -164,6 +164,7 @@ const ProposalDetail: React.FC<
   const {
     againstVotes: againstVotesString,
     description,
+    dipId,
     forVotes: forVotesString,
     id,
     minimumDiff: minimumDiffString,
@@ -256,7 +257,7 @@ const ProposalDetail: React.FC<
         }}
         infoModuleConfigs={infoModuleConfigs}
         label={stringGetter({ key: STRING_KEYS.PROPOSAL })}
-        title={title}
+        title={`DIP ${dipId} - ${title}`}
         subtitle={shortDescription}
       />
       <VoteSection>
