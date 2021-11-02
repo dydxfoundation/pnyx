@@ -1,7 +1,7 @@
 {
   "GENERAL": {
     "TIME": {
-      "DAYS_SHORT": "天",
+      "DAYS_SHORT": "日",
       "HOURS_SHORT": "时",
       "MINUTES_SHORT": "分"
     },
@@ -10,6 +10,7 @@
     "AMOUNT": "金额",
     "ASSET": "资产",
     "AVAILABLE": "可用",
+    "AVAILABLE_TO_CLAIM_NOW": "现在可申领",
     "BALANCE": "余额",
     "BOTH": "两者都是",
     "CANCEL": "取消",
@@ -119,7 +120,7 @@
     "CLAIM_REWARDS_NOTIFICATION": "一旦交易确认，您申领的奖励将出现在您的钱包中。",
     "CLAIM_REWARDS": "申领奖励",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "提取您的全部可申领质押权益和交易奖励。",
-    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "可申领的总奖励包括您的质押权益和交易奖励。申领会将所有可用的奖励提现到您的钱包中。",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "可申领奖励包括质押权益和交易奖励。申领会将所有可用的奖励提现到您的钱包中。",
     "CLAIM_YOUR_REWARDS": "申领奖励",
     "CLAIMABLE": "可申领",
     "STAKING_TRADING_REWARDS": "质押权益和交易奖励"
@@ -197,6 +198,8 @@
     "VOTED_AGAINST": "投反对票",
     "VOTED_FOR": "投赞成票",
     "VOTED": "已投票",
+    "VOTING_BEGINS": "投票开始",
+    "VOTING_ENDS": "投票结束",
     "VOTING_POWER": "投票权",
     "VOTING": "投票中",
     "YOUR_VOTE": "您的投票"
@@ -205,6 +208,7 @@
     "EPOCH_NUMBER": "时段{NUMBER}",
     "EVENT": "事件",
     "FOR_TRADING_IN_EPOCH": "对于{EPOCH_NUMBER}的交易",
+    "IN_PENDING_REWARDS": "待决奖励",
     "PENDING_REWARDS": "待处理奖励",
     "REWARDED": "已获奖励",
     "TRADING_REWARDS_HISTORY_EMPTY_STATE": "您没有交易奖励历史记录。"
