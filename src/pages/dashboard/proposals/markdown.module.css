@@ -7,3 +7,7 @@
 .markdown a:hover {
   filter: brightness(150%);
 }
+
+code {
+  word-break: break-all;
+}
