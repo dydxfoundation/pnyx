@@ -10,6 +10,7 @@
     "AMOUNT": "金額",
     "ASSET": "資産",
     "AVAILABLE": "余力",
+    "AVAILABLE_TO_CLAIM_NOW": "今すぐ請求できます",
     "BALANCE": "残高",
     "BOTH": "両方",
     "CANCEL": "キャンセル",
@@ -119,7 +120,7 @@
     "CLAIM_REWARDS_NOTIFICATION": "請求済み報酬は取引確認後にウォレットに表示されます。",
     "CLAIM_REWARDS": "報酬の請求",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "請求可能なステーキングおよび取引に関する報酬をすべて出金する。",
-    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "請求可能な報酬の総額には、ステーキング報酬と取引報酬の両方が含まれます。請求により、出金可能なすべての報酬をウォレットに出金します。",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "請求できる報酬には、ステーキング報酬と取引報酬の両方が含まれます。請求により、出金可能なすべての報酬をウォレットに出金します。",
     "CLAIM_YOUR_REWARDS": "報酬の請求",
     "CLAIMABLE": "請求可能",
     "STAKING_TRADING_REWARDS": "ステーキングおよび取引に関する報酬"
@@ -197,6 +198,8 @@
     "VOTED_AGAINST": "反対を選択済み",
     "VOTED_FOR": "賛成を選択済み",
     "VOTED": "選択済み",
+    "VOTING_BEGINS": "選択開始",
+    "VOTING_ENDS": "選択終了",
     "VOTING_POWER": "選択権",
     "VOTING": "選択する",
     "YOUR_VOTE": "選択"
@@ -205,6 +208,7 @@
     "EPOCH_NUMBER": "エポック{NUMBER}",
     "EVENT": "イベント",
     "FOR_TRADING_IN_EPOCH": "{EPOCH_NUMBER}での取引の",
+    "IN_PENDING_REWARDS": "保留中の報酬",
     "PENDING_REWARDS": "保留中の報酬",
     "REWARDED": "報酬を受け取り済み",
     "TRADING_REWARDS_HISTORY_EMPTY_STATE": "取引報酬の履歴はありません。"
