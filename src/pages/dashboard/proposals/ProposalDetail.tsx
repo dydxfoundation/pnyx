@@ -27,12 +27,7 @@ import { breakpoints, fontSizes } from 'styles';
 import { withLocalization } from 'hoc';
 import { CheckMarkIcon, XIcon } from 'icons';
 
-import {
-  useGetCountdownDiff,
-  useGetLatestProposals,
-  useGetVotedOnDataForProposal,
-  usePollGovernancePowersData,
-} from 'hooks';
+import { useGetCountdownDiff, useGetLatestProposals, useGetVotedOnDataForProposal } from 'hooks';
 
 import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
 import Button, { ButtonColor, ButtonContainer } from 'components/Button';
@@ -47,7 +42,7 @@ import SectionWrapper from 'components/SectionWrapper';
 import { openModal as openModalAction } from 'actions/modals';
 
 import { getWalletAddress } from 'selectors/wallets';
-import { getGovernancePowersData, getLatestProposals } from 'selectors/governance';
+import { getLatestProposals } from 'selectors/governance';
 
 import { STRING_KEYS } from 'constants/localization';
 
@@ -61,23 +56,18 @@ import markdownStyles from './markdown.module.css';
 
 export type ProposalDetailProps = {} & LocalizationProps;
 
+let previousWalletAddress: string | undefined;
+
 const ProposalDetail: React.FC<
   ProposalDetailProps &
     RouteComponentProps<{ proposalId?: string }> &
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>
-> = ({
-  governancePowersData,
-  history,
-  latestProposals,
-  match,
-  openModal,
-  stringGetter,
-  walletAddress,
-}) => {
+> = ({ history, latestProposals, match, openModal, stringGetter, walletAddress }) => {
   const [currentProposal, setCurrentProposal] = useState<Proposals | undefined>(undefined);
   const [votingEndTimestamp, setVotingEndTimestamp] = useState<string | undefined>(undefined);
   const [votingStartTimestamp, setVotingStartTimestamp] = useState<string | undefined>(undefined);
+  const [votingPower, setVotingPower] = useState<string | undefined>(undefined);
 
   const {
     params: { proposalId: proposalIdString },
@@ -86,9 +76,33 @@ const ProposalDetail: React.FC<
   const proposalId = Number(proposalIdString);
 
   useGetLatestProposals();
-  usePollGovernancePowersData();
 
   const votedOnData = useGetVotedOnDataForProposal({ proposalId });
+
+  useEffect(() => {
+    /**
+     * Pull voting power at start of proposal if no voting power was previously pulled, or if the
+     * wallet address changes (user changed account).
+     */
+    if (walletAddress) {
+      if (currentProposal && (!votingPower || previousWalletAddress !== walletAddress)) {
+        const getVotingPowerAtProposalStart = async () => {
+          const votingPowerAtStart = await contractClient.governanceClient.getVotingPowerAtBlock({
+            block: currentProposal.startBlock,
+            walletAddress,
+          });
+
+          setVotingPower(votingPowerAtStart);
+        };
+
+        getVotingPowerAtProposalStart();
+      }
+    } else if (!walletAddress && previousWalletAddress) {
+      setVotingPower(undefined);
+    }
+
+    previousWalletAddress = walletAddress;
+  }, [currentProposal, votingPower, walletAddress]);
 
   useEffect(() => {
     if (!proposalIdString) {
@@ -158,8 +172,6 @@ const ProposalDetail: React.FC<
   if (!currentProposal) {
     return <LoadingSpace id="proposal-detail" />;
   }
-
-  const { votingPower } = governancePowersData;
 
   const {
     againstVotes: againstVotesString,
@@ -499,7 +511,6 @@ const StyledX = styled(StyledIcon)`
 `;
 
 const mapStateToProps = (state: RootState) => ({
-  governancePowersData: getGovernancePowersData(state),
   latestProposals: getLatestProposals(state),
   walletAddress: getWalletAddress(state),
 });

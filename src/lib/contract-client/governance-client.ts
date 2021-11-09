@@ -168,6 +168,22 @@ class GovernanceClient {
     return txHashes;
   };
 
+  getVotingPowerAtBlock = async ({
+    block,
+    walletAddress,
+  }: {
+    block: number;
+    walletAddress: string;
+  }): Promise<string> => {
+    const votingPower = await this.txBuilder.dydxGovernanceService.getVotingPowerAt({
+      user: walletAddress,
+      block,
+      strategy: this.txBuilder.dydxGovernanceService.dydxGovernanceStrategyAddress,
+    });
+
+    return votingPower;
+  };
+
   getLatestProposals = async (): Promise<Proposal[]> => {
     const proposals = await this.txBuilder.dydxGovernanceService.getLatestProposals(10);
     return proposals;
