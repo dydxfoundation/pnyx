@@ -125,7 +125,7 @@ const ProposalDetail: React.FC<
 
   useEffect(() => {
     if (currentProposal) {
-      if (!votingStartTimestamp || !votingEndTimestamp) {
+      if (!votingStartTimestamp && !votingEndTimestamp) {
         const getVotingTimestamps = async () => {
           const { endBlock, startBlock } = currentProposal;
           const currentBlockNumber = await contractClient.getCurrentBlockNumber();

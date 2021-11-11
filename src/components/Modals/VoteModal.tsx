@@ -18,6 +18,7 @@ import { AppDispatch, RootState } from 'store';
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
+import { usePollGovernancePowersData } from 'hooks';
 import { breakpoints, fontSizes } from 'styles';
 
 import Button from 'components/Button';
@@ -68,6 +69,8 @@ export const UnconnectedVoteModal: React.FC<ConnectedVoteModalProps> = ({
   const [walletErrorMessage, setWalletErrorMessage] = useState<string | undefined>();
 
   const { votingPower } = governancePowersData;
+
+  usePollGovernancePowersData();
 
   useEffect(() => {
     if (_.isNil(proposalId)) {
