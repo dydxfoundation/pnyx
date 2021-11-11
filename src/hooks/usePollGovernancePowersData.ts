@@ -20,7 +20,7 @@ const stopPollingGovernancePowersData = () => {
   }
 };
 
-const usePollGovernancePowersDataData = () => {
+const usePollGovernancePowersData = () => {
   const dispatch = useDispatch();
 
   const governancePowersData = useSelector(getGovernancePowersData, shallowEqual);
@@ -75,4 +75,4 @@ const usePollGovernancePowersDataData = () => {
   }, [walletAddress]);
 };
 
-export default usePollGovernancePowersDataData;
+export default usePollGovernancePowersData;
