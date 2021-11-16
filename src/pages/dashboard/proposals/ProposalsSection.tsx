@@ -61,9 +61,12 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
 
     return (
       <Styled.ProposalContainer>
-        {_.map(latestProposals, (proposal) => (
-          <ProposalRow key={proposal.id} proposal={proposal} />
-        ))}
+        {_.map(
+          _.filter(latestProposals, ({ dipId }) => dipId > 0),
+          (proposal) => (
+            <ProposalRow key={proposal.id} proposal={proposal} />
+          )
+        )}
       </Styled.ProposalContainer>
     );
   };
