@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { AnyStyledComponent } from 'styled-components/macro';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -34,18 +34,18 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
       return (
         <>
           <TabletOnly>
-            <ProposalContainer>
+            <Styled.ProposalContainer>
               <LoadingBar fullWidth useDarkStyles height={6.625} />
               <LoadingBar fullWidth useDarkStyles height={6.625} />
               <LoadingBar fullWidth useDarkStyles height={6.625} />
-            </ProposalContainer>
+            </Styled.ProposalContainer>
           </TabletOnly>
           <NotTabletOnly>
-            <ProposalContainer>
+            <Styled.ProposalContainer>
               <LoadingBar fullWidth useDarkStyles height={4.625} />
               <LoadingBar fullWidth useDarkStyles height={4.625} />
               <LoadingBar fullWidth useDarkStyles height={4.625} />
-            </ProposalContainer>
+            </Styled.ProposalContainer>
           </NotTabletOnly>
         </>
       );
@@ -53,18 +53,18 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
 
     if (_.isEmpty(latestProposals)) {
       return (
-        <ProposalContainer>
+        <Styled.ProposalContainer>
           <ProposalRowEmptyState title={stringGetter({ key: STRING_KEYS.PROPOSALS_EMPTY_STATE })} />
-        </ProposalContainer>
+        </Styled.ProposalContainer>
       );
     }
 
     return (
-      <ProposalContainer>
+      <Styled.ProposalContainer>
         {_.map(latestProposals, (proposal) => (
           <ProposalRow key={proposal.id} proposal={proposal} />
         ))}
-      </ProposalContainer>
+      </Styled.ProposalContainer>
     );
   };
 
@@ -79,7 +79,11 @@ const ProposalsSection: React.FC<ConnectedProposalsSectionProps> = ({
   );
 };
 
-const ProposalContainer = styled.div`
+const Styled: Record<string, AnyStyledComponent> = {};
+
+Styled.ProposalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 0.5rem;
 
   > div {
