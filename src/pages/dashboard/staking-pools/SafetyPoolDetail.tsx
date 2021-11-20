@@ -208,11 +208,10 @@ const SafetyPoolDetail: React.FC<
     <SectionWrapper column>
       <DetailPageHeader
         ctaConfig={{
-          disabled: true,
           label: stringGetter({ key: STRING_KEYS.STAKE }),
           onClick: () =>
             openModal({ type: ModalType.Stake, props: { stakingPool: StakingPool.Safety } }),
-          // disabled: !walletAddress || isUserGeoBlocked,
+          disabled: !walletAddress || isUserGeoBlocked,
         }}
         label={stringGetter({ key: STRING_KEYS.POOL })}
         title={stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
