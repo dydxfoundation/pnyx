@@ -233,7 +233,7 @@ const SafetyPoolDetail: React.FC<
                   <NumberFormat
                     thousandSeparator
                     displayType="text"
-                    value={MustBigNumber(poolSize).toFixed(DecimalPlaces.None)}
+                    value={MustBigNumber(poolSize).toFixed(DecimalPlaces.None, BigNumber.ROUND_UP)}
                   />
                   <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
                 </ValueWithIcon>
