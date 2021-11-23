@@ -10,7 +10,6 @@
     "AMOUNT": "금액",
     "ASSET": "자산",
     "AVAILABLE": "사용 가능",
-    "AVAILABLE_TO_CLAIM_NOW": "지금 청구 가능",
     "BALANCE": "잔액",
     "BOTH": "둘 다",
     "CANCEL": "취소",
@@ -120,7 +119,7 @@
     "CLAIM_REWARDS_NOTIFICATION": "귀하가 청구한 보상은 거래가 확인되면 지갑에 표기됩니다.",
     "CLAIM_REWARDS": "보상 청구",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "청구 가능한 모든 스테이킹 및 거래 보상을 출금합니다.",
-    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "청구 가능한 보상은 스테이킹 및 거래 보상을 모두 포함합니다. 청구 시 모든 보상이 귀하의 지갑으로 전송됩니다.",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "청구 가능한 총 보상에는 스테이킹 및 거래 보상이 모두 포함됩니다. 청구 시 모든 보상이 귀하의 지갑으로 전송됩니다.",
     "CLAIM_YOUR_REWARDS": "보상을 청구하십시오",
     "CLAIMABLE": "청구 가능",
     "STAKING_TRADING_REWARDS": "스테이킹 및 거래 보상"
@@ -198,8 +197,6 @@
     "VOTED_AGAINST": "반대 투표",
     "VOTED_FOR": "찬성 투표",
     "VOTED": "투표함",
-    "VOTING_BEGINS": "투표 시작",
-    "VOTING_ENDS": "투표 종료",
     "VOTING_POWER": "투표 권한",
     "VOTING": "투표 중",
     "YOUR_VOTE": "나의 투표"
@@ -208,7 +205,6 @@
     "EPOCH_NUMBER": "에폭 {NUMBER}",
     "EVENT": "이벤트",
     "FOR_TRADING_IN_EPOCH": "{EPOCH_NUMBER}에서의 거래에 대한",
-    "IN_PENDING_REWARDS": "처리 중인 보상",
     "PENDING_REWARDS": "보류중인 보상",
     "REWARDED": "보상 지급됨",
     "TRADING_REWARDS_HISTORY_EMPTY_STATE": "거래 보상 기록이 없습니다."
