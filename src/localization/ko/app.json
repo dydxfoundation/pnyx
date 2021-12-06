@@ -120,7 +120,7 @@
     "CLAIM_REWARDS_NOTIFICATION": "귀하가 청구한 보상은 거래가 확인되면 지갑에 표기됩니다.",
     "CLAIM_REWARDS": "보상 청구",
     "CLAIM_YOUR_REWARDS_DESCRIPTION": "청구 가능한 모든 스테이킹 및 거래 보상을 출금합니다.",
-    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "청구 가능한 보상은 스테이킹 및 거래 보상을 모두 포함합니다. 청구 시 모든 보상이 귀하의 지갑으로 전송됩니다.",
+    "CLAIM_YOUR_REWARDS_DETAILED_DESCRIPTION": "청구 가능한 총 보상에는 스테이킹 및 거래 보상이 모두 포함됩니다. 청구 시 모든 보상이 귀하의 지갑으로 전송됩니다.",
     "CLAIM_YOUR_REWARDS": "보상을 청구하십시오",
     "CLAIMABLE": "청구 가능",
     "STAKING_TRADING_REWARDS": "스테이킹 및 거래 보상"
