@@ -10,6 +10,7 @@
     "AMOUNT": "금액",
     "ASSET": "자산",
     "AVAILABLE": "사용 가능",
+    "AVAILABLE_TO_CLAIM_NOW": "지금 청구 가능",
     "BALANCE": "잔액",
     "BOTH": "둘 다",
     "CANCEL": "취소",
@@ -197,6 +198,8 @@
     "VOTED_AGAINST": "반대 투표",
     "VOTED_FOR": "찬성 투표",
     "VOTED": "투표함",
+    "VOTING_BEGINS": "투표 시작",
+    "VOTING_ENDS": "투표 종료",
     "VOTING_POWER": "투표 권한",
     "VOTING": "투표 중",
     "YOUR_VOTE": "나의 투표"
@@ -205,6 +208,7 @@
     "EPOCH_NUMBER": "에폭 {NUMBER}",
     "EVENT": "이벤트",
     "FOR_TRADING_IN_EPOCH": "{EPOCH_NUMBER}에서의 거래에 대한",
+    "IN_PENDING_REWARDS": "처리 중인 보상",
     "PENDING_REWARDS": "보류중인 보상",
     "REWARDED": "보상 지급됨",
     "TRADING_REWARDS_HISTORY_EMPTY_STATE": "거래 보상 기록이 없습니다."
