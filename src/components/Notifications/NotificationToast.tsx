@@ -10,6 +10,7 @@ import ClaimNotification from './ClaimNotification';
 import DelegateNotification from './DelegateNotification';
 import RequestWithdrawNotification from './RequestWithdrawNotification';
 import StakeNotification from './StakeNotification';
+import TradingFormulaNotification from './TradingFormulaNotification';
 import VoteNotification from './VoteNotification';
 import WithdrawNotification from './WithdrawNotification';
 
@@ -49,6 +50,10 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
     }
     case NotificationType.Stake: {
       NotificationComponent = StakeNotification;
+      break;
+    }
+    case NotificationType.TradingRewardFormulaUpdate: {
+      NotificationComponent = TradingFormulaNotification;
       break;
     }
     case NotificationType.Vote: {
