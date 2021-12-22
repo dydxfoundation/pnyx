@@ -33,7 +33,7 @@ const notificationsMiddleware: Middleware<{}, RootState> = (store) => (next) => 
   if (type === pageLoaded().type) {
     toast(({ closeToast }: { closeToast: () => void }) =>
       NotificationToast({
-        autoClose: 99999,
+        autoClose: DEFAULT_AUTO_CLOSE_MS,
         closeToast,
         data: {},
         notificationType: NotificationType.TradingRewardFormulaUpdate,
