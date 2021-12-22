@@ -19,6 +19,7 @@ import {
   DelegateNotification,
   RequestWithdrawNotification,
   StakeNotification,
+  TradingFormulaNotification,
   VoteNotification,
   WithdrawNotification,
 } from 'components/Notifications';
@@ -59,6 +60,9 @@ const NotificationsMenu = React.forwardRef<
       }
       case NotificationType.Stake: {
         return <StakeNotification data={notificationData} />;
+      }
+      case NotificationType.TradingRewardFormulaUpdate: {
+        return <TradingFormulaNotification />
       }
       case NotificationType.Vote: {
         return <VoteNotification data={notificationData} />;
