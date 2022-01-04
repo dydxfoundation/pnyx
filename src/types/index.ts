@@ -87,6 +87,11 @@ export type SetCurrentBlockNumberPayload = NetworkTypes.SetCurrentBlockNumberPay
 export type AddNotificationPayload = NotificationTypes.AddNotificationPayload;
 export type Notification = NotificationTypes.Notification;
 
+export type ToastNotificationProps = {
+  closeToast?: NoOpFunction;
+  isToast?: boolean;
+};
+
 // Staking Pools Types
 export type LiquidityPoolEpochData = StakingPoolsTypes.LiquidityPoolEpochData;
 export type StakingPoolsData = StakingPoolsTypes.StakingPoolsData;

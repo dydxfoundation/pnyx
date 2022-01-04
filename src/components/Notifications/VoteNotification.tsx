@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 import { withLocalization } from 'hoc';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -16,15 +16,15 @@ export type VoteNotificationProps = {
   data: {
     txHash: string;
   };
-} & LocalizationProps;
+} & LocalizationProps & ToastNotificationProps;
 
-const VoteNotification: React.FC<VoteNotificationProps> = ({ data: { txHash }, stringGetter }) => (
+const VoteNotification: React.FC<VoteNotificationProps> = ({ data: { txHash }, isToast, stringGetter }) => (
   <NotificationContainer
     onClick={() =>
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.VOTE_ON_PROPOSAL })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.VOTE_ON_PROPOSAL })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({ key: STRING_KEYS.VOTE_ON_PROPOSAL_NOTIFICATION })}
     </NotificationBody>

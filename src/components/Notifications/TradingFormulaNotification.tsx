@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { LocalizationProps } from 'types';
+import { StakingPoolRoute } from 'enums';
 import { withLocalization } from 'hoc';
+import { LinkOutIcon } from 'icons';
+import { breakpoints } from 'styles';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 
 import { STRING_KEYS } from 'constants/localization';
 
@@ -10,24 +15,51 @@ import {
   NotificationTitle,
   NotificationBody,
   NotificationLink,
+  NotificationLinks,
+  NotificationAltLink,
 } from './NotificationStyles';
 
-export type TradingFormulaNotificationProps = LocalizationProps;
+export type TradingFormulaNotificationProps = ToastNotificationProps & LocalizationProps & RouteComponentProps;
 
 const TradingFormulaNotification: React.FC<TradingFormulaNotificationProps> = ({
+  closeToast,
+  history,
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
-    onClick={() =>
-      window.open('https://forums.dydx.community/proposal/discussion/2940-drc-update-trading-liquidity-provider-rewards-formulas-to-include-holding-of-stkdydx/', '_blank')
-    }
+  onClick={() => {
+    history.push(StakingPoolRoute.SafetyPool);
+    closeToast?.();
+  }}
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.UPDATED_TRADING_FORMULA })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.UPDATED_TRADING_FORMULA })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({ key: STRING_KEYS.UPDATED_TRADING_FORMULA_DESC })}
     </NotificationBody>
-    <NotificationLink>{stringGetter({ key: STRING_KEYS.VIEW_PROPOSAL })} →</NotificationLink>
+    <NotificationLinks>
+      <NotificationLink>
+        {stringGetter({ key: STRING_KEYS.STAKE_DYDX })} →
+      </NotificationLink>
+      <NotificationAltLink onClick={(e) => {
+        e.stopPropagation();
+        window.open('https://forums.dydx.community/proposal/discussion/2940-drc-update-trading-liquidity-provider-rewards-formulas-to-include-holding-of-stkdydx/', '_blank');
+      }}>
+        {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
+        <StyledLinkOutIcon />
+      </NotificationAltLink>
+    </NotificationLinks>
   </NotificationContainer>
 );
 
-export default withLocalization<TradingFormulaNotificationProps>(TradingFormulaNotification);
+const StyledLinkOutIcon = styled(LinkOutIcon)`
+  width: 13px;
+  margin-left: 2px;
+
+  @media ${breakpoints.tablet} {
+    width: 15px;
+    margin-left: 3px;
+  }
+`;
+
+export default withLocalization(withRouter(TradingFormulaNotification));

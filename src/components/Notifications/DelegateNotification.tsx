@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 import { withLocalization } from 'hoc';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -18,10 +18,11 @@ export type DelegateNotificationProps = {
     isStakedToken?: boolean;
     isUndelegatePower?: boolean;
   };
-} & LocalizationProps;
+} & LocalizationProps & ToastNotificationProps;
 
 const DelegateNotification: React.FC<DelegateNotificationProps> = ({
   data: { txHash, isStakedToken, isUndelegatePower },
+  isToast,
   stringGetter,
 }) => {
   let notificationBodyKey;
@@ -42,7 +43,7 @@ const DelegateNotification: React.FC<DelegateNotificationProps> = ({
         window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
       }
     >
-      <NotificationTitle>
+      <NotificationTitle isToast={isToast} >
         {stringGetter({
           key: isUndelegatePower ? STRING_KEYS.UNDELEGATE_POWERS : STRING_KEYS.DELEGATE_POWERS,
         })}

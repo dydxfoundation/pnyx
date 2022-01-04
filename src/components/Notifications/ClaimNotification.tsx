@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 import { withLocalization } from 'hoc';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -16,10 +16,11 @@ export type ClaimNotificationProps = {
   data: {
     txHash: string;
   };
-} & LocalizationProps;
+} & LocalizationProps & ToastNotificationProps;
 
 const ClaimNotification: React.FC<ClaimNotificationProps> = ({
   data: { txHash },
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
@@ -27,7 +28,7 @@ const ClaimNotification: React.FC<ClaimNotificationProps> = ({
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({ key: STRING_KEYS.CLAIM_REWARDS_NOTIFICATION })}
     </NotificationBody>

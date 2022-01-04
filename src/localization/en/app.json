@@ -214,8 +214,8 @@
     "TRADING_REWARDS_HISTORY_EMPTY_STATE": "You have no trading rewards history."
   },
   "TRADING_FORMULA": {
-    "UPDATED_TRADING_FORMULA": "Updated Trading Rewards formula",
-    "UPDATED_TRADING_FORMULA_DESC": "Staking DYDX now increases token rewards earned from trading.",
-    "VIEW_PROPOSAL": "View proposal"
+    "STAKE_DYDX": "Stake DYDX",
+    "UPDATED_TRADING_FORMULA": "Trading rewards update",
+    "UPDATED_TRADING_FORMULA_DESC": "Staking DYDX now increases token rewards earned from trading."
   }
 }
