@@ -18,10 +18,12 @@ export type StakeNotificationProps = {
     symbol: string;
     txHash: string;
   };
+  isToast?: boolean;
 } & LocalizationProps;
 
 const StakeNotification: React.FC<StakeNotificationProps> = ({
   data: { amount, symbol, txHash },
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
@@ -29,7 +31,7 @@ const StakeNotification: React.FC<StakeNotificationProps> = ({
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.STAKE_FUNDS })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.STAKE_FUNDS })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({
         key: STRING_KEYS.STAKE_NOTIFICATION,

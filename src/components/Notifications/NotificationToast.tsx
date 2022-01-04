@@ -75,7 +75,7 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
       <CloseButton role="button" tabIndex={0} onClick={closeToast}>
         <CloseIcon />
       </CloseButton>
-      <NotificationComponent data={data} />
+      <NotificationComponent data={data} isToast />
     </StyledToastContainer>
   );
 };

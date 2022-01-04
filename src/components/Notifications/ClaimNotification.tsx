@@ -16,10 +16,12 @@ export type ClaimNotificationProps = {
   data: {
     txHash: string;
   };
+  isToast?: boolean;
 } & LocalizationProps;
 
 const ClaimNotification: React.FC<ClaimNotificationProps> = ({
   data: { txHash },
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
@@ -27,7 +29,7 @@ const ClaimNotification: React.FC<ClaimNotificationProps> = ({
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.CLAIM_REWARDS })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({ key: STRING_KEYS.CLAIM_REWARDS_NOTIFICATION })}
     </NotificationBody>

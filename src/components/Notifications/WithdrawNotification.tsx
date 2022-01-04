@@ -16,10 +16,12 @@ export type WithdrawNotificationProps = {
   data: {
     txHash: string;
   };
+  isToast?: boolean;
 } & LocalizationProps;
 
 const WithdrawNotification: React.FC<WithdrawNotificationProps> = ({
   data: { txHash },
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
@@ -27,7 +29,7 @@ const WithdrawNotification: React.FC<WithdrawNotificationProps> = ({
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.WITHDRAW_FUNDS })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.WITHDRAW_FUNDS })}</NotificationTitle>
     <NotificationBody>{stringGetter({ key: STRING_KEYS.WITHDRAW_NOTIFICATION })}</NotificationBody>
     <NotificationLink>{stringGetter({ key: STRING_KEYS.VIEW_ON_ETHERSCAN })} →</NotificationLink>
   </NotificationContainer>

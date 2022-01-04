@@ -18,10 +18,12 @@ export type RequestWithdrawNotificationProps = {
     symbol: string;
     txHash: string;
   };
+  isToast?: boolean;
 } & LocalizationProps;
 
 const RequestWithdrawNotification: React.FC<RequestWithdrawNotificationProps> = ({
   data: { amount, symbol, txHash },
+  isToast,
   stringGetter,
 }) => (
   <NotificationContainer
@@ -29,7 +31,7 @@ const RequestWithdrawNotification: React.FC<RequestWithdrawNotificationProps> = 
       window.open(`${process.env.REACT_APP_ETHERSCAN_BASE_URI}/tx/${txHash}`, '_blank')
     }
   >
-    <NotificationTitle>{stringGetter({ key: STRING_KEYS.REQUEST_WITHDRAW })}</NotificationTitle>
+    <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.REQUEST_WITHDRAW })}</NotificationTitle>
     <NotificationBody>
       {stringGetter({
         key: STRING_KEYS.REQUEST_WITHDRAW_NOTIFICATION,
