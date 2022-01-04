@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 import { withLocalization } from 'hoc';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -18,8 +18,7 @@ export type DelegateNotificationProps = {
     isStakedToken?: boolean;
     isUndelegatePower?: boolean;
   };
-  isToast?: boolean;
-} & LocalizationProps;
+} & LocalizationProps & ToastNotificationProps;
 
 const DelegateNotification: React.FC<DelegateNotificationProps> = ({
   data: { txHash, isStakedToken, isUndelegatePower },

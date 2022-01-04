@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 import { withLocalization } from 'hoc';
 
 import { STRING_KEYS } from 'constants/localization';
@@ -16,8 +16,7 @@ export type ClaimNotificationProps = {
   data: {
     txHash: string;
   };
-  isToast?: boolean;
-} & LocalizationProps;
+} & LocalizationProps & ToastNotificationProps;
 
 const ClaimNotification: React.FC<ClaimNotificationProps> = ({
   data: { txHash },

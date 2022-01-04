@@ -6,7 +6,7 @@ import { StakingPoolRoute } from 'enums';
 import { withLocalization } from 'hoc';
 import { LinkOutIcon } from 'icons';
 import { breakpoints } from 'styles';
-import { LocalizationProps } from 'types';
+import { LocalizationProps, ToastNotificationProps } from 'types';
 
 import { STRING_KEYS } from 'constants/localization';
 
@@ -19,15 +19,19 @@ import {
   NotificationAltLink,
 } from './NotificationStyles';
 
-export type TradingFormulaNotificationProps = { isToast?: boolean } & LocalizationProps & RouteComponentProps;
+export type TradingFormulaNotificationProps = ToastNotificationProps & LocalizationProps & RouteComponentProps;
 
 const TradingFormulaNotification: React.FC<TradingFormulaNotificationProps> = ({
+  closeToast,
   history,
   isToast,
   stringGetter,
 }) => (
   <NotificationContainer
-  onClick={() => history.push(StakingPoolRoute.SafetyPool)}
+  onClick={() => {
+    history.push(StakingPoolRoute.SafetyPool);
+    closeToast?.();
+  }}
   >
     <NotificationTitle isToast={isToast} >{stringGetter({ key: STRING_KEYS.UPDATED_TRADING_FORMULA })}</NotificationTitle>
     <NotificationBody>
