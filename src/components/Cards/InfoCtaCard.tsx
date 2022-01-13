@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
-import _ from 'lodash';
+import styled, { css } from 'styled-components/macro';
 
 import { CtaConfig } from 'types';
 import { breakpoints, fontSizes } from 'styles';
@@ -89,11 +88,10 @@ const StyledInfoCtaCard = styled.div`
   border-radius: 0.75rem;
 
   background-image: ${({ theme }) =>
-    `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='0.75rem' ry='0.75rem' stroke='%23${_.replace(
-      theme.layerlighter,
+    css`url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='0.75rem' ry='0.75rem' stroke='%23${theme.layerlighter.replace(
       '#',
       ''
-    )}' stroke-width='0.125rem' stroke-dasharray='0.375rem 0.5rem' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`};
+    )}' stroke-width='0.125rem' stroke-dasharray='6%2c8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`};
 `;
 
 const Label = styled.div`
