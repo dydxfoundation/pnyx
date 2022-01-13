@@ -223,6 +223,10 @@ Styled.TableWrapper = styled.div`
   align-content: start;
   place-items: center;
   max-width: 100%;
+
+  @media ${breakpoints.tablet} {
+    padding: 0 0.25rem;
+  }
 `;
 
 Styled.Table = styled.table`

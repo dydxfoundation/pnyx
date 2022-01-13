@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
-import { fontSizes } from 'styles';
+import { breakpoints, fontSizes } from 'styles';
 
 type ElementProps = {
   noPadding?: boolean;
@@ -25,7 +25,17 @@ const Styled: any = {};
 Styled.StyledSectionHeader = styled.div<ElementProps>`
   ${fontSizes.size24}
   color: ${({ theme }) => theme.textlight};
-  padding: ${({ noPadding }) => !noPadding && `0 1rem`};
+  padding: 0 1.5rem;
+
+  ${({ noPadding }) =>
+    noPadding &&
+    css`
+      padding: 0;
+
+      @media ${breakpoints.tablet} {
+        padding: 0 0.25rem;
+      }
+    `}
 `;
 
 Styled.Subtitle = styled.div`
