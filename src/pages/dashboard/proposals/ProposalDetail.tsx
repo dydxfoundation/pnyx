@@ -9,7 +9,7 @@ import { DateTime } from 'luxon';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { Proposals } from '@dydxprotocol/governance';
+import { Proposals } from '@dydxfoundation/governance';
 
 import {
   AppRoute,
