@@ -1,5 +1,5 @@
 // @ts-ignore-next-line
-import { Proposals } from '@dydxprotocol/governance';
+import { Proposals } from '@dydxfoundation/governance';
 
 import {
   GovernancePowersData,

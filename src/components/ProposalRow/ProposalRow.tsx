@@ -4,7 +4,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { Proposals } from '@dydxprotocol/governance';
+import { Proposals } from '@dydxfoundation/governance';
 
 import { LocalizationProps } from 'types';
 import { AppRoute, ProposalStatus } from 'enums';

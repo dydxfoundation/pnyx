@@ -7,7 +7,7 @@ import {
   dydxTokenAddresses,
   stakingAddresses,
   // @ts-ignore-next-line
-} from '@dydxprotocol/governance';
+} from '@dydxfoundation/governance';
 
 import { TradingRewardsData } from 'types';
 import { AssetSymbol } from 'enums';

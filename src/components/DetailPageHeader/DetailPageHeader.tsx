@@ -75,7 +75,7 @@ const StyledDetailPageHeader = styled.div`
 
   @media ${breakpoints.tablet} {
     flex-direction: column;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 `;
 
@@ -218,7 +218,7 @@ const CtaContainer = styled.div`
   @media ${breakpoints.tablet} {
     position: absolute;
     top: 0.25rem;
-    right: 1rem;
+    right: 0.25rem;
   }
 `;
 

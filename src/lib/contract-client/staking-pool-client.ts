@@ -2,7 +2,7 @@ import { providers } from 'ethers';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { TxBuilder, EthereumTransactionTypeExtended } from '@dydxprotocol/governance';
+import { TxBuilder, EthereumTransactionTypeExtended } from '@dydxfoundation/governance';
 
 import { StakingPool } from 'enums';
 import { PoolWithdrawBalancesData } from 'types';
