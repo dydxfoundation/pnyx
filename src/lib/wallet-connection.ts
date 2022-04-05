@@ -3,9 +3,10 @@ import WalletLink from 'walletlink';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import { WalletType } from 'enums';
-import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from 'constants/wallets';
 
 import { ConnectWalletOptions } from 'types';
+
+import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from 'constants/wallets';
 
 export const walletLinkInstance = new WalletLink({
   appName: 'dYdX',
