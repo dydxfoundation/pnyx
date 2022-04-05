@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WalletType } from 'enums/wallets';
+import { WalletType } from 'enums';
 
 import {
   BitPieIcon,
