@@ -90,6 +90,22 @@
     "STAKING_YOU_AGREE_TO_TERMS": "By staking you agree to the {TERMS_LINK}, {PRIVACY_POLICY_LINK}, and {REVOLVING_CREDIT_AGREEMENT_LINK}.",
     "TERMS_OF_USE": "Terms of Use"
   },
+  "WALLETS": {
+    "BITPIE": "BitPie",
+    "CLOVER_WALLET": "Clover Wallet",
+    "COINBASE_WALLET": "Coinbase Wallet",
+    "COIN98": "Coin98",
+    "HUOBI_WALLET": "Huobi Wallet",
+    "IMTOKEN": "imToken",
+    "MATH_WALLET": "MathWallet",
+    "METAMASK": "MetaMask",
+    "RAINBOW_WALLET": "Rainbow Wallet",
+    "TOKEN_POCKET": "TokenPocket",
+    "TRUST_WALLET": "Trust Wallet",
+    "WALLET_CONNECT": "WalletConnect",
+    "TEST_WALLET": "Test Wallet",
+    "OTHER_WALLET": "Other"
+  },
   "ONBOARDING": {
     "CONNECT_WALLET": "Connect wallet",
     "CONNECT_YOUR_WALLET": "Connect your wallet",

@@ -5,7 +5,6 @@ import styled from 'styled-components/macro';
 import _ from 'lodash';
 
 import { AppDispatch } from 'store';
-import { WalletType } from 'enums';
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
@@ -18,7 +17,7 @@ import WalletIcon from 'components/WalletIcon';
 import { connectWallet as connectWalletAction } from 'actions/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
-import { WALLET_NAMES, WALLET_PRIORITY } from 'constants/wallets';
+import { DISPLAYED_WALLETS } from 'constants/wallets';
 
 import { OnboardingStepFooterLinks } from './OnboardingStepStyles';
 
@@ -37,20 +36,18 @@ const ChooseWalletStep: React.FC<ChooseWalletStepProps & ReturnType<typeof mapDi
     <ModalHeader noBorder title={stringGetter({ key: STRING_KEYS.CONNECT_YOUR_WALLET })} />
     <ModalContentContainer>
       <WalletOptionsContainer>
-        {_.map(WALLET_PRIORITY, (walletType) => (
+        {_.map(DISPLAYED_WALLETS, (walletType) => (
           <Button
             key={walletType}
             color={ButtonColor.Light}
-            size={ButtonSize.Medium}
+            size={ButtonSize.Small}
             onClick={() => {
               connectWallet({ walletType });
               goToNextStep();
             }}
           >
             <WalletIcon walletType={walletType} />
-            {walletType === WalletType.OtherWallet
-              ? stringGetter({ key: STRING_KEYS.OTHER })
-              : WALLET_NAMES[walletType]}
+            {stringGetter({ key: STRING_KEYS[walletType] })}
           </Button>
         ))}
       </WalletOptionsContainer>
@@ -82,10 +79,10 @@ const WalletOptionsContainer = styled.div`
     display: flex;
     align-items: center;
     flex: 0 0 auto;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 0.75rem;
 
       @media ${breakpoints.mobile} {
         margin-right: 0;

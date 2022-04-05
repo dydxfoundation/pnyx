@@ -1,23 +1,42 @@
-import { WalletType } from 'enums';
+import { WalletType } from 'enums/wallets';
 
-export const WALLET_PRIORITY = [
-  WalletType.MetaMask,
+export const DISPLAYED_WALLETS = [
   WalletType.ImToken,
+  WalletType.MetaMask,
   WalletType.CoinbaseWallet,
   WalletType.TrustWallet,
   WalletType.Rainbow,
+  WalletType.HuobiWallet,
+  // WalletType.CloverWallet,
+  // WalletType.Coin98,
   WalletType.TokenPocket,
+  // WalletType.BitPie,
   WalletType.WalletConnect,
   WalletType.OtherWallet,
 ];
 
-export const WALLET_NAMES: { [key in WalletType]: string } = {
-  [WalletType.CoinbaseWallet]: 'Coinbase Wallet',
-  [WalletType.ImToken]: 'imToken',
-  [WalletType.MetaMask]: 'MetaMask',
-  [WalletType.OtherWallet]: 'Other',
-  [WalletType.Rainbow]: 'Rainbow',
-  [WalletType.TokenPocket]: 'TokenPocket',
-  [WalletType.TrustWallet]: 'Trust',
-  [WalletType.WalletConnect]: 'WalletConnect',
+export const INJECTED_WALLET_FLAGS: Partial<Record<WalletType, string>> = {
+  [WalletType.BitPie]: 'isBitpie',
+  [WalletType.CloverWallet]: 'isClover',
+  [WalletType.Coin98]: 'isCoin98',
+  [WalletType.HuobiWallet]: 'isHbWallet',
+  [WalletType.ImToken]: 'isImToken',
+  [WalletType.MathWallet]: 'isMathWallet',
+  [WalletType.MetaMask]: 'isMetaMask',
+  [WalletType.Rainbow]: 'isRainbowWallet',
+  [WalletType.TokenPocket]: 'isTokenPocket',
+  [WalletType.TrustWallet]: 'isTrust',
+};
+
+export const WALLETCONNECT_MOBILE_LINKS: Partial<Record<WalletType, string[]>> = {
+  [WalletType.BitPie]: ['bitpie'],
+  // [WalletType.CloverWallet]: [],
+  [WalletType.Coin98]: ['coin98'],
+  [WalletType.HuobiWallet]: ['huobi'],
+  [WalletType.ImToken]: ['imtoken'],
+  [WalletType.MathWallet]: ['math'],
+  [WalletType.MetaMask]: ['metamask'],
+  [WalletType.Rainbow]: ['rainbow'],
+  [WalletType.TokenPocket]: ['tokenpocket'],
+  [WalletType.TrustWallet]: ['trust'],
 };

@@ -33,12 +33,17 @@ export { ReactComponent as StatusQueuedIcon } from './statuses/status-queued.svg
 export { ReactComponent as StatusSuccessIcon } from './statuses/status-success.svg';
 
 // Wallets
+export { ReactComponent as BitPieIcon } from './wallets/bitpie.svg';
+export { ReactComponent as CloverWalletIcon } from './wallets/clover-wallet.svg';
 export { ReactComponent as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
+export { ReactComponent as Coin98Icon } from './wallets/coin98.svg';
 export { ReactComponent as GenericWalletIcon } from './wallets/generic-wallet.svg';
+export { ReactComponent as HuobiWalletIcon } from './wallets/huobi-wallet.svg';
 export { ReactComponent as ImTokenIcon } from './wallets/imtoken.svg';
-export { ReactComponent as LedgerIcon } from './wallets/ledger.svg';
+export { ReactComponent as MathWalletIcon } from './wallets/mathwallet.svg';
 export { ReactComponent as MetaMaskIcon } from './wallets/metamask.svg';
-export { ReactComponent as RainbowIcon } from './wallets/rainbow.svg';
-export { ReactComponent as TokenPocketIcon } from './wallets/tokenpocket.svg';
+export { ReactComponent as RainbowWalletIcon } from './wallets/rainbow-wallet.svg';
+export { ReactComponent as TestWalletIcon } from './wallets/test-wallet.svg';
 export { ReactComponent as TrustWalletIcon } from './wallets/trust-wallet.svg';
+export { ReactComponent as TokenPocketIcon } from './wallets/tokenpocket.svg';
 export { ReactComponent as WalletConnectIcon } from './wallets/walletconnect.svg';
