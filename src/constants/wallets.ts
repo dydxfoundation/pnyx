@@ -1,8 +1,8 @@
 import { WalletType } from 'enums/wallets';
 
 export const DISPLAYED_WALLETS = [
-  WalletType.ImToken,
   WalletType.MetaMask,
+  WalletType.ImToken,
   WalletType.CoinbaseWallet,
   WalletType.TrustWallet,
   WalletType.Rainbow,
