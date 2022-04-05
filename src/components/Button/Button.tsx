@@ -14,6 +14,7 @@ export enum ButtonColor {
 }
 
 export enum ButtonSize {
+  Small = 'Small',
   Medium = 'Medium',
   Pill = 'Pill',
 }
@@ -211,10 +212,17 @@ const buttonStyles = css`
       : ''}
 
   ${({ isLoading, size }) => {
+    let fontSize = fontSizes.size17;
     let height = 2.5;
     let minHeight = 2.5;
 
     switch (size) {
+      case ButtonSize.Small: {
+        fontSize = fontSizes.size15;
+        height = 2.25;
+        minHeight = 2.25;
+        break;
+      }
       case ButtonSize.Medium: {
         height = 2.5;
         minHeight = 2.5;
@@ -231,6 +239,7 @@ const buttonStyles = css`
     }
 
     return `
+      ${fontSize}
       height: ${height}rem;
       min-height: ${minHeight}rem;
       min-width: ${isLoading ? '5rem' : 'auto'};
@@ -244,6 +253,12 @@ const buttonStyles = css`
       let minHeight = 3;
 
       switch (size) {
+        case ButtonSize.Small: {
+          fontSize = fontSizes.size17;
+          height = 2.5;
+          minHeight = 2.5;
+          break;
+        }
         case ButtonSize.Medium: {
           height = 3;
           minHeight = 3;

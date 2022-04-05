@@ -3,62 +3,51 @@ import React from 'react';
 import { WalletType } from 'enums';
 
 import {
+  BitPieIcon,
+  CloverWalletIcon,
   CoinbaseWalletIcon,
+  Coin98Icon,
   GenericWalletIcon,
+  HuobiWalletIcon,
   ImTokenIcon,
+  MathWalletIcon,
   MetaMaskIcon,
-  RainbowIcon,
-  TokenPocketIcon,
+  RainbowWalletIcon,
+  TestWalletIcon,
   TrustWalletIcon,
+  TokenPocketIcon,
   WalletConnectIcon,
 } from 'icons';
 
-export type WalletIconProps = {
-  walletType: WalletType;
+const WALLET_ICONS: Record<WalletType, React.FC> = {
+  [WalletType.BitPie]: BitPieIcon,
+  [WalletType.CloverWallet]: CloverWalletIcon,
+  [WalletType.CoinbaseWallet]: CoinbaseWalletIcon,
+  [WalletType.Coin98]: Coin98Icon,
+  [WalletType.HuobiWallet]: HuobiWalletIcon,
+  [WalletType.ImToken]: ImTokenIcon,
+  [WalletType.MathWallet]: MathWalletIcon,
+  [WalletType.MetaMask]: MetaMaskIcon,
+  [WalletType.OtherWallet]: GenericWalletIcon,
+  [WalletType.Rainbow]: RainbowWalletIcon,
+  [WalletType.TestWallet]: TestWalletIcon,
+  [WalletType.TrustWallet]: TrustWalletIcon,
+  [WalletType.TokenPocket]: TokenPocketIcon,
+  [WalletType.WalletConnect]: WalletConnectIcon,
 };
 
-const WalletIcon: React.FC<WalletIconProps> = ({ walletType }) => {
-  let Icon;
+export const WalletIcon: React.FC<{ walletType: WalletType }> = ({ walletType }) => {
+  const Icon = WALLET_ICONS[walletType];
 
-  switch (walletType) {
-    case WalletType.CoinbaseWallet: {
-      Icon = CoinbaseWalletIcon;
-      break;
-    }
-    case WalletType.ImToken: {
-      Icon = ImTokenIcon;
-      break;
-    }
-    case WalletType.MetaMask: {
-      Icon = MetaMaskIcon;
-      break;
-    }
-    case WalletType.OtherWallet: {
-      Icon = GenericWalletIcon;
-      break;
-    }
-    case WalletType.Rainbow: {
-      Icon = RainbowIcon;
-      break;
-    }
-    case WalletType.TokenPocket: {
-      Icon = TokenPocketIcon;
-      break;
-    }
-    case WalletType.TrustWallet: {
-      Icon = TrustWalletIcon;
-      break;
-    }
-    case WalletType.WalletConnect: {
-      Icon = WalletConnectIcon;
-      break;
-    }
-    default: {
-      throw new Error('Unsupported walletType');
-    }
+  if (!Icon) {
+    throw new Error('Unsupported walletType');
   }
 
   return <Icon />;
 };
 
 export default WalletIcon;
+
+export type WalletIconProps = {
+  walletType: WalletType;
+};

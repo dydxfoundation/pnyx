@@ -1,27 +1,26 @@
 import WalletLink from 'walletlink';
 
 import WalletConnectProvider from '@walletconnect/web3-provider';
-import { IWalletConnectProviderOptions } from '@walletconnect/types';
 
 import { WalletType } from 'enums';
+
 import { ConnectWalletOptions } from 'types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const window: any;
+import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from 'constants/wallets';
 
-export const walletLinkInstance: WalletLink = new WalletLink({
+export const walletLinkInstance = new WalletLink({
   appName: 'dYdX',
   appLogoUrl: 'https://dydx.community/cbw-image.png',
   darkMode: false,
 });
 
-const networkId: number = Number(process.env.REACT_APP_NETWORK_ID);
+const networkId = Number(process.env.REACT_APP_NETWORK_ID);
 
-const walletConnectBaseOptions: IWalletConnectProviderOptions = {
+const walletConnectBaseOptions = {
   rpc: {
     [networkId]: process.env.REACT_APP_ETHEREUM_NODE_URI || '',
   },
-  bridge: process.env.REACT_APP_WALLET_CONNECT_BRIDGE_URI,
+  bridge: process.env.REACT_APP_WALLET_CONNECT_BRIDGE_URI || '',
 };
 
 export const coinbaseWalletProvider = walletLinkInstance.makeWeb3Provider(
@@ -46,129 +45,87 @@ export const getProviderByWalletType = ({
   walletType: WalletType;
   options?: ConnectWalletOptions;
 }): ProviderByWalletTypeResponse => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { ethereum, web3 } = window as unknown as {ethereum: any, web3: any};
+
   switch (walletType) {
+    case WalletType.BitPie:
+    case WalletType.CloverWallet:
+    case WalletType.Coin98:
+    case WalletType.HuobiWallet:
+    case WalletType.ImToken:
+    case WalletType.MathWallet:
+    case WalletType.MetaMask:
+    case WalletType.Rainbow:
+    case WalletType.TokenPocket:
+    case WalletType.TrustWallet: {
+      const injectedWalletFlag = INJECTED_WALLET_FLAGS[walletType] ?? '';
+
+      if (ethereum?.[injectedWalletFlag]) {
+        ethereum.autoRefreshOnNetworkChange = false;
+        return { provider: ethereum };
+      }
+
+      if (web3?.currentProvider?.[injectedWalletFlag]) {
+        return { provider: web3.currentProvider };
+      }
+
+      // Restrict WalletConnect options to the selected wallet
+      walletConnectProvider = new WalletConnectProvider({
+        ...walletConnectBaseOptions,
+        qrcodeModalOptions: {
+          mobileLinks: WALLETCONNECT_MOBILE_LINKS[walletType],
+        },
+      });
+
+      return { provider: walletConnectProvider, isWalletConnect: true };
+    }
+
     case WalletType.CoinbaseWallet: {
       let provider;
-      if (window.ethereum) {
-        window.ethereum.autoRefreshOnNetworkChange = false;
-        provider = window.ethereum;
-      } else if (window.web3 && window.web3.currentProvider) {
-        provider = window.web3.currentProvider;
+
+      if (ethereum) {
+        ethereum.autoRefreshOnNetworkChange = false;
+        provider = ethereum;
+      } else if (web3?.currentProvider) {
+        provider = web3?.currentProvider;
       }
 
       // If the user is in the coinbase wallet app
-      if (provider && provider.isCoinbaseWallet) {
+      if (provider?.isCoinbaseWallet) {
         return { provider };
       }
 
       return { provider: coinbaseWalletProvider, isWalletLink: true };
     }
-    case WalletType.ImToken: {
-      if (window.ethereum && window.ethereum.isImToken) {
-        return { provider: window.ethereum };
-      }
 
-      if (window.web3 && window.web3.currentProvider && window.web3.currentProvider.isImToken) {
-        return { provider: window.web3.currentProvider };
-      }
-
-      walletConnectProvider = new WalletConnectProvider({
-        ...walletConnectBaseOptions,
-        qrcodeModalOptions: {
-          mobileLinks: ['imtoken'],
-        },
-      });
-
-      return { provider: walletConnectProvider, isWalletConnect: true };
-    }
-    case WalletType.MetaMask: {
-      if (window.ethereum && window.ethereum.isMetaMask) {
-        window.ethereum.autoRefreshOnNetworkChange = false;
-        return { provider: window.ethereum };
-      }
-
-      if (window.web3 && window.web3.currentProvider && window.web3.currentProvider.isMetaMask) {
-        return { provider: window.web3.currentProvider };
-      }
-
-      // Restrict WalletConnect options to MetaMask
-      walletConnectProvider = new WalletConnectProvider({
-        ...walletConnectBaseOptions,
-        qrcodeModalOptions: {
-          mobileLinks: ['metamask'],
-        },
-      });
-
-      return { provider: walletConnectProvider, isWalletConnect: true };
-    }
     case WalletType.OtherWallet: {
-      if (window.ethereum) {
-        window.ethereum.autoRefreshOnNetworkChange = false;
-        return { provider: window.ethereum };
+      if (ethereum) {
+        ethereum.autoRefreshOnNetworkChange = false;
+        return { provider: ethereum };
       }
 
-      if (window.web3 && window.web3.currentProvider) {
-        return { provider: window.web3.currentProvider };
+      if (web3?.currentProvider) {
+        return { provider: web3.currentProvider };
       }
 
       walletConnectProvider = new WalletConnectProvider(walletConnectBaseOptions);
 
       return { provider: walletConnectProvider, isWalletConnect: true };
     }
-    case WalletType.Rainbow: {
-      walletConnectProvider = new WalletConnectProvider({
-        ...walletConnectBaseOptions,
-        qrcodeModalOptions: {
-          mobileLinks: ['rainbow'],
-        },
-      });
 
-      return { provider: walletConnectProvider, isWalletConnect: true };
-    }
-    case WalletType.TokenPocket: {
-      if (window.ethereum && window.ethereum.isTokenPocket) {
-        return { provider: window.ethereum };
-      }
-
-      if (window.web3 && window.web3.currentProvider && window.web3.currentProvider.isTokenPocket) {
-        return { provider: window.web3.currentProvider };
-      }
-
-      walletConnectProvider = new WalletConnectProvider({
-        ...walletConnectBaseOptions,
-        qrcodeModalOptions: {
-          mobileLinks: ['tokenpocket'],
-        },
-      });
-
-      return { provider: walletConnectProvider, isWalletConnect: true };
-    }
-    case WalletType.TrustWallet: {
-      if (window.ethereum && window.ethereum.isTrustWallet) {
-        return { provider: window.ethereum };
-      }
-
-      if (window.web3 && window.web3.currentProvider && window.web3.currentProvider.isTrustWallet) {
-        return { provider: window.web3.currentProvider };
-      }
-
-      walletConnectProvider = new WalletConnectProvider({
-        ...walletConnectBaseOptions,
-        qrcodeModalOptions: {
-          mobileLinks: ['trust'],
-        },
-      });
-
-      return { provider: walletConnectProvider, isWalletConnect: true };
-    }
     case WalletType.WalletConnect: {
       walletConnectProvider = new WalletConnectProvider(walletConnectBaseOptions);
 
       return { provider: walletConnectProvider, isWalletConnect: true };
     }
-    default:
-      break;
-  }
 
-  return { provider: null };
+    case WalletType.TestWallet: {
+      // no provider needed, other subproviders will provide read-only data
+      return { provider: undefined };
+    }
+
+    default:
+      return { provider: undefined };
+  }
 };
