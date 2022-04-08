@@ -4,4 +4,8 @@ export enum SupportedLocale {
   JA = 'ja',
   KO = 'ko',
   RU = 'ru',
+  TR = 'tr',
+  FR = 'fr',
+  ES = 'es',
+  PT = 'pt',
 }
