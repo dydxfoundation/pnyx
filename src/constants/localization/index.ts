@@ -12,8 +12,8 @@ export const SUPPORTED_LOCALE_BASE_TAGS: Record<SupportedLocale, string> = {
   [SupportedLocale.RU]: 'ru',
   [SupportedLocale.TR]: 'tr',
   [SupportedLocale.FR]: 'fr',
-  [SupportedLocale.ES]: 'es',
   [SupportedLocale.PT]: 'pt',
+  [SupportedLocale.ES]: 'es',
 };
 
 export const SUPPORTED_BASE_TAGS_LOCALE_MAPPING = Object.fromEntries(
@@ -28,8 +28,8 @@ export const SUPPORTED_LOCALE_STRING_LABELS = {
   [SupportedLocale.RU]: 'русский',
   [SupportedLocale.TR]: 'Türkçe',
   [SupportedLocale.FR]: 'Français',
-  [SupportedLocale.ES]: 'Español',
   [SupportedLocale.PT]: 'Português',
+  [SupportedLocale.ES]: 'Español',
 };
 
 export const STRING_KEYS = {

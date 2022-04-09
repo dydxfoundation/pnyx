@@ -6,6 +6,6 @@ export enum SupportedLocale {
   RU = 'ru',
   TR = 'tr',
   FR = 'fr',
-  ES = 'es',
   PT = 'pt',
+  ES = 'es',
 }
