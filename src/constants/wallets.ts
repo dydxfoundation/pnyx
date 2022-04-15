@@ -8,7 +8,7 @@ export const DISPLAYED_WALLETS = [
   WalletType.Rainbow,
   WalletType.HuobiWallet,
   // WalletType.CloverWallet,
-  // WalletType.Coin98,
+  WalletType.Coin98,
   WalletType.TokenPocket,
   // WalletType.BitPie,
   WalletType.WalletConnect,
