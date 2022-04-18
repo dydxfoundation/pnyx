@@ -1,0 +1,8 @@
+{
+  "GENERAL": {
+    "TRANSFER_LOCK_WARNING": "Le transfert de DYDX et la réclamation de récompenses seront activés le 08/09/2021 à 17 h UTC +2."
+  },
+  "DELEGATION": {
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "Vous serez invité à approuver deux transactions - une pour chaque jeton sélectionné."
+  }
+}
