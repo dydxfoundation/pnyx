@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Une erreur s'est produite : {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Erreur inconnue",
+    "WRONG_NETWORK": "Votre réseau de portefeuille est incorrect. Veuillez vous assurer qu'il est défini sur \"Ethereum Mainnet\""
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Veuillez introduire une adresse Ethereum qui n'est pas la vôtre.",
+    "INVALID_ETHEREUM_ADDRESS": "Veuillez introduire une adresse e-mail Ethereum valide. "
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "Vous ne pouvez pas miser plus que le solde de votre portefeuille disponible."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "Vous ne pouvez pas demander de retirer plus que votre solde de mise actuel.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Les 14 derniers jours de chaque époch sont une fenêtre de blocage dans laquelle aucun retrait ne peut être demandé au pool de liquidités. La prochaine époch commence le {EPOCH_DATE}."
+  }
+}
