@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Algo deu errado: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Erro desconhecido",
+    "WRONG_NETWORK": "A rede da sua carteira está incorreta. Certifique-se de que esteja definido como “Ethereum Mainnet”"
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Digite um endereço da Ethereum que não seja o seu.",
+    "INVALID_ETHEREUM_ADDRESS": "Digite um endereço de e-mail válido da Ethereum."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "Você não pode colocar stakes acima do que há disponível no saldo da carteira."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "Você não pode solicitar saques maiores do que o saldo atual em stakes.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Os últimos 14 dias de cada período são uma janela de bloqueio na qual os saques podem ser solicitados do pool de liquidez. O próximo período começa em {EPOCH_DATE}."
+  }
+}
