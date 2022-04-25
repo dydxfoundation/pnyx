@@ -1,0 +1,8 @@
+{
+  "GENERAL": {
+    "TRANSFER_LOCK_WARNING": "La transferencia de DYDX y la reclamación de recompensas se habilitarán el 08/09/2021 a las 8 AM PST."
+  },
+  "DELEGATION": {
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "Se te pedirá que apruebes dos transacciones, una por cada token seleccionado."
+  }
+}
