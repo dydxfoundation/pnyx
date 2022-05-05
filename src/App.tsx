@@ -11,6 +11,7 @@ import { AppRoute, StakingPoolRoute } from 'enums';
 import { Theme } from 'types';
 
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 import PageWrapper from 'components/PageWrapper';
 import LoadingSpace from 'components/LoadingSpace';
 import { ModalManager } from 'components/Modals';
@@ -171,6 +172,7 @@ const App: React.FC = () => (
                 </Switch>
               </Suspense>
             </GeoFence>
+            <Footer />
           </PageWrapper>
         </LocalizationWrapper>
       </ThemeProvider>
