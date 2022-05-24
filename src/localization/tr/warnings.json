@@ -1,0 +1,8 @@
+{
+  "GENERAL": {
+    "TRANSFER_LOCK_WARNING": "DYDX transferleri ve ödül talepleri 09.08.2021 08:00 Pasifik Zaman Dilimi tarih ve saatinde etkinleştirilecektir."
+  },
+  "DELEGATION": {
+    "TWO_TOKEN_DELEGATION_TRANSACTION": "Sizden iki işlemi onaylamanız istenecektir: Seçili her token için birer onay."
+  }
+}
