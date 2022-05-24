@@ -6,8 +6,6 @@ import { RootState } from 'store';
 import { NotificationToast } from 'components/Notifications';
 
 import { addNotification } from 'actions/notifications';
-import { pageLoaded } from 'actions/page';
-import { NotificationType } from 'enums';
 
 const DEFAULT_AUTO_CLOSE_MS = 6000;
 
@@ -26,17 +24,6 @@ const notificationsMiddleware: Middleware<{}, RootState> = (store) => (next) => 
         closeToast,
         data: payload.notificationData,
         notificationType,
-      })
-    );
-  }
-
-  if (type === pageLoaded().type) {
-    toast(({ closeToast }: { closeToast: () => void }) =>
-      NotificationToast({
-        autoClose: DEFAULT_AUTO_CLOSE_MS,
-        closeToast,
-        data: {},
-        notificationType: NotificationType.TradingRewardFormulaUpdate,
       })
     );
   }
