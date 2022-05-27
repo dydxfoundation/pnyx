@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Algo salió mal: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Error desconocido",
+    "WRONG_NETWORK": "La red de tu billetera no es correcta. Asegúrate de que esté configurado en \"Ethereum Mainnet\""
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Ingresa una dirección de Ethereum que no sea tuya.",
+    "INVALID_ETHEREUM_ADDRESS": "Ingresa una dirección de Ethereum válida."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "No puedes invertir más del saldo disponible en tu billetera."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "No puedes solicitar el retiro de una cantidad superior al saldo de tu participación actual.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Los últimos 14 días de cada epoch son una ventana de bloque en la que no se pueden solicitar retiros del fondo de liquidez. El siguiente epoch comienza el {EPOCH_DATE}."
+  }
+}

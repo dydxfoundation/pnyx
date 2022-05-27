@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Bir sorun oluştu: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Bilinmeyen hata",
+    "WRONG_NETWORK": "Cüzdan ağınız yanlış. Lütfen 'Ethereum Mainnet' olarak ayarlandığından emin olun"
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Lütfen kendinizinki dışında bir Ethereum adresi girin.",
+    "INVALID_ETHEREUM_ADDRESS": "Lütfen geçerli bir Ethereum adresi girin."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "Mevcut cüzdan bakiyenizden daha fazlasını stake edemezsiniz."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "Mevcut staking bakiyenizden daha fazlası için çekme talebinde bulunamazsınız.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Her dönemin son 14 günü, likidite havuzundan çekme işlemlerinin talep edilemeyeceği bir karartma aralığıdır. Bir sonraki dönem {EPOCH_DATE} tarihinde başlıyor."
+  }
+}
