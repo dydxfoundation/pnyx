@@ -29,17 +29,20 @@ const links: {
       {
         labelKey: STRING_KEYS.TERMS_OF_USE,
         descriptionKey: STRING_KEYS.TERMS_OF_USE_DESCRIPTION,
-        href: '/terms',
+        href: 'https://dydx.foundation/terms',
+        isExternalLink: true,
       },
       {
         labelKey: STRING_KEYS.PRIVACY_POLICY,
         descriptionKey: STRING_KEYS.PRIVACY_POLICY_DESCRIPTION,
-        href: '/privacy',
+        href: 'https://dydx.foundation/privacy',
+        isExternalLink: true,
       },
       {
         labelKey: STRING_KEYS.REVOLVING_CREDIT_AGREEMENT,
         descriptionKey: STRING_KEYS.REVOLVING_CREDIT_AGREEMENT_DESCRIPTION,
-        href: '/revolving-credit-agreement',
+        href: 'https://dydx.foundation/revolving-credit-agreement',
+        isExternalLink: true,
       },
     ],
   },
@@ -117,7 +120,7 @@ const StyledFooter = styled.footer`
 
   --color-border-grey: #2d2d3d;
   --color-border-lighter: #393953;
-  
+
   display: flex;
   justify-content: center;
   z-index: 1;
