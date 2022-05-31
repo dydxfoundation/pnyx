@@ -130,6 +130,7 @@ const StyledFooter = styled.footer`
   border-top: 1px solid var(--color-border-grey);
 
   width: 100%;
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
 
   color: var(--color-text-base);
