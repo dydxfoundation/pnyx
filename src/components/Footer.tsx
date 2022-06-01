@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { breakpoints } from 'styles';
 
-import { STRING_KEYS } from 'constants/localization';
+import type { LocalizationProps } from 'types';
+import { withLocalization } from '../hoc';
 
-import { LocalizationProps } from 'types';
-
-import { withLocalization } from 'hoc';
-import { CommonwealthIcon, DiscordIcon, TwitterIcon } from 'icons';
 import { Icon } from './Icon';
+import { CommonwealthIcon, DiscordIcon, TwitterIcon } from '../icons';
+
+import { STRING_KEYS } from '../constants/localization';
 
 const links: {
   labelKey: string;
