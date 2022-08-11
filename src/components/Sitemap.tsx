@@ -74,8 +74,8 @@ const links: {
   },
 ];
 
-const Footer: React.FC<LocalizationProps> = ({ stringGetter }) => (
-  <StyledFooter>
+const Sitemap: React.FC<LocalizationProps> = ({ stringGetter }) => (
+  <StyledSitemap>
     <nav>
       {links.map((link) => (
         <section key={link.labelKey}>
@@ -107,12 +107,12 @@ const Footer: React.FC<LocalizationProps> = ({ stringGetter }) => (
         </section>
       ))}
     </nav>
-  </StyledFooter>
+  </StyledSitemap>
 );
 
-export default withLocalization(Footer);
+export default withLocalization(Sitemap);
 
-const StyledFooter = styled.footer`
+const StyledSitemap = styled.footer`
   --color-text-light: #f7f7f7;
   --color-text-base: #c3c2d4;
   --color-text-dark: #6f6e84;
