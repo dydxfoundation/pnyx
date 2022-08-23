@@ -8,7 +8,6 @@ import { StakingPool } from 'enums';
 import { PoolWithdrawBalancesData } from 'types';
 
 const stakeGasLimitsByStakingPool = {
-  [StakingPool.Liquidity]: '0x2BF20', // 180000
   [StakingPool.Safety]: '0x7A120', // 600000
 };
 
@@ -21,8 +20,7 @@ class StakingPoolsClient {
     this.txBuilder = txBuilder;
   }
 
-  private getServiceKey = ({ stakingPool }: { stakingPool: StakingPool }) =>
-    stakingPool === StakingPool.Liquidity ? 'liquidityModuleService' : 'safetyModuleService';
+  private getServiceKey = ({ stakingPool }: { stakingPool: StakingPool }) => 'safetyModuleService';
 
   /** For the set allowance transaction, we don't know the stake amount yet, so just default to 1. */
   private getStakingTransactions = async ({

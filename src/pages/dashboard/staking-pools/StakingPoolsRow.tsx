@@ -40,7 +40,6 @@ import { STRING_KEYS } from 'constants/localization';
 import { abbreviateNumber, MustBigNumber } from 'lib/numbers';
 
 import {
-  calculateEstimatedLiquidityPoolYieldPerDay,
   calculateEstimatedSafetyPoolAPR,
 } from 'lib/staking-pools';
 
@@ -152,90 +151,6 @@ const StakingPoolsRow: React.FC<
     />
   );
 
-  const liquidityPoolStakingBalances = balances[StakingPool.Liquidity];
-
-  const {
-    poolSize: liquidityPoolSize,
-    rewardsPerSecond: liquidityRewardsPerSecond,
-  } = stakingPoolsData.data[StakingPool.Liquidity];
-
-  let liquidityPoolUserBalance: React.ReactNode = '-';
-
-  if (walletAddress) {
-    if (liquidityPoolStakingBalances.userBalance) {
-      const { num, suffix } = abbreviateNumber({
-        num: MustBigNumber(liquidityPoolStakingBalances.userBalance).toString(),
-        decimals: DecimalPlaces.Abbreviated,
-      });
-
-      liquidityPoolUserBalance = (
-        <ValueWithIcon>
-          <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
-        </ValueWithIcon>
-      );
-    } else {
-      liquidityPoolUserBalance = defaultLoadingBar;
-    }
-  }
-
-  let formattedLiquidityPoolSize: React.ReactNode;
-
-  if (liquidityPoolSize) {
-    const { num, suffix } = abbreviateNumber({
-      num: MustBigNumber(liquidityPoolSize).toString(),
-      decimals: DecimalPlaces.None,
-    });
-
-    formattedLiquidityPoolSize = (
-      <ValueWithIcon>
-        <NumberFormat thousandSeparator displayType="text" value={num} suffix={suffix} />
-        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.USDC} />
-      </ValueWithIcon>
-    );
-  } else {
-    formattedLiquidityPoolSize = defaultLoadingBar;
-  }
-
-  let liquidityPoolYieldPerThousand: React.ReactNode;
-
-  if (liquidityPoolSize && liquidityRewardsPerSecond) {
-    liquidityPoolYieldPerThousand = (
-      <ValueWithIcon>
-        <NumberFormat
-          thousandSeparator
-          displayType="text"
-          value={calculateEstimatedLiquidityPoolYieldPerDay({
-            poolSize: liquidityPoolSize,
-            rewardsPerSecond: liquidityRewardsPerSecond,
-          }).toFixed(DecimalPlaces.ShortToken)}
-        />
-        <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-      </ValueWithIcon>
-    );
-  } else {
-    liquidityPoolYieldPerThousand = defaultLoadingBar;
-  }
-
-  const liquidityPoolCard = (
-    <InfoModuleCard
-      title={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL })}
-      symbol={AssetSymbol.USDC}
-      onClick={() => history.push(StakingPoolRoute.LiquidityPool)}
-      infoModulesConfig={[
-        {
-          label: stringGetter({ key: STRING_KEYS.POOL_SIZE }),
-          value: formattedLiquidityPoolSize,
-        },
-        {
-          label: stringGetter({ key: STRING_KEYS.YIELD_PER_THOUSAND_PER_DAY }),
-          value: liquidityPoolYieldPerThousand,
-        },
-        { label: stringGetter({ key: STRING_KEYS.YOUR_STAKE }), value: liquidityPoolUserBalance },
-      ]}
-    />
-  );
-
   let safetyPoolEarnings: React.ReactNode;
   if (walletAddress) {
     if (safetyPoolStakingBalances.unclaimedRewards) {
@@ -257,27 +172,6 @@ const StakingPoolsRow: React.FC<
     }
   }
 
-  let liquidityPoolEarnings: React.ReactNode;
-  if (walletAddress) {
-    if (liquidityPoolStakingBalances.unclaimedRewards) {
-      liquidityPoolEarnings = (
-        <ValueWithIcon>
-          <NumberFormat
-            thousandSeparator
-            displayType="text"
-            value={MustBigNumber(liquidityPoolStakingBalances.unclaimedRewards).toFixed(
-              DecimalPlaces.ShortToken,
-              BigNumber.ROUND_UP
-            )}
-          />
-          <AssetIcon size={AssetIconSize.Small} symbol={AssetSymbol.DYDX} />
-        </ValueWithIcon>
-      );
-    } else {
-      liquidityPoolEarnings = defaultLoadingBar;
-    }
-  }
-
   return (
     <SectionWrapper column>
       <SectionHeader
@@ -285,26 +179,6 @@ const StakingPoolsRow: React.FC<
         subtitle={stringGetter({ key: STRING_KEYS.STAKING_DESCRIPTION })}
       />
       <CardContainer>
-        {!isUserGeoBlocked && walletAddress ? (
-          <WithDetailFooter
-            label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
-            value={liquidityPoolEarnings}
-            ctaConfigs={{
-              primary: {
-                label: stringGetter({ key: STRING_KEYS.STAKE }),
-                onClick: () =>
-                  openModal({
-                    type: ModalType.Stake,
-                    props: { stakingPool: StakingPool.Liquidity },
-                  }),
-              },
-            }}
-          >
-            {liquidityPoolCard}
-          </WithDetailFooter>
-        ) : (
-          liquidityPoolCard
-        )}
         {!isUserGeoBlocked && walletAddress ? (
           <WithDetailFooter
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}

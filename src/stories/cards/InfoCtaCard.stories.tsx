@@ -30,8 +30,8 @@ Title.args = {
 
 export const Body = Template.bind({});
 Body.args = {
-  label: 'Liquidity mining',
-  body: 'Rewards are based on your volume and open interest on our exchange.',
+  label: 'Trading Rewards',
+  body: 'Rewards are based on your total fees paid and open interest on the dYdX exchange.',
   ctaConfigs: {
     primary: {
       label: 'Trade',

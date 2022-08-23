@@ -23,14 +23,12 @@ const Template: Story<ConnectedStakeModalProps> = (args) => (
     {...args}
     allowances={
       {
-        [StakingPool.Liquidity]: {},
         [StakingPool.Safety]: {},
       } as AllowancesState
     }
     stakingBalancesData={
       {
         balances: {
-          [StakingPool.Liquidity]: {},
           [StakingPool.Safety]: {},
         },
       } as StakingBalancesData
@@ -48,12 +46,7 @@ const Template: Story<ConnectedStakeModalProps> = (args) => (
 
 export const Loading = Template.bind({});
 Loading.args = {
-  stakingPool: StakingPool.Liquidity,
-};
-
-export const LiquidityPool = Template.bind({});
-LiquidityPool.args = {
-  stakingPool: StakingPool.Liquidity,
+  stakingPool: StakingPool.Safety,
 };
 
 export const SafetyPool = Template.bind({});

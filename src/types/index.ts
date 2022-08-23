@@ -93,7 +93,6 @@ export type ToastNotificationProps = {
 };
 
 // Staking Pools Types
-export type LiquidityPoolEpochData = StakingPoolsTypes.LiquidityPoolEpochData;
 export type StakingPoolsData = StakingPoolsTypes.StakingPoolsData;
 export type StakingPoolsDataState = StakingPoolsTypes.StakingPoolsDataState;
 export type SetStakingPoolsDataPayload = StakingPoolsTypes.SetStakingPoolsDataPayload;

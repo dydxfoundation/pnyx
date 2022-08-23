@@ -17,7 +17,7 @@ const Template: Story<WithDetailFooterProps> = (args) => (
       symbol={AssetSymbol.DYDX}
       infoModulesConfig={[
         {
-          label: 'Liquidity',
+          label: 'Safety',
           value: '$817.1m',
         },
         {

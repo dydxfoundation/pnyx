@@ -25,11 +25,6 @@ Basic.args = {
   stakingPool: undefined,
 };
 
-export const LiquidityPool = Template.bind({});
-LiquidityPool.args = {
-  stakingPool: StakingPool.Liquidity,
-};
-
 export const SafetyPool = Template.bind({});
 SafetyPool.args = {
   stakingPool: StakingPool.Safety,

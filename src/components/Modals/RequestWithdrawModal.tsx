@@ -67,7 +67,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
   isWalletIncorrectNetwork,
   closeModal,
   stakingBalancesData,
-  stakingPool = StakingPool.Liquidity,
+  stakingPool = StakingPool.Safety,
   stakingPoolsData,
   stringGetter,
   walletAddress,
@@ -78,7 +78,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
   const [isCtaLoading, setIsCtaLoading] = useState<boolean>(false);
   const [walletErrorMessage, setWalletErrorMessage] = useState<string | undefined>();
 
-  const assetSymbol = stakingPool === StakingPool.Liquidity ? AssetSymbol.USDC : AssetSymbol.DYDX;
+  const assetSymbol = AssetSymbol.DYDX;
 
   usePollWalletBalances({ assetSymbol });
   usePollEpochData({ stakingPool });
@@ -152,11 +152,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
         })}{' '}
         <LearnMoreLink
           color={LinkColor.LightText}
-          href={`${ExternalLink.Documentation}${
-            stakingPool === StakingPool.Liquidity
-              ? DocumentationSublinks.LiquidityPool
-              : DocumentationSublinks.SafetyPool
-          }`}
+          href={`${ExternalLink.Documentation}${DocumentationSublinks.SafetyPool}`}
         />
       </>
     );
@@ -219,14 +215,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
                     key: STRING_KEYS.WITHDRAW_FROM_POOL,
                     params: {
                       POOL_ELEMENT: ReactDOMServer.renderToString(
-                        <span>
-                          {stringGetter({
-                            key:
-                              stakingPool === StakingPool.Liquidity
-                                ? STRING_KEYS.LIQUIDITY_POOL
-                                : STRING_KEYS.SAFETY_POOL,
-                          })}
-                        </span>
+                        <span>{stringGetter({ key: STRING_KEYS.SAFETY_POOL })}</span>
                       ),
                     },
                   }),
@@ -238,7 +227,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
             <WithLabel color={WithLabelColor.Base} label={stringGetter({ key: STRING_KEYS.ASSET })}>
               <AssetContainer>
                 <AssetIcon dark size={AssetIconSize.Small} symbol={assetSymbol} />
-                {stakingPool === StakingPool.Liquidity ? 'USD Coin' : 'DYDX Token'}
+                DYDX Token
                 <Tag marginLeft>{assetSymbol}</Tag>
               </AssetContainer>
             </WithLabel>
@@ -309,11 +298,7 @@ export const UnconnectedRequestWithdrawModal: React.FC<ConnectedRequestWithdrawM
                   <>
                     {stringGetter({ key: STRING_KEYS.REQUESTING_WITHDRAWALS_DESCRIPTION })}{' '}
                     <LearnMoreLink
-                      href={`${ExternalLink.Documentation}${
-                        stakingPool === StakingPool.Liquidity
-                          ? DocumentationSublinks.LiquidityPool
-                          : DocumentationSublinks.SafetyPool
-                      }`}
+                      href={`${ExternalLink.Documentation}${DocumentationSublinks.SafetyPool}`}
                     />
                   </>
                 }

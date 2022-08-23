@@ -30,10 +30,6 @@ const HistoryPage = lazy(() => import('./pages/history/History'));
 
 const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
 
-const LiquidityPoolDetailPage = lazy(
-  () => import('./pages/dashboard/staking-pools/LiquidityPoolDetail')
-);
-
 const ProposalDetailPage = lazy(() => import('./pages/dashboard/proposals/ProposalDetail'));
 
 export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
@@ -158,10 +154,6 @@ const App: React.FC = () => (
               <Suspense fallback={<LoadingSpace id="main-page-content" />}>
                 <Switch>
                   <Route path={StakingPoolRoute.SafetyPool} component={SafetyPoolDetailPage} />
-                  <Route
-                    path={StakingPoolRoute.LiquidityPool}
-                    component={LiquidityPoolDetailPage}
-                  />
                   <Route
                     path={`${AppRoute.ProposalDetail}/:proposalId`}
                     component={ProposalDetailPage}

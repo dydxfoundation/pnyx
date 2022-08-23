@@ -1,15 +1,12 @@
 import { StakingPool } from 'enums';
 
-export type LiquidityPoolEpochData = {
+export type StakingPoolData = {
+  poolSize?: string;
+  rewardsPerSecond?: string;
   currentlyInBlackoutWindow?: boolean;
   lengthOfBlackoutWindow?: string;
   nextEpochDate?: string;
 };
-
-export type StakingPoolData = {
-  poolSize?: string;
-  rewardsPerSecond?: string;
-} & LiquidityPoolEpochData;
 
 export type StakingPoolsData = {
   [key in StakingPool]: StakingPoolData;

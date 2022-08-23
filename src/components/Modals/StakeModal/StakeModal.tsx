@@ -80,7 +80,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
   setAllowance,
   setUserSentAllowanceTransaction,
   stakingBalancesData,
-  stakingPool = StakingPool.Liquidity,
+  stakingPool = StakingPool.Safety,
   stringGetter,
   walletAddress,
   walletBalancesData,
@@ -90,7 +90,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
   const [isCtaLoading, setIsCtaLoading] = useState<boolean>(false);
   const [walletErrorMessage, setWalletErrorMessage] = useState<string | undefined>();
 
-  const assetSymbol = stakingPool === StakingPool.Liquidity ? AssetSymbol.USDC : AssetSymbol.DYDX;
+  const assetSymbol = AssetSymbol.DYDX;
 
   usePollAllowance({
     allowances,
@@ -155,11 +155,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
     }
   }
 
-  const acknowledgeLocalStorageKey =
-    stakingPool === StakingPool.Liquidity
-      ? LOCAL_STORAGE_KEYS.ACKNOWLEDGE_TERMS_LIQUIDITY_POOL
-      : LOCAL_STORAGE_KEYS.ACKNOWLEDGE_TERMS_STAKING_POOL;
-
+  const acknowledgeLocalStorageKey = LOCAL_STORAGE_KEYS.ACKNOWLEDGE_TERMS_STAKING_POOL;
   const hasUserAcknowledgedTerms = getLocalStorage({ key: acknowledgeLocalStorageKey });
 
   if (!userSeenAcknowledgeModal) {
@@ -196,14 +192,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
                     key: STRING_KEYS.STAKE_ON_POOL,
                     params: {
                       POOL_ELEMENT: ReactDOMServer.renderToString(
-                        <span>
-                          {stringGetter({
-                            key:
-                              stakingPool === StakingPool.Liquidity
-                                ? STRING_KEYS.LIQUIDITY_POOL
-                                : STRING_KEYS.SAFETY_POOL,
-                          })}
-                        </span>
+                        <span>{stringGetter({ key: STRING_KEYS.SAFETY_POOL })}</span>
                       ),
                     },
                   }),
@@ -215,7 +204,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
             <WithLabel color={WithLabelColor.Base} label={stringGetter({ key: STRING_KEYS.ASSET })}>
               <AssetContainer>
                 <AssetIcon dark size={AssetIconSize.Small} symbol={assetSymbol} />
-                {stakingPool === StakingPool.Liquidity ? 'USD Coin' : 'DYDX Token'}
+                DYDX Token
                 <Tag marginLeft>{assetSymbol}</Tag>
               </AssetContainer>
             </WithLabel>
@@ -340,11 +329,7 @@ export const UnconnectedStakeModal: React.FC<ConnectedStakeModalProps> = ({
               {stringGetter({ key: STRING_KEYS.THERE_ARE_RISKS, params: { SYMBOL: assetSymbol } })}{' '}
               <LearnMoreLink
                 color={LinkColor.BaseText}
-                href={`${ExternalLink.Documentation}${
-                  stakingPool === StakingPool.Liquidity
-                    ? DocumentationSublinks.LiquidityPool
-                    : DocumentationSublinks.SafetyPool
-                }`}
+                href={`${ExternalLink.Documentation}${DocumentationSublinks.SafetyPool}`}
               />
             </ModalInfoFooter>
           </ModalContentContainer>

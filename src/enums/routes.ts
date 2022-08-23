@@ -6,5 +6,4 @@ export enum AppRoute {
 
 export enum StakingPoolRoute {
   SafetyPool = '/dashboard/pools/safety',
-  LiquidityPool = '/dashboard/pools/liquidity',
 }

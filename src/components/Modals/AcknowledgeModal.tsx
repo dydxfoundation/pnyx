@@ -65,20 +65,9 @@ export const UnconnectedAcknowledgeModal: React.FC<AcknowledgeModalProps> = ({
             <BulletPoint>•</BulletPoint>
             {stringGetter({
               key: STRING_KEYS.STAKING_REPRESENT_AND_WARRANT,
-              params: {
-                SYMBOL: stakingPool === StakingPool.Liquidity ? AssetSymbol.USDC : AssetSymbol.DYDX,
-              },
+              params: { SYMBOL: AssetSymbol.DYDX },
             })}
           </BulletMessage>
-          {stakingPool === StakingPool.Liquidity && (
-            <BulletMessage>
-              <BulletPoint>•</BulletPoint>
-              <span>
-                {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_RISK_DISCLAIMER })}{' '}
-                <LearnMoreLink href={ExternalLink.TermsOfUse} />
-              </span>
-            </BulletMessage>
-          )}
           <BulletMessage uppercase>
             <BulletPoint>•</BulletPoint>
             {stringGetter({ key: STRING_KEYS.DYDX_TOKEN_NOT_AVAILABLE })}

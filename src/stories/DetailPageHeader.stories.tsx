@@ -13,6 +13,6 @@ const Template: Story<DetailPageHeaderProps> = (args) => <DetailPageHeader {...a
 export const Example = Template.bind({});
 Example.args = {
   label: 'Pool',
-  title: 'Liquidity',
-  subtitle: 'Earn rewards for contributing to dYdX liquidity',
+  title: 'Safety',
+  subtitle: 'Earn rewards for contributing to dYdX safety',
 };

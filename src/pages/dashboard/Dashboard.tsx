@@ -41,9 +41,9 @@ export type DashboardProps = {} & LocalizationProps;
 const Dashboard: React.FC<
   DashboardProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 > = ({ isUserGeoBlocked, openModal, stakingPoolsData, stringGetter }) => {
-  usePollEpochData({ stakingPool: StakingPool.Liquidity });
+  usePollEpochData({ stakingPool: StakingPool.Safety });
 
-  const { nextEpochDate } = stakingPoolsData.data[StakingPool.Liquidity];
+  const { nextEpochDate } = stakingPoolsData.data[StakingPool.Safety];
 
   const formattedDiffUntilEpoch = useGetCountdownDiff({
     futureDateISO: nextEpochDate,
