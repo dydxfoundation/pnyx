@@ -12,7 +12,6 @@ import Button, { ButtonColor } from 'components/Button';
 import { Modal, ModalHeader, ModalSize, ModalAlignedContentContainer } from 'components/Modals';
 
 import { STRING_KEYS } from 'constants/localization';
-import LearnMoreLink from 'components/LearnMoreLink';
 
 export type AcknowledgeModalProps = {
   closeModal: () => void;
