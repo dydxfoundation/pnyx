@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { DateTime } from 'luxon';
@@ -220,12 +221,6 @@ const LiquidityPoolDetail: React.FC<
   return (
     <SectionWrapper column>
       <DetailPageHeader
-        ctaConfig={{
-          label: stringGetter({ key: STRING_KEYS.STAKE }),
-          onClick: () =>
-            openModal({ type: ModalType.Stake, props: { stakingPool: StakingPool.Liquidity } }),
-          disabled: !walletAddress || isUserGeoBlocked,
-        }}
         label={stringGetter({ key: STRING_KEYS.POOL })}
         title={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL })}
         subtitle={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_DESCRIPTION })}
@@ -396,7 +391,26 @@ const LiquidityPoolDetail: React.FC<
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
             content={
               <>
-                {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_ABOUT })}
+                <span
+                // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: stringGetter({
+                      key: STRING_KEYS.LIQUIDITY_POOL_ABOUT,
+                      params: {
+                        DIP_14_LINK: ReactDOMServer.renderToString(
+                          <Link
+                            href="https://dydx.community/dashboard/proposal/7"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            DIP 14
+                          </Link>
+                        ),
+                      },
+                    }),
+                  }}
+                />
+
                 <ButtonContainer>
                   <Button
                     linkOutIcon
@@ -408,14 +422,6 @@ const LiquidityPoolDetail: React.FC<
                 </ButtonContainer>
               </>
             }
-          />
-          <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.RISKS })}
-            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_RISKS })}
-          />
-          <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.REWARDS })}
-            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_REWARDS })}
           />
           <CollapsibleSection
             label={stringGetter({ key: STRING_KEYS.DISCUSS })}
@@ -459,6 +465,21 @@ const StyledContentRight = styled(ContentRight)`
   @media ${breakpoints.tablet} {
     margin-top: 1rem;
     flex: 1 1 auto;
+  }
+`;
+
+const Link = styled.a`
+  color: #6966ff;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: #6966ff;
+  }
+
+  &:hover {
+    color: #6966ff;
+    text-decoration: underline;
   }
 `;
 
