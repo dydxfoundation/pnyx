@@ -162,7 +162,7 @@
     "ESTIMATED_YIELD_PER_DAY": "Estimated yield / day",
     "LIQUIDITY_POOL": "Liquidity Pool",
     "LIQUIDITY_POOL_ABOUT_UPDATED": "In {DIP_14_LINK}, the dYdX community voted in favor of winding down the borrowing pool by setting DYDX rewards associated with staking USDC to 0. Currently, no approved borrowers have any outstanding loans and USDC staked in the liquidity staking pool is not earning rewards.",
-    "LIQUIDITY_POOL_DESCRIPTION_UPDATED": "The Liquidity Pool is no longer active as of 09/29/2022.",
+    "LIQUIDITY_POOL_DESCRIPTION_UPDATED": "The Liquidity Pool is no longer active as of September 29, 2022.",
     "LIQUIDITY_POOL_REWARDS_UPDATED": "Stakers must request to unstake USDC at least 3 days before the current epoch ends in order to be able to withdraw their USDC in the next epoch. If stakers do not request to withdraw, their staked USDC is rolled over into the next epoch.",
     "LIQUIDITY_POOL_RISKS": "A portion of staked USDC could be lost if a market maker were to lose funds (via unprofitable trading) and be unable or unwilling to replenish the liquidity staking pool.",
     "POOL_DISCUSS_DESCRIPTION": "Have thoughts about this pool? Discuss with others.",

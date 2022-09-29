@@ -424,6 +424,10 @@ const LiquidityPoolDetail: React.FC<
             }
           />
           <CollapsibleSection
+            label={stringGetter({ key: STRING_KEYS.WITHDRAWS })}
+            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_REWARDS })}
+          />
+          <CollapsibleSection
             label={stringGetter({ key: STRING_KEYS.DISCUSS })}
             content={
               <>
