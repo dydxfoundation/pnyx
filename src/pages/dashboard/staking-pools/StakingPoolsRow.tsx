@@ -289,16 +289,6 @@ const StakingPoolsRow: React.FC<
           <WithDetailFooter
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
             value={liquidityPoolEarnings}
-            ctaConfigs={{
-              primary: {
-                label: stringGetter({ key: STRING_KEYS.STAKE }),
-                onClick: () =>
-                  openModal({
-                    type: ModalType.Stake,
-                    props: { stakingPool: StakingPool.Liquidity },
-                  }),
-              },
-            }}
           >
             {liquidityPoolCard}
           </WithDetailFooter>

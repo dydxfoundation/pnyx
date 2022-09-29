@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { DateTime } from 'luxon';
@@ -220,12 +221,6 @@ const LiquidityPoolDetail: React.FC<
   return (
     <SectionWrapper column>
       <DetailPageHeader
-        ctaConfig={{
-          label: stringGetter({ key: STRING_KEYS.STAKE }),
-          onClick: () =>
-            openModal({ type: ModalType.Stake, props: { stakingPool: StakingPool.Liquidity } }),
-          disabled: !walletAddress || isUserGeoBlocked,
-        }}
         label={stringGetter({ key: STRING_KEYS.POOL })}
         title={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL })}
         subtitle={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_DESCRIPTION })}
@@ -396,7 +391,26 @@ const LiquidityPoolDetail: React.FC<
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
             content={
               <>
-                {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_ABOUT })}
+                <About
+                // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: stringGetter({
+                      key: STRING_KEYS.LIQUIDITY_POOL_ABOUT,
+                      params: {
+                        DIP_14_LINK: ReactDOMServer.renderToString(
+                          <a
+                            href="https://dydx.community/dashboard/proposal/7"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            DIP 14
+                          </a>
+                        ),
+                      },
+                    }),
+                  }}
+                />
+
                 <ButtonContainer>
                   <Button
                     linkOutIcon
@@ -410,11 +424,7 @@ const LiquidityPoolDetail: React.FC<
             }
           />
           <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.RISKS })}
-            content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_RISKS })}
-          />
-          <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.REWARDS })}
+            label={stringGetter({ key: STRING_KEYS.WITHDRAWS })}
             content={stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_REWARDS })}
           />
           <CollapsibleSection
@@ -460,6 +470,24 @@ const StyledContentRight = styled(ContentRight)`
     margin-top: 1rem;
     flex: 1 1 auto;
   }
+`;
+
+const About = styled.span`
+> a {
+  color: ${({ theme }) => theme.colorpurple};
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: ${({ theme }) => theme.colorpurple};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colorpurple};
+    text-decoration: underline;
+  }
+}
+  
 `;
 
 const WithdrawSection = styled.div`

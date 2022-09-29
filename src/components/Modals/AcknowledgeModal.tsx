@@ -70,15 +70,6 @@ export const UnconnectedAcknowledgeModal: React.FC<AcknowledgeModalProps> = ({
               },
             })}
           </BulletMessage>
-          {stakingPool === StakingPool.Liquidity && (
-            <BulletMessage>
-              <BulletPoint>•</BulletPoint>
-              <span>
-                {stringGetter({ key: STRING_KEYS.LIQUIDITY_POOL_RISK_DISCLAIMER })}{' '}
-                <LearnMoreLink href={ExternalLink.TermsOfUse} />
-              </span>
-            </BulletMessage>
-          )}
           <BulletMessage uppercase>
             <BulletPoint>•</BulletPoint>
             {stringGetter({ key: STRING_KEYS.DYDX_TOKEN_NOT_AVAILABLE })}
