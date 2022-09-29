@@ -391,20 +391,20 @@ const LiquidityPoolDetail: React.FC<
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
             content={
               <>
-                <span
+                <About
                 // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     __html: stringGetter({
                       key: STRING_KEYS.LIQUIDITY_POOL_ABOUT,
                       params: {
                         DIP_14_LINK: ReactDOMServer.renderToString(
-                          <Link
+                          <a
                             href="https://dydx.community/dashboard/proposal/7"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             DIP 14
-                          </Link>
+                          </a>
                         ),
                       },
                     }),
@@ -468,19 +468,22 @@ const StyledContentRight = styled(ContentRight)`
   }
 `;
 
-const Link = styled.a`
-  color: #6966ff;
+const About = styled.span`
+> a {
+  color: ${({ theme }) => theme.colorpurple};
   text-decoration: none;
   cursor: pointer;
 
   &:visited {
-    color: #6966ff;
+    color: ${({ theme }) => theme.colorpurple};
   }
 
   &:hover {
-    color: #6966ff;
+    color: ${({ theme }) => theme.colorpurple};
     text-decoration: underline;
   }
+}
+  
 `;
 
 const WithdrawSection = styled.div`
