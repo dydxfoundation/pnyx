@@ -223,7 +223,7 @@
   "HISTORY": {
     "EPOCH_NUMBER": "Epoch {NUMBER}",
     "EVENT": "Evento",
-    "FOR_TRADING_IN_EPOCH": "Para negociar en {EPOCH_NUMBER}",
+    "FOR_TRADING_IN_EPOCH": "Por negociar en {EPOCH_NUMBER}",
     "IN_PENDING_REWARDS": "en recompensas pendientes",
     "PENDING_REWARDS": "Recompensas pendientes",
     "REWARDED": "Recompensado",
