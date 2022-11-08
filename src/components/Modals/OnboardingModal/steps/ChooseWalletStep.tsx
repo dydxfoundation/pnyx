@@ -8,6 +8,7 @@ import { AppDispatch } from 'store';
 import { LocalizationProps } from 'types';
 
 import { withLocalization } from 'hoc';
+import { EmailWalletIcon } from 'icons';
 import { breakpoints } from 'styles';
 
 import Button, { ButtonColor, ButtonSize } from 'components/Button';
@@ -16,20 +17,24 @@ import WalletIcon from 'components/WalletIcon';
 
 import { connectWallet as connectWalletAction } from 'actions/wallets';
 
+import { WalletType } from 'enums';
 import { STRING_KEYS } from 'constants/localization';
 import { DISPLAYED_WALLETS } from 'constants/wallets';
 
 import { OnboardingStepFooterLinks } from './OnboardingStepStyles';
 
+
 export type ChooseWalletStepProps = {
   closeModal: () => void;
   goToNextStep: () => void;
+  goToSignInWithEmailStep:()=>void;
 } & LocalizationProps;
 
 const ChooseWalletStep: React.FC<ChooseWalletStepProps & ReturnType<typeof mapDispatchToProps>> = ({
   closeModal,
   connectWallet,
   goToNextStep,
+  goToSignInWithEmailStep,
   stringGetter,
 }) => (
   <>
@@ -42,11 +47,19 @@ const ChooseWalletStep: React.FC<ChooseWalletStepProps & ReturnType<typeof mapDi
             color={ButtonColor.Light}
             size={ButtonSize.Small}
             onClick={() => {
-              connectWallet({ walletType });
-              goToNextStep();
+              if (walletType === WalletType.MagicAuth) {
+                goToSignInWithEmailStep();
+              } else {
+                connectWallet({ walletType });
+                goToNextStep();
+              }
             }}
           >
-            <WalletIcon walletType={walletType} />
+            {walletType === WalletType.MagicAuth ? (
+              <EmailWalletIcon />
+            ) : (
+              <WalletIcon walletType={walletType} />
+            )}
             {stringGetter({ key: STRING_KEYS[walletType] })}
           </Button>
         ))}

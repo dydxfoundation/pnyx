@@ -6,6 +6,7 @@ export enum WalletType {
   Coin98 = 'COIN98',
   HuobiWallet = 'HUOBI_WALLET',
   ImToken = 'IMTOKEN',
+  MagicAuth = 'MAGIC_AUTH',
   MathWallet = 'MATH_WALLET',
   MetaMask = 'METAMASK',
   Rainbow = 'RAINBOW_WALLET',

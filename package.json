@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@dydxfoundation/governance": "^1.0.2",
+    "@magic-sdk/types": "^9.0.0",
     "@storybook/react": "^6.2.8",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
@@ -32,6 +33,7 @@
     "history": "^4.10.1",
     "lodash": "^4.17.21",
     "luxon": "^1.27.0",
+    "magic-sdk": "^10.0.0",
     "prettier": "^2.2.1",
     "react": "17.0.2",
     "react-collapse": "^5.1.0",

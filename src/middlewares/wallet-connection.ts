@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { Middleware } from 'redux';
+import { RPCError } from 'magic-sdk';
 
 import { ExternalLink, WalletType } from 'enums';
 import { RootState } from 'store';
@@ -24,6 +25,7 @@ import {
 
 import contractClient from 'lib/contract-client';
 import { getLocalStorage, removeLocalStorage, LOCAL_STORAGE_KEYS } from 'lib/local-storage';
+import magicAuth from 'lib/magic';
 
 const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) => async (
   action
@@ -83,6 +85,16 @@ const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) 
           return;
         }
       }
+    } else if (walletType === WalletType.MagicAuth) {
+      try {
+        await provider.enable();
+      } catch (e) {
+        if (e instanceof RPCError) {
+          store.dispatch(disconnectWallet({ walletType }));
+        } 
+
+        return;
+      }
     } else if (!autoReconnect) {
       // Don't pop wallet login on auto reconnect if it's locked, let the user click
       // the 'Connect wallet' button again.
@@ -123,6 +135,8 @@ const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) 
 
     if (walletType === WalletType.CoinbaseWallet) {
       await walletLinkInstance.disconnect();
+    } else if (walletType === WalletType.MagicAuth) {
+      magicAuth.user.logout();
     } else {
       const walletConnectProvider = getWalletConnectProvider();
 

@@ -4,10 +4,12 @@ import { Modal, ModalSize } from 'components/Modals';
 
 import ChooseWalletStep from './steps/ChooseWalletStep';
 import ConnectingWalletStep from './steps/ConnectingWalletStep';
+import SignInWithEmailStep from './steps/SignInWithEmailStep';
 
 enum OnboardingSteps {
   Referral = 'Referral',
   ChooseWallet = 'ChooseWallet',
+  SignInWithEmail = 'SignInWithEmail',
   ConnectingWallet = 'ConnectingWallet',
   Blocked = 'Blocked',
 }
@@ -27,6 +29,17 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ closeModal }) => {
       step = (
         <ChooseWalletStep
           closeModal={closeModal}
+          goToNextStep={() => setCurrentStep(OnboardingSteps.ConnectingWallet)}
+          goToSignInWithEmailStep={() => setCurrentStep(OnboardingSteps.SignInWithEmail)}
+        />
+      );
+      break;
+    }
+    case OnboardingSteps.SignInWithEmail: {
+      step = (
+        <SignInWithEmailStep
+          closeModal={closeModal}
+          goToPreviousStep={() => setCurrentStep(OnboardingSteps.ChooseWallet)}
           goToNextStep={() => setCurrentStep(OnboardingSteps.ConnectingWallet)}
         />
       );

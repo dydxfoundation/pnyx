@@ -2,11 +2,12 @@ import WalletLink from 'walletlink';
 
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
-import { WalletType } from 'enums';
-
 import { ConnectWalletOptions } from 'types';
 
+import { WalletType } from 'enums';
 import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from 'constants/wallets';
+
+import magicAuth from './magic';
 
 export const walletLinkInstance = new WalletLink({
   appName: 'dYdX',
@@ -97,6 +98,10 @@ export const getProviderByWalletType = ({
       }
 
       return { provider: coinbaseWalletProvider, isWalletLink: true };
+    }
+
+    case WalletType.MagicAuth: {
+      return { provider: magicAuth.rpcProvider };
     }
 
     case WalletType.OtherWallet: {
