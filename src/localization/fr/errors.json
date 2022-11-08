@@ -13,6 +13,6 @@
   },
   "WITHDRAW": {
     "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "Vous ne pouvez pas demander de retirer plus que votre solde de mise actuel.",
-    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Les 14 derniers jours de chaque époch sont une fenêtre de blocage dans laquelle aucun retrait ne peut être demandé au pool de liquidités. La prochaine époch commence le {EPOCH_DATE}."
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Les 14 derniers jours de chaque epoch sont une fenêtre de blocage dans laquelle aucun retrait ne peut être demandé au pool de liquidités. La prochaine epoch commence le {EPOCH_DATE}."
   }
 }
