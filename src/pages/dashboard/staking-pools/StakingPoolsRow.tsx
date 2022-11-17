@@ -37,7 +37,7 @@ import { getStakingPoolsData } from 'selectors/staking-pools';
 import { getWalletAddress } from 'selectors/wallets';
 
 import { STRING_KEYS } from 'constants/localization';
-import { abbreviateNumber, MustBigNumber } from 'lib/numbers';
+import { abbreviateNumber, BIG_NUMBERS, MustBigNumber } from 'lib/numbers';
 
 import {
   calculateEstimatedLiquidityPoolYieldPerDay,
@@ -100,10 +100,7 @@ const StakingPoolsRow: React.FC<
         thousandSeparator
         displayType="text"
         suffix="%"
-        value={calculateEstimatedSafetyPoolAPR({
-          poolSize: safetyPoolSize,
-          rewardsPerSecond: safetyRewardsPerSecond,
-        }).toFixed(DecimalPlaces.Percent)}
+        value={BIG_NUMBERS.ZERO.toFixed(DecimalPlaces.Percent)}
       />
     );
   } else {
@@ -299,16 +296,6 @@ const StakingPoolsRow: React.FC<
           <WithDetailFooter
             label={stringGetter({ key: STRING_KEYS.YOUR_REWARDS })}
             value={safetyPoolEarnings}
-            ctaConfigs={{
-              primary: {
-                label: stringGetter({ key: STRING_KEYS.STAKE }),
-                onClick: () =>
-                  openModal({
-                    type: ModalType.Stake,
-                    props: { stakingPool: StakingPool.Safety },
-                  }),
-              },
-            }}
           >
             {safetyPoolCard}
           </WithDetailFooter>

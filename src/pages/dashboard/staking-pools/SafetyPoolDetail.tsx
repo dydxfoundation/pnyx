@@ -52,8 +52,8 @@ import { getIsUserGeoBlocked } from 'selectors/geo';
 import { STRING_KEYS } from 'constants/localization';
 
 import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { calculateEstimatedSafetyPoolAPR, calculateUserStakingBalance } from 'lib/staking-pools';
+import { BIG_NUMBERS, MustBigNumber } from 'lib/numbers';
+import { calculateUserStakingBalance } from 'lib/staking-pools';
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
 
@@ -207,15 +207,9 @@ const SafetyPoolDetail: React.FC<
   return (
     <SectionWrapper column>
       <DetailPageHeader
-        ctaConfig={{
-          label: stringGetter({ key: STRING_KEYS.STAKE }),
-          onClick: () =>
-            openModal({ type: ModalType.Stake, props: { stakingPool: StakingPool.Safety } }),
-          disabled: !walletAddress || isUserGeoBlocked,
-        }}
         label={stringGetter({ key: STRING_KEYS.POOL })}
         title={stringGetter({ key: STRING_KEYS.SAFETY_POOL })}
-        subtitle={stringGetter({ key: STRING_KEYS.SAFETY_POOL_DESCRIPTION })}
+        subtitle={stringGetter({ key: STRING_KEYS.SAFETY_POOL_INACTIVE_DESCRIPTION })}
       />
       {isUserGeoBlocked && (
         <Styled.BannerContainer>
@@ -249,10 +243,7 @@ const SafetyPoolDetail: React.FC<
                   thousandSeparator
                   displayType="text"
                   suffix="%"
-                  value={calculateEstimatedSafetyPoolAPR({
-                    poolSize,
-                    rewardsPerSecond,
-                  }).toFixed(DecimalPlaces.Percent)}
+                  value={BIG_NUMBERS.ZERO.toFixed(DecimalPlaces.Percent)}
                 />
               }
               label={stringGetter({ key: STRING_KEYS.ESTIMATED_APR_IN_DYDX })}
@@ -381,11 +372,12 @@ const SafetyPoolDetail: React.FC<
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
             content={
               <>
-                {stringGetter({ key: STRING_KEYS.SAFETY_POOL_ABOUT })}
+                {stringGetter({ key: STRING_KEYS.SAFETY_POOL_INACTIVE_ABOUT })}
                 <ButtonContainer>
                   <Button
                     linkOutIcon
                     color={ButtonColor.Lighter}
+                    // TODO: CHANGE LINK
                     href={`${ExternalLink.Documentation}${DocumentationSublinks.SafetyPool}`}
                   >
                     {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
@@ -395,18 +387,8 @@ const SafetyPoolDetail: React.FC<
             }
           />
           <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.RISKS })}
-            content={
-              <>
-                {stringGetter({ key: STRING_KEYS.SAFETY_POOL_RISKS_1 })}
-                <Styled.Spacer />
-                {stringGetter({ key: STRING_KEYS.SAFETY_POOL_RISKS_2 })}
-              </>
-            }
-          />
-          <CollapsibleSection
-            label={stringGetter({ key: STRING_KEYS.REWARDS })}
-            content={stringGetter({ key: STRING_KEYS.SAFETY_POOL_REWARDS })}
+            label={stringGetter({ key: STRING_KEYS.WITHDRAWS })}
+            content={stringGetter({ key: STRING_KEYS.SAFETY_POOL_WITHDRAWS })}
           />
           <CollapsibleSection
             label={stringGetter({ key: STRING_KEYS.DISCUSS })}

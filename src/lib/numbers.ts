@@ -46,3 +46,7 @@ export const abbreviateNumber = ({
     suffix,
   };
 };
+
+export const BIG_NUMBERS = {
+  ZERO: MustBigNumber(0),
+};
