@@ -377,7 +377,6 @@ const SafetyPoolDetail: React.FC<
                   <Button
                     linkOutIcon
                     color={ButtonColor.Lighter}
-                    // TODO: CHANGE LINK
                     href={`${ExternalLink.Documentation}${DocumentationSublinks.SafetyPool}`}
                   >
                     {stringGetter({ key: STRING_KEYS.LEARN_MORE })}
