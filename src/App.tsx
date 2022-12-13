@@ -34,6 +34,7 @@ const LiquidityPoolDetailPage = lazy(
   () => import('./pages/dashboard/staking-pools/LiquidityPoolDetail')
 );
 
+const MagicOAuth = lazy(() => import('./pages/redirect/MagicOAuth'));
 const ProposalDetailPage = lazy(() => import('./pages/dashboard/proposals/ProposalDetail'));
 
 export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
@@ -168,6 +169,7 @@ const App: React.FC = () => (
                   />
                   <Route path={AppRoute.History} component={HistoryPage} />
                   <Route path={AppRoute.Dashboard} component={DashboardPage} />
+                  <Route path={AppRoute.MagicOAuthRedirect} component={MagicOAuth} />
                   <Redirect to={AppRoute.Dashboard} />
                 </Switch>
               </Suspense>

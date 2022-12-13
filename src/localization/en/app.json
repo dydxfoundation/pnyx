@@ -122,9 +122,11 @@
     "CONNECT_WALLET": "Connect wallet",
     "CONNECT_YOUR_WALLET": "Connect your wallet",
     "CONNECTING": "Connecting",
+    "EMAIL": "Email",
     "GO_BACK": "Go back",
     "SEND_LINK": "Send link",
-    "SIGN_IN_WITH_EMAIL_VIA_MAGIC": "Sign in with email via Magic",
+    "SIGN_IN_VIA_MAGIC": "Sign in via Magic",
+    "SIGN_IN_WITH_EMAIL": "Sign in with email",
     "SKIP_FOR_NOW": "Skip for now",
     "TRY_AGAIN": "Try again"
   },

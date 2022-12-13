@@ -56,7 +56,7 @@ const SignInWithEmailStep: React.FC<
     <>
       <ModalHeader
         noBorder
-        title={stringGetter({ key: STRING_KEYS.SIGN_IN_WITH_EMAIL_VIA_MAGIC })}
+        title={stringGetter({ key: STRING_KEYS.SIGN_IN_WITH_EMAIL })}
       />
       <ModalContentContainer>
         <SignInWithEmailForm

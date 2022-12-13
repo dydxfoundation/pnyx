@@ -37,7 +37,6 @@ export { ReactComponent as BitPieIcon } from './wallets/bitpie.svg';
 export { ReactComponent as CloverWalletIcon } from './wallets/clover-wallet.svg';
 export { ReactComponent as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
 export { ReactComponent as Coin98Icon } from './wallets/coin98.svg';
-export { ReactComponent as EmailWalletIcon } from './wallets/email-wallet.svg';
 export { ReactComponent as GenericWalletIcon } from './wallets/generic-wallet.svg';
 export { ReactComponent as HuobiWalletIcon } from './wallets/huobi-wallet.svg';
 export { ReactComponent as ImTokenIcon } from './wallets/imtoken.svg';
@@ -54,3 +53,8 @@ export { ReactComponent as WalletConnectIcon } from './wallets/walletconnect.svg
 export { ReactComponent as TwitterIcon } from './social/twitter.svg';
 export { ReactComponent as DiscordIcon } from './social/discord.svg';
 export { ReactComponent as CommonwealthIcon } from './social/commonwealth.svg';
+
+// Magic Link
+export { ReactComponent as AppleIcon } from './magic/apple-logo.svg';
+export { ReactComponent as EmailSignInIcon } from './magic/email-signin.svg';
+export { ReactComponent as GoogleIcon } from './magic/google-logo.svg';
