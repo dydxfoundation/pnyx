@@ -129,7 +129,7 @@ const DashboardHeader: React.FC<
             />
             <SingleStatCard
               size={CardSize.Small}
-              title={stringGetter({ key: STRING_KEYS.DISTRIBUTED_TODAY })}
+              title={stringGetter({ key: STRING_KEYS.DISTRIBUTED_EACH_EPOCH })}
               isLoading={!distributedToday}
               value={
                 <ValueWithIcon>

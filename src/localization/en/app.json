@@ -29,6 +29,7 @@
     "DISCORD": "Discord",
     "DISCORD_DESCRIPTION": "Chat with other users",
     "DISCUSS": "Discuss",
+    "DISTRIBUTED_EACH_EPOCH": "Distributed each epoch",
     "DISTRIBUTED_THIS_EPOCH": "will be distributed this epoch.",
     "DISTRIBUTED_TODAY": "Distributed Today",
     "EARNED": "Earned",
