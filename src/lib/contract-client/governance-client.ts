@@ -185,7 +185,7 @@ class GovernanceClient {
   };
 
   getLatestProposals = async (): Promise<Proposal[]> => {
-    const proposals = await this.txBuilder.dydxGovernanceService.getLatestProposals(10);
+    const proposals = await this.txBuilder.dydxGovernanceService.getLatestProposals(25);
     return proposals;
   };
 
