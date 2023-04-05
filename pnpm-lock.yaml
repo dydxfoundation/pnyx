@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  reflect-metadata@0.1.13:
+    hash: 4e7zji53mldygy2lkukda26jvq
+    path: patches/reflect-metadata@0.1.13.patch
+
 specifiers:
   '@dydxfoundation/governance': ^1.0.3
   '@storybook/addon-actions': ^7.0.2
@@ -95,6 +100,7 @@ dependencies:
   redux: 4.2.1
   redux-actions: 3.0.0
   redux-devtools-extension: 2.13.9_redux@4.2.1
+  reflect-metadata: 0.1.13_4e7zji53mldygy2lkukda26jvq
   reselect: 4.1.7
   styled-components: 5.3.9_biqbaboplfbrettd7655fr4n2y
   urql: 4.0.0_react@18.2.0
@@ -143,7 +149,6 @@ devDependencies:
   eslint-plugin-react: 7.32.2
   eslint-plugin-react-hooks: 4.6.0
   prettier: 2.8.7
-  reflect-metadata: 0.1.13
   typescript: 5.0.3
   vite: 4.2.1_@types+node@18.15.11
   web-vitals: 3.3.1
@@ -8672,9 +8677,10 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
-  /reflect-metadata/0.1.13:
+  /reflect-metadata/0.1.13_4e7zji53mldygy2lkukda26jvq:
     resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
-    dev: true
+    dev: false
+    patched: true
 
   /regenerate-unicode-properties/10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}

@@ -1,0 +1,13 @@
+diff --git a/Reflect.js b/Reflect.js
+index 4afbb52544f0c23208b6292a368060eac6bf137c..b44e0625f70d9385eea73658956e388da5f52d89 100644
+--- a/Reflect.js
++++ b/Reflect.js
+@@ -12,7 +12,7 @@ MERCHANTABLITY OR NON-INFRINGEMENT.
+ See the Apache Version 2.0 License for specific language governing permissions
+ and limitations under the License.
+ ***************************************************************************** */
+-var Reflect;
++var Reflect = globalThis.Reflect;
+ (function (Reflect) {
+     // Metadata Proposal
+     // https://rbuckton.github.io/reflect-metadata/
