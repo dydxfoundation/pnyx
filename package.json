@@ -7,8 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "NODE_PATH=$(pwd)/node_modules start-storybook --port 6007",
+    "build-storybook": "NODE_PATH=$(pwd)/node_modules build-storybook",
+    "preview-storybook": "http-server storybook-static --port 6007 --silent"
   },
   "dependencies": {
     "@dydxfoundation/governance": "^1.0.3",
@@ -44,6 +45,7 @@
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/builder-vite": "^7.0.2",
+    "@storybook/cli": "^7.0.2",
     "@storybook/node-logger": "^7.0.2",
     "@storybook/react": "^7.0.2",
     "@testing-library/jest-dom": "^5.16.5",
