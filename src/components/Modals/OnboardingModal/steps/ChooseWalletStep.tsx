@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import _ from 'lodash';
 
-import { AppDispatch } from 'store';
-import { LocalizationProps } from 'types';
+import { AppDispatch } from '@/store';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { breakpoints } from 'styles';
+import { withLocalization } from '@/hoc';
+import { breakpoints } from '@/styles';
 
-import Button, { ButtonColor, ButtonSize } from 'components/Button';
-import { ModalHeader, ModalContentContainer } from 'components/Modals';
-import WalletIcon from 'components/WalletIcon';
+import Button, { ButtonColor, ButtonSize } from '@/components/Button';
+import { ModalHeader, ModalContentContainer } from '@/components/Modals';
+import WalletIcon from '@/components/WalletIcon';
 
-import { connectWallet as connectWalletAction } from 'actions/wallets';
+import { connectWallet as connectWalletAction } from '@/actions/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
-import { DISPLAYED_WALLETS } from 'constants/wallets';
+import { STRING_KEYS } from '@/constants/localization';
+import { DISPLAYED_WALLETS } from '@/constants/wallets';
 
 import { OnboardingStepFooterLinks } from './OnboardingStepStyles';
 

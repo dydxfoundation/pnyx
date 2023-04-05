@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
 
 import {
   AssetSymbol,
@@ -16,33 +16,33 @@ import {
   ModalType,
   StakingPool,
   StakingPoolRoute,
-} from 'enums';
+} from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { NotMobileOnly } from 'styles';
-import { usePollStakingBalances, usePollStakingPoolsData } from 'hooks';
+import { withLocalization } from '@/hoc';
+import { NotMobileOnly } from '@/styles';
+import { usePollStakingBalances, usePollStakingPoolsData } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import LoadingBar from 'components/LoadingBar';
-import SectionHeader from 'components/SectionHeader';
-import SectionWrapper from 'components/SectionWrapper';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import LoadingBar from '@/components/LoadingBar';
+import SectionHeader from '@/components/SectionHeader';
+import SectionWrapper from '@/components/SectionWrapper';
 
-import { InfoModuleCard, InfoCtaCard, CardContainer, WithDetailFooter } from 'components/Cards';
+import { InfoModuleCard, InfoCtaCard, CardContainer, WithDetailFooter } from '@/components/Cards';
 
-import { openModal as openModalAction } from 'actions/modals';
+import { openModal as openModalAction } from '@/actions/modals';
 
-import { getStakingBalancesData } from 'selectors/balances';
-import { getIsUserGeoBlocked } from 'selectors/geo';
-import { getStakingPoolsData } from 'selectors/staking-pools';
-import { getWalletAddress } from 'selectors/wallets';
+import { getStakingBalancesData } from '@/selectors/balances';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
+import { getStakingPoolsData } from '@/selectors/staking-pools';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
-import { abbreviateNumber, BIG_NUMBERS, MustBigNumber } from 'lib/numbers';
+import { STRING_KEYS } from '@/constants/localization';
+import { abbreviateNumber, BIG_NUMBERS, MustBigNumber } from '@/lib/numbers';
 
 import {
   calculateEstimatedLiquidityPoolYieldPerDay,
   calculateEstimatedSafetyPoolAPR,
-} from 'lib/staking-pools';
+} from '@/lib/staking-pools';
 
 const defaultLoadingBar = <LoadingBar height={1.625} width={4} />;
 

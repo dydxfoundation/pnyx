@@ -1,9 +1,9 @@
 import BigNumber from 'bignumber.js';
 
-import { StakingPool } from 'enums';
-import { StakingBalancesData, WithdrawBalancesData } from 'types';
+import { StakingPool } from '@/enums';
+import { StakingBalancesData, WithdrawBalancesData } from '@/types';
 
-import { MustBigNumber } from 'lib/numbers';
+import { MustBigNumber } from '@/lib/numbers';
 
 /**
  * Normalize to $1K based on pool size and rewards per sec, then multiply by 60 * 60 * 24 to get rewards per day.

@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 import _ from 'lodash';
 
-import { breakpoints, fontSizes } from 'styles';
-import { SetSelectedLocalePayload } from 'types';
-import { SupportedLocale } from 'enums';
+import { breakpoints, fontSizes } from '@/styles';
+import { SetSelectedLocalePayload } from '@/types';
+import { SupportedLocale } from '@/enums';
 
-import { useOnClickOutside } from 'hooks';
-import { TriangleDownIcon } from 'icons';
+import { useOnClickOutside } from '@/hooks';
+import { TriangleDownIcon } from '@/icons';
 
-import { SUPPORTED_LOCALE_STRING_LABELS } from 'constants/localization';
+import { SUPPORTED_LOCALE_STRING_LABELS } from '@/constants/localization';
 
 import { HeaderMenu, MenuOption } from './HeaderMenuStyles';
 

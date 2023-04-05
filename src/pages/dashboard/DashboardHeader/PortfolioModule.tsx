@@ -1,31 +1,31 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import NumberFormat from 'react-number-format';
 
-import { RootState } from 'store';
-import { LocalizationProps } from 'types';
-import { AssetSymbol, DecimalPlaces, StakingPool, WalletType } from 'enums';
+import { RootState } from '@/store';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol, DecimalPlaces, StakingPool, WalletType } from '@/enums';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
-import { usePollWalletBalances, usePollWithdrawBalances } from 'hooks';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
+import { usePollWalletBalances, usePollWithdrawBalances } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import LoadingBar from 'components/LoadingBar';
-import WalletIcon from 'components/WalletIcon';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import LoadingBar from '@/components/LoadingBar';
+import WalletIcon from '@/components/WalletIcon';
 
-import { getWalletType } from 'selectors/wallets';
-import { getIsUserGeoBlocked } from 'selectors/geo';
+import { getWalletType } from '@/selectors/wallets';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
 
 import {
   getStakingBalancesData,
   getWalletBalancesData,
   getWithdrawBalancesData,
-} from 'selectors/balances';
+} from '@/selectors/balances';
 
-import { STRING_KEYS } from 'constants/localization';
-import { MustBigNumber } from 'lib/numbers';
+import { STRING_KEYS } from '@/constants/localization';
+import { MustBigNumber } from '@/lib/numbers';
 
 import RewardsModule from './RewardsModule';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { fontSizes } from 'styles';
+import { fontSizes } from '@/styles';
 
 export type TruncateHashProps = {
   hash: string;

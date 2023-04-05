@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ethers } from 'ethers';
@@ -10,42 +10,42 @@ import {
   DocumentationSublinks,
   ExternalLink,
   NotificationType,
-} from 'enums';
+} from '@/enums';
 
-import { AppDispatch, RootState } from 'store';
-import { DelegatePowersTxHashes, LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { DelegatePowersTxHashes, LocalizationProps } from '@/types';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
-import { CloseIcon } from 'icons';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
+import { CloseIcon } from '@/icons';
 
-import Button from 'components/Button';
-import Checkbox from 'components/Checkbox';
-import LearnMoreLink from 'components/LearnMoreLink';
-import LoadingSpace from 'components/LoadingSpace';
-import InputField, { InputFieldType } from 'components/InputField';
+import Button from '@/components/Button';
+import Checkbox from '@/components/Checkbox';
+import LearnMoreLink from '@/components/LearnMoreLink';
+import LoadingSpace from '@/components/LoadingSpace';
+import InputField, { InputFieldType } from '@/components/InputField';
 
-import AlertMessage, { AlertMessageType } from 'components/AlertMessage';
-import WithLabel, { WithLabelColor } from 'components/WithLabel';
-import { Modal, ModalHeader, ModalSize, ModalContentContainer } from 'components/Modals';
+import AlertMessage, { AlertMessageType } from '@/components/AlertMessage';
+import WithLabel, { WithLabelColor } from '@/components/WithLabel';
+import { Modal, ModalHeader, ModalSize, ModalContentContainer } from '@/components/Modals';
 
-import { addNotification as addNotificationAction } from 'actions/notifications';
+import { addNotification as addNotificationAction } from '@/actions/notifications';
 
-import { getStakingBalancesData, getWalletBalancesData } from 'selectors/balances';
-import { getGovernancePowersData } from 'selectors/governance';
-import { getIsWalletIncorrectNetwork, getWalletAddress } from 'selectors/wallets';
+import { getStakingBalancesData, getWalletBalancesData } from '@/selectors/balances';
+import { getGovernancePowersData } from '@/selectors/governance';
+import { getIsWalletIncorrectNetwork, getWalletAddress } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { isErrorCancelError } from 'lib/wallets';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
+import { isErrorCancelError } from '@/lib/wallets';
 
 import {
   findAllPowersDelegatee,
   findVotingPowerDelegatee,
   findProposingPowerDelegatee,
-} from 'lib/governance';
+} from '@/lib/governance';
 
 export type DelegateModalProps = { closeModal: () => void } & LocalizationProps;
 

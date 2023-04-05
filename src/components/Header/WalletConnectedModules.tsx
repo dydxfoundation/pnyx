@@ -1,20 +1,20 @@
 import React, { useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AppDispatch, RootState } from 'store';
-import { WalletType } from 'enums';
+import { AppDispatch, RootState } from '@/store';
+import { WalletType } from '@/enums';
 
-import { useOnClickOutside } from 'hooks';
-import { breakpoints } from 'styles';
-import { BellIcon, BellAlertIcon, TriangleDownIcon } from 'icons';
+import { useOnClickOutside } from '@/hooks';
+import { breakpoints } from '@/styles';
+import { BellIcon, BellAlertIcon, TriangleDownIcon } from '@/icons';
 
-import TruncateHash from 'components/TruncateHash';
-import WalletIcon from 'components/WalletIcon';
+import TruncateHash from '@/components/TruncateHash';
+import WalletIcon from '@/components/WalletIcon';
 
-import { setSeenNotifications as setSeenNotificationsAction } from 'actions/notifications';
-import { getHasUnseenNotifications, getNotifications } from 'selectors/notifications';
+import { setSeenNotifications as setSeenNotificationsAction } from '@/actions/notifications';
+import { getHasUnseenNotifications, getNotifications } from '@/selectors/notifications';
 
 import WalletMenu from './WalletMenu';
 import NotificationsMenu from './NotificationsMenu';

@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { breakpoints } from 'styles';
-import { useScrollToTop } from 'hooks';
+import { breakpoints } from '@/styles';
+import { useScrollToTop } from '@/hooks';
 
 export type PageWrapperProps = {
   children: React.ReactNode;

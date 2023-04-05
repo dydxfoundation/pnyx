@@ -1,6 +1,6 @@
-import { SetCirculatingSupplyPayload, SetDistributedTodayPayload } from 'types';
+import { SetCirculatingSupplyPayload, SetDistributedTodayPayload } from '@/types';
 
-import { setCirculatingSupply, setDistributedToday } from 'actions/distribution';
+import { setCirculatingSupply, setDistributedToday } from '@/actions/distribution';
 
 type State = {
   circulatingSupply: string | null;

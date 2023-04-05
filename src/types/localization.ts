@@ -1,4 +1,4 @@
-import { SupportedLocale } from 'enums';
+import { SupportedLocale } from '@/enums';
 
 export type LocaleData = {
   [key: string]: {

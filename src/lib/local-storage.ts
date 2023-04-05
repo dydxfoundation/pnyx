@@ -2,7 +2,7 @@ import {
   SetLocalStorageFunction,
   GetLocalStorageFunction,
   RemoveLocalStorageFunction,
-} from 'types';
+} from '@/types';
 
 export const LOCAL_STORAGE_KEYS = {
   ACKNOWLEDGE_TERMS_LIQUIDITY_POOL: 'ACKNOWLEDGE_TERMS_LIQUIDITY_POOL',

@@ -1,7 +1,7 @@
-import { SetTradingRewardsDataPayload, TradingRewardsData } from 'types';
+import { SetTradingRewardsDataPayload, TradingRewardsData } from '@/types';
 
-import { setTradingRewardsData } from 'actions/trading-rewards';
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { setTradingRewardsData } from '@/actions/trading-rewards';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   tradingRewardsData: TradingRewardsData | null;

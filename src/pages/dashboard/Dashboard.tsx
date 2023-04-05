@@ -3,19 +3,19 @@ import ReactDOMServer from 'react-dom/server';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { DateTime } from 'luxon';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AppDispatch, RootState } from 'store';
-import { AssetSymbol, DocumentationSublinks, ExternalLink, ModalType, StakingPool } from 'enums';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { AssetSymbol, DocumentationSublinks, ExternalLink, ModalType, StakingPool } from '@/enums';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { useGetCountdownDiff, usePollEpochData } from 'hooks';
+import { withLocalization } from '@/hoc';
+import { useGetCountdownDiff, usePollEpochData } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import GeoBlockBanner from 'components/GeoBlockBanner';
-import SectionHeader from 'components/SectionHeader';
-import SectionWrapper from 'components/SectionWrapper';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import GeoBlockBanner from '@/components/GeoBlockBanner';
+import SectionHeader from '@/components/SectionHeader';
+import SectionWrapper from '@/components/SectionWrapper';
 
 import {
   SingleStatCard,
@@ -23,14 +23,14 @@ import {
   CardContainer,
   CardSize,
   ValueWithIcon,
-} from 'components/Cards';
+} from '@/components/Cards';
 
-import { openModal as openModalAction } from 'actions/modals';
+import { openModal as openModalAction } from '@/actions/modals';
 
-import { getStakingPoolsData } from 'selectors/staking-pools';
-import { getIsUserGeoBlocked } from 'selectors/geo';
+import { getStakingPoolsData } from '@/selectors/staking-pools';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 import DashboardHeader from './DashboardHeader/DashboardHeader';
 import ProposalsSection from './proposals/ProposalsSection';

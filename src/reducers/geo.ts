@@ -1,6 +1,6 @@
-import { GeoData, SetGeoDataPayload } from 'types';
+import { GeoData, SetGeoDataPayload } from '@/types';
 
-import { setGeoData } from 'actions/geo';
+import { setGeoData } from '@/actions/geo';
 
 type State = {
   geoData: GeoData | null;

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import NumberFormat from 'react-number-format';
 import { DateTime } from 'luxon';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation/governance';
 
 import {
   AppRoute,
@@ -18,37 +18,37 @@ import {
   ExternalLink,
   ModalType,
   ProposalStatus,
-} from 'enums';
+} from '@/enums';
 
-import { LocalizationProps } from 'types';
-import { AppDispatch, RootState } from 'store';
+import { LocalizationProps } from '@/types';
+import { AppDispatch, RootState } from '@/store';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
-import { CheckMarkIcon, XIcon } from 'icons';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
+import { CheckMarkIcon, XIcon } from '@/icons';
 
-import { useGetCountdownDiff, useGetLatestProposals, useGetVotedOnDataForProposal } from 'hooks';
+import { useGetCountdownDiff, useGetLatestProposals, useGetVotedOnDataForProposal } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import Button, { ButtonColor, ButtonContainer } from 'components/Button';
-import VoteMeter from 'components/VoteMeter';
-import { SingleStatCard, CardColor, ValueWithIcon } from 'components/Cards';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import Button, { ButtonColor, ButtonContainer } from '@/components/Button';
+import VoteMeter from '@/components/VoteMeter';
+import { SingleStatCard, CardColor, ValueWithIcon } from '@/components/Cards';
 
-import CollapsibleSection from 'components/CollapsibleSection';
-import DetailPageHeader from 'components/DetailPageHeader';
-import LoadingSpace from 'components/LoadingSpace';
-import SectionWrapper from 'components/SectionWrapper';
+import CollapsibleSection from '@/components/CollapsibleSection';
+import DetailPageHeader from '@/components/DetailPageHeader';
+import LoadingSpace from '@/components/LoadingSpace';
+import SectionWrapper from '@/components/SectionWrapper';
 
-import { openModal as openModalAction } from 'actions/modals';
+import { openModal as openModalAction } from '@/actions/modals';
 
-import { getWalletAddress } from 'selectors/wallets';
-import { getLatestProposals } from 'selectors/governance';
+import { getWalletAddress } from '@/selectors/wallets';
+import { getLatestProposals } from '@/selectors/governance';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { getStatusLabelKey, getTotalRequiredVotes } from 'lib/proposals';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
+import { getStatusLabelKey, getTotalRequiredVotes } from '@/lib/proposals';
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
 
@@ -136,7 +136,7 @@ const ProposalDetail: React.FC<
                 .plus({
                   milliseconds:
                     (startBlock - currentBlockNumber) *
-                    Number(process.env.REACT_APP_AVG_BLOCK_TIME),
+                    Number(import.meta.env.VITE_AVG_BLOCK_TIME),
                 })
                 .toISO()
             );
@@ -147,7 +147,7 @@ const ProposalDetail: React.FC<
               DateTime.local()
                 .plus({
                   milliseconds:
-                    (endBlock - currentBlockNumber) * Number(process.env.REACT_APP_AVG_BLOCK_TIME),
+                    (endBlock - currentBlockNumber) * Number(import.meta.env.VITE_AVG_BLOCK_TIME),
                 })
                 .toISO()
             );

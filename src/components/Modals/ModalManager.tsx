@@ -2,14 +2,14 @@ import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { ModalType } from 'enums';
-import { ModalConfig } from 'types';
-import { AppDispatch, RootState } from 'store';
+import { ModalType } from '@/enums';
+import { ModalConfig } from '@/types';
+import { AppDispatch, RootState } from '@/store';
 
-import LoadingSpace from 'components/LoadingSpace';
+import LoadingSpace from '@/components/LoadingSpace';
 
-import { closeModal as closeModalAction } from 'actions/modals';
-import { getModalConfig } from 'selectors/modals';
+import { closeModal as closeModalAction } from '@/actions/modals';
+import { getModalConfig } from '@/selectors/modals';
 
 import { Modal, ModalOverlay } from './Modal';
 

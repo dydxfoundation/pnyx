@@ -1,5 +1,5 @@
 // @ts-ignore-next-line
-import { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation/governance';
 
 import {
   GovernancePowersData,
@@ -7,15 +7,15 @@ import {
   SetLatestProposalsPayload,
   VotedOnProposalData,
   SetVotedOnProposalPayload,
-} from 'types';
+} from '@/types';
 
 import {
   setGovernancePowersData,
   setLatestProposals,
   setVotedOnProposal,
-} from 'actions/governance';
+} from '@/actions/governance';
 
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   governancePowers: GovernancePowersData;

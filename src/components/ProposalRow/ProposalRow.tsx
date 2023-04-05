@@ -1,22 +1,22 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation/governance';
 
-import { LocalizationProps } from 'types';
-import { AppRoute, ProposalStatus } from 'enums';
+import { LocalizationProps } from '@/types';
+import { AppRoute, ProposalStatus } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { CheckMarkIcon, XIcon } from 'icons';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { CheckMarkIcon, XIcon } from '@/icons';
+import { breakpoints, fontSizes } from '@/styles';
 
-import ProposalStatusIcon, { ProposalStatusSize } from 'components/ProposalStatusIcon';
-import VoteMeter from 'components/VoteMeter';
+import ProposalStatusIcon, { ProposalStatusSize } from '@/components/ProposalStatusIcon';
+import VoteMeter from '@/components/VoteMeter';
 
-import { getStatusLabelKey, getTotalRequiredVotes } from 'lib/proposals';
+import { getStatusLabelKey, getTotalRequiredVotes } from '@/lib/proposals';
 
 export type ProposalRowProps = {
   proposal: Proposals;

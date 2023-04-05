@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
 import _ from 'lodash';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
-import { AssetSymbol, DecimalPlaces, NotificationType } from 'enums';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol, DecimalPlaces, NotificationType } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { usePollUnclaimedRewards, usePollWalletBalances } from 'hooks';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { usePollUnclaimedRewards, usePollWalletBalances } from '@/hooks';
+import { breakpoints, fontSizes } from '@/styles';
 
-import Button from 'components/Button';
-import WithReceipt from 'components/WithReceipt';
+import Button from '@/components/Button';
+import WithReceipt from '@/components/WithReceipt';
 
-import AlertMessage, { AlertMessageType } from 'components/AlertMessage';
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import DiffArrow, { DiffArrowColor, DiffArrowDirection } from 'components/DiffArrow';
-import LoadingSpace from 'components/LoadingSpace';
-import Tag, { TagColor } from 'components/Tag';
-import { Modal, ModalHeader, ModalSize, ModalContentContainer } from 'components/Modals';
+import AlertMessage, { AlertMessageType } from '@/components/AlertMessage';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import DiffArrow, { DiffArrowColor, DiffArrowDirection } from '@/components/DiffArrow';
+import LoadingSpace from '@/components/LoadingSpace';
+import Tag, { TagColor } from '@/components/Tag';
+import { Modal, ModalHeader, ModalSize, ModalContentContainer } from '@/components/Modals';
 
-import { addNotification as addNotificationAction } from 'actions/notifications';
+import { addNotification as addNotificationAction } from '@/actions/notifications';
 
-import { getWalletAddress, getIsWalletIncorrectNetwork } from 'selectors/wallets';
-import { getUnclaimedRewardsData, getWalletBalancesData } from 'selectors/balances';
+import { getWalletAddress, getIsWalletIncorrectNetwork } from '@/selectors/wallets';
+import { getUnclaimedRewardsData, getWalletBalancesData } from '@/selectors/balances';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { isErrorCancelError } from 'lib/wallets';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
+import { isErrorCancelError } from '@/lib/wallets';
 
 import AcknowledgeModal from './AcknowledgeModal';
 

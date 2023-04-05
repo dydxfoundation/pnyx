@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { breakpoints, fontSizes } from 'styles';
-import { CloseIcon } from 'icons';
+import { breakpoints, fontSizes } from '@/styles';
+import { CloseIcon } from '@/icons';
 
 type ElementProps = {
   dark?: boolean;

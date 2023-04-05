@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import _ from 'lodash';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps } from '@/types';
 
-import { breakpoints, fonts, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
+import { breakpoints, fonts, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
 
-import { STRING_KEYS } from 'constants/localization';
-import { getDecimalsForNumber } from 'lib/numbers';
+import { STRING_KEYS } from '@/constants/localization';
+import { getDecimalsForNumber } from '@/lib/numbers';
 
 export enum InputFieldType {
   Number = 'Number',

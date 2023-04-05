@@ -1,13 +1,13 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { CtaConfig } from 'types';
+import { CtaConfig } from '@/types';
 
-import { QuestionMarkIcon } from 'icons';
-import { breakpoints, fontSizes } from 'styles';
+import { QuestionMarkIcon } from '@/icons';
+import { breakpoints, fontSizes } from '@/styles';
 
-import Button, { ButtonSize } from 'components/Button';
-import LoadingBar from 'components/LoadingBar';
+import Button, { ButtonSize } from '@/components/Button';
+import LoadingBar from '@/components/LoadingBar';
 import { CardSize, CardWrapper, CardContentContainer, TooltipIcon, CardColor } from './CardStyles';
 
 type ElementProps = {

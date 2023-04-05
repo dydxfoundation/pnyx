@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { SingleStatCard, SingleStatCardProps, CardSize } from 'components/Cards';
+import { SingleStatCard, SingleStatCardProps, CardSize } from '@/components/Cards';
 
 export default {
   title: 'Cards/Single Stat Card',

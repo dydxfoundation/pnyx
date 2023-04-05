@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 
 import AnimatedHamburgerClose, {
   AnimatedHamburgerCloseProps,
-} from 'components/AnimatedHamburgerClose';
+} from '@/components/AnimatedHamburgerClose';
 
 export default {
   title: 'Components/Animated Hamburger Close',

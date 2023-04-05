@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import DetailPageHeader, { DetailPageHeaderProps } from 'components/DetailPageHeader';
+import DetailPageHeader, { DetailPageHeaderProps } from '@/components/DetailPageHeader';
 
 export default {
   title: 'Components/Detail Page Header',

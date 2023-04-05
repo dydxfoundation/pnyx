@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import VoteMeter, { VoteMeterProps } from 'components/VoteMeter';
+import VoteMeter, { VoteMeterProps } from '@/components/VoteMeter';
 
 export default {
   title: 'Components/Vote Meter',

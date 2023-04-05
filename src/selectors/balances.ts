@@ -1,11 +1,11 @@
-import { RootState } from 'store';
+import { RootState } from '@/store';
 
 import {
   StakingBalancesData,
   UnclaimedRewardsData,
   WalletBalancesData,
   WithdrawBalancesData,
-} from 'types';
+} from '@/types';
 
 export const getStakingBalancesData = (state: RootState): StakingBalancesData =>
   state.balances.stakingBalancesData;

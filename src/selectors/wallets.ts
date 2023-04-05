@@ -1,5 +1,5 @@
-import { RootState } from 'store';
-import { WalletType } from 'enums';
+import { RootState } from '@/store';
+import { WalletType } from '@/enums';
 
 export const getWalletType = (state: RootState): WalletType | null => state.wallets.walletType;
 
@@ -12,4 +12,4 @@ export const getIsWalletConnecting = (state: RootState): boolean =>
   state.wallets.isWalletConnecting;
 
 export const getIsWalletIncorrectNetwork = (state: RootState): boolean =>
-  getWalletNetworkId(state) !== Number(process.env.REACT_APP_NETWORK_ID);
+  getWalletNetworkId(state) !== Number(import.meta.env.VITE_NETWORK_ID);

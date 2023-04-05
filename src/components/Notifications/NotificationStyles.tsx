@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import { breakpoints, fontSizes } from 'styles';
+import styled from 'styled-components';
+import { breakpoints, fontSizes } from '@/styles';
 
 export const NotificationTitle = styled.div<{ isToast?: boolean }>`
   ${fontSizes.size16}

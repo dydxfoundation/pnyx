@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import CollapsibleSection, { CollapsibleSectionProps } from 'components/CollapsibleSection';
+import CollapsibleSection, { CollapsibleSectionProps } from '@/components/CollapsibleSection';
 
 export default {
   title: 'Components/Collapsible Section',

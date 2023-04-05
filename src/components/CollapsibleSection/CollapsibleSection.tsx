@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { Collapse } from 'react-collapse';
 import _ from 'lodash';
 
-import { breakpoints, fonts, fontSizes } from 'styles';
+import { breakpoints, fonts, fontSizes } from '@/styles';
 
 type ElementProps = {
   collapsible?: boolean;

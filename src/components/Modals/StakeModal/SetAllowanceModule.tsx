@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AssetSymbol, StakingPool } from 'enums';
-import { LocalizationProps } from 'types';
+import { AssetSymbol, StakingPool } from '@/enums';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { breakpoints, fontSizes } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import Button, { ButtonColor } from 'components/Button';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import Button, { ButtonColor } from '@/components/Button';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 export type SetAllowanceModuleProps = {
   assetSymbol: AssetSymbol;

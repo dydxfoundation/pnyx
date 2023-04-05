@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import { ModalConfig, OpenModalPayload, CloseModalPayload } from 'types';
+import { ModalConfig, OpenModalPayload, CloseModalPayload } from '@/types';
 
-import { openModal, closeModal } from 'actions/modals';
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { openModal, closeModal } from '@/actions/modals';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   modalConfig: ModalConfig;

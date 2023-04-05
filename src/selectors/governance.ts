@@ -1,8 +1,8 @@
 // @ts-ignore-next-line
-import { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation/governance';
 
-import { RootState } from 'store';
-import { GovernancePowersData, VotedOnProposalData } from 'types';
+import { RootState } from '@/store';
+import { GovernancePowersData, VotedOnProposalData } from '@/types';
 
 export const getGovernancePowersData = (state: RootState): GovernancePowersData =>
   state.governance.governancePowers;

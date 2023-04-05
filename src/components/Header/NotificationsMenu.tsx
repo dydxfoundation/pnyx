@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 
-import { AppDispatch } from 'store';
-import { LocalizationProps, Notification } from 'types';
-import { NotificationType } from 'enums';
+import { AppDispatch } from '@/store';
+import { LocalizationProps, Notification } from '@/types';
+import { NotificationType } from '@/enums';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
 
-import Button, { ButtonColor, ButtonSize } from 'components/Button';
+import Button, { ButtonColor, ButtonSize } from '@/components/Button';
 
 import {
   ClaimNotification,
@@ -21,11 +21,11 @@ import {
   StakeNotification,
   VoteNotification,
   WithdrawNotification,
-} from 'components/Notifications';
+} from '@/components/Notifications';
 
-import { clearNotifications as clearNotificationsAction } from 'actions/notifications';
+import { clearNotifications as clearNotificationsAction } from '@/actions/notifications';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 import { HeaderMenu } from './HeaderMenuStyles';
 

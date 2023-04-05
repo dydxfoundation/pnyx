@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 
-import { StringGetterFunction } from 'types';
-import { STRING_KEYS } from 'constants/localization';
+import { StringGetterFunction } from '@/types';
+import { STRING_KEYS } from '@/constants/localization';
 
 const useGetCountdownDiff = ({
   futureDateISO,
@@ -45,7 +45,7 @@ const useGetCountdownDiff = ({
     );
 
     setTimeoutFunction(
-      setTimeout(updateDiffString, Number(process.env.REACT_APP_COUNTDOWN_POLL_MS))
+      setTimeout(updateDiffString, Number(import.meta.env.VITE_COUNTDOWN_POLL_MS))
     );
   };
 

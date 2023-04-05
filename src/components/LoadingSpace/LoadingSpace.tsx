@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import LoadingSpinner from 'components/LoadingSpinner';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 export type LoadingSpaceProps = {
   id?: string;

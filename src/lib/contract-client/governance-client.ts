@@ -1,7 +1,7 @@
 import { BigNumber, providers } from 'ethers';
 import _ from 'lodash';
 
-import {
+import type {
   TxBuilder,
   EthereumTransactionTypeExtended,
   UserGovernanceDelegatees,
@@ -9,7 +9,7 @@ import {
   // @ts-ignore-next-line
 } from '@dydxfoundation/governance';
 
-import { DelegatePowersTxHashes } from 'types';
+import { DelegatePowersTxHashes } from '@/types';
 
 class GovernanceClient {
   private txBuilder: TxBuilder;

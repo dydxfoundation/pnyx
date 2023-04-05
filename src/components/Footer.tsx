@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/macro';
-import { breakpoints } from 'styles';
+import styled from 'styled-components';
+import { breakpoints } from '@/styles';
 
-import type { LocalizationProps } from 'types';
+import type { LocalizationProps } from '@/types';
 import { withLocalization } from '../hoc';
 
 import { Icon } from './Icon';

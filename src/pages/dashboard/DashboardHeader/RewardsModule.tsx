@@ -1,25 +1,25 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
 
-import { LocalizationProps } from 'types';
-import { AssetSymbol, DecimalPlaces, ModalType } from 'enums';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol, DecimalPlaces, ModalType } from '@/enums';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
-import { usePollUnclaimedRewards } from 'hooks';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
+import { usePollUnclaimedRewards } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import Button from 'components/Button';
-import LoadingBar from 'components/LoadingBar';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import Button from '@/components/Button';
+import LoadingBar from '@/components/LoadingBar';
 
-import { openModal } from 'actions/modals';
-import { getUnclaimedRewardsData } from 'selectors/balances';
+import { openModal } from '@/actions/modals';
+import { getUnclaimedRewardsData } from '@/selectors/balances';
 
-import { STRING_KEYS } from 'constants/localization';
-import { MustBigNumber } from 'lib/numbers';
+import { STRING_KEYS } from '@/constants/localization';
+import { MustBigNumber } from '@/lib/numbers';
 
 export type RewardsModuleProps = { isMobile: boolean } & LocalizationProps;
 

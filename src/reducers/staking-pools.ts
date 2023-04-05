@@ -1,15 +1,15 @@
 import _ from 'lodash';
 
-import { StakingPool } from 'enums';
+import { StakingPool } from '@/enums';
 
 import {
   StakingPoolsData,
   StakingPoolsDataState,
   SetStakingPoolsDataPayload,
   UpdateStakingPoolsDataPayload,
-} from 'types';
+} from '@/types';
 
-import { setStakingPoolsData, updateStakingPoolsData } from 'actions/staking-pools';
+import { setStakingPoolsData, updateStakingPoolsData } from '@/actions/staking-pools';
 
 type Action = {
   type: string;

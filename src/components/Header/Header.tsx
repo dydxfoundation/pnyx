@@ -2,25 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, matchPath, RouteComponentProps } from 'react-router-dom';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AppDispatch, RootState } from 'store';
-import { AppRoute, ExternalLink, ModalType } from 'enums';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { AppRoute, ExternalLink, ModalType } from '@/enums';
+import { LocalizationProps } from '@/types';
 
-import { breakpoints } from 'styles';
-import { HelpCircleIcon, LogoIcon } from 'icons';
-import { withLocalization } from 'hoc';
+import { breakpoints } from '@/styles';
+import { HelpCircleIcon, LogoIcon } from '@/icons';
+import { withLocalization } from '@/hoc';
 
-import Button from 'components/Button';
+import Button from '@/components/Button';
 
-import { openModal as openModalAction } from 'actions/modals';
-import { setSelectedLocale as setSelectedLocaleAction } from 'actions/localization';
+import { openModal as openModalAction } from '@/actions/modals';
+import { setSelectedLocale as setSelectedLocaleAction } from '@/actions/localization';
 
-import { getIsWalletConnecting, getWalletType, getWalletAddress } from 'selectors/wallets';
-import { getSelectedLocale } from 'selectors/localization';
+import { getIsWalletConnecting, getWalletType, getWalletAddress } from '@/selectors/wallets';
+import { getSelectedLocale } from '@/selectors/localization';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 import LanguageSelector from './LanguageSelector';
 import MobileNavigation from './MobileNavigation';

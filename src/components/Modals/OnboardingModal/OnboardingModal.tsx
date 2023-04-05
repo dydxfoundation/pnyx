@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Modal, ModalSize } from 'components/Modals';
+import { Modal, ModalSize } from '@/components/Modals';
 
 import ChooseWalletStep from './steps/ChooseWalletStep';
 import ConnectingWalletStep from './steps/ConnectingWalletStep';

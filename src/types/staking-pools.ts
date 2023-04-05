@@ -1,4 +1,4 @@
-import { StakingPool } from 'enums';
+import { StakingPool } from '@/enums';
 
 export type LiquidityPoolEpochData = {
   currentlyInBlackoutWindow?: boolean;

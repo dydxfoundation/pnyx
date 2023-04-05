@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { WalletType } from 'enums';
-import WalletIcon, { WalletIconProps } from 'components/WalletIcon';
+import { WalletType } from '@/enums';
+import WalletIcon, { WalletIconProps } from '@/components/WalletIcon';
 
 export default {
   title: 'Components/Wallet Icon',

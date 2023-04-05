@@ -2,9 +2,9 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import _ from 'lodash';
 
-import { withLocalization } from 'hoc';
+import { withLocalization } from '@/hoc';
 
-import TradeLinkModal, { TradeLinkModalProps } from 'components/Modals/TradeLinkModal';
+import TradeLinkModal, { TradeLinkModalProps } from '@/components/Modals/TradeLinkModal';
 
 export default {
   title: 'Modals/Trade Link Modal',

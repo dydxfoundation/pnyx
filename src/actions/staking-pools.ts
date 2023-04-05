@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { SetStakingPoolsDataPayload, UpdateStakingPoolsDataPayload } from 'types';
+import { SetStakingPoolsDataPayload, UpdateStakingPoolsDataPayload } from '@/types';
 
 export const setStakingPoolsData = createAction<SetStakingPoolsDataPayload | void>(
   'SET_STAKING_POOLS_DATA'

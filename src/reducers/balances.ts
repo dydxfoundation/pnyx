@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { AssetSymbol, StakingPool } from 'enums';
+import { AssetSymbol, StakingPool } from '@/enums';
 
 import {
   StakingBalancesData,
@@ -11,16 +11,16 @@ import {
   SetWithdrawBalancesDataPayload,
   UnclaimedRewardsData,
   SetUnclaimedRewardsPayload,
-} from 'types';
+} from '@/types';
 
 import {
   setStakingBalancesData,
   setUnclaimedRewards,
   setWalletBalancesData,
   setWithdrawBalancesData,
-} from 'actions/balances';
+} from '@/actions/balances';
 
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   stakingBalancesData: StakingBalancesData;

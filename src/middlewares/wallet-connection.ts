@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { Middleware } from 'redux';
 
-import { ExternalLink, WalletType } from 'enums';
-import { RootState } from 'store';
+import { ExternalLink, WalletType } from '@/enums';
+import { RootState } from '@/store';
 
 import {
   connectWallet,
@@ -10,20 +10,20 @@ import {
   disconnectWallet,
   userAccountChanged,
   networkIdChanged,
-} from 'actions/wallets';
+} from '@/actions/wallets';
 
-import { pageLoaded } from 'actions/page';
+import { pageLoaded } from '@/actions/page';
 
-import { getPageViewport } from 'selectors/page';
+import { getPageViewport } from '@/selectors/page';
 
 import {
   getProviderByWalletType,
   getWalletConnectProvider,
   walletLinkInstance,
-} from 'lib/wallet-connection';
+} from '@/lib/wallet-connection';
 
-import contractClient from 'lib/contract-client';
-import { getLocalStorage, removeLocalStorage, LOCAL_STORAGE_KEYS } from 'lib/local-storage';
+import contractClient from '@/lib/contract-client';
+import { getLocalStorage, removeLocalStorage, LOCAL_STORAGE_KEYS } from '@/lib/local-storage';
 
 const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) => async (
   action

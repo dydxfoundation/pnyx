@@ -1,15 +1,15 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { AssetSymbol } from 'enums';
-import { WalletBalancesData } from 'types';
+import { AssetSymbol } from '@/enums';
+import { WalletBalancesData } from '@/types';
 
-import { withLocalization } from 'hoc';
+import { withLocalization } from '@/hoc';
 
 import {
   UnconnectedDelegateModal,
   ConnectedDelegateModalProps,
-} from 'components/Modals/DelegateModal';
+} from '@/components/Modals/DelegateModal';
 
 export default {
   title: 'Modals/Delegate Modal',

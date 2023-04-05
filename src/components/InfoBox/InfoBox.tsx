@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { breakpoints, fontSizes } from 'styles';
+import { breakpoints, fontSizes } from '@/styles';
 
-import LearnMoreLink from 'components/LearnMoreLink';
+import LearnMoreLink from '@/components/LearnMoreLink';
 
 export type InfoBoxProps = {
   title: React.ReactNode;

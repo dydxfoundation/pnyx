@@ -4,12 +4,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { RootState } from 'store';
-import { NoOpFunction, StringGetterFunction } from 'types';
+import { RootState } from '@/store';
+import { NoOpFunction, StringGetterFunction } from '@/types';
 
-import LoadingSpace from 'components/LoadingSpace';
+import LoadingSpace from '@/components/LoadingSpace';
 
-import { getIsLocaleLoaded, getLocaleStringGetter } from 'selectors/localization';
+import { getIsLocaleLoaded, getLocaleStringGetter } from '@/selectors/localization';
 
 const LocalizationContext: React.Context<StringGetterFunction | NoOpFunction> = React.createContext(
   _.noop

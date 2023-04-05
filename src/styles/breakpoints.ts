@@ -1,4 +1,4 @@
-import { BreakpointRem } from 'enums';
+import { BreakpointRem } from '@/enums';
 
 export default {
   mobile: `(max-width: ${BreakpointRem.Mobile}rem)`,

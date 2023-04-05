@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import LoadingSpinner, { SpinnerSize, LoadingSpinnerProps } from 'components/LoadingSpinner';
+import LoadingSpinner, { SpinnerSize, LoadingSpinnerProps } from '@/components/LoadingSpinner';
 
 export default {
   title: 'Components/Loading Spinner',

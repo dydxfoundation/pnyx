@@ -1,25 +1,25 @@
 import React, { lazy, Suspense } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components/macro';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { breakpoints, colors, fonts } from 'styles';
-import { GeoFence, InitializePage, LocalizationWrapper } from 'hoc';
-import { AppRoute, StakingPoolRoute } from 'enums';
-import { Theme } from 'types';
+import { breakpoints, colors, fonts } from '@/styles';
+import { GeoFence, InitializePage, LocalizationWrapper } from '@/hoc';
+import { AppRoute, StakingPoolRoute } from '@/enums';
+import { Theme } from '@/types';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import PageWrapper from 'components/PageWrapper';
-import LoadingSpace from 'components/LoadingSpace';
-import { ModalManager } from 'components/Modals';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import PageWrapper from '@/components/PageWrapper';
+import LoadingSpace from '@/components/LoadingSpace';
+import { ModalManager } from '@/components/Modals';
 
 import store, { history } from './store';
 
-import 'styles/normalize.css';
-import 'styles/font-faces.css';
+import '@/styles/normalize.css';
+import '@/styles/font-faces.css';
 
 export const globalTheme: Theme = {
   ...colors,

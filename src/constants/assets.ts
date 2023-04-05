@@ -1,4 +1,4 @@
-import { AssetSymbol } from 'enums';
+import { AssetSymbol } from '@/enums';
 
 export const ASSET_DECIMALS: { [key in AssetSymbol]: number } = {
   [AssetSymbol.stDYDX]: 18,

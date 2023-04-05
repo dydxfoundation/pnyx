@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
-import { AssetSymbol, DecimalPlaces, ModalType } from 'enums';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol, DecimalPlaces, ModalType } from '@/enums';
 
-import { useGetDistributionData, usePollGovernancePowersData, usePollWalletBalances } from 'hooks';
-import { withLocalization } from 'hoc';
-import { breakpoints, NotTabletOnly, TabletOnly } from 'styles';
+import { useGetDistributionData, usePollGovernancePowersData, usePollWalletBalances } from '@/hooks';
+import { withLocalization } from '@/hoc';
+import { breakpoints, NotTabletOnly, TabletOnly } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import LoadingBar from 'components/LoadingBar';
-import SectionWrapper from 'components/SectionWrapper';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import LoadingBar from '@/components/LoadingBar';
+import SectionWrapper from '@/components/SectionWrapper';
 
 import {
   ProgressBarCard,
@@ -24,19 +24,19 @@ import {
   CardSize,
   CardColor,
   ValueWithIcon,
-} from 'components/Cards';
+} from '@/components/Cards';
 
-import { openModal as openModalAction } from 'actions/modals';
+import { openModal as openModalAction } from '@/actions/modals';
 
-import { getWalletBalancesData } from 'selectors/balances';
-import { getIsUserGeoBlocked } from 'selectors/geo';
-import { getWalletAddress } from 'selectors/wallets';
-import { getGovernancePowersData } from 'selectors/governance';
+import { getWalletBalancesData } from '@/selectors/balances';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
+import { getWalletAddress } from '@/selectors/wallets';
+import { getGovernancePowersData } from '@/selectors/governance';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import { MustBigNumber } from 'lib/numbers';
-import { findVotingPowerDelegatee, findProposingPowerDelegatee } from 'lib/governance';
+import { MustBigNumber } from '@/lib/numbers';
+import { findVotingPowerDelegatee, findProposingPowerDelegatee } from '@/lib/governance';
 
 import DashboardHero from './DashboardHero';
 import PortfolioModule from './PortfolioModule';

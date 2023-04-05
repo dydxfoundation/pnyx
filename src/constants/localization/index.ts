@@ -1,4 +1,4 @@
-import { SupportedLocale } from 'enums';
+import { SupportedLocale } from '@/enums';
 
 import { APP_STRING_KEYS } from './app';
 import { ERROR_STRING_KEYS } from './errors';

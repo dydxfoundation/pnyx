@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { DateTime } from 'luxon';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import {
   AssetSymbol,
@@ -14,10 +14,10 @@ import {
   ModalType,
   NotificationType,
   StakingPool,
-} from 'enums';
+} from '@/enums';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
 
 import {
   useGetCountdownDiff,
@@ -25,35 +25,35 @@ import {
   usePollStakingBalances,
   usePollStakingPoolsData,
   usePollWithdrawBalances,
-} from 'hooks';
+} from '@/hooks';
 
-import { withLocalization } from 'hoc';
-import { breakpoints } from 'styles';
+import { withLocalization } from '@/hoc';
+import { breakpoints } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import Button, { ButtonColor, ButtonContainer } from 'components/Button';
-import GeoBlockBanner from 'components/GeoBlockBanner';
-import SectionHeader from 'components/SectionHeader';
-import { SingleStatCard, CardColor, ValueWithIcon } from 'components/Cards';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import Button, { ButtonColor, ButtonContainer } from '@/components/Button';
+import GeoBlockBanner from '@/components/GeoBlockBanner';
+import SectionHeader from '@/components/SectionHeader';
+import { SingleStatCard, CardColor, ValueWithIcon } from '@/components/Cards';
 
-import CollapsibleSection from 'components/CollapsibleSection';
-import DetailPageHeader from 'components/DetailPageHeader';
-import SectionWrapper from 'components/SectionWrapper';
+import CollapsibleSection from '@/components/CollapsibleSection';
+import DetailPageHeader from '@/components/DetailPageHeader';
+import SectionWrapper from '@/components/SectionWrapper';
 
-import { openModal as openModalAction } from 'actions/modals';
-import { addNotification as addNotificationAction } from 'actions/notifications';
+import { openModal as openModalAction } from '@/actions/modals';
+import { addNotification as addNotificationAction } from '@/actions/notifications';
 
-import { getStakingBalancesData, getWithdrawBalancesData } from 'selectors/balances';
+import { getStakingBalancesData, getWithdrawBalancesData } from '@/selectors/balances';
 
-import { getStakingPoolsData } from 'selectors/staking-pools';
-import { getWalletAddress } from 'selectors/wallets';
-import { getIsUserGeoBlocked } from 'selectors/geo';
+import { getStakingPoolsData } from '@/selectors/staking-pools';
+import { getWalletAddress } from '@/selectors/wallets';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { BIG_NUMBERS, MustBigNumber } from 'lib/numbers';
-import { calculateUserStakingBalance } from 'lib/staking-pools';
+import contractClient from '@/lib/contract-client';
+import { BIG_NUMBERS, MustBigNumber } from '@/lib/numbers';
+import { calculateUserStakingBalance } from '@/lib/staking-pools';
 
 import { DetailPageLayoutContainer, ContentLeft, ContentRight, CardRow } from '../DetailPageStyles';
 

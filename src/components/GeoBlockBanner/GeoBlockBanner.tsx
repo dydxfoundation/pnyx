@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
-import { ExternalLink } from 'enums';
+import { LocalizationProps } from '@/types';
+import { ExternalLink } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes } from 'styles';
-import { BlockedIcon } from 'icons';
+import { withLocalization } from '@/hoc';
+import { breakpoints, fontSizes } from '@/styles';
+import { BlockedIcon } from '@/icons';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 export type GeoBlockBannerProps = {} & LocalizationProps;
 

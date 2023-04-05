@@ -2,11 +2,11 @@ import WalletLink from 'walletlink';
 
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
-import { WalletType } from 'enums';
+import { WalletType } from '@/enums';
 
-import { ConnectWalletOptions } from 'types';
+import { ConnectWalletOptions } from '@/types';
 
-import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from 'constants/wallets';
+import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from '@/constants/wallets';
 
 export const walletLinkInstance = new WalletLink({
   appName: 'dYdX',
@@ -14,17 +14,17 @@ export const walletLinkInstance = new WalletLink({
   darkMode: false,
 });
 
-const networkId = Number(process.env.REACT_APP_NETWORK_ID);
+const networkId = Number(import.meta.env.VITE_NETWORK_ID);
 
 const walletConnectBaseOptions = {
   rpc: {
-    [networkId]: process.env.REACT_APP_ETHEREUM_NODE_URI || '',
+    [networkId]: import.meta.env.VITE_ETHEREUM_NODE_URI || '',
   },
-  bridge: process.env.REACT_APP_WALLET_CONNECT_BRIDGE_URI || '',
+  bridge: import.meta.env.VITE_WALLET_CONNECT_BRIDGE_URI || '',
 };
 
 export const coinbaseWalletProvider = walletLinkInstance.makeWeb3Provider(
-  process.env.REACT_APP_ETHEREUM_NODE_URI || '',
+  import.meta.env.VITE_ETHEREUM_NODE_URI || '',
   networkId
 );
 

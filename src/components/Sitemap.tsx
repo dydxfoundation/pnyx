@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import type { LocalizationProps } from 'types';
+import type { LocalizationProps } from '@/types';
 import { withLocalization } from '../hoc';
 
 import { Icon } from './Icon';

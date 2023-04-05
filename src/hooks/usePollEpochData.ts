@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { StakingPool } from 'enums';
+import { StakingPool } from '@/enums';
 
-import { updateStakingPoolsData } from 'actions/staking-pools';
-import { getStakingPoolsData } from 'selectors/staking-pools';
+import { updateStakingPoolsData } from '@/actions/staking-pools';
+import { getStakingPoolsData } from '@/selectors/staking-pools';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
-const epochDataPollingInterval = Number(process.env.REACT_APP_COUNTDOWN_POLL_MS);
+const epochDataPollingInterval = Number(import.meta.env.VITE_COUNTDOWN_POLL_MS);
 
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 

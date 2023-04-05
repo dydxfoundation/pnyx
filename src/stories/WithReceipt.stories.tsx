@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Button from 'components/Button';
-import WithReceipt, { WithReceiptProps } from 'components/WithReceipt';
+import Button from '@/components/Button';
+import WithReceipt, { WithReceiptProps } from '@/components/WithReceipt';
 
 export default {
   title: 'Components/With Receipt',

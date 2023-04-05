@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components/macro';
-import { breakpoints, fontSizes } from 'styles';
+import styled, { css } from 'styled-components';
+import { breakpoints, fontSizes } from '@/styles';
 
 const menuButtonActiveStyles = css`
   background-color: ${({ theme }) => theme.layerdark};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import TruncateHash, { TruncateHashProps } from 'components/TruncateHash';
+import TruncateHash, { TruncateHashProps } from '@/components/TruncateHash';
 
 export default {
   title: 'Components/Truncate Hash',

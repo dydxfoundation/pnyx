@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { WalletBalancesData } from 'types';
-import { withLocalization } from 'hoc';
+import { WalletBalancesData } from '@/types';
+import { withLocalization } from '@/hoc';
 
-import { UnconnectedClaimModal, ConnectedClaimModalProps } from 'components/Modals/ClaimModal';
-import { AssetSymbol } from 'enums';
+import { UnconnectedClaimModal, ConnectedClaimModalProps } from '@/components/Modals/ClaimModal';
+import { AssetSymbol } from '@/enums';
 
 export default {
   title: 'Modals/Claim Modal',
