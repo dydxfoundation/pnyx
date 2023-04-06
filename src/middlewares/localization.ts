@@ -23,7 +23,7 @@ const getNewLocaleData = async ({
 }) => {
   store.dispatch(setLocaleLoaded(false));
 
-  const newLocaleData = await import(`@/localization/${localeKey}`);
+  const newLocaleData = await import(`@/localization/${localeKey}/index.ts`);
   store.dispatch(setLocaleData(newLocaleData.default));
 
   if (!isAutoDetect) {
