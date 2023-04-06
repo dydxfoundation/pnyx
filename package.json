@@ -91,7 +91,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "reflect-metadata@0.1.13": "patches/reflect-metadata@0.1.13.patch"
+      "reflect-metadata@0.1.13": "patches/reflect-metadata@0.1.13.patch",
+      "@chainlink/contracts@0.2.3": "patches/@chainlink__contracts@0.2.3.patch"
     }
   },
   "eslintConfig": {

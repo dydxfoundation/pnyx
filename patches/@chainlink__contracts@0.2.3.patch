@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index f54e4554f0619c54194a2ac6217c5119bd0af586..e3730085e14f2691963fad76e3e92178cd4a08fd 100644
+--- a/package.json
++++ b/package.json
+@@ -6,7 +6,6 @@
+   "license": "MIT",
+   "private": false,
+   "scripts": {
+-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('Please use yarn to install dependencies\\n\\n')\"",
+     "test": "hardhat test",
+     "size": "hardhat size-contracts",
+     "clean": "hardhat clean",

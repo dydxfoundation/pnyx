@@ -1,6 +1,9 @@
 lockfileVersion: 5.4
 
 patchedDependencies:
+  '@chainlink/contracts@0.2.3':
+    hash: 3x7enewww7zkkzf77wylrp2kta
+    path: patches/@chainlink__contracts@0.2.3.patch
   reflect-metadata@0.1.13:
     hash: 4e7zji53mldygy2lkukda26jvq
     path: patches/reflect-metadata@0.1.13.patch
@@ -1608,10 +1611,11 @@ packages:
     resolution: {integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==}
     dev: true
 
-  /@chainlink/contracts/0.2.3:
+  /@chainlink/contracts/0.2.3_3x7enewww7zkkzf77wylrp2kta:
     resolution: {integrity: sha512-hf4b8OEfEqfjC9addvXCrE2SEybNwN1r971vxFYhL/l/yDTTMAk0jmGZYtfUPDOB/qY7FfrOXuxlEVQ+ojZgZw==}
     requiresBuild: true
     dev: false
+    patched: true
 
   /@colors/colors/1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -1635,7 +1639,7 @@ packages:
   /@dydxfoundation/governance/1.0.3_react@18.2.0:
     resolution: {integrity: sha512-68npPXhvMRfxYSut8AhbmAQp1+OvlqWcjUWxYVTtaOkX+uZRE9o2NKeSApkiqu1DiBMoQE323/zejxOtAs/nUg==}
     dependencies:
-      '@chainlink/contracts': 0.2.3
+      '@chainlink/contracts': 0.2.3_3x7enewww7zkkzf77wylrp2kta
       axios: 0.24.0
       cids: 1.1.9
       dotenv: 10.0.0
@@ -5309,7 +5313,7 @@ packages:
       react-router: 5.3.4_react@18.2.0
       redux: 4.2.1
     optionalDependencies:
-      immutable: 3.8.2
+      immutable: 4.3.0
       seamless-immutable: 7.1.4
     dev: false
 
@@ -7553,9 +7557,9 @@ packages:
     resolution: {integrity: sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==}
     dev: false
 
-  /immutable/3.8.2:
-    resolution: {integrity: sha512-15gZoQ38eYjEjxkorfbcgBKBL6R7T459OuK+CpcWt7O3KF4uPCx2tD0uFETlUDIyo+1789crbMhTvQBSR5yBMg==}
-    engines: {node: '>=0.10.0'}
+  /immutable/4.3.0:
+    resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==}
+    requiresBuild: true
     dev: false
     optional: true
 
