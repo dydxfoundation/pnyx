@@ -14,17 +14,20 @@ export default defineConfig({
     }),
     nodePolyfills(),
   ],
+  resolve: {
+    alias: [
+      { find: '@', replacement: path.resolve(__dirname, 'src') },
+    ],
+  },
+  build: {
+    commonjsOptions: { include: [] }
+  },
   optimizeDeps: {
     include: [
       '@walletconnect/web3-provider',
       'walletlink',
       'web3-provider-engine',
     ],
-    disabled: 'dev',
-  },
-  resolve: {
-    alias: [
-      { find: '@', replacement: path.resolve(__dirname, 'src') },
-    ],
+    disabled: false,
   },
 })
