@@ -1,6 +1,15 @@
 import styled, { css } from 'styled-components';
 import { breakpoints, fontSizes } from '@/styles';
 
+export const withMenuBackdrop = css`
+  &:before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+`;
+
 const menuButtonActiveStyles = css`
   background-color: ${({ theme }) => theme.layerdark};
 
@@ -35,18 +44,21 @@ export const MenuButton = styled.div<React.HTMLAttributes<HTMLDivElement> & { me
 
   ${(props) =>
     props.menuOpen
-      ? menuButtonActiveStyles
-      : `
-        @media ${breakpoints.notTablet} {
-          &:hover {
-            background-color: ${props.theme.layermediumlight};
+      ? css`
+          ${menuButtonActiveStyles}
+          ${withMenuBackdrop}
+        `
+      : css`
+          @media ${breakpoints.notTablet} {
+            &:hover {
+              background-color: ${props.theme.layermediumlight};
 
-            > svg path {
-              fill: ${props.theme.textlight};
+              > svg path {
+                fill: ${props.theme.textlight};
+              }
             }
           }
-        }
-  `}
+        `}
 `;
 export const HeaderMenu = styled.div`
   ${fontSizes.size16};

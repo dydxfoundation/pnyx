@@ -6,12 +6,11 @@ import { breakpoints, fontSizes } from '@/styles';
 import { SetSelectedLocalePayload } from '@/types';
 import { SupportedLocale } from '@/enums';
 
-import { useOnClickOutside } from '@/hooks';
 import { TriangleDownIcon } from '@/icons';
 
 import { SUPPORTED_LOCALE_STRING_LABELS } from '@/constants/localization';
 
-import { HeaderMenu, MenuOption } from './HeaderMenuStyles';
+import { HeaderMenu, MenuOption, withMenuBackdrop } from './HeaderMenuStyles';
 
 export type LanguageSelectorProps = {
   selectedLocale: SupportedLocale;
@@ -22,18 +21,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   selectedLocale,
   setSelectedLocale,
 }) => {
-  const menuRef = useRef(null);
   const [showLanguageSelectorMenu, setShowLanguageSelectorMenu] = useState<boolean>(false);
-
-  useOnClickOutside({
-    onClickOutside: () => {
-      if (showLanguageSelectorMenu) {
-        setShowLanguageSelectorMenu(false);
-      }
-    },
-    ref: menuRef,
-    dependencies: [showLanguageSelectorMenu],
-  });
 
   return (
     <LanguageSelectorWrapper>
@@ -44,7 +32,7 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         {SUPPORTED_LOCALE_STRING_LABELS[selectedLocale]} <TriangleDownIcon />
       </StyledLanguageSelector>
       {showLanguageSelectorMenu && (
-        <HeaderMenu ref={menuRef}>
+        <HeaderMenu>
           {_.map(SupportedLocale, (locale) => (
             <MenuOption
               key={locale}
@@ -105,26 +93,29 @@ const StyledLanguageSelector = styled.div<
       fill: ${({ theme }) => theme.textdark};
     }
 
-    ${(props) =>
-      props.menuOpen
+    ${({ menuOpen }) =>
+      menuOpen
         ? `
           transform: rotate(180deg);
         `
         : ''}
   }
 
-  ${(props) =>
-    props.menuOpen
-      ? activeStyles
-      : `
-        &:hover {
-          background-color: ${props.theme.layermediumlight};
+  ${({ theme, menuOpen }) =>
+    menuOpen
+      ? css`
+          ${activeStyles}
+          ${withMenuBackdrop}
+        `
+      : css`
+          &:hover {
+            background-color: ${theme.layermediumlight};
 
-          > svg path {
-            fill: ${props.theme.textlight};
+            > svg path {
+              fill: ${theme.textlight};
+            }
           }
-        }
-  `}
+        `}
 `;
 
 export default LanguageSelector;

@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { AppDispatch, RootState } from '@/store';
 import { WalletType } from '@/enums';
 
-import { useOnClickOutside } from '@/hooks';
 import { breakpoints } from '@/styles';
 import { BellIcon, BellAlertIcon, TriangleDownIcon } from '@/icons';
 
@@ -36,31 +35,8 @@ const WalletConnectedModules: React.FC<
   walletType,
   walletAddress,
 }) => {
-  const notificationsMenuRef = useRef(null);
-  const walletMenuRef = useRef(null);
-
   const [showNotificationsMenu, setShowNotificationsMenu] = useState<boolean>(false);
   const [showWalletMenu, setShowWalletMenu] = useState<boolean>(false);
-
-  useOnClickOutside({
-    onClickOutside: () => {
-      if (showNotificationsMenu) {
-        setShowNotificationsMenu(false);
-      }
-    },
-    ref: notificationsMenuRef,
-    dependencies: [showNotificationsMenu],
-  });
-
-  useOnClickOutside({
-    onClickOutside: () => {
-      if (showWalletMenu) {
-        setShowWalletMenu(false);
-      }
-    },
-    ref: walletMenuRef,
-    dependencies: [showWalletMenu],
-  });
 
   return (
     <StyledWalletConnectedModules>
@@ -82,7 +58,7 @@ const WalletConnectedModules: React.FC<
           )}
         </NotificationsButton>
         {showNotificationsMenu && (
-          <NotificationsMenu ref={notificationsMenuRef} notifications={notifications} />
+          <NotificationsMenu notifications={notifications} />
         )}
       </ButtonWrapper>
       <ButtonWrapper>
@@ -97,7 +73,6 @@ const WalletConnectedModules: React.FC<
         </WalletButton>
         {showWalletMenu && (
           <WalletMenu
-            ref={walletMenuRef}
             closeMenu={() => setShowWalletMenu(false)}
             walletAddress={walletAddress}
             walletType={walletType}
