@@ -19,7 +19,8 @@ export default defineConfig({
       '@walletconnect/web3-provider',
       'walletlink',
       'web3-provider-engine',
-    ]
+    ],
+    disabled: 'dev',
   },
   resolve: {
     alias: [
