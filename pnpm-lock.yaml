@@ -64,7 +64,7 @@ specifiers:
   react-markdown: ^8.0.6
   react-number-format: ^4.9.4
   react-redux: ^8.0.5
-  react-router: ^6.10.0
+  react-router: ^5.3.4
   react-router-dom: ^5.3.4
   react-toastify: ^9.1.2
   redux: ^4.2.1
@@ -85,7 +85,7 @@ dependencies:
   '@walletconnect/types': 2.6.1_pj3xut33gta66wns5w7rs6cilm
   '@walletconnect/web3-provider': 1.8.0
   bignumber.js: 9.1.1
-  connected-react-router: 6.9.3_jgvukowog4k4kdpkm44d7a45hu
+  connected-react-router: 6.9.3_pp2emerec4pb2ais2ocspmni7a
   ethers: 5.7.2
   history: 5.3.0
   lodash: 4.17.21
@@ -96,7 +96,7 @@ dependencies:
   react-markdown: 8.0.6_pofolu2o2erjq4lhyzl3hqovzq
   react-number-format: 4.9.4_biqbaboplfbrettd7655fr4n2y
   react-redux: 8.0.5_nyagrz7m4ju3og7nyfo2hk36fe
-  react-router: 6.10.0_react@18.2.0
+  react-router: 5.3.4_react@18.2.0
   react-router-dom: 5.3.4_react@18.2.0
   react-toastify: 9.1.2_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.1
@@ -2403,11 +2403,6 @@ packages:
       tiny-glob: 0.2.9
       tslib: 2.5.0
     dev: true
-
-  /@remix-run/router/1.5.0:
-    resolution: {integrity: sha512-bkUDCp8o1MvFO+qxkODcbhSqRa6P2GXgrGZVpt0dCXNW2HCSCqYI0ZoAqEOSAjRWmmlKcYgFvN4B4S+zo/f8kg==}
-    engines: {node: '>=14'}
-    dev: false
 
   /@rollup/plugin-inject/5.0.3:
     resolution: {integrity: sha512-411QlbL+z2yXpRWFXSmw/teQRMkXcAAC8aYTemc15gwJRpvEVDQwoe+N/HTFD8RFG8+88Bme9DK2V9CVm7hJdA==}
@@ -5170,7 +5165,7 @@ packages:
     resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
     dev: true
 
-  /connected-react-router/6.9.3_jgvukowog4k4kdpkm44d7a45hu:
+  /connected-react-router/6.9.3_pp2emerec4pb2ais2ocspmni7a:
     resolution: {integrity: sha512-4ThxysOiv/R2Dc4Cke1eJwjKwH1Y51VDwlOrOfs1LjpdYOVvCNjNkZDayo7+sx42EeGJPQUNchWkjAIJdXGIOQ==}
     peerDependencies:
       history: ^4.7.2
@@ -5184,10 +5179,10 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-redux: 8.0.5_nyagrz7m4ju3og7nyfo2hk36fe
-      react-router: 6.10.0_react@18.2.0
+      react-router: 5.3.4_react@18.2.0
       redux: 4.2.1
     optionalDependencies:
-      immutable: 4.3.0
+      immutable: 3.8.2
       seamless-immutable: 7.1.4
     dev: false
 
@@ -7426,9 +7421,9 @@ packages:
     resolution: {integrity: sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==}
     dev: false
 
-  /immutable/4.3.0:
-    resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==}
-    requiresBuild: true
+  /immutable/3.8.2:
+    resolution: {integrity: sha512-15gZoQ38eYjEjxkorfbcgBKBL6R7T459OuK+CpcWt7O3KF4uPCx2tD0uFETlUDIyo+1789crbMhTvQBSR5yBMg==}
+    engines: {node: '>=0.10.0'}
     dev: false
     optional: true
 
@@ -9754,16 +9749,6 @@ packages:
       react-is: 16.13.1
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
-    dev: false
-
-  /react-router/6.10.0_react@18.2.0:
-    resolution: {integrity: sha512-Nrg0BWpQqrC3ZFFkyewrflCud9dio9ME3ojHCF/WLsprJVzkq3q3UeEhMCAW1dobjeGbWgjNn/PVF6m46ANxXQ==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.5.0
-      react: 18.2.0
     dev: false
 
   /react-toastify/9.1.2_biqbaboplfbrettd7655fr4n2y:
