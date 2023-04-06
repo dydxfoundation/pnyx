@@ -23,9 +23,6 @@ export default defineConfig({
     commonjsOptions: { include: [] }
   },
   optimizeDeps: {
-    include: [
-      '@walletconnect/web3-provider',
-    ],
     disabled: false,
   },
 })
