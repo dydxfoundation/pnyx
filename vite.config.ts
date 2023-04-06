@@ -17,6 +17,8 @@ export default defineConfig({
   optimizeDeps: {
     include: [
       '@walletconnect/web3-provider',
+      'walletlink',
+      'web3-provider-engine',
     ]
   },
   resolve: {
