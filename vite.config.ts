@@ -14,6 +14,11 @@ export default defineConfig({
     }),
     nodePolyfills(),
   ],
+  optimizeDeps: {
+    include: [
+      'web3-provider-engine',
+    ]
+  },
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
