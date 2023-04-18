@@ -51,4 +51,4 @@ export { ReactComponent as WalletConnectIcon } from './wallets/walletconnect.svg
 // Social
 export { ReactComponent as TwitterIcon } from './social/twitter.svg';
 export { ReactComponent as DiscordIcon } from './social/discord.svg';
-export { ReactComponent as CommonwealthIcon } from './social/commonwealth.svg';
+export { ReactComponent as DiscourseIcon } from './social/discourse.svg';
