@@ -10,7 +10,7 @@ export enum ExternalLink {
   CoinbaseSignup = 'https://wallet.coinbase.com/#signup',
   Discord = 'https://discord.com/invite/yah42Rb',
   Documentation = 'https://docs.dydx.community',
-  Forums = 'https://forums.dydx.community',
+  Forums = 'https://dydx.forum/',
   PrivacyPolicy = 'https://dydx.foundation/privacy',
   RevolvingCreditAgreement = 'https://dydx.foundation/revolving-credit-agreement',
   TermsOfUse = 'https://dydx.foundation/terms',
