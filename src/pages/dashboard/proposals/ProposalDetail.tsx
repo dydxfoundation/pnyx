@@ -255,8 +255,6 @@ const ProposalDetail: React.FC<
     });
   }
 
-  console.log(description);
-
   return (
     <SectionWrapper column>
       <DetailPageHeader
