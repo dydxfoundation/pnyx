@@ -8,6 +8,8 @@ import NumberFormat from 'react-number-format';
 import { DateTime } from 'luxon';
 import _ from 'lodash';
 import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
+import rehypeRaw from 'rehype-raw';
 
 // @ts-ignore-next-line
 import { Proposals } from '@dydxfoundation/governance';
@@ -253,6 +255,8 @@ const ProposalDetail: React.FC<
     });
   }
 
+  console.log(description);
+
   return (
     <SectionWrapper column>
       <DetailPageHeader
@@ -310,7 +314,8 @@ const ProposalDetail: React.FC<
             <ReactMarkdown
               className={markdownStyles.markdown}
               linkTarget="_blank"
-              remarkPlugins={[remarkGfm]}
+              remarkPlugins={[remarkGfm, remarkBreaks]}
+              rehypePlugins={[rehypeRaw]}
             >
               {description}
             </ReactMarkdown>
