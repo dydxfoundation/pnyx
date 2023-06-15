@@ -7,6 +7,7 @@ import styled from 'styled-components/macro';
 import NumberFormat from 'react-number-format';
 import { DateTime } from 'luxon';
 import _ from 'lodash';
+import remarkGfm from 'remark-gfm';
 
 // @ts-ignore-next-line
 import { Proposals } from '@dydxfoundation/governance';
@@ -306,7 +307,11 @@ const ProposalDetail: React.FC<
         <ContentLeft>
           <ProposalDescription>
             <DescriptionLabel>{stringGetter({ key: STRING_KEYS.DESCRIPTION })}</DescriptionLabel>
-            <ReactMarkdown className={markdownStyles.markdown} linkTarget="_blank">
+            <ReactMarkdown
+              className={markdownStyles.markdown}
+              linkTarget="_blank"
+              remarkPlugins={[remarkGfm]}
+            >
               {description}
             </ReactMarkdown>
           </ProposalDescription>
