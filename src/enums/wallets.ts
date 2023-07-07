@@ -12,6 +12,7 @@ export enum WalletType {
   TokenPocket = 'TOKEN_POCKET',
   TrustWallet = 'TRUST_WALLET',
   WalletConnect = 'WALLET_CONNECT',
+  WalletConnect2 = 'WALLET_CONNECT_2',
   TestWallet = 'TEST_WALLET',
   OtherWallet = 'OTHER_WALLET',
 }

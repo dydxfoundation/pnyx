@@ -34,6 +34,7 @@ const WALLET_ICONS: Record<WalletType, React.FC> = {
   [WalletType.TrustWallet]: TrustWalletIcon,
   [WalletType.TokenPocket]: TokenPocketIcon,
   [WalletType.WalletConnect]: WalletConnectIcon,
+  [WalletType.WalletConnect2]: WalletConnectIcon,
 };
 
 export const WalletIcon: React.FC<{ walletType: WalletType }> = ({ walletType }) => {
