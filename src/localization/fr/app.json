@@ -113,7 +113,8 @@
     "RAINBOW_WALLET": "Rainbow",
     "TOKEN_POCKET": "TokenPocket",
     "TRUST_WALLET": "Trust",
-    "WALLET_CONNECT": "WalletConnect",
+    "WALLET_CONNECT": "WalletConnect 1.0",
+    "WALLET_CONNECT_2": "WalletConnect",
     "TEST_WALLET": "Test Wallet",
     "OTHER_WALLET": "Autre"
   },
