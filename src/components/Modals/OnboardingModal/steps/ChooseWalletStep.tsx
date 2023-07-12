@@ -89,7 +89,8 @@ const WalletOptionsContainer = styled.div`
       }
     }
 
-    > svg {
+    > svg,
+    img {
       width: 1.125rem;
       height: 1.125rem;
       margin-right: 0.5rem;

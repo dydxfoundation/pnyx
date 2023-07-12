@@ -103,11 +103,12 @@
     "TERMS_OF_USE_DESCRIPTION": "Rules for using the platform"
   },
   "WALLETS": {
+    "BITKEEP": "BitKeep",
     "BITPIE": "BitPie",
     "CLOVER_WALLET": "Clover Wallet",
     "COINBASE_WALLET": "Coinbase Wallet",
     "COIN98": "Coin98",
-    "HUOBI_WALLET": "Huobi Wallet",
+    "HUOBI_WALLET": "iToken",
     "IMTOKEN": "imToken",
     "MATH_WALLET": "MathWallet",
     "METAMASK": "MetaMask",

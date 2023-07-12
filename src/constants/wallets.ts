@@ -8,7 +8,8 @@ export const DISPLAYED_WALLETS = [
   WalletType.Rainbow,
   WalletType.HuobiWallet,
   // WalletType.CloverWallet,
-  // WalletType.Coin98,
+  WalletType.BitKeep,
+  WalletType.Coin98,
   WalletType.TokenPocket,
   // WalletType.BitPie,
   WalletType.WalletConnect2,
@@ -17,6 +18,7 @@ export const DISPLAYED_WALLETS = [
 ];
 
 export const INJECTED_WALLET_FLAGS: Partial<Record<WalletType, string>> = {
+  [WalletType.BitKeep]: 'isBitKeep', // isBitKeepChrome, isBitEthereum
   [WalletType.BitPie]: 'isBitpie',
   [WalletType.CloverWallet]: 'isClover',
   [WalletType.Coin98]: 'isCoin98',
@@ -30,6 +32,7 @@ export const INJECTED_WALLET_FLAGS: Partial<Record<WalletType, string>> = {
 };
 
 export const WALLETCONNECT1_MOBILE_LINKS: Partial<Record<WalletType, string[]>> = {
+  [WalletType.BitKeep]: ['bitkeep'],
   [WalletType.BitPie]: ['bitpie'],
   // [WalletType.CloverWallet]: [],
   [WalletType.Coin98]: ['coin98'],
@@ -43,6 +46,7 @@ export const WALLETCONNECT1_MOBILE_LINKS: Partial<Record<WalletType, string[]>> 
 };
 
 export const WALLETCONNECT2_WALLET_IDS: Partial<Record<WalletType, string>> = {
+  [WalletType.BitKeep]: '38f5d18bd8522c244bdd70cb4a68e0e718865155811c043f052fb9f1c51de662',
   [WalletType.Coin98]: '2a3c89040ac3b723a1972a33a125b1db11e258a6975d3a61252cd64e6ea5ea01',
   [WalletType.HuobiWallet]: '797c615e2c556b610c048eb35535f212c0dd58de5d03e763120e90a7d1350a77',
   [WalletType.ImToken]: 'ef333840daf915aafdc4a004525502d6d49d77bd9c65e0642dbaefb3c2893bef',

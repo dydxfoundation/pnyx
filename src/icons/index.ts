@@ -33,12 +33,13 @@ export { default as StatusQueuedIcon } from './statuses/status-queued.svg';
 export { default as StatusSuccessIcon } from './statuses/status-success.svg';
 
 // Wallets
+export { default as BitKeepIcon } from './wallets/bitkeep.svg';
 export { default as BitPieIcon } from './wallets/bitpie.svg';
 export { default as CloverWalletIcon } from './wallets/clover-wallet.svg';
 export { default as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
 export { default as Coin98Icon } from './wallets/coin98.svg';
 export { default as GenericWalletIcon } from './wallets/generic-wallet.svg';
-export { default as HuobiWalletIcon } from './wallets/huobi-wallet.svg';
+export { default as HuobiWalletIcon } from './wallets/itoken-wallet.png';
 export { default as ImTokenIcon } from './wallets/imtoken.svg';
 export { default as MathWalletIcon } from './wallets/mathwallet.svg';
 export { default as MetaMaskIcon } from './wallets/metamask.svg';
