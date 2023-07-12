@@ -21,10 +21,10 @@ export const walletLinkInstance = new WalletLink({
 const networkId = Number(import.meta.env.VITE_NETWORK_ID);
 
 const walletConnectBaseOptions = {
+  bridge: import.meta.env.VITE_WALLET_CONNECT_BRIDGE_URI,
   rpc: {
     [networkId]: import.meta.env.VITE_ETHEREUM_NODE_URI || '',
   },
-  bridge: import.meta.env.VITE_WALLET_CONNECT_BRIDGE_URI || '',
 };
 
 export const coinbaseWalletProvider = walletLinkInstance.makeWeb3Provider(
@@ -58,7 +58,7 @@ const walletConnect2EthereumProviderOptions: Parameters<(typeof EthereumProvider
 let walletConnectProvider: WalletConnectProvider;
 export const getWalletConnectProvider = () => walletConnectProvider;
 
-let walletConnect2Provider: any; // : Awaited<ReturnType<typeof EthereumProvider.init>>;
+let walletConnect2Provider: Awaited<ReturnType<typeof EthereumProvider.init>>;
 export const getWalletConnect2Provider = () => walletConnect2Provider;
 
 export type ProviderByWalletTypeResponse = {
@@ -101,9 +101,9 @@ export const getProviderByWalletType = async ({
       }
 
       // WalletConnect 2.0
-      if (walletType in WALLETCONNECT2_WALLET_IDS) {
+      if (WALLETCONNECT2_WALLET_IDS[walletType]) {
         try {
-          walletConnect2Provider = await EthereumProvider.init({
+          walletConnect2Provider ??= await EthereumProvider.init({
             ...walletConnect2EthereumProviderOptions,
             qrModalOptions: {
               ...walletConnect2EthereumProviderOptions.qrModalOptions,
@@ -116,8 +116,9 @@ export const getProviderByWalletType = async ({
             provider: walletConnect2Provider,
             walletConnectType: WalletType.WalletConnect2,
           };
-          // eslint-disable-next-line no-empty
-        } catch {}
+        } catch (error) {
+          console.error(error);
+        }
       }
 
       // WalletConnect 1.0
@@ -179,9 +180,9 @@ export const getProviderByWalletType = async ({
 
         return {
           provider: walletConnect2Provider,
+          walletConnectType: WalletType.WalletConnect2,
         };
       } catch (e) {
-        console.log('hi', e);
         return { provider: undefined };
       }
     }
