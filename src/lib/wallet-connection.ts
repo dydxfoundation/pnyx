@@ -21,7 +21,7 @@ export const walletLinkInstance = new WalletLink({
 const networkId = Number(import.meta.env.VITE_NETWORK_ID);
 
 const walletConnectBaseOptions = {
-  bridge: import.meta.env.VITE_WALLET_CONNECT_BRIDGE_URI,
+  bridge: import.meta.env.VITE_WALLETCONNECT1_BRIDGE_URI,
   rpc: {
     [networkId]: import.meta.env.VITE_ETHEREUM_NODE_URI || '',
   },
