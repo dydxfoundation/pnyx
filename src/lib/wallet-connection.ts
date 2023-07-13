@@ -61,6 +61,10 @@ export const getWalletConnectProvider = () => walletConnectProvider;
 let walletConnect2Provider: Awaited<ReturnType<typeof EthereumProvider.init>>;
 export const getWalletConnect2Provider = () => walletConnect2Provider;
 
+const disconnectWalletConnect2Provider = async () => {
+  await walletConnect2Provider?.disconnect();
+};
+
 export type ProviderByWalletTypeResponse = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   provider: any;
@@ -103,7 +107,8 @@ export const getProviderByWalletType = async ({
       // WalletConnect 2.0
       if (WALLETCONNECT2_WALLET_IDS[walletType]) {
         try {
-          walletConnect2Provider ??= await EthereumProvider.init({
+          await disconnectWalletConnect2Provider();
+          walletConnect2Provider = await EthereumProvider.init({
             ...walletConnect2EthereumProviderOptions,
             qrModalOptions: {
               ...walletConnect2EthereumProviderOptions.qrModalOptions,
@@ -174,9 +179,8 @@ export const getProviderByWalletType = async ({
 
     case WalletType.WalletConnect2: {
       try {
-        walletConnect2Provider ??= await EthereumProvider.init(
-          walletConnect2EthereumProviderOptions
-        );
+        await disconnectWalletConnect2Provider();
+        walletConnect2Provider = await EthereumProvider.init(walletConnect2EthereumProviderOptions);
 
         return {
           provider: walletConnect2Provider,
