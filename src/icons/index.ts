@@ -51,4 +51,4 @@ export { default as WalletConnectIcon } from './wallets/walletconnect.svg';
 // Social
 export { default as TwitterIcon } from './social/twitter.svg';
 export { default as DiscordIcon } from './social/discord.svg';
-export { default as CommonwealthIcon } from './social/commonwealth.svg';
+export { default as DiscourseIcon } from './social/discourse.svg';
