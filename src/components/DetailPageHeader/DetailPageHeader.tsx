@@ -1,15 +1,15 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import _ from 'lodash';
 
-import { AppRoute } from 'enums';
-import { CtaConfig } from 'types';
+import { AppRoute } from '@/enums';
+import { CtaConfig } from '@/types';
 
-import { breakpoints, fontSizes } from 'styles';
-import { ArrowLeftIcon } from 'icons';
+import { breakpoints, fontSizes } from '@/styles';
+import { ArrowLeftIcon } from '@/icons';
 
-import Button from 'components/Button';
+import Button from '@/components/Button';
 
 type InfoModuleConfig = {
   label: React.ReactNode;

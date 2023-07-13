@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { NotificationType } from 'enums';
+import { NotificationType } from '@/enums';
 
-import { CloseIcon } from 'icons';
-import { breakpoints } from 'styles';
+import { CloseIcon } from '@/icons';
+import { breakpoints } from '@/styles';
 
 import ClaimNotification from './ClaimNotification';
 import DelegateNotification from './DelegateNotification';

@@ -1,4 +1,4 @@
-import { ModalType } from 'enums';
+import { ModalType } from '@/enums';
 
 export type ModalConfig = {
   type: ModalType;

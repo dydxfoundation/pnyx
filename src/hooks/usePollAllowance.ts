@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { DateTime } from 'luxon';
 
-import { AllowancesState, SetAllowancePayload } from 'types';
-import { StakingPool } from 'enums';
+import { AllowancesState, SetAllowancePayload } from '@/types';
+import { StakingPool } from '@/enums';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
 
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 let previousWalletAddress: string;
 
-const allowancePollingInterval = Number(process.env.REACT_APP_BLOCK_POLL_MS);
+const allowancePollingInterval = Number(import.meta.env.VITE_BLOCK_POLL_MS);
 
 const stopPollingAllowance = () => {
   if (pollingFunction) {

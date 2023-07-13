@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
-import { AssetSymbol, ExternalLink, StakingPool } from 'enums';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol, ExternalLink, StakingPool } from '@/enums';
 
-import { breakpoints, fontSizes } from 'styles';
-import { withLocalization } from 'hoc';
+import { breakpoints, fontSizes } from '@/styles';
+import { withLocalization } from '@/hoc';
 
-import Button, { ButtonColor } from 'components/Button';
-import { Modal, ModalHeader, ModalSize, ModalAlignedContentContainer } from 'components/Modals';
+import Button, { ButtonColor } from '@/components/Button';
+import { Modal, ModalHeader, ModalSize, ModalAlignedContentContainer } from '@/components/Modals';
 
-import { STRING_KEYS } from 'constants/localization';
-import LearnMoreLink from 'components/LearnMoreLink';
+import { STRING_KEYS } from '@/constants/localization';
+import LearnMoreLink from '@/components/LearnMoreLink';
 
 export type AcknowledgeModalProps = {
   closeModal: () => void;

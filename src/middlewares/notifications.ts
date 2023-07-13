@@ -1,11 +1,11 @@
 import { Middleware } from 'redux';
 import { toast } from 'react-toastify';
 
-import { RootState } from 'store';
+import { RootState } from '@/store';
 
-import { NotificationToast } from 'components/Notifications';
+import { NotificationToast } from '@/components/Notifications';
 
-import { addNotification } from 'actions/notifications';
+import { addNotification } from '@/actions/notifications';
 
 const DEFAULT_AUTO_CLOSE_MS = 6000;
 

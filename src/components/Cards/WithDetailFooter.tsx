@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { CtaConfig } from 'types';
-import { fontSizes, breakpoints } from 'styles';
+import { CtaConfig } from '@/types';
+import { fontSizes, breakpoints } from '@/styles';
 
-import Button, { ButtonColor } from 'components/Button';
+import Button, { ButtonColor } from '@/components/Button';
 
 type CtaConfigs = {
   primary: CtaConfig;

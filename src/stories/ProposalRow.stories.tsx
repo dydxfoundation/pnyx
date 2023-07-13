@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { ProposalStatus } from 'enums';
-import ProposalRow, { ProposalRowProps } from 'components/ProposalRow';
+import { ProposalStatus } from '@/enums';
+import ProposalRow, { ProposalRowProps } from '@/components/ProposalRow';
 
 export default {
   title: 'Components/Proposal Row',

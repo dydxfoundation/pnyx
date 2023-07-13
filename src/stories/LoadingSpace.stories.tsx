@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import LoadingSpace, { LoadingSpaceProps } from 'components/LoadingSpace';
+import LoadingSpace, { LoadingSpaceProps } from '@/components/LoadingSpace';
 
 export default {
   title: 'Components/Loading Space',

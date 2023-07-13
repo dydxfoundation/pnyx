@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { StakingPool } from 'enums';
+import { StakingPool } from '@/enums';
 
-import { setWithdrawBalancesData } from 'actions/balances';
+import { setWithdrawBalancesData } from '@/actions/balances';
 
-import { getWithdrawBalancesData } from 'selectors/balances';
-import { getWalletAddress } from 'selectors/wallets';
+import { getWithdrawBalancesData } from '@/selectors/balances';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 let isPolling: boolean = false;
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 
-const withdrawBalancesPollingInterval = Number(process.env.REACT_APP_BLOCK_POLL_MS);
+const withdrawBalancesPollingInterval = Number(import.meta.env.VITE_BLOCK_POLL_MS);
 
 const stopPollingBalances = () => {
   if (pollingFunction) {

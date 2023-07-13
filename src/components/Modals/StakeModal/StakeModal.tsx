@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import ReactDOMServer from 'react-dom/server';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -12,27 +12,27 @@ import {
   ExternalLink,
   NotificationType,
   StakingPool,
-} from 'enums';
+} from '@/enums';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
 
-import { breakpoints, fontSizes } from 'styles';
-import { usePollAllowance, usePollWalletBalances } from 'hooks';
-import { withLocalization } from 'hoc';
+import { breakpoints, fontSizes } from '@/styles';
+import { usePollAllowance, usePollWalletBalances } from '@/hooks';
+import { withLocalization } from '@/hoc';
 
-import Button from 'components/Button';
-import InfoBox from 'components/InfoBox';
-import InputField from 'components/InputField';
-import WithReceipt from 'components/WithReceipt';
+import Button from '@/components/Button';
+import InfoBox from '@/components/InfoBox';
+import InputField from '@/components/InputField';
+import WithReceipt from '@/components/WithReceipt';
 
-import AlertMessage, { AlertMessageType } from 'components/AlertMessage';
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import DiffArrow, { DiffArrowColor, DiffArrowDirection } from 'components/DiffArrow';
-import LearnMoreLink, { LinkColor } from 'components/LearnMoreLink';
-import LoadingSpace from 'components/LoadingSpace';
-import Tag, { TagColor } from 'components/Tag';
-import WithLabel, { WithLabelColor } from 'components/WithLabel';
+import AlertMessage, { AlertMessageType } from '@/components/AlertMessage';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import DiffArrow, { DiffArrowColor, DiffArrowDirection } from '@/components/DiffArrow';
+import LearnMoreLink, { LinkColor } from '@/components/LearnMoreLink';
+import LoadingSpace from '@/components/LoadingSpace';
+import Tag, { TagColor } from '@/components/Tag';
+import WithLabel, { WithLabelColor } from '@/components/WithLabel';
 
 import {
   Modal,
@@ -40,25 +40,25 @@ import {
   ModalSize,
   ModalContentContainer,
   ModalInfoFooter,
-} from 'components/Modals';
+} from '@/components/Modals';
 
 import {
   setAllowance as setAllowanceAction,
   setUserSentAllowanceTransaction as setUserSentAllowanceTransactionAction,
-} from 'actions/allowances';
+} from '@/actions/allowances';
 
-import { addNotification as addNotificationAction } from 'actions/notifications';
+import { addNotification as addNotificationAction } from '@/actions/notifications';
 
-import { getAllowances } from 'selectors/allowances';
-import { getStakingBalancesData, getWalletBalancesData } from 'selectors/balances';
-import { getWalletAddress, getIsWalletIncorrectNetwork } from 'selectors/wallets';
+import { getAllowances } from '@/selectors/allowances';
+import { getStakingBalancesData, getWalletBalancesData } from '@/selectors/balances';
+import { getWalletAddress, getIsWalletIncorrectNetwork } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { isErrorCancelError } from 'lib/wallets';
-import { LOCAL_STORAGE_KEYS, setLocalStorage, getLocalStorage } from 'lib/local-storage';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
+import { isErrorCancelError } from '@/lib/wallets';
+import { LOCAL_STORAGE_KEYS, setLocalStorage, getLocalStorage } from '@/lib/local-storage';
 
 import AcknowledgeModal from '../AcknowledgeModal';
 import SetAllowanceModule from './SetAllowanceModule';

@@ -1,4 +1,4 @@
-import { Country } from 'enums';
+import { Country } from '@/enums';
 
 export const BLOCKED_COUNTRIES = [
   Country.US,

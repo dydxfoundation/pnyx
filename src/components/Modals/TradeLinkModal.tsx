@@ -1,16 +1,16 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
-import { ExternalLink } from 'enums';
+import { LocalizationProps } from '@/types';
+import { ExternalLink } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { breakpoints, fontSizes } from '@/styles';
 
-import Button from 'components/Button';
-import { Modal, ModalHeader, ModalSize, ModalContentContainer } from 'components/Modals';
+import Button from '@/components/Button';
+import { Modal, ModalHeader, ModalSize, ModalContentContainer } from '@/components/Modals';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 export type TradeLinkModalProps = {
   closeModal: () => void;

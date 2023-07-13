@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { AssetSymbol } from 'enums';
+import { AssetSymbol } from '@/enums';
 
-import { setWalletBalancesData } from 'actions/balances';
+import { setWalletBalancesData } from '@/actions/balances';
 
-import { getWalletAddress } from 'selectors/wallets';
-import { getWalletBalancesData } from 'selectors/balances';
+import { getWalletAddress } from '@/selectors/wallets';
+import { getWalletBalancesData } from '@/selectors/balances';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 /**
  * Since polling can happen for multiple assets, store a mapping of polling functions
@@ -23,7 +23,7 @@ const pollingFunctions: {
   [key in AssetSymbol]?: ReturnType<typeof setTimeout> | null;
 } = {};
 
-const walletBalancePollingInterval = Number(process.env.REACT_APP_BLOCK_POLL_MS);
+const walletBalancePollingInterval = Number(import.meta.env.VITE_BLOCK_POLL_MS);
 
 const usePollWalletBalances = ({ assetSymbol }: { assetSymbol: AssetSymbol }) => {
   const dispatch = useDispatch();

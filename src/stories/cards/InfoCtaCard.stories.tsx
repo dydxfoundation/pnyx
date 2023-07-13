@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { InfoCtaCard, InfoCtaCardProps } from 'components/Cards';
+import { InfoCtaCard, InfoCtaCardProps } from '@/components/Cards';
 
 export default {
   title: 'Cards/Info CTA Card',

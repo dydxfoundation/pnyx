@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-import { RootState } from 'store';
-import { GeoData } from 'types';
+import { RootState } from '@/store';
+import { GeoData } from '@/types';
 
-import { BLOCKED_COUNTRIES } from 'constants/geo';
+import { BLOCKED_COUNTRIES } from '@/constants/geo';
 
 export const getGeoData = (state: RootState): GeoData | null => state.geo.geoData;
 

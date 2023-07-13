@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WalletType } from 'enums';
+import { WalletType } from '@/enums';
 
 import {
   BitPieIcon,
@@ -17,7 +17,7 @@ import {
   TrustWalletIcon,
   TokenPocketIcon,
   WalletConnectIcon,
-} from 'icons';
+} from '@/icons';
 
 const WALLET_ICONS: Record<WalletType, React.FC> = {
   [WalletType.BitPie]: BitPieIcon,

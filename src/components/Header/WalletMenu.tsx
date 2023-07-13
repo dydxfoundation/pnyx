@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
-import { AppDispatch } from 'store';
-import { WalletType } from 'enums';
-import { LocalizationProps } from 'types';
+import { AppDispatch } from '@/store';
+import { WalletType } from '@/enums';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { CopyIcon, DisconnectIcon } from 'icons';
+import { withLocalization } from '@/hoc';
+import { CopyIcon, DisconnectIcon } from '@/icons';
 
-import { disconnectWallet as disconnectWalletAction } from 'actions/wallets';
-import { STRING_KEYS } from 'constants/localization';
+import { disconnectWallet as disconnectWalletAction } from '@/actions/wallets';
+import { STRING_KEYS } from '@/constants/localization';
 
 import { HeaderMenu, MenuOption } from './HeaderMenuStyles';
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import { breakpoints } from 'styles';
+import styled from 'styled-components';
+import { breakpoints } from '@/styles';
 
 export enum CardColor {
   Dark = 'Dark',

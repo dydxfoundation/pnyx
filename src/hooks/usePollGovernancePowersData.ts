@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { setGovernancePowersData } from 'actions/governance';
+import { setGovernancePowersData } from '@/actions/governance';
 
-import { getGovernancePowersData } from 'selectors/governance';
-import { getWalletAddress } from 'selectors/wallets';
+import { getGovernancePowersData } from '@/selectors/governance';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 
-const governancePowersPollingInterval = Number(process.env.REACT_APP_DATA_POLL_MS);
+const governancePowersPollingInterval = Number(import.meta.env.VITE_DATA_POLL_MS);
 
 const stopPollingGovernancePowersData = () => {
   if (pollingFunction) {

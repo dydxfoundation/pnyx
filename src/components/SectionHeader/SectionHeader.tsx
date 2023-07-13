@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
-import { breakpoints, fontSizes } from 'styles';
+import { breakpoints, fontSizes } from '@/styles';
 
 type ElementProps = {
   noPadding?: boolean;

@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { AddNotificationPayload } from 'types';
+import { AddNotificationPayload } from '@/types';
 
 export const addNotification = createAction<AddNotificationPayload | void>('ADD_NOTIFICATION');
 export const clearNotifications = createAction<void>('CLEAR_NOTIFICATIONS');

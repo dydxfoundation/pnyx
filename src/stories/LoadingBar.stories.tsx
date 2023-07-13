@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import LoadingBar, { LoadingBarProps } from 'components/LoadingBar';
+import LoadingBar, { LoadingBarProps } from '@/components/LoadingBar';
 
 export default {
   title: 'Components/Loading Bar',

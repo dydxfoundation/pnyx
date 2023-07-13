@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 import _ from 'lodash';
 
-import { LinkOutIcon } from 'icons';
-import { breakpoints, fonts, fontSizes } from 'styles';
+import { LinkOutIcon } from '@/icons';
+import { breakpoints, fonts, fontSizes } from '@/styles';
 
-import LoadingDots from 'components/LoadingDots';
+import LoadingDots from '@/components/LoadingDots';
 
 export enum ButtonColor {
   Light = 'Light',

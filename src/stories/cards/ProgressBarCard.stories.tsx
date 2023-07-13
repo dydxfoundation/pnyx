@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { ProgressBarCard, ProgressBarCardProps, CardSize } from 'components/Cards';
+import { ProgressBarCard, ProgressBarCardProps, CardSize } from '@/components/Cards';
 
 export default {
   title: 'Cards/Progress bar Card',

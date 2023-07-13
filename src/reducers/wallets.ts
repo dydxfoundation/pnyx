@@ -1,4 +1,4 @@
-import { WalletType } from 'enums';
+import { WalletType } from '@/enums';
 
 import {
   ConnectWalletPayload,
@@ -6,7 +6,7 @@ import {
   DisconnectWalletPayload,
   UserAccountChangedPayload,
   NetworkIdChangedPayload,
-} from 'types';
+} from '@/types';
 
 import {
   walletLoaded,
@@ -14,7 +14,7 @@ import {
   disconnectWallet,
   connectWallet,
   networkIdChanged,
-} from 'actions/wallets';
+} from '@/actions/wallets';
 
 type State = {
   accounts: string[];

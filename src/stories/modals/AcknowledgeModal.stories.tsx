@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { StakingPool } from 'enums';
-import { withLocalization } from 'hoc';
+import { StakingPool } from '@/enums';
+import { withLocalization } from '@/hoc';
 
 import {
   UnconnectedAcknowledgeModal,
   AcknowledgeModalProps,
-} from 'components/Modals/AcknowledgeModal';
+} from '@/components/Modals/AcknowledgeModal';
 
 export default {
   title: 'Modals/Acknowledge Modal',

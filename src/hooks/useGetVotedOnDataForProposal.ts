@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 
-import { VotedOnProposalData } from 'types';
+import { VotedOnProposalData } from '@/types';
 
-import { setVotedOnProposal } from 'actions/governance';
+import { setVotedOnProposal } from '@/actions/governance';
 
-import { getVotedOnProposals } from 'selectors/governance';
-import { getWalletAddress } from 'selectors/wallets';
+import { getVotedOnProposals } from '@/selectors/governance';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 const useGetVotedOnDataForProposal = ({
   proposalId,

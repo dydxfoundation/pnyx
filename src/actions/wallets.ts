@@ -6,7 +6,7 @@ import {
   DisconnectWalletPayload,
   NetworkIdChangedPayload,
   UserAccountChangedPayload,
-} from 'types';
+} from '@/types';
 
 export const connectWallet = createAction<ConnectWalletPayload | void>('CONNECT_WALLET');
 export const disconnectWallet = createAction<DisconnectWalletPayload | void>('DISCONNECT_WALLET');

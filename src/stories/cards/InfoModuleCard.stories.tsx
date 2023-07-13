@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { AssetSymbol } from 'enums';
-import { InfoModuleCard, InfoModuleCardProps } from 'components/Cards';
+import { AssetSymbol } from '@/enums';
+import { InfoModuleCard, InfoModuleCardProps } from '@/components/Cards';
 
 export default {
   title: 'Cards/Info Module Card',

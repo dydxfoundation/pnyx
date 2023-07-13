@@ -1,4 +1,4 @@
-import { ButtonColor } from 'components/Button';
+import { ButtonColor } from '@/components/Button';
 
 import * as AllowancesTypes from './allowances';
 import * as BalancesTypes from './balances';

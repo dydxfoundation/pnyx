@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 
-import { SupportedLocale, WalletType } from 'enums';
-import { withLocalization } from 'hoc';
+import { SupportedLocale, WalletType } from '@/enums';
+import { withLocalization } from '@/hoc';
 
-import { UnconnectedHeader, ConnectedHeaderProps } from 'components/Header';
+import { UnconnectedHeader, ConnectedHeaderProps } from '@/components/Header';
 
 export default {
   title: 'Components/Header',

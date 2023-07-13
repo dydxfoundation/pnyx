@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { SetAllowancePayload, SetUserSentAllowanceTransactionPayload } from 'types';
+import { SetAllowancePayload, SetUserSentAllowanceTransactionPayload } from '@/types';
 
 export const setAllowance = createAction<SetAllowancePayload | void>('SET_ALLOWANCE');
 

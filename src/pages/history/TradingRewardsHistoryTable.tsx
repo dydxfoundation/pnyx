@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import {
   AssetSymbol,
@@ -11,26 +11,26 @@ import {
   ExternalLink,
   ModalType,
   TradingRewardStatus,
-} from 'enums';
+} from '@/enums';
 
-import { LocalizationProps, TradingRewardsData } from 'types';
+import { LocalizationProps, TradingRewardsData } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { StatusActiveIcon, StatusExecutedIcon } from 'icons';
-import { breakpoints, fontSizes, MobileOnly, NotMobileOnly } from 'styles';
+import { withLocalization } from '@/hoc';
+import { StatusActiveIcon, StatusExecutedIcon } from '@/icons';
+import { breakpoints, fontSizes, MobileOnly, NotMobileOnly } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import Button, { ButtonColor, ButtonContainer } from 'components/Button';
-import { CellAlign, SortableTable, TableCell } from 'components/SortableTable';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import Button, { ButtonColor, ButtonContainer } from '@/components/Button';
+import { CellAlign, SortableTable, TableCell } from '@/components/SortableTable';
 
-import { openModal } from 'actions/modals';
+import { openModal } from '@/actions/modals';
 
-import { getSelectedLocale } from 'selectors/localization';
-import { getWalletAddress } from 'selectors/wallets';
+import { getSelectedLocale } from '@/selectors/localization';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import { MustBigNumber } from 'lib/numbers';
+import { MustBigNumber } from '@/lib/numbers';
 
 const getFormattedTableData = ({
   tradingRewardsData,

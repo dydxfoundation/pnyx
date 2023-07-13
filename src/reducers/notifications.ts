@@ -1,7 +1,7 @@
-import { AddNotificationPayload, Notification } from 'types';
+import { AddNotificationPayload, Notification } from '@/types';
 
-import { addNotification, clearNotifications, setSeenNotifications } from 'actions/notifications';
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { addNotification, clearNotifications, setSeenNotifications } from '@/actions/notifications';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   hasUnseenNotifications: boolean;

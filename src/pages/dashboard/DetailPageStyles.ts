@@ -1,6 +1,6 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { breakpoints } from 'styles';
+import { breakpoints } from '@/styles';
 
 export const DetailPageLayoutContainer = styled.div`
   display: flex;

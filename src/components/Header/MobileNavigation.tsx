@@ -2,28 +2,27 @@ import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, RouteComponentProps, matchPath } from 'react-router-dom';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 import _ from 'lodash';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
-import { AppRoute, ExternalLink, ModalType, SupportedLocale } from 'enums';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
+import { AppRoute, ExternalLink, ModalType, SupportedLocale } from '@/enums';
 
-import { breakpoints, fontSizes } from 'styles';
-import { GlobeIcon, LinkOutIcon } from 'icons';
-import { useOnClickOutside } from 'hooks';
-import { withLocalization } from 'hoc';
+import { breakpoints, fontSizes } from '@/styles';
+import { GlobeIcon, LinkOutIcon } from '@/icons';
+import { withLocalization } from '@/hoc';
 
-import AnimatedHamburgerClose from 'components/AnimatedHamburgerClose';
+import AnimatedHamburgerClose from '@/components/AnimatedHamburgerClose';
 
-import { openModal as openModalAction } from 'actions/modals';
-import { setSelectedLocale as setSelectedLocaleAction } from 'actions/localization';
+import { openModal as openModalAction } from '@/actions/modals';
+import { setSelectedLocale as setSelectedLocaleAction } from '@/actions/localization';
 
-import { getSelectedLocale } from 'selectors/localization';
+import { getSelectedLocale } from '@/selectors/localization';
 
-import { STRING_KEYS, SUPPORTED_LOCALE_STRING_LABELS } from 'constants/localization';
+import { STRING_KEYS, SUPPORTED_LOCALE_STRING_LABELS } from '@/constants/localization';
 
-import { HeaderMenu, MenuOption } from './HeaderMenuStyles';
+import { HeaderMenu, MenuOption, withMenuBackdrop } from './HeaderMenuStyles';
 
 export type MobileNavigationProps = {} & LocalizationProps;
 
@@ -33,20 +32,8 @@ const MobileNavigation: React.FC<
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>
 > = ({ history, location, openModal, selectedLocale, setSelectedLocale, stringGetter }) => {
-  const languageMenuRef = useRef(null);
-
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showLanguageSelectorMenu, setShowLanguageSelectorMenu] = useState<boolean>(false);
-
-  useOnClickOutside({
-    onClickOutside: () => {
-      if (showLanguageSelectorMenu) {
-        setShowLanguageSelectorMenu(false);
-      }
-    },
-    ref: languageMenuRef,
-    dependencies: [showLanguageSelectorMenu],
-  });
 
   return (
     <>
@@ -57,10 +44,10 @@ const MobileNavigation: React.FC<
         <MobileNavMenu>
           <IconButtons>
             <IconButtonWrapper>
-              <IconButton onClick={() => setShowLanguageSelectorMenu(!showLanguageSelectorMenu)}>
+              <IconButton menuOpen={showLanguageSelectorMenu} onClick={() => setShowLanguageSelectorMenu(!showLanguageSelectorMenu)}>
                 <GlobeIcon />
                 {showLanguageSelectorMenu && (
-                  <LanguageSelectorMenu ref={languageMenuRef}>
+                  <LanguageSelectorMenu>
                     {_.map(SupportedLocale, (locale) => (
                       <MenuOption
                         key={locale}
@@ -200,7 +187,7 @@ const IconButtonWrapper = styled.div`
   position: relative;
 `;
 
-const IconButton = styled.div`
+const IconButton = styled.div<{ menuOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,6 +201,12 @@ const IconButton = styled.div`
   > svg {
     max-height: 1.25rem;
   }
+
+  ${({ menuOpen }) =>
+    menuOpen &&
+    css`
+      ${withMenuBackdrop}
+    `}
 `;
 
 const LanguageSelectorMenu = styled(HeaderMenu)`

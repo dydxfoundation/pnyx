@@ -1,6 +1,6 @@
-import { SetCurrentBlockNumberPayload } from 'types';
+import { SetCurrentBlockNumberPayload } from '@/types';
 
-import { setCurrentBlockNumber } from 'actions/network';
+import { setCurrentBlockNumber } from '@/actions/network';
 
 type State = {
   currentBlockNumber: number | null;

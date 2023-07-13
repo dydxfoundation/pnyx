@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCirculatingSupply, setDistributedToday } from 'actions/distribution';
-import { getCirculatingSupply, getDistributedToday } from 'selectors/distribution';
+import { setCirculatingSupply, setDistributedToday } from '@/actions/distribution';
+import { getCirculatingSupply, getDistributedToday } from '@/selectors/distribution';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 type DistributionData = {
   circulatingSupply: string | undefined;

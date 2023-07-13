@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 import _ from 'lodash';
 
-import { RootState } from 'store';
-import { SupportedLocale } from 'enums';
-import { LocaleData, StringGetterFunction } from 'types';
+import { RootState } from '@/store';
+import { SupportedLocale } from '@/enums';
+import { LocaleData, StringGetterFunction } from '@/types';
 
-import enLocaleData from 'localization/en';
+import enLocaleData from '@/localization/en';
 
 export const getIsLocaleLoaded = (state: RootState): boolean =>
   _.get(state, 'localization.isLocaleLoaded');

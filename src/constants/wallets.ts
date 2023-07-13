@@ -1,4 +1,4 @@
-import { WalletType } from 'enums';
+import { WalletType } from '@/enums';
 
 export const DISPLAYED_WALLETS = [
   WalletType.MetaMask,

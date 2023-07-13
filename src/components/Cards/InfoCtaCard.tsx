@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
-import { CtaConfig } from 'types';
-import { breakpoints, fontSizes } from 'styles';
+import { CtaConfig } from '@/types';
+import { breakpoints, fontSizes } from '@/styles';
 
-import Button, { ButtonColor, ButtonSize } from 'components/Button';
+import Button, { ButtonColor, ButtonSize } from '@/components/Button';
 
 import { CardWrapper, CardContentContainer } from './CardStyles';
 

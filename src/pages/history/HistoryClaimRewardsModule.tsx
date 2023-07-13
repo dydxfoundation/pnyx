@@ -3,14 +3,14 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
 import BigNumber from 'bignumber.js';
 
-import { LocalizationProps, TradingRewardsData } from 'types';
-import { AssetSymbol, DecimalPlaces, DocumentationSublinks, ExternalLink, ModalType } from 'enums';
+import { LocalizationProps, TradingRewardsData } from '@/types';
+import { AssetSymbol, DecimalPlaces, DocumentationSublinks, ExternalLink, ModalType } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { usePollUnclaimedRewards } from 'hooks';
+import { withLocalization } from '@/hoc';
+import { usePollUnclaimedRewards } from '@/hooks';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import { ButtonColor } from 'components/Button';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import { ButtonColor } from '@/components/Button';
 
 import {
   CardContainer,
@@ -19,15 +19,15 @@ import {
   ValueWithIcon,
   InfoCtaCard,
   CardColor,
-} from 'components/Cards';
+} from '@/components/Cards';
 
-import { openModal } from 'actions/modals';
+import { openModal } from '@/actions/modals';
 
-import { getUnclaimedRewardsData } from 'selectors/balances';
-import { getWalletAddress } from 'selectors/wallets';
+import { getUnclaimedRewardsData } from '@/selectors/balances';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
-import { MustBigNumber } from 'lib/numbers';
+import { STRING_KEYS } from '@/constants/localization';
+import { MustBigNumber } from '@/lib/numbers';
 
 const HistoryClaimRewardsModule: React.FC<
   {

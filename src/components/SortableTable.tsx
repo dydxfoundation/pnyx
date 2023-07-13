@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
-import { ArrowDownIcon } from 'icons';
-import { breakpoints, fonts, fontSizes } from 'styles';
+import { ArrowDownIcon } from '@/icons';
+import { breakpoints, fonts, fontSizes } from '@/styles';
 
-import LoadingBar from 'components/LoadingBar';
+import LoadingBar from '@/components/LoadingBar';
 
 export enum SortType {
   String = 'String',

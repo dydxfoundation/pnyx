@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-import { StakingPool } from 'enums';
-import { AllowancesState, SetAllowancePayload } from 'types';
+import { StakingPool } from '@/enums';
+import { AllowancesState, SetAllowancePayload } from '@/types';
 
-import { setAllowance, setUserSentAllowanceTransaction } from 'actions/allowances';
-import { userAccountChanged, disconnectWallet } from 'actions/wallets';
+import { setAllowance, setUserSentAllowanceTransaction } from '@/actions/allowances';
+import { userAccountChanged, disconnectWallet } from '@/actions/wallets';
 
 type State = {
   allowances: AllowancesState;

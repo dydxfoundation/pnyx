@@ -1,15 +1,15 @@
 import { Middleware } from 'redux';
 
-import { RootState } from 'store';
-import { SupportedLocale } from 'enums';
+import { RootState } from '@/store';
+import { SupportedLocale } from '@/enums';
 
-import { pageLoaded } from 'actions/page';
-import { setLocaleLoaded, setSelectedLocale, setLocaleData } from 'actions/localization';
+import { pageLoaded } from '@/actions/page';
+import { setLocaleLoaded, setSelectedLocale, setLocaleData } from '@/actions/localization';
 
-import { getSelectedLocale } from 'selectors/localization';
-import { SUPPORTED_BASE_TAGS_LOCALE_MAPPING } from 'constants/localization';
+import { getSelectedLocale } from '@/selectors/localization';
+import { SUPPORTED_BASE_TAGS_LOCALE_MAPPING } from '@/constants/localization';
 
-import { LOCAL_STORAGE_KEYS, getLocalStorage, setLocalStorage } from 'lib/local-storage';
+import { LOCAL_STORAGE_KEYS, getLocalStorage, setLocalStorage } from '@/lib/local-storage';
 
 const getNewLocaleData = async ({
   store,
@@ -23,7 +23,7 @@ const getNewLocaleData = async ({
 }) => {
   store.dispatch(setLocaleLoaded(false));
 
-  const newLocaleData = await import(`localization/${localeKey}`);
+  const newLocaleData = await import(`@/localization/${localeKey}/index.ts`);
   store.dispatch(setLocaleData(newLocaleData.default));
 
   if (!isAutoDetect) {

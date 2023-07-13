@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AssetSymbol } from 'enums';
-import { DydxDarkIcon, DydxIcon, UsdcIcon } from 'icons';
-import { breakpoints } from 'styles';
+import { AssetSymbol } from '@/enums';
+import { DydxDarkIcon, DydxIcon, UsdcIcon } from '@/icons';
+import { breakpoints } from '@/styles';
 
 export enum AssetIconSize {
   Tiny = 'Tiny',

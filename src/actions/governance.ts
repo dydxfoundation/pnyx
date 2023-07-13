@@ -4,7 +4,7 @@ import {
   SetGovernancePowersDataPayload,
   SetLatestProposalsPayload,
   SetVotedOnProposalPayload,
-} from 'types';
+} from '@/types';
 
 export const setVotedOnProposal = createAction<SetVotedOnProposalPayload | void>(
   'SET_VOTED_ON_PROPOSAL'

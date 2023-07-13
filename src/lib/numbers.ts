@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 import _ from 'lodash';
 
-import { DecimalPlaces } from 'enums';
+import { DecimalPlaces } from '@/enums';
 
 export const MustBigNumber = (amount?: string | number | null | undefined): BigNumber =>
   new BigNumber(amount || 0);

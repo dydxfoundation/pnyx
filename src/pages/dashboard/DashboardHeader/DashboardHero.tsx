@@ -1,14 +1,14 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
-import { AssetSymbol } from 'enums';
+import { LocalizationProps } from '@/types';
+import { AssetSymbol } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { breakpoints, fontSizes } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import { STRING_KEYS } from 'constants/localization';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import { STRING_KEYS } from '@/constants/localization';
 
 export type DashboardHeroProps = {} & LocalizationProps;
 

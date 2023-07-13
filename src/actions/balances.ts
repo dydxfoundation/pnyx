@@ -5,7 +5,7 @@ import {
   SetUnclaimedRewardsPayload,
   SetWalletBalancesDataPayload,
   SetWithdrawBalancesDataPayload,
-} from 'types';
+} from '@/types';
 
 export const setStakingBalancesData = createAction<SetStakingBalancesDataPayload | void>(
   'SET_STAKING_BALANCES_DATA'

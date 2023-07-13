@@ -1,4 +1,4 @@
-import { GovernancePowersData } from 'types';
+import { GovernancePowersData } from '@/types';
 
 enum TokenKey {
   StakedToken = 'STAKED_TOKEN',

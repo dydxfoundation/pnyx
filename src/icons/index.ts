@@ -1,54 +1,54 @@
 // General
-export { ReactComponent as ArrowDownIcon } from './arrow-down.svg';
-export { ReactComponent as ArrowLeftIcon } from './arrow-left.svg';
+export { default as ArrowDownIcon } from './arrow-down.svg';
+export { default as ArrowLeftIcon } from './arrow-left.svg';
 export { default as BellIcon } from './bell';
 export { default as BellAlertIcon } from './bell-alert';
-export { ReactComponent as BlockedIcon } from './blocked.svg';
-export { ReactComponent as CheckMarkIcon } from './check-mark.svg';
-export { ReactComponent as CloseIcon } from './close.svg';
-export { ReactComponent as CopyIcon } from './copy.svg';
-export { ReactComponent as DisconnectIcon } from './disconnect.svg';
-export { ReactComponent as GlobeIcon } from './globe.svg';
-export { ReactComponent as HelpCircleIcon } from './help-circle.svg';
-export { ReactComponent as LinkOutIcon } from './link-out.svg';
-export { ReactComponent as LogoIcon } from './logo.svg';
-export { ReactComponent as QuestionMarkIcon } from './question-mark.svg';
-export { ReactComponent as TriangleDownIcon } from './triangle-down.svg';
-export { ReactComponent as UndoIcon } from './undo.svg';
-export { ReactComponent as WithdrawIcon } from './withdraw.svg';
-export { ReactComponent as XIcon } from './x.svg';
+export { default as BlockedIcon } from './blocked.svg';
+export { default as CheckMarkIcon } from './check-mark.svg';
+export { default as CloseIcon } from './close.svg';
+export { default as CopyIcon } from './copy.svg';
+export { default as DisconnectIcon } from './disconnect.svg';
+export { default as GlobeIcon } from './globe.svg';
+export { default as HelpCircleIcon } from './help-circle.svg';
+export { default as LinkOutIcon } from './link-out.svg';
+export { default as LogoIcon } from './logo.svg';
+export { default as QuestionMarkIcon } from './question-mark.svg';
+export { default as TriangleDownIcon } from './triangle-down.svg';
+export { default as UndoIcon } from './undo.svg';
+export { default as WithdrawIcon } from './withdraw.svg';
+export { default as XIcon } from './x.svg';
 
 // Currencies
-export { ReactComponent as DydxDarkIcon } from './currencies/dydx-dark.svg';
+export { default as DydxDarkIcon } from './currencies/dydx-dark.svg';
 export { default as DydxIcon } from './currencies/DydxIcon';
-export { ReactComponent as UsdcIcon } from './currencies/usdc.svg';
+export { default as UsdcIcon } from './currencies/usdc.svg';
 
 // Statuses
-export { ReactComponent as StatusActiveIcon } from './statuses/status-active.svg';
-export { ReactComponent as StatusCanceledIcon } from './statuses/status-canceled.svg';
-export { ReactComponent as StatusExecutedIcon } from './statuses/status-executed.svg';
-export { ReactComponent as StatusFailedIcon } from './statuses/status-failed.svg';
-export { ReactComponent as StatusPendingIcon } from './statuses/status-pending.svg';
-export { ReactComponent as StatusQueuedIcon } from './statuses/status-queued.svg';
-export { ReactComponent as StatusSuccessIcon } from './statuses/status-success.svg';
+export { default as StatusActiveIcon } from './statuses/status-active.svg';
+export { default as StatusCanceledIcon } from './statuses/status-canceled.svg';
+export { default as StatusExecutedIcon } from './statuses/status-executed.svg';
+export { default as StatusFailedIcon } from './statuses/status-failed.svg';
+export { default as StatusPendingIcon } from './statuses/status-pending.svg';
+export { default as StatusQueuedIcon } from './statuses/status-queued.svg';
+export { default as StatusSuccessIcon } from './statuses/status-success.svg';
 
 // Wallets
-export { ReactComponent as BitPieIcon } from './wallets/bitpie.svg';
-export { ReactComponent as CloverWalletIcon } from './wallets/clover-wallet.svg';
-export { ReactComponent as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
-export { ReactComponent as Coin98Icon } from './wallets/coin98.svg';
-export { ReactComponent as GenericWalletIcon } from './wallets/generic-wallet.svg';
-export { ReactComponent as HuobiWalletIcon } from './wallets/huobi-wallet.svg';
-export { ReactComponent as ImTokenIcon } from './wallets/imtoken.svg';
-export { ReactComponent as MathWalletIcon } from './wallets/mathwallet.svg';
-export { ReactComponent as MetaMaskIcon } from './wallets/metamask.svg';
-export { ReactComponent as RainbowWalletIcon } from './wallets/rainbow-wallet.svg';
-export { ReactComponent as TestWalletIcon } from './wallets/test-wallet.svg';
-export { ReactComponent as TrustWalletIcon } from './wallets/trust-wallet.svg';
-export { ReactComponent as TokenPocketIcon } from './wallets/tokenpocket.svg';
-export { ReactComponent as WalletConnectIcon } from './wallets/walletconnect.svg';
+export { default as BitPieIcon } from './wallets/bitpie.svg';
+export { default as CloverWalletIcon } from './wallets/clover-wallet.svg';
+export { default as CoinbaseWalletIcon } from './wallets/coinbase-wallet.svg';
+export { default as Coin98Icon } from './wallets/coin98.svg';
+export { default as GenericWalletIcon } from './wallets/generic-wallet.svg';
+export { default as HuobiWalletIcon } from './wallets/huobi-wallet.svg';
+export { default as ImTokenIcon } from './wallets/imtoken.svg';
+export { default as MathWalletIcon } from './wallets/mathwallet.svg';
+export { default as MetaMaskIcon } from './wallets/metamask.svg';
+export { default as RainbowWalletIcon } from './wallets/rainbow-wallet.svg';
+export { default as TestWalletIcon } from './wallets/test-wallet.svg';
+export { default as TrustWalletIcon } from './wallets/trust-wallet.svg';
+export { default as TokenPocketIcon } from './wallets/tokenpocket.svg';
+export { default as WalletConnectIcon } from './wallets/walletconnect.svg';
 
 // Social
-export { ReactComponent as TwitterIcon } from './social/twitter.svg';
-export { ReactComponent as DiscordIcon } from './social/discord.svg';
-export { ReactComponent as DiscourseIcon } from './social/discourse.svg';
+export { default as TwitterIcon } from './social/twitter.svg';
+export { default as DiscordIcon } from './social/discord.svg';
+export { default as DiscourseIcon } from './social/discourse.svg';

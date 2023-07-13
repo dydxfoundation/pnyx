@@ -3,8 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory, History } from 'history';
 
-import { localization, notifications, walletConnection } from 'middlewares';
-import createRootReducer from 'reducers';
+import { localization, notifications, walletConnection } from '@/middlewares';
+import createRootReducer from '@/reducers';
 
 export const history: History = createBrowserHistory();
 

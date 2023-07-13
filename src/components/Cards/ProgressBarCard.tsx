@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { QuestionMarkIcon } from 'icons';
-import { breakpoints, fontSizes } from 'styles';
+import { QuestionMarkIcon } from '@/icons';
+import { breakpoints, fontSizes } from '@/styles';
 
 import { CardSize, CardWrapper, CardContentContainer, TooltipIcon } from './CardStyles';
 

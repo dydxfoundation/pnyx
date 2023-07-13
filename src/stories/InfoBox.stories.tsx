@@ -1,9 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { WithdrawIcon } from 'icons';
+import { WithdrawIcon } from '@/icons';
 
-import InfoBox, { InfoBoxProps } from 'components/InfoBox';
+import InfoBox, { InfoBoxProps } from '@/components/InfoBox';
 
 export default {
   title: 'Components/Info Box',

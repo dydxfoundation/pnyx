@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import _ from 'lodash';
 
-import { AssetSymbol } from 'enums';
-import { breakpoints, fontSizes } from 'styles';
+import { AssetSymbol } from '@/enums';
+import { breakpoints, fontSizes } from '@/styles';
 
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
-import LoadingBar from 'components/LoadingBar';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
+import LoadingBar from '@/components/LoadingBar';
 
 import { CardWrapper, CardContentContainer } from './CardStyles';
 

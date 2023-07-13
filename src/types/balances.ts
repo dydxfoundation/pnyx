@@ -1,4 +1,4 @@
-import { AssetSymbol, StakingPool } from 'enums';
+import { AssetSymbol, StakingPool } from '@/enums';
 
 export type StakingBalances = {
   [key in StakingPool]: {

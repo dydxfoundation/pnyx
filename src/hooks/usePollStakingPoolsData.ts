@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 
-import { StakingPoolsData } from 'types';
-import { StakingPool } from 'enums';
+import { StakingPoolsData } from '@/types';
+import { StakingPool } from '@/enums';
 
-import { setStakingPoolsData } from 'actions/staking-pools';
-import { getStakingPoolsData } from 'selectors/staking-pools';
+import { setStakingPoolsData } from '@/actions/staking-pools';
+import { getStakingPoolsData } from '@/selectors/staking-pools';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 let pollingFunction: ReturnType<typeof setTimeout> | null;
 
-const stakingPoolsDataInterval = Number(process.env.REACT_APP_DATA_POLL_MS);
+const stakingPoolsDataInterval = Number(import.meta.env.VITE_DATA_POLL_MS);
 
 const stopPollingStakingPoolsData = () => {
   if (pollingFunction) {

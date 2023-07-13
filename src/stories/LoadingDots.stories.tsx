@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import LoadingDots, { LoadingDotsProps } from 'components/LoadingDots';
+import LoadingDots, { LoadingDotsProps } from '@/components/LoadingDots';
 
 export default {
   title: 'Components/Loading Dots',

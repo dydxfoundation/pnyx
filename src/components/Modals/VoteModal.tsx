@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import NumberFormat from 'react-number-format';
@@ -12,21 +12,21 @@ import {
   DocumentationSublinks,
   ExternalLink,
   NotificationType,
-} from 'enums';
+} from '@/enums';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { usePollGovernancePowersData } from 'hooks';
-import { breakpoints, fontSizes } from 'styles';
+import { withLocalization } from '@/hoc';
+import { usePollGovernancePowersData } from '@/hooks';
+import { breakpoints, fontSizes } from '@/styles';
 
-import Button from 'components/Button';
-import LearnMoreLink from 'components/LearnMoreLink';
-import LoadingSpace from 'components/LoadingSpace';
+import Button from '@/components/Button';
+import LearnMoreLink from '@/components/LearnMoreLink';
+import LoadingSpace from '@/components/LoadingSpace';
 
-import AlertMessage, { AlertMessageType } from 'components/AlertMessage';
-import AssetIcon, { AssetIconSize } from 'components/AssetIcon';
+import AlertMessage, { AlertMessageType } from '@/components/AlertMessage';
+import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
 
 import {
   Modal,
@@ -34,19 +34,19 @@ import {
   ModalSize,
   ModalContentContainer,
   ModalInfoFooter,
-} from 'components/Modals';
+} from '@/components/Modals';
 
-import { setVotedOnProposal as setVotedOnProposalAction } from 'actions/governance';
-import { addNotification as addNotificationAction } from 'actions/notifications';
+import { setVotedOnProposal as setVotedOnProposalAction } from '@/actions/governance';
+import { addNotification as addNotificationAction } from '@/actions/notifications';
 
-import { getIsWalletIncorrectNetwork, getWalletAddress } from 'selectors/wallets';
-import { getGovernancePowersData } from 'selectors/governance';
+import { getIsWalletIncorrectNetwork, getWalletAddress } from '@/selectors/wallets';
+import { getGovernancePowersData } from '@/selectors/governance';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
-import contractClient from 'lib/contract-client';
-import { MustBigNumber } from 'lib/numbers';
-import { isErrorCancelError } from 'lib/wallets';
+import contractClient from '@/lib/contract-client';
+import { MustBigNumber } from '@/lib/numbers';
+import { isErrorCancelError } from '@/lib/wallets';
 
 export type VoteModalProps = { closeModal: () => void; proposalId?: number } & LocalizationProps;
 

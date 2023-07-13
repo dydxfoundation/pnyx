@@ -1,20 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps } from '@/types';
 
-import { withLocalization } from 'hoc';
-import { useGetTradingRewardsData } from 'hooks';
-import { breakpoints } from 'styles';
+import { withLocalization } from '@/hoc';
+import { useGetTradingRewardsData } from '@/hooks';
+import { breakpoints } from '@/styles';
 
-import GeoBlockBanner from 'components/GeoBlockBanner';
-import SectionHeader from 'components/SectionHeader';
-import SectionWrapper from 'components/SectionWrapper';
+import GeoBlockBanner from '@/components/GeoBlockBanner';
+import SectionHeader from '@/components/SectionHeader';
+import SectionWrapper from '@/components/SectionWrapper';
 
-import { getIsUserGeoBlocked } from 'selectors/geo';
+import { getIsUserGeoBlocked } from '@/selectors/geo';
 
-import { STRING_KEYS } from 'constants/localization';
+import { STRING_KEYS } from '@/constants/localization';
 
 import HistoryClaimRewardsModule from './HistoryClaimRewardsModule';
 import TradingRewardsHistoryTable from './TradingRewardsHistoryTable';

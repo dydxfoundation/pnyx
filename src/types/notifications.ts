@@ -1,4 +1,4 @@
-import { NotificationType } from 'enums';
+import { NotificationType } from '@/enums';
 
 export type Notification = {
   notificationType: NotificationType;

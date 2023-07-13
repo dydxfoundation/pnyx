@@ -1,7 +1,7 @@
-import { Breakpoint } from 'enums';
-import { PageViewport, PageSizeChangedPayload } from 'types';
+import { Breakpoint } from '@/enums';
+import { PageViewport, PageSizeChangedPayload } from '@/types';
 
-import { pageSizeChanged } from 'actions/page';
+import { pageSizeChanged } from '@/actions/page';
 
 type State = {
   pageViewport: PageViewport;

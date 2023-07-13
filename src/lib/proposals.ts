@@ -1,5 +1,5 @@
-import { ProposalStatus } from 'enums';
-import { STRING_KEYS } from 'constants/localization';
+import { ProposalStatus } from '@/enums';
+import { STRING_KEYS } from '@/constants/localization';
 
 export const getStatusLabelKey = ({ status }: { status: ProposalStatus }): string | null => {
   let statusLabelKey;

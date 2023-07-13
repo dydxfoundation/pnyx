@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import _ from 'lodash';
 
-import InputField, { InputFieldProps } from 'components/InputField';
+import InputField, { InputFieldProps } from '@/components/InputField';
 
 export default {
   title: 'Components/Input Field',

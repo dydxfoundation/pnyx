@@ -3,12 +3,12 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation/governance';
 
-import { setLatestProposals } from 'actions/governance';
+import { setLatestProposals } from '@/actions/governance';
 
-import contractClient from 'lib/contract-client';
-import { getLatestProposals } from 'selectors/governance';
+import contractClient from '@/lib/contract-client';
+import { getLatestProposals } from '@/selectors/governance';
 
 const useGetLatestProposals = (): Proposals[] => {
   const dispatch = useDispatch();

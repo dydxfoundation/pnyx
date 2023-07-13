@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import breakpoints from './breakpoints';
 import colors from './colors';

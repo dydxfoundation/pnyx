@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { ProposalStatus } from 'enums';
+import { ProposalStatus } from '@/enums';
 
 import {
   StatusActiveIcon,
@@ -11,7 +11,7 @@ import {
   StatusPendingIcon,
   StatusQueuedIcon,
   StatusSuccessIcon,
-} from 'icons';
+} from '@/icons';
 
 export enum ProposalStatusSize {
   Medium = 'Medium',

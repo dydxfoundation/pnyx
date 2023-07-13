@@ -1,5 +1,5 @@
-import { RootState } from 'store';
-import { Notification } from 'types';
+import { RootState } from '@/store';
+import { Notification } from '@/types';
 
 export const getHasUnseenNotifications = (state: RootState): boolean =>
   state.notifications.hasUnseenNotifications;

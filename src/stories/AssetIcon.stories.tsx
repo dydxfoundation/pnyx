@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { AssetSymbol } from 'enums';
-import AssetIcon, { AssetIconProps, AssetIconSize } from 'components/AssetIcon';
+import { AssetSymbol } from '@/enums';
+import AssetIcon, { AssetIconProps, AssetIconSize } from '@/components/AssetIcon';
 
 export default {
   title: 'Components/Asset Icon',

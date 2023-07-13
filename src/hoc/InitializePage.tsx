@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 
-import { AppDispatch } from 'store';
+import { AppDispatch } from '@/store';
 
 import {
   pageLoaded as pageLoadedAction,
   pageSizeChanged as pageSizeChangedAction,
-} from 'actions/page';
+} from '@/actions/page';
 
 const InitializePage: React.FC<ReturnType<typeof mapDispatchToProps>> = ({
   pageLoaded,

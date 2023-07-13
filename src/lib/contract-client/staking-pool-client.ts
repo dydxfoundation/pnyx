@@ -2,10 +2,10 @@ import { providers } from 'ethers';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import { TxBuilder, EthereumTransactionTypeExtended } from '@dydxfoundation/governance';
+import type { TxBuilder, EthereumTransactionTypeExtended } from '@dydxfoundation/governance';
 
-import { StakingPool } from 'enums';
-import { PoolWithdrawBalancesData } from 'types';
+import { StakingPool } from '@/enums';
+import { PoolWithdrawBalancesData } from '@/types';
 
 const stakeGasLimitsByStakingPool = {
   [StakingPool.Liquidity]: '0x2BF20', // 180000

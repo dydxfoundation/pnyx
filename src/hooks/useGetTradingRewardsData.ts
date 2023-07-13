@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
-import { TradingRewardsData } from 'types';
+import { TradingRewardsData } from '@/types';
 
-import { setTradingRewardsData } from 'actions/trading-rewards';
+import { setTradingRewardsData } from '@/actions/trading-rewards';
 
-import { getTradingRewardsData } from 'selectors/trading-rewards';
-import { getWalletAddress } from 'selectors/wallets';
+import { getTradingRewardsData } from '@/selectors/trading-rewards';
+import { getWalletAddress } from '@/selectors/wallets';
 
-import contractClient from 'lib/contract-client';
+import contractClient from '@/lib/contract-client';
 
 const useGetTradingRewardsData = (): TradingRewardsData | undefined => {
   const dispatch = useDispatch();

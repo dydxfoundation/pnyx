@@ -2,14 +2,14 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import _ from 'lodash';
 
-import { AllowancesState, StakingBalancesData, WalletBalancesData } from 'types';
-import { AssetSymbol, StakingPool } from 'enums';
-import { withLocalization } from 'hoc';
+import { AllowancesState, StakingBalancesData, WalletBalancesData } from '@/types';
+import { AssetSymbol, StakingPool } from '@/enums';
+import { withLocalization } from '@/hoc';
 
 import {
   UnconnectedStakeModal,
   ConnectedStakeModalProps,
-} from 'components/Modals/StakeModal/StakeModal';
+} from '@/components/Modals/StakeModal/StakeModal';
 
 export default {
   title: 'Modals/Stake Modal',

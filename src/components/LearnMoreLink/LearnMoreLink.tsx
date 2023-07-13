@@ -1,9 +1,9 @@
-import { STRING_KEYS } from 'constants/localization';
-import { withLocalization } from 'hoc';
+import { STRING_KEYS } from '@/constants/localization';
+import { withLocalization } from '@/hoc';
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { LocalizationProps } from 'types';
+import { LocalizationProps } from '@/types';
 
 export enum LinkColor {
   BaseText = 'BaseText',

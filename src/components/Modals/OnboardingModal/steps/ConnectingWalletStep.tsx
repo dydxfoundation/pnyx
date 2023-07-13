@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { AppDispatch, RootState } from 'store';
-import { LocalizationProps } from 'types';
-import { WalletType } from 'enums';
+import { AppDispatch, RootState } from '@/store';
+import { LocalizationProps } from '@/types';
+import { WalletType } from '@/enums';
 
-import { withLocalization } from 'hoc';
-import { UndoIcon } from 'icons';
+import { withLocalization } from '@/hoc';
+import { UndoIcon } from '@/icons';
 
-import { disconnectWallet as disconnectWalletAction } from 'actions/wallets';
+import { disconnectWallet as disconnectWalletAction } from '@/actions/wallets';
 
-import LoadingSpinner, { SpinnerSize } from 'components/LoadingSpinner';
-import { ModalHeader, ModalContentContainer } from 'components/Modals';
+import LoadingSpinner, { SpinnerSize } from '@/components/LoadingSpinner';
+import { ModalHeader, ModalContentContainer } from '@/components/Modals';
 
-import { getWalletType, getIsWalletConnecting, getWalletAddress } from 'selectors/wallets';
+import { getWalletType, getIsWalletConnecting, getWalletAddress } from '@/selectors/wallets';
 
-import { STRING_KEYS } from 'constants/localization';
-import { LOCAL_STORAGE_KEYS, setLocalStorage } from 'lib/local-storage';
+import { STRING_KEYS } from '@/constants/localization';
+import { LOCAL_STORAGE_KEYS, setLocalStorage } from '@/lib/local-storage';
 
 import { OnboardingStepFooterLinks } from './OnboardingStepStyles';
 
