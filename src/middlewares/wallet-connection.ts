@@ -24,6 +24,7 @@ import {
 } from '@/lib/wallet-connection';
 
 import contractClient from '@/lib/contract-client';
+<<<<<<< HEAD
 import {
   getLocalStorage,
   removeLocalStorage,
@@ -50,6 +51,16 @@ const walletConnectionMiddleware: Middleware<{}, RootState> =
       }
     } else if (type === connectWallet().type) {
       const { walletType, options, autoReconnect } = payload;
+=======
+import { getLocalStorage, removeLocalStorage, LOCAL_STORAGE_KEYS } from '@/lib/local-storage';
+
+const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) => async (
+  action
+) => {
+  next(action);
+
+  const { type, payload } = action;
+>>>>>>> main
 
       const { provider, walletConnectType, isWalletLink } = await getProviderByWalletType({
         walletType,
