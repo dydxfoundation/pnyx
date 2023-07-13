@@ -5,7 +5,7 @@ import type { LocalizationProps } from '@/types';
 import { withLocalization } from '../hoc';
 
 import { Icon } from './Icon';
-import { CommonwealthIcon, DiscordIcon, TwitterIcon } from '../icons';
+import { DiscourseIcon, DiscordIcon, TwitterIcon } from '../icons';
 
 import { STRING_KEYS } from '../constants/localization';
 
@@ -66,8 +66,8 @@ const links: {
       {
         labelKey: STRING_KEYS.FORUMS,
         descriptionKey: STRING_KEYS.FORUMS_DESCRIPTION,
-        href: 'https://forums.dydx.community',
-        icon: CommonwealthIcon,
+        href: 'https://dydx.forum/',
+        icon: DiscourseIcon,
         isExternalLink: true,
       },
     ],
