@@ -63,6 +63,7 @@ export const getWalletConnect2Provider = () => walletConnect2Provider;
 
 const disconnectWalletConnect2Provider = async () => {
   await walletConnect2Provider?.disconnect();
+  await walletConnect2Provider?.reset();
 };
 
 export type ProviderByWalletTypeResponse = {
