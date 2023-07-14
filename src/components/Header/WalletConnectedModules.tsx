@@ -57,9 +57,7 @@ const WalletConnectedModules: React.FC<
             <BellIcon id="bell-icon-desktop" />
           )}
         </NotificationsButton>
-        {showNotificationsMenu && (
-          <NotificationsMenu notifications={notifications} />
-        )}
+        {showNotificationsMenu && <NotificationsMenu notifications={notifications} />}
       </ButtonWrapper>
       <ButtonWrapper>
         <WalletButton menuOpen={showWalletMenu} onClick={() => setShowWalletMenu(!showWalletMenu)}>
@@ -165,7 +163,8 @@ const StyledWalletIcon = styled.div<{ menuOpen: boolean }>`
     margin-right: 0;
   }
 
-  > svg {
+  > svg,
+  > img {
     height: 1.25rem;
     width: 1.25rem;
   }
