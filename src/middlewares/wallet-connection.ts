@@ -16,6 +16,8 @@ import { pageLoaded } from '@/actions/page';
 
 import { getPageViewport } from '@/selectors/page';
 
+import contractClient from '@/lib/contract-client';
+
 import {
   getProviderByWalletType,
   getWalletConnectProvider,
@@ -23,8 +25,6 @@ import {
   walletLinkInstance,
 } from '@/lib/wallet-connection';
 
-import contractClient from '@/lib/contract-client';
-<<<<<<< HEAD
 import {
   getLocalStorage,
   removeLocalStorage,
@@ -51,16 +51,6 @@ const walletConnectionMiddleware: Middleware<{}, RootState> =
       }
     } else if (type === connectWallet().type) {
       const { walletType, options, autoReconnect } = payload;
-=======
-import { getLocalStorage, removeLocalStorage, LOCAL_STORAGE_KEYS } from '@/lib/local-storage';
-
-const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) => async (
-  action
-) => {
-  next(action);
-
-  const { type, payload } = action;
->>>>>>> main
 
       const { provider, walletConnectType, isWalletLink } = await getProviderByWalletType({
         walletType,
@@ -98,8 +88,6 @@ const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) 
                 getLocalStorage({ key: LOCAL_STORAGE_KEYS.WALLETCONNECT2_SESSION_TOPIC })
             )
           ) {
-            await provider.connect();
-
             const session = provider.session;
 
             setLocalStorage({
@@ -179,7 +167,6 @@ const walletConnectionMiddleware: Middleware<{}, RootState> = (store) => (next) 
         }
 
         const walletConnect2Provider = getWalletConnect2Provider();
-
         await walletConnect2Provider?.disconnect();
         await walletConnect2Provider?.reset();
       }
