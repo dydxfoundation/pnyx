@@ -3,6 +3,7 @@ import React from 'react';
 import { WalletType } from '@/enums';
 
 import {
+  BitKeepIcon,
   BitPieIcon,
   CloverWalletIcon,
   CoinbaseWalletIcon,
@@ -19,7 +20,8 @@ import {
   WalletConnectIcon,
 } from '@/icons';
 
-const WALLET_ICONS: Record<WalletType, React.FC> = {
+const WALLET_ICONS: Record<WalletType, string | React.FC> = {
+  [WalletType.BitKeep]: BitKeepIcon,
   [WalletType.BitPie]: BitPieIcon,
   [WalletType.CloverWallet]: CloverWalletIcon,
   [WalletType.CoinbaseWallet]: CoinbaseWalletIcon,
@@ -34,6 +36,7 @@ const WALLET_ICONS: Record<WalletType, React.FC> = {
   [WalletType.TrustWallet]: TrustWalletIcon,
   [WalletType.TokenPocket]: TokenPocketIcon,
   [WalletType.WalletConnect]: WalletConnectIcon,
+  [WalletType.WalletConnect2]: WalletConnectIcon,
 };
 
 export const WalletIcon: React.FC<{ walletType: WalletType }> = ({ walletType }) => {
@@ -42,6 +45,8 @@ export const WalletIcon: React.FC<{ walletType: WalletType }> = ({ walletType })
   if (!Icon) {
     throw new Error('Unsupported walletType');
   }
+
+  if (typeof Icon === 'string') return <img src={Icon} alt="" />;
 
   return <Icon />;
 };

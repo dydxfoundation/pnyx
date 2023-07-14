@@ -1,12 +1,16 @@
 import WalletLink from 'walletlink';
-
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import { EthereumProvider } from '@walletconnect/ethereum-provider';
 
 import { WalletType } from '@/enums';
-
 import { ConnectWalletOptions } from '@/types';
+import { colors } from '@/styles';
 
-import { INJECTED_WALLET_FLAGS, WALLETCONNECT_MOBILE_LINKS } from '@/constants/wallets';
+import {
+  INJECTED_WALLET_FLAGS,
+  WALLETCONNECT1_MOBILE_LINKS,
+  WALLETCONNECT2_WALLET_IDS,
+} from '@/constants/wallets';
 
 export const walletLinkInstance = new WalletLink({
   appName: 'dYdX',
@@ -17,10 +21,10 @@ export const walletLinkInstance = new WalletLink({
 const networkId = Number(import.meta.env.VITE_NETWORK_ID);
 
 const walletConnectBaseOptions = {
+  bridge: import.meta.env.VITE_WALLETCONNECT1_BRIDGE_URI,
   rpc: {
     [networkId]: import.meta.env.VITE_ETHEREUM_NODE_URI || '',
   },
-  bridge: import.meta.env.VITE_WALLET_CONNECT_BRIDGE_URI || '',
 };
 
 export const coinbaseWalletProvider = walletLinkInstance.makeWeb3Provider(
@@ -28,25 +32,56 @@ export const coinbaseWalletProvider = walletLinkInstance.makeWeb3Provider(
   networkId
 );
 
+const walletConnect2EthereumProviderOptions: Parameters<(typeof EthereumProvider)['init']>[0] = {
+  projectId: import.meta.env.VITE_WALLETCONNECT2_PROJECT_ID!,
+  chains: [networkId],
+  showQrModal: true,
+  qrModalOptions: {
+    themeMode: 'dark' as const,
+    themeVariables: {
+      '--wcm-accent-color': colors.colorpurple,
+      '--wcm-background-color': colors.colorpurple,
+      '--wcm-z-index': '10000',
+      '--wcm-font-family': 'Relative Pro',
+    },
+    enableExplorer: true,
+  },
+  events: ['accountsChanged', 'chainChanged'],
+  metadata: {
+    name: 'dYdX',
+    description: '',
+    url: 'https://dydx.community',
+    icons: ['https://dydx.community/cbw-image.png'],
+  },
+};
+
 let walletConnectProvider: WalletConnectProvider;
 export const getWalletConnectProvider = () => walletConnectProvider;
+
+let walletConnect2Provider: Awaited<ReturnType<typeof EthereumProvider.init>>;
+export const getWalletConnect2Provider = () => walletConnect2Provider;
+
+const disconnectWalletConnect2Provider = async () => {
+  await walletConnect2Provider?.disconnect();
+  await walletConnect2Provider?.reset();
+};
 
 export type ProviderByWalletTypeResponse = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   provider: any;
-  isWalletConnect?: boolean;
+  walletConnectType?: WalletType.WalletConnect | WalletType.WalletConnect2;
   isWalletLink?: boolean;
 };
 
-export const getProviderByWalletType = ({
+export const getProviderByWalletType = async ({
   walletType,
   options = {},
 }: {
   walletType: WalletType;
   options?: ConnectWalletOptions;
-}): ProviderByWalletTypeResponse => {
+}): Promise<ProviderByWalletTypeResponse> => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { ethereum, web3 } = window as unknown as {ethereum: any, web3: any};
+  const { ethereum, web3 } = window as unknown as { ethereum: any; web3: any };
 
   switch (walletType) {
     case WalletType.BitPie:
@@ -70,15 +105,38 @@ export const getProviderByWalletType = ({
         return { provider: web3.currentProvider };
       }
 
+      // WalletConnect 2.0
+      if (WALLETCONNECT2_WALLET_IDS[walletType]) {
+        try {
+          await disconnectWalletConnect2Provider();
+          walletConnect2Provider = await EthereumProvider.init({
+            ...walletConnect2EthereumProviderOptions,
+            qrModalOptions: {
+              ...walletConnect2EthereumProviderOptions.qrModalOptions,
+              explorerRecommendedWalletIds: [WALLETCONNECT2_WALLET_IDS[walletType]!],
+              explorerExcludedWalletIds: 'ALL',
+            },
+          });
+
+          return {
+            provider: walletConnect2Provider,
+            walletConnectType: WalletType.WalletConnect2,
+          };
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      // WalletConnect 1.0
       // Restrict WalletConnect options to the selected wallet
       walletConnectProvider = new WalletConnectProvider({
         ...walletConnectBaseOptions,
         qrcodeModalOptions: {
-          mobileLinks: WALLETCONNECT_MOBILE_LINKS[walletType],
+          mobileLinks: WALLETCONNECT1_MOBILE_LINKS[walletType],
         },
       });
 
-      return { provider: walletConnectProvider, isWalletConnect: true };
+      return { provider: walletConnectProvider, walletConnectType: WalletType.WalletConnect };
     }
 
     case WalletType.CoinbaseWallet: {
@@ -111,13 +169,27 @@ export const getProviderByWalletType = ({
 
       walletConnectProvider = new WalletConnectProvider(walletConnectBaseOptions);
 
-      return { provider: walletConnectProvider, isWalletConnect: true };
+      return { provider: walletConnectProvider, walletConnectType: WalletType.WalletConnect };
     }
 
     case WalletType.WalletConnect: {
       walletConnectProvider = new WalletConnectProvider(walletConnectBaseOptions);
 
-      return { provider: walletConnectProvider, isWalletConnect: true };
+      return { provider: walletConnectProvider, walletConnectType: WalletType.WalletConnect };
+    }
+
+    case WalletType.WalletConnect2: {
+      try {
+        await disconnectWalletConnect2Provider();
+        walletConnect2Provider = await EthereumProvider.init(walletConnect2EthereumProviderOptions);
+
+        return {
+          provider: walletConnect2Provider,
+          walletConnectType: WalletType.WalletConnect2,
+        };
+      } catch (e) {
+        return { provider: undefined };
+      }
     }
 
     case WalletType.TestWallet: {

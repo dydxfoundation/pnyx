@@ -1,5 +1,6 @@
 // Note: enum values also used as string keys
 export enum WalletType {
+  BitKeep = 'BITKEEP',
   BitPie = 'BITPIE',
   CloverWallet = 'CLOVER_WALLET',
   CoinbaseWallet = 'COINBASE_WALLET',
@@ -12,6 +13,7 @@ export enum WalletType {
   TokenPocket = 'TOKEN_POCKET',
   TrustWallet = 'TRUST_WALLET',
   WalletConnect = 'WALLET_CONNECT',
+  WalletConnect2 = 'WALLET_CONNECT_2',
   TestWallet = 'TEST_WALLET',
   OtherWallet = 'OTHER_WALLET',
 }

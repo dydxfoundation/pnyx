@@ -217,7 +217,8 @@ const Label = styled.div`
 `;
 
 const StyledWalletIcon = styled.div`
-  > svg {
+  > svg,
+  > img {
     margin-right: 0.5rem;
     height: 1rem;
     width: 1rem;

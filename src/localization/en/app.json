@@ -103,18 +103,20 @@
     "TERMS_OF_USE_DESCRIPTION": "Rules for using the platform"
   },
   "WALLETS": {
+    "BITKEEP": "BitKeep",
     "BITPIE": "BitPie",
     "CLOVER_WALLET": "Clover Wallet",
     "COINBASE_WALLET": "Coinbase Wallet",
     "COIN98": "Coin98",
-    "HUOBI_WALLET": "Huobi Wallet",
+    "HUOBI_WALLET": "iToken",
     "IMTOKEN": "imToken",
     "MATH_WALLET": "MathWallet",
     "METAMASK": "MetaMask",
     "RAINBOW_WALLET": "Rainbow",
     "TOKEN_POCKET": "TokenPocket",
     "TRUST_WALLET": "Trust",
-    "WALLET_CONNECT": "WalletConnect",
+    "WALLET_CONNECT": "WalletConnect 1.0",
+    "WALLET_CONNECT_2": "WalletConnect",
     "TEST_WALLET": "Test Wallet",
     "OTHER_WALLET": "Other"
   },
