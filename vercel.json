@@ -1,8 +1,7 @@
 {
   "headers": [
     {
-      "source": "/(.*?)",
-      "destination": "/index.html",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -22,5 +21,6 @@
         }
       ]
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
