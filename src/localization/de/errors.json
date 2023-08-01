@@ -1,0 +1,18 @@
+{
+  "GENERAL": {
+    "SOMETHING_WENT_WRONG": "Etwas ist schiefgelaufen: {ERROR_MESSAGE}",
+    "UNKNOWN_ERROR": "Unbekannter Fehler",
+    "WRONG_NETWORK": "Ihr Wallet-Netzwerk ist falsch. Bitte stellen Sie sicher, dass es auf „Ethereum Mainnet“ eingestellt ist."
+  },
+  "DELEGATE": {
+    "ADDRESS_IS_OWN_ADDRESS": "Bitte geben Sie eine Ethereum-Adresse ein, die nicht Ihre eigene ist.",
+    "INVALID_ETHEREUM_ADDRESS": "Bitte geben Sie eine gültige Ethereum-Adresse ein."
+  },
+  "STAKE": {
+    "STAKE_MORE_THAN_BALANCE": "Sie können nicht mehr als Ihr verfügbares Wallet-Guthaben staken."
+  },
+  "WITHDRAW": {
+    "REQUEST_WITHDRAW_MORE_THAN_BALANCE": "Sie können keine Auszahlung beantragen, die Ihr aktuelles, gestaktes Guthaben übersteigt.",
+    "LIQUIDITY_POOL_CURRENT_BLACKOUT_WINDOW": "Die letzten 14 Tage jeder Epoche sind ein Blackout Window, in dem keine Auszahlungen aus dem Liquiditätspool angefordert werden können. Die nächste Epoche beginnt am {EPOCH_DATE}."
+  }
+}
