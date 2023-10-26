@@ -27,6 +27,7 @@ export const globalTheme: Theme = {
 
 const DashboardPage = lazy(() => import('./pages/dashboard/Dashboard'));
 const HistoryPage = lazy(() => import('./pages/history/History'));
+const MigratePage = lazy(()=>import('./pages/migrate/Migrate'));
 
 const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
 
@@ -168,6 +169,7 @@ const App: React.FC = () => (
                   />
                   <Route path={AppRoute.History} component={HistoryPage} />
                   <Route path={AppRoute.Dashboard} component={DashboardPage} />
+                  <Route path={AppRoute.Migrate} component={MigratePage} />
                   <Redirect to={AppRoute.Dashboard} />
                 </Switch>
               </Suspense>

@@ -17,6 +17,7 @@ export { default as TriangleDownIcon } from './triangle-down.svg';
 export { default as UndoIcon } from './undo.svg';
 export { default as WithdrawIcon } from './withdraw.svg';
 export { default as XIcon } from './x.svg';
+export { default as LogoXIcon } from './logo-x.svg';
 
 // Currencies
 export { default as DydxDarkIcon } from './currencies/dydx-dark.svg';

@@ -15,4 +15,8 @@ export enum ExternalLink {
   RevolvingCreditAgreement = 'https://dydx.foundation/revolving-credit-agreement',
   TermsOfUse = 'https://dydx.foundation/terms',
   TradeApp = 'https://trade.dydx.exchange',
+  BridgeLink = "https://bridge.dydx.exchange",
+  OpsDao = "​https://www.dydxopsdao.com/",
+  MigrationDocs = 'https://docs.dydx.community/dydx-token-migration/start-here/introduction',
+  FoundationBlog = 'https://www.dydx.foundation/blog',
 }

@@ -6,6 +6,7 @@ import { breakpoints, fontSizes } from '@/styles';
 export enum TagColor {
   Light = 'Light',
   Lighter = 'Lighter',
+  Purple = 'Purple',
 }
 
 type ElementProps = {
@@ -28,7 +29,7 @@ const StyledTag = styled.div<ElementProps>`
   justify-content: center;
   align-items: center;
   letter-spacing: 0.08em;
-  color: ${({ theme }) => theme.textlight};
+  color: ${({ color, theme }) => color === TagColor.Purple ? theme.colorpurple : theme.textlight};
   border-radius: 0.25rem;
   padding: 0.1875rem 0.25rem 0.1875rem 0.3125rem;
   margin-top: 0.0625rem;
@@ -40,6 +41,9 @@ const StyledTag = styled.div<ElementProps>`
       }
       case TagColor.Lighter: {
         return theme.layerlighter;
+      }
+      case TagColor.Purple: {
+        return theme.layerpurplefaded;
       }
     }
 

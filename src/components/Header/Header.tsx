@@ -13,6 +13,7 @@ import { HelpCircleIcon, LogoIcon } from '@/icons';
 import { withLocalization } from '@/hoc';
 
 import Button from '@/components/Button';
+import Tag, { TagColor } from '@/components/Tag';
 
 import { openModal as openModalAction } from '@/actions/modals';
 import { setSelectedLocale as setSelectedLocaleAction } from '@/actions/localization';
@@ -64,6 +65,16 @@ export const UnconnectedHeader: React.FC<ConnectedHeaderProps> = ({
         </Button>
         <Button
           link
+          active={!!matchPath(location.pathname, { path: AppRoute.Migrate })}
+          onClick={() => history.push(AppRoute.Migrate)}
+        >
+          {stringGetter({ key: STRING_KEYS.MIGRATE })}
+          <Tag compact marginLeft color={TagColor.Purple}>
+            {stringGetter({ key: STRING_KEYS.NEW })}
+          </Tag>
+        </Button>
+        <Button
+          link
           active={!!matchPath(location.pathname, { path: AppRoute.History })}
           onClick={() => {
             history.push(AppRoute.History);
@@ -111,7 +122,7 @@ const StyledHeader = styled.div`
   width: 100%;
   padding: 1.5rem 3rem;
   background-color: ${({ theme }) => theme.layerbase};
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0px 0px 24px 8px rgba(26, 26, 39, 0.5);
 
   @media ${breakpoints.tablet} {
