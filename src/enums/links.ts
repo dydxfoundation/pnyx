@@ -15,7 +15,7 @@ export enum ExternalLink {
   RevolvingCreditAgreement = 'https://dydx.foundation/revolving-credit-agreement',
   TermsOfUse = 'https://dydx.foundation/terms',
   TradeApp = 'https://trade.dydx.exchange',
-  BridgeLink = "https://bridge.dydx.exchange",
+  BridgeLink = "https://bridge.dydx.trade",
   MigrationDocs = 'http://www.dydx.foundation/how-to-bridge',
   FoundationBlog = 'https://www.dydx.foundation/blog',
 }
