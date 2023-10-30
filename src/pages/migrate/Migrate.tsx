@@ -21,7 +21,7 @@ const BRIDGE_OPTIONS = [
     icon: <LogoXIcon />,
     label: 'bridge.dydx.trade',
     href: ExternalLink.BridgeLink,
-    learnMoreHref: ExternalLink.OpsDao,
+    learnMoreHref: ExternalLink.MigrationDocs,
   },
 ];
 

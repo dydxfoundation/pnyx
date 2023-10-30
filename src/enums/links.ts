@@ -16,7 +16,6 @@ export enum ExternalLink {
   TermsOfUse = 'https://dydx.foundation/terms',
   TradeApp = 'https://trade.dydx.exchange',
   BridgeLink = "https://bridge.dydx.exchange",
-  OpsDao = "​https://www.dydxopsdao.com/",
-  MigrationDocs = 'https://docs.dydx.community/dydx-token-migration/start-here/introduction',
+  MigrationDocs = 'http://www.dydx.foundation/how-to-bridge',
   FoundationBlog = 'https://www.dydx.foundation/blog',
 }
