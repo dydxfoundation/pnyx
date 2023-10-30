@@ -5,7 +5,7 @@ import { LocalizationProps } from '@/types';
 import { AppRoute } from '@/enums';
 
 import { withLocalization } from '@/hoc';
-import { fontSizes } from '@/styles';
+import { breakpoints, fontSizes } from '@/styles';
 
 import { STRING_KEYS } from '@/constants/localization';
 
@@ -28,21 +28,27 @@ const Styled: Record<string, AnyStyledComponent> = {};
 
 Styled.Banner = styled.div`
   ${fontSizes.size14}
-  position: sticky;
-  top: 0;
-
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
+  height: var(--banner-height);
   flex-wrap: wrap;
   justify-content: center;
-  height: 3.25rem;
   width: 100vw;
   text-align: center;
   background-color: ${({ theme }) => theme.layerlight};
   border-bottom: solid 1px ${({ theme }) => theme.bordergrey};
   z-index: 2;
+
+  padding: 0.5rem;
+
+  > * {
+    margin: auto 0.25rem;
+  }
 
   button {
     ${fontSizes.size14}
