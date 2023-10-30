@@ -121,7 +121,7 @@ Styled.BridgeOptionRow = styled.div`
 Styled.BridgeNotes = styled.div`
   margin: 1.25rem 0;
   border-radius: 0.75rem;
-  padding: 1.25rem 0;
+  padding: 1.25rem 0 0.5rem;
   background-color: transparent;
   border-radius: 0.75rem;
   color: ${({ theme }) => theme.textdark};
@@ -131,6 +131,7 @@ Styled.BridgeNotes = styled.div`
       '#',
       ''
     )}' stroke-width='0.125rem' stroke-dasharray='6%2c8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`};
+  background-position: center;
 
   > * {
     padding: 0 1.25rem;
@@ -138,7 +139,7 @@ Styled.BridgeNotes = styled.div`
 
   li {
     color: ${({ theme }) => theme.textbase};
-    margin: 0.5rem 0 0.5rem 1.25rem;
+    margin: 0.5rem 0 0 1.25rem;
   }
 
   a {

@@ -257,13 +257,14 @@
     "BRIDGES": "Bridges",
     "BRIDGES_DESCRIPTION": "The dYdX Foundation does not operate any public infrastructure related to the dYdX Chain and/or a migration of ethDYDX tokens to the dYdX Chain. However, as part of its statutory mission to support and promote the dYdX ecosystem, the dYdX Foundation has compiled a list of third-party user interface solutions that allow ethDYDX token holders to interact with the wethDYDX Smart Contract in order to permanently lock their ethDYDX tokens, receive wethDYDX tokens on Ethereum and qualify to receive DYDX tokens on the dYdX Chain.",
     "PLEASE_NOTE": "Please note",
-    "BRIDGES_NOTE_1": "The above list contains only user interface solutions for interacting with the wethDYDX Smart Contract known to the Foundation as of the date of last update of this page, but there may be others.",
+    "BRIDGES_NOTE_1": "The above list contains only user interface solutions for interacting with the wethDYDX Smart Contract known to the Foundation as of the date of last update of this page, but there may be others. bridge.dydx.trade is not the only user interface solution for interacting with the wethDYDX Smart Contract.",
     "BRIDGES_NOTE_2": "All information provided in the dYdX Foundation’s website in connection with access to user interface solutions for interacting with the wethDYDX Smart Contract is for informational purposes only.",
     "BRIDGES_NOTE_3": "All of the above user interface solutions are third-party solutions for which the dYdX Foundation has no control or involvement. Users who interact with any user interface solutions, including the above, will be doing so at their own risk and will not be interacting with the dYdX Foundation in any way whatsoever.",
     "BRIDGES_NOTE_4": "Users should conduct their own research and due diligence on any bridging solutions, including the above user interface solutions, and make their own informed decisions on the merits and risks of using any of these solutions to carry out a migration (after consulting with applicable external advisors). It is advisable to only interact with bridging solutions from reputable sources and that have a history of successful performance.",
     "BRIDGES_NOTE_5": "The dYdX Foundation makes no recommendations, endorsements, representations or warranties whatsoever regarding any of the above user interface solutions and/or any other solutions relating to a potential migration of DYDX tokens from Ethereum to the dYdX Chain.  In particular, the dYdX Foundation has not audited and will not audit any of the above user interface solutions.",
     "BRIDGES_NOTE_6": "More information on the wethDYDX Smart Contract and the potential migration of DYDX tokens from Ethereum to the dYdX Chain is available {HERE}, as well as on the {DYDX_FOUNDATION_BLOG}.",
     "DYDX_FOUNDATION_BLOG": "dYdX Foundation’s blog",
-    "HERE": "here"
+    "HERE": "here",
+    "MIGRATION_BANNER_MESSAGE": "Interested in bridging your DYDX tokens from Ethereum to dYdX Chain?"
   }
 }

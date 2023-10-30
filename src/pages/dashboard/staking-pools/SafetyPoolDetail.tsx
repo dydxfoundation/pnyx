@@ -217,7 +217,7 @@ const SafetyPoolDetail: React.FC<
         </Styled.BannerContainer>
       )}
       <DetailPageLayoutContainer>
-        <Styled.ContentLeft>
+        <ContentLeft>
           <CardRow>
             <SingleStatCard
               color={CardColor.Dark}
@@ -366,7 +366,7 @@ const SafetyPoolDetail: React.FC<
               </Styled.WithdrawCardRow>
             </Styled.WithdrawSection>
           )}
-        </Styled.ContentLeft>
+        </ContentLeft>
         <Styled.ContentRight>
           <CollapsibleSection
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
@@ -421,10 +421,6 @@ Styled.BannerContainer = styled.div`
     margin-top: 0;
     margin-bottom: 1.25rem;
   }
-`;
-
-Styled.ContentLeft = styled(ContentLeft)`
-  flex: 0 0 34rem;
 `;
 
 Styled.ContentRight = styled(ContentRight)`

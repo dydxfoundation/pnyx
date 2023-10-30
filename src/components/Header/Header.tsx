@@ -116,10 +116,9 @@ export const UnconnectedHeader: React.FC<ConnectedHeaderProps> = ({
 const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 100vw;
   padding: 1.5rem 3rem;
   background-color: ${({ theme }) => theme.layerbase};
   z-index: 2;
