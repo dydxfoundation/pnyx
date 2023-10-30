@@ -14,6 +14,7 @@ import { GlobeIcon, LinkOutIcon } from '@/icons';
 import { withLocalization } from '@/hoc';
 
 import AnimatedHamburgerClose from '@/components/AnimatedHamburgerClose';
+import Tag, { TagColor } from '@/components/Tag';
 
 import { openModal as openModalAction } from '@/actions/modals';
 import { setSelectedLocale as setSelectedLocaleAction } from '@/actions/localization';
@@ -76,6 +77,20 @@ const MobileNavigation: React.FC<
               }}
             >
               {stringGetter({ key: STRING_KEYS.DASHBOARD })}
+            </NavItem>
+            <NavItem
+              role="button"
+              tabIndex={0}
+              active={!!matchPath(location.pathname, { path: AppRoute.Migrate })}
+              onClick={() => {
+                history.push(AppRoute.Migrate);
+                setShowMenu(false);
+              }}
+            >
+              {stringGetter({ key: STRING_KEYS.MIGRATE })}
+              <Tag compact marginLeft color={TagColor.Purple}>
+                {stringGetter({ key: STRING_KEYS.NEW })}
+              </Tag>
             </NavItem>
             <NavItem
               role="button"

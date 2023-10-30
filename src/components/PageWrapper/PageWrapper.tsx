@@ -21,15 +21,15 @@ const StyledPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5.5rem 3rem 3rem;
+  padding: 0 3rem 3rem;
   height: 100%;
   overflow: scroll;
 
   @media ${breakpoints.tablet} {
-    padding: 4.5rem 1.5rem 2rem;
+    padding: 0 1.5rem 2rem;
   }
 
   @media ${breakpoints.mobile} {
-    padding: 4.5rem 1rem 1.5rem;
+    padding: 0 1rem 1.5rem;
   }
 `;

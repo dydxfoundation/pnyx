@@ -19,6 +19,7 @@ export default {
   layerlightfaded: 'rgba(35, 35, 52, 0.8)',
   layerlighterfaded: 'rgba(57, 57, 83, 0.8)',
   colorpurplefaded: 'rgba(105, 102, 255, 0.8)',
+  layerpurplefaded: 'rgba(105, 102, 255, 0.16)',
 
   textlight: '#fafafd',
   textbase: '#c8c7d8',

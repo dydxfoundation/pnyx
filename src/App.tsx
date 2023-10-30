@@ -10,6 +10,7 @@ import { GeoFence, InitializePage, LocalizationWrapper } from '@/hoc';
 import { AppRoute, StakingPoolRoute } from '@/enums';
 import { Theme } from '@/types';
 
+import Banner from './components/Banner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageWrapper from '@/components/PageWrapper';
@@ -27,6 +28,7 @@ export const globalTheme: Theme = {
 
 const DashboardPage = lazy(() => import('./pages/dashboard/Dashboard'));
 const HistoryPage = lazy(() => import('./pages/history/History'));
+const MigratePage = lazy(() => import('./pages/migrate/Migrate'));
 
 const SafetyPoolDetailPage = lazy(() => import('./pages/dashboard/staking-pools/SafetyPoolDetail'));
 
@@ -153,6 +155,7 @@ const App: React.FC = () => (
           />
 
           <PageWrapper>
+            <Banner />
             <Header />
             <GeoFence>
               <Suspense fallback={<LoadingSpace id="main-page-content" />}>
@@ -168,6 +171,7 @@ const App: React.FC = () => (
                   />
                   <Route path={AppRoute.History} component={HistoryPage} />
                   <Route path={AppRoute.Dashboard} component={DashboardPage} />
+                  <Route path={AppRoute.Migrate} component={MigratePage} />
                   <Redirect to={AppRoute.Dashboard} />
                 </Switch>
               </Suspense>

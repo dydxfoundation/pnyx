@@ -90,12 +90,8 @@ const LiquidityPoolDetail: React.FC<
 
   const { userBalance, unclaimedRewards } = stakingBalancesData.balances[StakingPool.Liquidity];
 
-  const {
-    nextEpochDate,
-    lengthOfBlackoutWindow,
-    poolSize,
-    rewardsPerSecond,
-  } = stakingPoolsData.data[StakingPool.Liquidity];
+  const { nextEpochDate, lengthOfBlackoutWindow, poolSize, rewardsPerSecond } =
+    stakingPoolsData.data[StakingPool.Liquidity];
 
   const formattedDiffUntilEpoch = useGetCountdownDiff({
     futureDateISO: nextEpochDate,
@@ -116,9 +112,8 @@ const LiquidityPoolDetail: React.FC<
     stringGetter,
   });
 
-  const { availableWithdrawBalance, pendingWithdrawBalance } = withdrawBalancesData[
-    StakingPool.Liquidity
-  ];
+  const { availableWithdrawBalance, pendingWithdrawBalance } =
+    withdrawBalancesData[StakingPool.Liquidity];
 
   const userStakingBalance = calculateUserStakingBalance({
     stakingBalancesData,
@@ -231,7 +226,7 @@ const LiquidityPoolDetail: React.FC<
         </BannerContainer>
       )}
       <DetailPageLayoutContainer>
-        <StyledContentLeft>
+        <ContentLeft>
           <CardRow>
             <SingleStatCard
               color={CardColor.Dark}
@@ -385,14 +380,14 @@ const LiquidityPoolDetail: React.FC<
               </WithdrawCardRow>
             </WithdrawSection>
           )}
-        </StyledContentLeft>
+        </ContentLeft>
         <StyledContentRight>
           <CollapsibleSection
             label={stringGetter({ key: STRING_KEYS.ABOUT })}
             content={
               <>
                 <About
-                // eslint-disable-next-line react/no-danger
+                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     __html: stringGetter({
                       key: STRING_KEYS.LIQUIDITY_POOL_ABOUT,
@@ -458,10 +453,6 @@ const BannerContainer = styled.div`
   }
 `;
 
-const StyledContentLeft = styled(ContentLeft)`
-  flex: 0 0 34rem;
-`;
-
 const StyledContentRight = styled(ContentRight)`
   flex: 0 0 calc(100% - 36rem);
   margin-top: -0.5rem;
@@ -473,21 +464,20 @@ const StyledContentRight = styled(ContentRight)`
 `;
 
 const About = styled.span`
-> a {
-  color: ${({ theme }) => theme.colorpurple};
-  text-decoration: none;
-  cursor: pointer;
-
-  &:visited {
+  > a {
     color: ${({ theme }) => theme.colorpurple};
-  }
+    text-decoration: none;
+    cursor: pointer;
 
-  &:hover {
-    color: ${({ theme }) => theme.colorpurple};
-    text-decoration: underline;
+    &:visited {
+      color: ${({ theme }) => theme.colorpurple};
+    }
+
+    &:hover {
+      color: ${({ theme }) => theme.colorpurple};
+      text-decoration: underline;
+    }
   }
-}
-  
 `;
 
 const WithdrawSection = styled.div`
