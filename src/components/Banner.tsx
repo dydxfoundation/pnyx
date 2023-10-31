@@ -5,7 +5,7 @@ import { LocalizationProps } from '@/types';
 import { AppRoute } from '@/enums';
 
 import { withLocalization } from '@/hoc';
-import { fontSizes } from '@/styles';
+import { breakpoints, fontSizes } from '@/styles';
 
 import { STRING_KEYS } from '@/constants/localization';
 
@@ -27,17 +27,34 @@ export default withLocalization(withRouter(Banner));
 const Styled: Record<string, AnyStyledComponent> = {};
 
 Styled.Banner = styled.div`
-  ${fontSizes.size14}
-  position: sticky;
-  top: 0;
-
+  ${fontSizes.size13}
   display: flex;
   align-items: baseline;
+
+  position: sticky;
+  top: 0;
   gap: 0.5rem;
+
+  @media ${breakpoints.tablet} {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    padding: 0.5rem;
+
+    > h4 {
+      margin: auto 0.25rem;
+      max-width: 70%;
+    }
+  }
 
   flex-wrap: wrap;
   justify-content: center;
-  height: 3.25rem;
   width: 100vw;
   text-align: center;
   background-color: ${({ theme }) => theme.layerlight};
@@ -45,7 +62,8 @@ Styled.Banner = styled.div`
   z-index: 2;
 
   button {
-    ${fontSizes.size14}
+    ${fontSizes.size13}
+    padding: 0 0.5rem;
     border-radius: 0.5rem;
   }
 `;

@@ -18,6 +18,9 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
 export default PageWrapper;
 
 const StyledPageWrapper = styled.div`
+  --banner-height: 3.25rem;
+  --header-height: 4rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,10 +29,11 @@ const StyledPageWrapper = styled.div`
   overflow: scroll;
 
   @media ${breakpoints.tablet} {
-    padding: 0 1.5rem 2rem;
+    --banner-height: 4rem;
+    padding: 7.75rem 1.5rem 2rem;
   }
 
   @media ${breakpoints.mobile} {
-    padding: 0 1rem 1.5rem;
+    padding: 7.75rem 1rem 1.5rem;
   }
 `;
