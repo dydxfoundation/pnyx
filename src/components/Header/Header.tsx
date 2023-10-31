@@ -116,17 +116,22 @@ export const UnconnectedHeader: React.FC<ConnectedHeaderProps> = ({
 const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
-  position: fixed;
-  top: var(--banner-height);
-  left: 0;
-  width: 100%;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+
   padding: 1.5rem 3rem;
   background-color: ${({ theme }) => theme.layerbase};
   z-index: 2;
   box-shadow: 0px 0px 24px 8px rgba(26, 26, 39, 0.5);
 
   @media ${breakpoints.tablet} {
+    position: fixed;
+    top: var(--banner-height);
+    left: 0;
+    width: 100%;
     padding: 0.75rem 1.5rem;
+    height: var(--header-height);
   }
 
   @media ${breakpoints.mobile} {

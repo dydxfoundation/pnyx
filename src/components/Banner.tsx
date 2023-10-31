@@ -27,15 +27,32 @@ export default withLocalization(withRouter(Banner));
 const Styled: Record<string, AnyStyledComponent> = {};
 
 Styled.Banner = styled.div`
-  ${fontSizes.size14}
+  ${fontSizes.size13}
   display: flex;
   align-items: baseline;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
 
-  height: var(--banner-height);
+  position: sticky;
+  top: 0;
+  gap: 0.5rem;
+
+  @media ${breakpoints.tablet} {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    padding: 0.5rem;
+
+    > h4 {
+      margin: auto 0.25rem;
+      max-width: 70%;
+    }
+  }
+
   flex-wrap: wrap;
   justify-content: center;
   width: 100vw;
@@ -44,14 +61,9 @@ Styled.Banner = styled.div`
   border-bottom: solid 1px ${({ theme }) => theme.bordergrey};
   z-index: 2;
 
-  padding: 0.5rem;
-
-  > * {
-    margin: auto 0.25rem;
-  }
-
   button {
-    ${fontSizes.size14}
+    ${fontSizes.size13}
+    padding: 0 0.5rem;
     border-radius: 0.5rem;
   }
 `;

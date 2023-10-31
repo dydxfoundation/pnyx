@@ -19,16 +19,17 @@ export default PageWrapper;
 
 const StyledPageWrapper = styled.div`
   --banner-height: 3.25rem;
+  --header-height: 4rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8.75rem 3rem 3rem;
+  padding: 0 3rem 3rem;
   height: 100%;
   overflow: scroll;
 
   @media ${breakpoints.tablet} {
-    --banner-height: 5rem;
+    --banner-height: 4rem;
     padding: 7.75rem 1.5rem 2rem;
   }
 

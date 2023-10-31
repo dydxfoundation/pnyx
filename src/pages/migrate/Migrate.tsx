@@ -6,7 +6,7 @@ import { LocalizationProps } from '@/types';
 import { ExternalLink } from '@/enums';
 import { LogoXIcon } from '@/icons';
 import { withLocalization } from '@/hoc';
-import { fontSizes } from '@/styles';
+import { breakpoints, fontSizes } from '@/styles';
 
 import { STRING_KEYS } from '@/constants/localization';
 
@@ -106,7 +106,7 @@ Styled.BridgeOptionRow = styled.div`
 
   min-height: 6rem;
   border-radius: 0.75rem;
-  padding: 0 1.25rem;
+  padding: 1rem 1.25rem;
   color: ${({ theme }) => theme.textlight};
   background-color: ${({ theme }) => theme.layerlight};
   ${fontSizes.size20}
@@ -115,6 +115,11 @@ Styled.BridgeOptionRow = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+
+  @media ${breakpoints.mobile} {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 `;
 

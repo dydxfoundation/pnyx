@@ -45,7 +45,10 @@ const MobileNavigation: React.FC<
         <MobileNavMenu>
           <IconButtons>
             <IconButtonWrapper>
-              <IconButton menuOpen={showLanguageSelectorMenu} onClick={() => setShowLanguageSelectorMenu(!showLanguageSelectorMenu)}>
+              <IconButton
+                menuOpen={showLanguageSelectorMenu}
+                onClick={() => setShowLanguageSelectorMenu(!showLanguageSelectorMenu)}
+              >
                 <GlobeIcon />
                 {showLanguageSelectorMenu && (
                   <LanguageSelectorMenu>
@@ -141,9 +144,9 @@ const MobileNavMenu = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   position: fixed;
-  top: 4rem;
+  top: calc(var(--banner-height) + var(--header-height));
   left: 0;
-  height: calc(100% - 4rem);
+  height: calc(100% - calc(var(--banner-height) + var(--header-height)));
   width: 100%;
   background-color: ${({ theme }) => theme.layerbase};
   z-index: 1;
