@@ -42,7 +42,7 @@ const walletConnect2EthereumProviderOptions: Parameters<(typeof EthereumProvider
       '--wcm-accent-color': colors.colorpurple,
       '--wcm-background-color': colors.colorpurple,
       '--wcm-z-index': '10000',
-      '--wcm-font-family': 'Courier, monospace',
+      '--wcm-font-family': '"Satoshi", system-ui, -apple-system, Helvetica, Arial, sans-serif',
     },
     enableExplorer: true,
   },
