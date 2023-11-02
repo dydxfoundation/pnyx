@@ -2,25 +2,25 @@ import { css } from 'styled-components';
 
 export const fonts = {
   regular: css`
-    font-family: 'Relative Pro';
+    font-family: "Satoshi", system-ui, -apple-system, Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-feature-settings: 'zero' 0;
     letter-spacing: -0.02rem;
   `,
   medium: css`
-    font-family: 'Relative Pro';
+    font-family: "Satoshi", system-ui, -apple-system, Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-feature-settings: 'zero' 0;
     letter-spacing: -0.02rem;
   `,
   bold: css`
-    font-family: 'Relative Pro';
+    font-family: "Satoshi", system-ui, -apple-system, Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-feature-settings: 'zero' 0;
     letter-spacing: -0.02rem;
   `,
   monoRegular: css`
-    font-family: 'Relative Mono';
+    font-family: Courier, monospace;
     font-weight: 400;
     font-feature-settings: 'zero' 1;
     letter-spacing: -0.02rem;
