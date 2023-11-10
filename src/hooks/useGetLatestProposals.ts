@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 
 // @ts-ignore-next-line
-import type { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation-v3/governance';
 
 import { setLatestProposals } from '@/actions/governance';
 

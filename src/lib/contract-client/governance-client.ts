@@ -7,7 +7,7 @@ import type {
   UserGovernanceDelegatees,
   Proposal,
   // @ts-ignore-next-line
-} from '@dydxfoundation/governance';
+} from '@dydxfoundation-v3/governance';
 
 import { DelegatePowersTxHashes } from '@/types';
 

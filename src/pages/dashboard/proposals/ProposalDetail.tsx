@@ -12,7 +12,7 @@ import remarkBreaks from 'remark-breaks';
 import rehypeRaw from 'rehype-raw';
 
 // @ts-ignore-next-line
-import type { Proposals } from '@dydxfoundation/governance';
+import type { Proposals } from '@dydxfoundation-v3/governance';
 
 import {
   AppRoute,

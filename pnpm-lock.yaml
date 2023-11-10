@@ -9,9 +9,9 @@ patchedDependencies:
     path: patches/reflect-metadata@0.1.13.patch
 
 dependencies:
-  '@dydxfoundation/governance':
-    specifier: ^1.0.3
-    version: 1.0.3(hardhat@2.16.1)(react@18.2.0)
+  '@dydxfoundation-v3/governance':
+    specifier: 1.0.5
+    version: 1.0.5(hardhat@2.16.1)(react@18.2.0)
   '@walletconnect/ethereum-provider':
     specifier: ^2.9.0
     version: 2.9.0(@walletconnect/modal@2.5.9)
@@ -1668,8 +1668,8 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@dydxfoundation/governance@1.0.3(hardhat@2.16.1)(react@18.2.0):
-    resolution: {integrity: sha512-68npPXhvMRfxYSut8AhbmAQp1+OvlqWcjUWxYVTtaOkX+uZRE9o2NKeSApkiqu1DiBMoQE323/zejxOtAs/nUg==}
+  /@dydxfoundation-v3/governance@1.0.5(hardhat@2.16.1)(react@18.2.0):
+    resolution: {integrity: sha512-BqYjjbUpcMDuwEG5afa3Q0KjAAqE/KNsUVQQwr+B9aDDoZGluXbdRfF9puKc2Q3I5GENwIJ9umjOdtl7yrl1Bg==}
     dependencies:
       '@chainlink/contracts': 0.2.3(patch_hash=3x7enewww7zkkzf77wylrp2kta)
       axios: 0.24.0
