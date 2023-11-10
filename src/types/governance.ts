@@ -1,5 +1,5 @@
 // @ts-ignore-next-line
-import type { UserGovernanceDelegatees, Proposals } from '@dydxfoundation/governance';
+import type { UserGovernanceDelegatees, Proposals } from '@dydxfoundation-v3/governance';
 
 export type GovernancePowersData = {
   proposalPower?: string;

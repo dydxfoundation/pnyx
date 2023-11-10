@@ -12,7 +12,7 @@
     "preview-storybook": "http-server storybook-static --port 6007 --silent"
   },
   "dependencies": {
-    "@dydxfoundation/governance": "^1.0.3",
+    "@dydxfoundation-v3/governance": "1.0.5",
     "@walletconnect/ethereum-provider": "^2.9.0",
     "@walletconnect/modal": "^2.5.9",
     "@walletconnect/types": "^2.6.0",
