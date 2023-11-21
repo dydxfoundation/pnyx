@@ -96,7 +96,7 @@ const Dashboard: React.FC<
             title={stringGetter({ key: STRING_KEYS.REWARD_POOL })}
             value={
               <ValueWithIcon>
-                1,582,192
+                1,054,795
                 <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
               </ValueWithIcon>
             }
