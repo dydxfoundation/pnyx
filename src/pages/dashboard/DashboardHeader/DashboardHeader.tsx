@@ -95,7 +95,7 @@ const DashboardHeader: React.FC<
         {walletAddress ? <PortfolioModule /> : <DashboardHero />}
         <Cards>
           <CardContainer alignRight noMarginTop noWrap>
-            <ProgressBarCard
+            {/* <ProgressBarCard
               progress={circulatingSupplyPercent.toNumber()}
               progressBarLabels={{
                 topLeft: circulatingSupply ? (
@@ -126,7 +126,7 @@ const DashboardHeader: React.FC<
               }}
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.CIRCULATING_SUPPLY })}
-            />
+            /> */}
             <SingleStatCard
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.DISTRIBUTED_EACH_EPOCH })}
