@@ -26,7 +26,7 @@ const useGetDistributionData = (): DistributionData => {
     const circulatingSupplyResponse = await contractClient.getCirculatingSupply();
     dispatch(setCirculatingSupply({ circulatingSupply: circulatingSupplyResponse }));
 
-    const distributedTodayResponse = '1438357'; // Distributed each epoch
+    const distributedTodayResponse = '719179'; // Distributed each epoch
     dispatch(setDistributedToday({ distributedToday: distributedTodayResponse }));
 
     setCurrentDistributionData({
