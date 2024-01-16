@@ -61,57 +61,13 @@ const Dashboard: React.FC<
       )}
       <StakingPoolsRow />
       <SectionWrapper column>
-        <SectionHeader
-          title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })}
-          subtitle={stringGetter({ key: STRING_KEYS.TRADING_REWARDS_DESCRIPTION })}
-        />
+        <SectionHeader title={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })} />
         <CardContainer>
-          <SingleStatCard
-            size={CardSize.Large}
-            title={stringGetter({ key: STRING_KEYS.COUNTDOWN })}
-            isLoading={!formattedDiffUntilEpoch}
-            value={formattedDiffUntilEpoch}
-            label={
-              <SpanWithBaseEmbed
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: stringGetter({
-                    key: STRING_KEYS.UNTIL_NEXT_EPOCH_ON_DATE,
-                    params: {
-                      NEXT_EPOCH_DATE: ReactDOMServer.renderToString(
-                        <span>
-                          {nextEpochDate
-                            ? DateTime.fromISO(nextEpochDate).toFormat('MMMM dd')
-                            : '-'}
-                        </span>
-                      ),
-                    },
-                  }),
-                }}
-              />
-            }
-          />
-          <SingleStatCard
-            size={CardSize.Large}
-            title={stringGetter({ key: STRING_KEYS.REWARD_POOL })}
-            value={
-              <ValueWithIcon>
-                527,398
-                <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-              </ValueWithIcon>
-            }
-            label={stringGetter({ key: STRING_KEYS.DISTRIBUTED_THIS_EPOCH })}
-          />
           <InfoCtaCard
             label={stringGetter({ key: STRING_KEYS.TRADING_REWARDS })}
-            body={stringGetter({ key: STRING_KEYS.TRADING_REWARDS_DESCRIPTION_2 })}
+            body={stringGetter({ key: STRING_KEYS.TRADING_REWARDS_UPDATED_DESCRIPTION })}
             ctaConfigs={{
               primary: {
-                label: stringGetter({ key: STRING_KEYS.TRADE }),
-                onClick: () => openModal({ type: ModalType.TradeLink }),
-                linkOutIcon: true,
-              },
-              secondary: {
                 label: stringGetter({ key: STRING_KEYS.LEARN_MORE }),
                 onClick: () => {
                   window.open(
@@ -129,12 +85,6 @@ const Dashboard: React.FC<
     </>
   );
 };
-
-const SpanWithBaseEmbed = styled.span`
-  > span {
-    color: ${({ theme }) => theme.textbase};
-  }
-`;
 
 const mapStateToProps = (state: RootState) => ({
   isUserGeoBlocked: getIsUserGeoBlocked(state),
