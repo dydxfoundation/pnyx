@@ -127,21 +127,6 @@ const DashboardHeader: React.FC<
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.CIRCULATING_SUPPLY })}
             /> */}
-            <SingleStatCard
-              size={CardSize.Small}
-              title={stringGetter({ key: STRING_KEYS.DISTRIBUTED_EACH_EPOCH })}
-              isLoading={!distributedToday}
-              value={
-                <ValueWithIcon>
-                  <NumberFormat
-                    thousandSeparator
-                    displayType="text"
-                    value={MustBigNumber(distributedToday).toFixed(DecimalPlaces.ShortToken)}
-                  />
-                  <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-                </ValueWithIcon>
-              }
-            />
           </CardContainer>
           {walletAddress && (
             <CardContainer alignRight noMarginTop noWrap>
