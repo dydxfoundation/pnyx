@@ -16,7 +16,7 @@ type CtaConfigs = {
 export type InfoCtaCardProps = {
   label: string;
   title?: string;
-  body?: string;
+  body?: React.ReactNode;
   ctaConfigs?: CtaConfigs;
 };
 

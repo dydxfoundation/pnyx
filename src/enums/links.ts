@@ -11,6 +11,7 @@ export enum ExternalLink {
   Discord = 'https://discord.com/invite/yah42Rb',
   Documentation = 'https://docs.dydx.community',
   Forums = 'https://dydx.forum/',
+  Foundation = 'https://dydx.foundation',
   PrivacyPolicy = 'https://dydx.foundation/privacy',
   RevolvingCreditAgreement = 'https://dydx.foundation/revolving-credit-agreement',
   TermsOfUse = 'https://dydx.foundation/terms',

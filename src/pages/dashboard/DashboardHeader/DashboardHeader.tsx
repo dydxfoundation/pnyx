@@ -9,16 +9,14 @@ import { AppDispatch, RootState } from '@/store';
 import { LocalizationProps } from '@/types';
 import { AssetSymbol, DecimalPlaces, ModalType } from '@/enums';
 
-import { useGetDistributionData, usePollGovernancePowersData, usePollWalletBalances } from '@/hooks';
+import { usePollGovernancePowersData, usePollWalletBalances } from '@/hooks';
 import { withLocalization } from '@/hoc';
-import { breakpoints, NotTabletOnly, TabletOnly } from '@/styles';
+import { breakpoints } from '@/styles';
 
 import AssetIcon, { AssetIconSize } from '@/components/AssetIcon';
-import LoadingBar from '@/components/LoadingBar';
 import SectionWrapper from '@/components/SectionWrapper';
 
 import {
-  ProgressBarCard,
   SingleStatCard,
   CardContainer,
   CardSize,
@@ -57,9 +55,6 @@ const DashboardHeader: React.FC<
 
   usePollWalletBalances({ assetSymbol: AssetSymbol.DYDX });
   usePollWalletBalances({ assetSymbol: AssetSymbol.stDYDX });
-
-  const { circulatingSupply, distributedToday } = useGetDistributionData();
-  const circulatingSupplyPercent = MustBigNumber(circulatingSupply).div('1000000000');
 
   const { hasDelegatees: proposingPowerHasDelegatees } = findProposingPowerDelegatee({
     forStakedTokenPowers: true,
