@@ -17,6 +17,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
+      { find: '@dydxfoundation-v3/governance', replacement: path.resolve(__dirname, 'node_modules/v3-governance') },
     ],
   },
   build: {
