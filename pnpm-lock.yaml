@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 patchedDependencies:
   '@chainlink/contracts@0.2.3':
     hash: 3x7enewww7zkkzf77wylrp2kta
@@ -10,8 +14,8 @@ patchedDependencies:
 
 dependencies:
   '@dydxfoundation-v3/governance':
-    specifier: 1.0.5
-    version: 1.0.5(hardhat@2.16.1)(react@18.2.0)
+    specifier: 1.0.6
+    version: 1.0.6(hardhat@2.16.1)(react@18.2.0)
   '@walletconnect/ethereum-provider':
     specifier: ^2.9.0
     version: 2.9.0(@walletconnect/modal@2.5.9)
@@ -1656,6 +1660,14 @@ packages:
     dev: true
     optional: true
 
+  /@cosmjs/encoding@0.31.3:
+    resolution: {integrity: sha512-6IRtG0fiVYwyP7n+8e54uTx2pLYijO48V3t9TLiROERm5aUAIzIlz6Wp0NYaI5he9nh1lcEGJ1lkquVKFw3sUg==}
+    dependencies:
+      base64-js: 1.5.1
+      bech32: 1.1.4
+      readonly-date: 1.0.0
+    dev: false
+
   /@cspotcode/source-map-support@0.8.1:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
@@ -1668,10 +1680,11 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@dydxfoundation-v3/governance@1.0.5(hardhat@2.16.1)(react@18.2.0):
-    resolution: {integrity: sha512-BqYjjbUpcMDuwEG5afa3Q0KjAAqE/KNsUVQQwr+B9aDDoZGluXbdRfF9puKc2Q3I5GENwIJ9umjOdtl7yrl1Bg==}
+  /@dydxfoundation-v3/governance@1.0.6(hardhat@2.16.1)(react@18.2.0):
+    resolution: {integrity: sha512-aneB+R61KmyEjdqgxXJ/rTIs8O45ShmT+GClJN5wgWsqvres8rO/+0AD2mir7sfRpJeUJhaQoDqIY8i33j3UOQ==}
     dependencies:
       '@chainlink/contracts': 0.2.3(patch_hash=3x7enewww7zkkzf77wylrp2kta)
+      '@cosmjs/encoding': 0.31.3
       axios: 0.24.0
       cids: 1.1.9
       dotenv: 10.0.0
@@ -3637,7 +3650,7 @@ packages:
       globby: 11.1.0
       ip: 2.0.0
       lodash: 4.17.21
-      node-fetch: 2.6.9
+      node-fetch: 2.6.12
       open: 8.4.2
       pretty-hrtime: 1.0.3
       prompts: 2.4.2
@@ -6472,7 +6485,7 @@ packages:
   /cross-fetch@2.2.6:
     resolution: {integrity: sha512-9JZz+vXCmfKUZ68zAptS7k4Nu8e2qcibe7WVZYps7sAgk5R8GYTc+T1WR0v1rlP9HxgARmOX1UTIJZFytajpNA==}
     dependencies:
-      node-fetch: 2.6.9
+      node-fetch: 2.6.12
       whatwg-fetch: 2.0.4
     transitivePeerDependencies:
       - encoding
@@ -7633,7 +7646,7 @@ packages:
       eth-json-rpc-middleware: 6.0.0
       eth-rpc-errors: 3.0.0
       json-rpc-engine: 5.4.0
-      node-fetch: 2.6.9
+      node-fetch: 2.6.12
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -7649,7 +7662,7 @@ packages:
       ethereumjs-util: 5.2.1
       json-rpc-engine: 5.4.0
       json-stable-stringify: 1.0.2
-      node-fetch: 2.6.9
+      node-fetch: 2.6.12
       pify: 3.0.0
       safe-event-emitter: 1.0.1
     transitivePeerDependencies:
@@ -9214,7 +9227,7 @@ packages:
   /isomorphic-unfetch@3.1.0:
     resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
     dependencies:
-      node-fetch: 2.6.9
+      node-fetch: 2.6.12
       unfetch: 4.2.0
     transitivePeerDependencies:
       - encoding
@@ -10541,18 +10554,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: false
-
-  /node-fetch@2.6.9:
-    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
 
   /node-gyp-build@4.6.0:
     resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
@@ -11601,6 +11602,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
 
+  /readonly-date@1.0.0:
+    resolution: {integrity: sha512-tMKIV7hlk0h4mO3JTmmVuIlJVXjKk3Sep9Bf5OH0O+758ruuVkUy2J9SttDLm91IEX/WHlXPSpxMGjPj4beMIQ==}
+    dev: false
+
   /real-require@0.1.0:
     resolution: {integrity: sha512-r/H9MzAWtrv8aSVjPCMFpDMl5q66GqtmmRkRjpHTsp4zBAa+snZyiQNlMONiUmEJcsnaw0wCauJ2GWODr/aFkg==}
     engines: {node: '>= 12.13.0'}
@@ -11866,6 +11871,7 @@ packages:
 
   /rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -13778,7 +13784,3 @@ packages:
       bn.js: 4.12.0
       ethereumjs-util: 6.2.1
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
