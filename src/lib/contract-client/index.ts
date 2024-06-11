@@ -123,19 +123,20 @@ class ContractClient {
   };
 
   claimRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
-    console.log(walletAddress);
     const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.claimsProxyService.claimRewards(
       walletAddress
     );
 
     const claimTransaction = await _.first(transactions).tx();
 
-    //claimTransaction.gas = undefined;
+    claimTransaction.gas = claimTransaction.gasLimit
+      ? `0x${claimTransaction.gasLimit.toString(16)}`
+      : undefined;
 
-    const txHash = await this.provider?.request?.({
+    const txHash = await window.ethereum?.request?.({
       method: 'eth_sendTransaction',
       params: [claimTransaction],
-    });
+    }) as any;
 
     return txHash;
   };
