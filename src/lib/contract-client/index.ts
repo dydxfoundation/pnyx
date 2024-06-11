@@ -123,6 +123,7 @@ class ContractClient {
   };
 
   claimRewards = async ({ walletAddress }: { walletAddress: string }): Promise<string> => {
+    console.log(walletAddress);
     const transactions: EthereumTransactionTypeExtended[] = await this.txBuilder.claimsProxyService.claimRewards(
       walletAddress
     );
