@@ -74,6 +74,7 @@ export const UnconnectedClaimModal: React.FC<ConnectedClaimModalProps> = ({
       });
       closeModal();
     } catch (error) {
+      console.log(error.stack);
       console.error(error);
 
       if (!isErrorCancelError({ error })) {
