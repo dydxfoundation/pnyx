@@ -130,7 +130,7 @@ class ContractClient {
 
     const claimTransaction = await _.first(transactions).tx();
 
-    claimTransaction.gas = undefined;
+    //claimTransaction.gas = undefined;
 
     const txHash = await this.provider?.request?.({
       method: 'eth_sendTransaction',
