@@ -83,7 +83,7 @@
     "VIEW_ON_ETHERSCAN": "View on Etherscan",
     "WALLET_ADDRESS": "Wallet address",
     "WALLET": "Wallet",
-    "WELCOME_TO_DYDX": "Welcome to dYdX Governance & Staking",
+    "WELCOME_TO_DYDX": "Welcome to dYdX v3 Governance & Staking",
     "WITHDRAW": "Withdraw",
     "WITHDRAWABLE": "Withdrawable",
     "WITHDRAWS": "Withdraws",
@@ -189,8 +189,8 @@
     "STAKE_TO_EARN_REWARDS": "Stake to earn rewards",
     "STAKED": "Staked",
     "STAKED_SYMBOL": "Staked {SYMBOL}",
-    "STAKING": "Staking",
-    "STAKING_DESCRIPTION": "Earn rewards for contributing to safety.",
+    "STAKING": "Staking on dYdX v3",
+    "STAKING_DESCRIPTION": "No rewards are currently being allocated to stakers on dYdX v3. Depositors should not expect any rewards if they stake to any of the below pools.",
     "THERE_ARE_RISKS": "There are risks involved with staking your {SYMBOL}.",
     "THIS_POOL_ACCEPTS_SYMBOL": "This pool accepts {SYMBOL}",
     "UNCLAIMED_REWARDS": "Unclaimed rewards",
@@ -267,6 +267,6 @@
     "BRIDGES_NOTE_6": "More information on the wethDYDX Smart Contract and the potential migration of DYDX tokens from Ethereum to the dYdX Chain is available {HERE}, as well as on the {DYDX_FOUNDATION_BLOG}.",
     "DYDX_FOUNDATION_BLOG": "dYdX Foundation’s blog",
     "HERE": "here",
-    "MIGRATION_BANNER_MESSAGE": "Interested in bridging your DYDX tokens from Ethereum to dYdX Chain?"
+    "MIGRATION_BANNER_MESSAGE": "Interested in bridging your ethDYDX tokens from Ethereum to dYdX Chain?"
   }
 }
