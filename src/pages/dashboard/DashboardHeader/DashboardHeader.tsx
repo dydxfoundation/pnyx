@@ -38,6 +38,7 @@ import { findVotingPowerDelegatee, findProposingPowerDelegatee } from '@/lib/gov
 
 import DashboardHero from './DashboardHero';
 import PortfolioModule from './PortfolioModule';
+import SectionHeader from '@/components/SectionHeader';
 
 export type DashboardHeaderProps = {} & LocalizationProps;
 
@@ -85,12 +86,15 @@ const DashboardHeader: React.FC<
     !isUserGeoBlocked && !_.isNil(delegatees) && (delegationAvailable || votingPowerHasDelegatees);
 
   return (
-    <SectionWrapper>
-      <StyledDashboardHeader>
-        {walletAddress ? <PortfolioModule /> : <DashboardHero />}
-        <Cards>
-          <CardContainer alignRight noMarginTop noWrap>
-            {/* <ProgressBarCard
+    <SectionWrapper column withMarginTop={false}>
+      <SectionHeader title={stringGetter({ key: STRING_KEYS.WELCOME_TO_DYDX })} />
+
+      <div>
+        <StyledDashboardHeader>
+          {walletAddress ? <PortfolioModule /> : <DashboardHero />}
+          <Cards>
+            <CardContainer alignRight noMarginTop noWrap>
+              {/* <ProgressBarCard
               progress={circulatingSupplyPercent.toNumber()}
               progressBarLabels={{
                 topLeft: circulatingSupply ? (
@@ -122,73 +126,74 @@ const DashboardHeader: React.FC<
               size={CardSize.Small}
               title={stringGetter({ key: STRING_KEYS.CIRCULATING_SUPPLY })}
             /> */}
-          </CardContainer>
-          {walletAddress && (
-            <CardContainer alignRight noMarginTop noWrap>
-              <SingleStatCard
-                color={CardColor.Light}
-                size={CardSize.Small}
-                title={stringGetter({ key: STRING_KEYS.PROPOSAL_POWER })}
-                value={
-                  <ValueWithIcon>
-                    <NumberFormat
-                      thousandSeparator
-                      displayType="text"
-                      value={MustBigNumber(proposalPower).toFixed(DecimalPlaces.ShortToken)}
-                    />
-                    <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-                  </ValueWithIcon>
-                }
-                label={
-                  showDelegateProposingPower
-                    ? `${stringGetter({
-                        key: proposingPowerHasDelegatees
-                          ? STRING_KEYS.MANAGE_DELEGATION
-                          : STRING_KEYS.DELEGATE,
-                      })} →`
-                    : undefined
-                }
-                onClick={
-                  showDelegateProposingPower
-                    ? () => openModal({ type: ModalType.Delegate })
-                    : undefined
-                }
-                isLoading={_.isNil(proposalPower)}
-              />
-              <SingleStatCard
-                color={CardColor.Light}
-                size={CardSize.Small}
-                title={stringGetter({ key: STRING_KEYS.VOTING_POWER })}
-                value={
-                  <ValueWithIcon>
-                    <NumberFormat
-                      thousandSeparator
-                      displayType="text"
-                      value={MustBigNumber(votingPower).toFixed(DecimalPlaces.ShortToken)}
-                    />
-                    <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
-                  </ValueWithIcon>
-                }
-                label={
-                  showDelegateVotingPower
-                    ? `${stringGetter({
-                        key: votingPowerHasDelegatees
-                          ? STRING_KEYS.MANAGE_DELEGATION
-                          : STRING_KEYS.DELEGATE,
-                      })} →`
-                    : undefined
-                }
-                onClick={
-                  showDelegateVotingPower
-                    ? () => openModal({ type: ModalType.Delegate })
-                    : undefined
-                }
-                isLoading={_.isNil(votingPower)}
-              />
             </CardContainer>
-          )}
-        </Cards>
-      </StyledDashboardHeader>
+            {walletAddress && (
+              <CardContainer alignRight noMarginTop noWrap>
+                <SingleStatCard
+                  color={CardColor.Light}
+                  size={CardSize.Small}
+                  title={stringGetter({ key: STRING_KEYS.PROPOSAL_POWER })}
+                  value={
+                    <ValueWithIcon>
+                      <NumberFormat
+                        thousandSeparator
+                        displayType="text"
+                        value={MustBigNumber(proposalPower).toFixed(DecimalPlaces.ShortToken)}
+                      />
+                      <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+                    </ValueWithIcon>
+                  }
+                  label={
+                    showDelegateProposingPower
+                      ? `${stringGetter({
+                          key: proposingPowerHasDelegatees
+                            ? STRING_KEYS.MANAGE_DELEGATION
+                            : STRING_KEYS.DELEGATE,
+                        })} →`
+                      : undefined
+                  }
+                  onClick={
+                    showDelegateProposingPower
+                      ? () => openModal({ type: ModalType.Delegate })
+                      : undefined
+                  }
+                  isLoading={_.isNil(proposalPower)}
+                />
+                <SingleStatCard
+                  color={CardColor.Light}
+                  size={CardSize.Small}
+                  title={stringGetter({ key: STRING_KEYS.VOTING_POWER })}
+                  value={
+                    <ValueWithIcon>
+                      <NumberFormat
+                        thousandSeparator
+                        displayType="text"
+                        value={MustBigNumber(votingPower).toFixed(DecimalPlaces.ShortToken)}
+                      />
+                      <AssetIcon size={AssetIconSize.Medium} symbol={AssetSymbol.DYDX} />
+                    </ValueWithIcon>
+                  }
+                  label={
+                    showDelegateVotingPower
+                      ? `${stringGetter({
+                          key: votingPowerHasDelegatees
+                            ? STRING_KEYS.MANAGE_DELEGATION
+                            : STRING_KEYS.DELEGATE,
+                        })} →`
+                      : undefined
+                  }
+                  onClick={
+                    showDelegateVotingPower
+                      ? () => openModal({ type: ModalType.Delegate })
+                      : undefined
+                  }
+                  isLoading={_.isNil(votingPower)}
+                />
+              </CardContainer>
+            )}
+          </Cards>
+        </StyledDashboardHeader>
+      </div>
     </SectionWrapper>
   );
 };
@@ -196,7 +201,6 @@ const DashboardHeader: React.FC<
 const StyledDashboardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: -3rem;
   width: 100%;
 
   @media ${breakpoints.tablet} {
