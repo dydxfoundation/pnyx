@@ -133,10 +133,10 @@ class ContractClient {
       ? `0x${claimTransaction.gasLimit.toString(16)}`
       : undefined;
 
-    const txHash = await this.provider?.request?.({
+    const txHash = await window.ethereum?.request?.({
       method: 'eth_sendTransaction',
       params: [claimTransaction],
-    });
+    }) as any;
 
     return txHash;
   };

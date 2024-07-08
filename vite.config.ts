@@ -21,7 +21,8 @@ export default defineConfig({
     ],
   },
   build: {
-    commonjsOptions: { include: [] }
+    commonjsOptions: { include: [] },
+    sourcemap: true,
   },
   optimizeDeps: {
     disabled: false,
