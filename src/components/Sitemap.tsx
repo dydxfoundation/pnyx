@@ -8,6 +8,7 @@ import { Icon } from './Icon';
 import { DiscourseIcon, DiscordIcon, TwitterIcon } from '../icons';
 
 import { STRING_KEYS } from '../constants/localization';
+import { ExternalLink } from '@/enums';
 
 const links: {
   labelKey: string;
@@ -28,19 +29,19 @@ const links: {
       {
         labelKey: STRING_KEYS.TERMS_OF_USE,
         descriptionKey: STRING_KEYS.TERMS_OF_USE_DESCRIPTION,
-        href: 'https://dydx.foundation/terms',
+        href: ExternalLink.TermsOfUse,
         isExternalLink: true,
       },
       {
         labelKey: STRING_KEYS.PRIVACY_POLICY,
         descriptionKey: STRING_KEYS.PRIVACY_POLICY_DESCRIPTION,
-        href: 'https://dydx.foundation/privacy',
+        href: ExternalLink.PrivacyPolicy,
         isExternalLink: true,
       },
       {
         labelKey: STRING_KEYS.REVOLVING_CREDIT_AGREEMENT,
         descriptionKey: STRING_KEYS.REVOLVING_CREDIT_AGREEMENT_DESCRIPTION,
-        href: 'https://dydx.foundation/revolving-credit-agreement',
+        href: ExternalLink.RevolvingCreditAgreement,
         isExternalLink: true,
       },
     ],
@@ -52,7 +53,7 @@ const links: {
       {
         labelKey: STRING_KEYS.DISCORD,
         descriptionKey: STRING_KEYS.DISCORD_DESCRIPTION,
-        href: 'https://discord.gg/Tuze6tY',
+        href: ExternalLink.Discord,
         icon: DiscordIcon,
         isExternalLink: true,
       },
@@ -66,7 +67,7 @@ const links: {
       {
         labelKey: STRING_KEYS.FORUMS,
         descriptionKey: STRING_KEYS.FORUMS_DESCRIPTION,
-        href: 'https://dydx.forum/',
+        href: ExternalLink.Forums,
         icon: DiscourseIcon,
         isExternalLink: true,
       },
